@@ -63,12 +63,17 @@ class EqCard extends StatelessWidget {
       children: widgets,
     );
     if (this.statusAppearance != CardStatusAppearance.body) {
-      return column;
+      return MaterialDesign.DefaultTextStyle(
+        child: column,
+        style: TextStyle(
+          color: theme.textBasicColor,
+        ),
+      );
     } else {
       return MaterialDesign.DefaultTextStyle(
         child: column,
         style: TextStyle(
-          color: theme.textAlternateColor,
+          color: MaterialDesign.Colors.white,
         ),
       );
     }
@@ -130,7 +135,7 @@ class _CardHeader extends StatelessWidget {
         (headerPainted) ? statusColor : MaterialDesign.Colors.transparent;
 
     var headerTextColor =
-        (headerPainted) ? theme.textAlternateColor : theme.textBasicColor;
+        (headerPainted) ? MaterialDesign.Colors.white : theme.textBasicColor;
 
     return AnimatedContainer(
       duration: theme.minorAnimationDuration,

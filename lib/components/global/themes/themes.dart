@@ -76,4 +76,42 @@ class Themes {
     primaryFontFamily: 'Roboto',
     secondaryFontFamily: 'Roboto',
   );
+
+  static final darkTheme = defaultTheme.extend(
+    backgroundBasicColors: BackgroundColors(
+      color1: defaultTheme.basic.shade800,
+      color2: defaultTheme.basic.shade900,
+      color3: defaultTheme.basic.shade1000,
+      color4: defaultTheme.basic.shade1100,
+    ),
+    borderBasicColors: BorderColors(
+      color1: defaultTheme.basic.shade800,
+      color2: defaultTheme.basic.shade900,
+      color3: defaultTheme.basic.shade1000,
+      color4: defaultTheme.basic.shade1100,
+      color5: defaultTheme.basic.shade1100,
+    ),
+    backgroundAlternativeColors: BackgroundColors(
+      color1: defaultTheme.basic.shade100,
+      color2: defaultTheme.basic.shade200,
+      color3: defaultTheme.basic.shade300,
+      color4: defaultTheme.basic.shade400,
+    ),
+    borderAlternativeColors: BorderColors(
+      color1: defaultTheme.basic.shade100,
+      color2: defaultTheme.basic.shade200,
+      color3: defaultTheme.basic.shade300,
+      color4: defaultTheme.basic.shade400,
+      color5: defaultTheme.basic.shade500,
+    ),
+    textBasicColor: defaultTheme.basic.shade100,
+    textAlternateColor: defaultTheme.basic.shade900,
+    textControlColor: defaultTheme.basic.shade100,
+    textDisabledColor: defaultTheme.basic.shade700,
+    textHintColor: defaultTheme.basic.shade600,
+
+    shadow: BoxShadow(offset: Offset(0.0, 8.0), blurRadius: 16.0, spreadRadius: 0.0, color: Color(0xFF1A1F33)),
+    outlineColor: defaultTheme.basic.shade700,
+    dividerColor: defaultTheme.basic.shade1000,
+  );
 }

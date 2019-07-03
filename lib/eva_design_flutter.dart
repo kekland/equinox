@@ -1,6 +1,6 @@
 export './components/global/layout.dart';
 export './components/global/theming.dart';
-export './components/global/themes/light_theme.dart';
+export './components/global/themes/themes.dart';
 export './data/color_group.dart';
 export './data/params.dart';
 export './data/status.dart';

@@ -74,7 +74,7 @@ class EqThemeData {
 
   final Duration minorAnimationDuration;
   final Curve minorAnimationCurve;
-  
+
   final Duration majorAnimationDuration;
   final Curve majorAnimationCurve;
 
@@ -356,14 +356,145 @@ class EqThemeData {
   });
 
   ColorGroup getColorsForStatus({WidgetStatus status}) {
-    switch(status) {
-      case WidgetStatus.primary: return primary;
-      case WidgetStatus.success: return success;
-      case WidgetStatus.info: return info;
-      case WidgetStatus.warning: return warning;
-      case WidgetStatus.danger: return danger;
-      case WidgetStatus.basic: return basic;
-      default: return primary;
+    switch (status) {
+      case WidgetStatus.primary:
+        return primary;
+      case WidgetStatus.success:
+        return success;
+      case WidgetStatus.info:
+        return info;
+      case WidgetStatus.warning:
+        return warning;
+      case WidgetStatus.danger:
+        return danger;
+      case WidgetStatus.basic:
+        return basic;
+      default:
+        return primary;
     }
+  }
+
+  EqThemeData extend({
+    ColorGroup primary,
+    ColorGroup success,
+    ColorGroup info,
+    ColorGroup warning,
+    ColorGroup danger,
+    ColorGroup basic,
+    ColorStates primaryStates,
+    ColorStates successStates,
+    ColorStates infoStates,
+    ColorStates warningStates,
+    ColorStates dangerStates,
+    ColorStates basicStates,
+    BackgroundColors backgroundBasicColors,
+    BorderColors borderBasicColors,
+    BackgroundColors backgroundAlternativeColors,
+    BorderColors borderAlternativeColors,
+    BackgroundColors backgroundPrimaryColors,
+    BorderColors borderPrimaryColors,
+    Color textBasicColor,
+    Color textAlternateColor,
+    Color textControlColor,
+    Color textDisabledColor,
+    Color textHintColor,
+    ColorStates textPrimaryStates,
+    ColorStates textSuccessStates,
+    ColorStates textInfoStates,
+    ColorStates textWarningStates,
+    ColorStates textDangerStates,
+    TextTheme heading1,
+    TextTheme heading2,
+    TextTheme heading3,
+    TextTheme heading4,
+    TextTheme heading5,
+    TextTheme heading6,
+    TextTheme subtitle1,
+    TextTheme subtitle2,
+    TextTheme paragraph1,
+    TextTheme paragraph2,
+    TextTheme label,
+    TextTheme caption1,
+    TextTheme caption2,
+    TextTheme buttonTiny,
+    TextTheme buttonSmall,
+    TextTheme buttonMedium,
+    TextTheme buttonLarge,
+    TextTheme buttonGiant,
+    double borderRadius,
+    double outlineWidth,
+    Color outlineColor,
+    Color dividerColor,
+    double dividerWidth,
+    BoxShadow shadow,
+    Duration minorAnimationDuration,
+    Curve minorAnimationCurve,
+    Duration majorAnimationDuration,
+    Curve majorAnimationCurve,
+  }) {
+    return new EqThemeData.raw(
+      primary: primary ?? this.primary,
+      success: success ?? this.success,
+      info: info ?? this.info,
+      warning: warning ?? this.warning,
+      danger: danger ?? this.danger,
+      basic: basic ?? this.basic,
+      primaryStates: primaryStates ?? this.primaryStates,
+      successStates: successStates ?? this.successStates,
+      infoStates: infoStates ?? this.infoStates,
+      warningStates: warningStates ?? this.warningStates,
+      dangerStates: dangerStates ?? this.dangerStates,
+      basicStates: basicStates ?? this.basicStates,
+      backgroundBasicColors:
+          backgroundBasicColors ?? this.backgroundBasicColors,
+      borderBasicColors: borderBasicColors ?? this.borderBasicColors,
+      backgroundAlternativeColors:
+          backgroundAlternativeColors ?? this.backgroundAlternativeColors,
+      borderAlternativeColors:
+          borderAlternativeColors ?? this.borderAlternativeColors,
+      backgroundPrimaryColors:
+          backgroundPrimaryColors ?? this.backgroundPrimaryColors,
+      borderPrimaryColors: borderPrimaryColors ?? this.borderPrimaryColors,
+      textBasicColor: textBasicColor ?? this.textBasicColor,
+      textAlternateColor: textAlternateColor ?? this.textAlternateColor,
+      textControlColor: textControlColor ?? this.textControlColor,
+      textDisabledColor: textDisabledColor ?? this.textDisabledColor,
+      textHintColor: textHintColor ?? this.textHintColor,
+      textPrimaryStates: textPrimaryStates ?? this.textPrimaryStates,
+      textSuccessStates: textSuccessStates ?? this.textSuccessStates,
+      textInfoStates: textInfoStates ?? this.textInfoStates,
+      textWarningStates: textWarningStates ?? this.textWarningStates,
+      textDangerStates: textDangerStates ?? this.textDangerStates,
+      heading1: heading1 ?? this.heading1,
+      heading2: heading2 ?? this.heading2,
+      heading3: heading3 ?? this.heading3,
+      heading4: heading4 ?? this.heading4,
+      heading5: heading5 ?? this.heading5,
+      heading6: heading6 ?? this.heading6,
+      subtitle1: subtitle1 ?? this.subtitle1,
+      subtitle2: subtitle2 ?? this.subtitle2,
+      paragraph1: paragraph1 ?? this.paragraph1,
+      paragraph2: paragraph2 ?? this.paragraph2,
+      label: label ?? this.label,
+      caption1: caption1 ?? this.caption1,
+      caption2: caption2 ?? this.caption2,
+      buttonTiny: buttonTiny ?? this.buttonTiny,
+      buttonSmall: buttonSmall ?? this.buttonSmall,
+      buttonMedium: buttonMedium ?? this.buttonMedium,
+      buttonLarge: buttonLarge ?? this.buttonLarge,
+      buttonGiant: buttonGiant ?? this.buttonGiant,
+      borderRadius: borderRadius ?? this.borderRadius,
+      outlineWidth: outlineWidth ?? this.outlineWidth,
+      outlineColor: outlineColor ?? this.outlineColor,
+      dividerColor: dividerColor ?? this.dividerColor,
+      dividerWidth: dividerWidth ?? this.dividerWidth,
+      shadow: shadow ?? this.shadow,
+      majorAnimationCurve: majorAnimationCurve ?? this.majorAnimationCurve,
+      minorAnimationCurve: majorAnimationCurve ?? this.majorAnimationCurve,
+      majorAnimationDuration:
+          majorAnimationDuration ?? this.majorAnimationDuration,
+      minorAnimationDuration:
+          minorAnimationDuration ?? this.minorAnimationDuration,
+    );
   }
 }

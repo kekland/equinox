@@ -17,9 +17,16 @@ class _EqLayoutState extends State<EqLayout> {
   Widget build(BuildContext context) {
     return EqTheme(
       theme: widget.theme,
-      child: Container(
-        color: widget.theme.backgroundBasicColors.color1,
-        child: widget.child,
+      child: AnimatedDefaultTextStyle(
+        duration: widget.theme.majorAnimationDuration,
+        curve: widget.theme.majorAnimationCurve,
+        style: TextStyle(color: widget.theme.textBasicColor),
+        child: AnimatedContainer(
+          duration: widget.theme.majorAnimationDuration,
+          curve: widget.theme.majorAnimationCurve,
+          color: widget.theme.backgroundBasicColors.color3,
+          child: widget.child,
+        ),
       ),
     );
   }

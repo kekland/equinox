@@ -19,19 +19,13 @@ class _HomePageState extends State<HomePage> {
             child: Padding(
               padding: const EdgeInsets.all(64.0),
               child: EqCard(
-                child: Text('Hi!'),
-                status: WidgetStatus.success,
+                status: WidgetStatus.danger,
                 statusAppearance: CardStatusAppearance.header,
                 shape: WidgetShape.rectangle,
-                header: Text('Header'),
-                footerPadding: EdgeInsets.zero,
-                footer: EqButton(
-                  onTap: () {},
-                  size: WidgetSize.large,
-                  status: WidgetStatus.success,
-                  appearance: WidgetAppearance.ghost,
-                  label: 'Like'
-                ),
+                header: Text('Nebula'),
+                child: Text(
+                    'A nebula is an interstellar cloud of dust, hydrogen, helium and other ionized gases. Originally, nebula was a name for any diffuse astronomical object, including galaxies beyond the Milky Way.'),
+                footer: Text('By Wikipedia'),
               ),
             ),
           ),
