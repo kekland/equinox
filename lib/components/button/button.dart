@@ -136,11 +136,13 @@ class _EqButtonState extends MaterialDesign.State<EqButton> {
           borderRadius: BorderRadius.circular(borderRadius),
           child: Padding(
             padding: padding,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.baseline,
-              textBaseline: TextBaseline.ideographic,
-              children: _buildBody(theme),
+            child: Center(
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.baseline,
+                textBaseline: TextBaseline.ideographic,
+                children: _buildBody(theme),
+              ),
             ),
           ),
         ),

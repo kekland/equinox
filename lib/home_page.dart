@@ -22,9 +22,16 @@ class _HomePageState extends State<HomePage> {
                 child: Text('Hi!'),
                 status: WidgetStatus.success,
                 statusAppearance: CardStatusAppearance.header,
-                shape: WidgetShape.semiRound,
+                shape: WidgetShape.rectangle,
                 header: Text('Header'),
-                footer: Text('By Wikipedia')
+                footerPadding: EdgeInsets.zero,
+                footer: EqButton(
+                  onTap: () {},
+                  size: WidgetSize.large,
+                  status: WidgetStatus.success,
+                  appearance: WidgetAppearance.ghost,
+                  label: 'Like'
+                ),
               ),
             ),
           ),

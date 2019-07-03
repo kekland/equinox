@@ -11,6 +11,8 @@ class EqCard extends StatelessWidget {
   final WidgetShape shape;
   final CardStatusAppearance statusAppearance;
   final EdgeInsets padding;
+  final EdgeInsets headerPadding;
+  final EdgeInsets footerPadding;
 
   const EqCard({
     Key key,
@@ -21,6 +23,8 @@ class EqCard extends StatelessWidget {
     this.shape = WidgetShape.rectangle,
     this.statusAppearance = CardStatusAppearance.header,
     this.padding = const EdgeInsets.all(16.0),
+    this.headerPadding,
+    this.footerPadding,
   }) : super(key: key);
 
   Widget _buildBody(EqThemeData theme) {
@@ -33,7 +37,7 @@ class EqCard extends StatelessWidget {
       }
       widgets.add(_CardHeader(
         child: header,
-        padding: padding,
+        padding: headerPadding ?? padding,
         shape: shape,
         status: status,
         statusAppearance: statusAppearance,
@@ -46,7 +50,7 @@ class EqCard extends StatelessWidget {
       widgets.add(EqDivider());
       widgets.add(_CardFooter(
         child: footer,
-        padding: padding,
+        padding: footerPadding ?? padding,
         shape: shape,
         status: status,
         statusAppearance: statusAppearance,
