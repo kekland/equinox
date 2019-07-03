@@ -6,8 +6,14 @@ import 'package:flutter/widgets.dart';
 class EqLayout extends StatefulWidget {
   final EqThemeData theme;
   final Widget child;
+  final Widget appBar;
 
-  const EqLayout({Key key, this.theme, this.child}) : super(key: key);
+  const EqLayout({
+    Key key,
+    this.theme,
+    @required this.child,
+    this.appBar,
+  }) : super(key: key);
   @override
   _EqLayoutState createState() => _EqLayoutState();
 }
@@ -25,7 +31,16 @@ class _EqLayoutState extends State<EqLayout> {
           duration: widget.theme.majorAnimationDuration,
           curve: widget.theme.majorAnimationCurve,
           color: widget.theme.backgroundBasicColors.color3,
-          child: widget.child,
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              if (widget.appBar != null) widget.appBar,
+              Expanded(
+                child: widget.child,
+              ),
+            ],
+          ),
         ),
       ),
     );
