@@ -7,3 +7,6 @@ export './data/status.dart';
 export './data/text_theme.dart';
 export './data/theme_data.dart';
 export './components/button/button.dart';
+export './components/icon_button/icon_button.dart';
+export './components/card/card.dart';
+export './components/divider/divider.dart';

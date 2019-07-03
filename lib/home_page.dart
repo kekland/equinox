@@ -15,23 +15,17 @@ class _HomePageState extends State<HomePage> {
       theme: Themes.defaultTheme,
       child: Container(
         child: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: EqIconButton(
-                    icon: Icons.time_to_leave,
-                    size: WidgetSize.large,
-                    appearance: WidgetAppearance.filled,
-                    shape: WidgetShape.semiRound,
-                    status: WidgetStatus.success,
-                    onTap: () {
-                      print('hi!');
-                    },
-                  ),
-                ),
-              ],
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(64.0),
+              child: EqCard(
+                child: Text('Hi!'),
+                status: WidgetStatus.success,
+                statusAppearance: CardStatusAppearance.header,
+                shape: WidgetShape.semiRound,
+                header: Text('Header'),
+                footer: Text('By Wikipedia')
+              ),
             ),
           ),
         ),
