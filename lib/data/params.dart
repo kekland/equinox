@@ -31,6 +31,12 @@ enum WidgetShape {
   semiRound,
 }
 
+enum WidgetAppearance {
+  filled,
+  outline,
+  ghost,
+}
+
 class WidgetSizeUtils {
   static double getSizeValue({WidgetSize size}) {
     switch (size) {

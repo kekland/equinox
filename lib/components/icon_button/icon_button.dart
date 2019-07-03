@@ -3,33 +3,29 @@ import 'package:eva_design_flutter/eva_design_flutter.dart';
 import 'package:flutter/material.dart' as MaterialDesign;
 import 'package:flutter/widgets.dart';
 
-class EqButton extends MaterialDesign.StatefulWidget {
+class EqIconButton extends StatefulWidget {
   final WidgetSize size;
   final WidgetStatus status;
   final WidgetAppearance appearance;
   final WidgetShape shape;
   final VoidCallback onTap;
-  final String label;
   final IconData icon;
-  final IconPositioning iconPosition;
 
-  const EqButton({
+  const EqIconButton({
     Key key,
-    this.label,
+    @required this.icon,
     @required this.onTap,
     this.size = WidgetSize.medium,
     this.status = WidgetStatus.primary,
     this.appearance = WidgetAppearance.filled,
     this.shape = WidgetShape.rectangle,
-    this.icon,
-    this.iconPosition = IconPositioning.left,
   }) : super(key: key);
 
   @override
-  _EqButtonState createState() => _EqButtonState();
+  _EqIconButtonState createState() => _EqIconButtonState();
 }
 
-class _EqButtonState extends MaterialDesign.State<EqButton> {
+class _EqIconButtonState extends State<EqIconButton> {
   TextStyle _getTextStyle(EqThemeData theme) {
     switch (this.widget.size) {
       case WidgetSize.giant:
@@ -67,43 +63,6 @@ class _EqButtonState extends MaterialDesign.State<EqButton> {
     return theme.getColorsForStatus(status: widget.status).shade500;
   }
 
-  List<Widget> _buildBody(EqThemeData theme) {
-    var list = <Widget>[];
-
-    bool hasLabel = widget.label != null;
-    bool hasIcon =
-        widget.icon != null && widget.iconPosition != IconPositioning.none;
-
-    if (hasLabel) {
-      list.add(Text(
-        widget.label.toUpperCase(),
-        textAlign: TextAlign.center,
-        style: _getTextStyle(theme).copyWith(color: _getTextColor(theme)),
-      ));
-    }
-
-    if (hasIcon) {
-      Widget icon = Icon(
-        widget.icon,
-        size: _getTextStyle(theme).fontSize + 2.0,
-        color: _getTextColor(theme),
-      );
-      if (widget.iconPosition == IconPositioning.left) {
-        list.insert(0, icon);
-        if (hasLabel) {
-          list.insert(1, SizedBox(width: 8.0));
-        }
-      }
-      else {
-        if (hasLabel) {
-          list.add(SizedBox(width: 8.0));
-        }
-        list.add(icon);
-      }
-    }
-    return list;
-  }
-
   @override
   Widget build(BuildContext context) {
     var theme = EqTheme.of(context);
@@ -119,6 +78,7 @@ class _EqButtonState extends MaterialDesign.State<EqButton> {
         : null;
 
     var padding = WidgetSizeUtils.getPadding(size: widget.size);
+    padding = EdgeInsets.all(padding.vertical / 2.0);
 
     return AnimatedContainer(
       duration: theme.minorAnimationDuration,
@@ -136,11 +96,10 @@ class _EqButtonState extends MaterialDesign.State<EqButton> {
           borderRadius: BorderRadius.circular(borderRadius),
           child: Padding(
             padding: padding,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.baseline,
-              textBaseline: TextBaseline.ideographic,
-              children: _buildBody(theme),
+            child: Icon(
+              widget.icon,
+              color: _getTextColor(theme),
+              size: _getTextStyle(theme).fontSize + 2.0,
             ),
           ),
         ),

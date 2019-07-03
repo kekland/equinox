@@ -1,3 +1,4 @@
+import 'package:eva_design_flutter/components/icon_button/icon_button.dart';
 import 'package:eva_design_flutter/eva_design_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -19,11 +20,12 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: EqButton(
+                  child: EqIconButton(
                     icon: Icons.time_to_leave,
                     size: WidgetSize.large,
-                    iconPosition: IconPositioning.right,
-                    label: 'Primary',
+                    appearance: WidgetAppearance.filled,
+                    shape: WidgetShape.semiRound,
+                    status: WidgetStatus.success,
                     onTap: () {
                       print('hi!');
                     },
