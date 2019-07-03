@@ -1,5 +1,5 @@
 enum ButtonAppearance {
-  fill,
+  filled,
   outline,
   ghost,
 }

@@ -1,6 +1,7 @@
 import 'package:eva_design_flutter/eva_design_flutter.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 
 class EqThemeData {
   final ColorGroup primary;
@@ -71,6 +72,12 @@ class EqThemeData {
 
   final BoxShadow shadow;
 
+  final Duration minorAnimationDuration;
+  final Curve minorAnimationCurve;
+  
+  final Duration majorAnimationDuration;
+  final Curve majorAnimationCurve;
+
   factory EqThemeData({
     @required String primaryFontFamily,
     @required String secondaryFontFamily,
@@ -125,6 +132,10 @@ class EqThemeData {
       spreadRadius: 0.0,
       color: Color.fromRGBO(218, 224, 235, 0.6),
     ),
+    Duration majorAnimationDuration = const Duration(milliseconds: 350),
+    Duration minorAnimationDuration = const Duration(milliseconds: 150),
+    Curve majorAnimationCurve: Curves.easeInOut,
+    Curve minorAnimationCurve = Curves.easeInOut,
   }) {
     return EqThemeData.raw(
       primary: primary,
@@ -278,6 +289,10 @@ class EqThemeData {
       outlineColor: basic.shade400,
       outlineWidth: outlineWidth,
       shadow: shadow,
+      majorAnimationCurve: majorAnimationCurve,
+      minorAnimationCurve: minorAnimationCurve,
+      majorAnimationDuration: majorAnimationDuration,
+      minorAnimationDuration: minorAnimationDuration,
     );
   }
 
@@ -334,6 +349,10 @@ class EqThemeData {
     this.dividerColor,
     this.dividerWidth,
     this.shadow,
+    this.majorAnimationCurve,
+    this.minorAnimationCurve,
+    this.majorAnimationDuration,
+    this.minorAnimationDuration,
   });
 
   ColorGroup getColorsForStatus({WidgetStatus status}) {

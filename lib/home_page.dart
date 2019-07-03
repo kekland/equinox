@@ -15,6 +15,16 @@ class _HomePageState extends State<HomePage> {
         width: double.infinity,
         height: double.infinity,
         child: Center(
+          child: EqButton(
+            label: 'Primary',
+            status: WidgetStatus.primary,
+            size: WidgetSize.giant,
+            shape: WidgetShape.semiRound,
+            appearance: ButtonAppearance.filled,
+            onTap: () {
+              print('hi!');
+            },
+          ),
         ),
       ),
     );
