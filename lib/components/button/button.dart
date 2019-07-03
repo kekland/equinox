@@ -14,11 +14,11 @@ class EqButton extends MaterialDesign.StatefulWidget {
   const EqButton({
     Key key,
     @required this.label,
+    @required this.onTap,
     this.size = WidgetSize.medium,
     this.status = WidgetStatus.primary,
     this.appearance = ButtonAppearance.filled,
     this.shape = WidgetShape.rectangle,
-    this.onTap,
   }) : super(key: key);
 
   @override
@@ -63,7 +63,6 @@ class _EqButtonState extends MaterialDesign.State<EqButton> {
     return theme.getColorsForStatus(status: widget.status).shade500;
   }
 
-  bool _isPressing = false;
   @override
   Widget build(BuildContext context) {
     var theme = EqTheme.of(context);
@@ -99,6 +98,7 @@ class _EqButtonState extends MaterialDesign.State<EqButton> {
             padding: padding,
             child: Text(
               text,
+              textAlign: TextAlign.center,
               style: _getTextStyle(theme).copyWith(color: _getTextColor(theme)),
             ),
           ),
