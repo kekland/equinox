@@ -6,6 +6,7 @@ import 'package:flutter/widgets.dart';
 class EqIconButton extends StatefulWidget {
   final WidgetSize size;
   final WidgetStatus status;
+  final Color color;
   final WidgetAppearance appearance;
   final WidgetShape shape;
   final VoidCallback onTap;
@@ -19,6 +20,7 @@ class EqIconButton extends StatefulWidget {
     this.status = WidgetStatus.primary,
     this.appearance = WidgetAppearance.filled,
     this.shape = WidgetShape.rectangle,
+    this.color,
   }) : super(key: key);
 
   @override
@@ -46,9 +48,9 @@ class _EqIconButtonState extends State<EqIconButton> {
   Color _getTextColor(EqThemeData theme) {
     if (this.widget.onTap == null) return theme.textDisabledColor;
     if (this.widget.appearance == WidgetAppearance.filled)
-      return theme.textControlColor;
+      return widget.color ?? theme.textControlColor;
     else
-      return theme.getColorsForStatus(status: widget.status).shade500;
+      return widget.color ?? theme.getColorsForStatus(status: widget.status).shade500;
   }
 
   Color _getFillColor(EqThemeData theme) {

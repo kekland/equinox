@@ -11,23 +11,37 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return EqLayout(
-      theme: Themes.defaultTheme,
-      appBar: ,
+    return Container(
+      color: Themes.darkTheme.basic.shade1100,
       child: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(64.0),
-          child: EqCard(
-            status: WidgetStatus.danger,
-            statusAppearance: CardStatusAppearance.header,
-            shape: WidgetShape.rectangle,
-            header: Text('Nebula'),
-            child: Text(
-                'A nebula is an interstellar cloud of dust, hydrogen, helium and other ionized gases. Originally, nebula was a name for any diffuse astronomical object, including galaxies beyond the Milky Way.'),
-            footer: Text('By Wikipedia'),
+        child: Container(
+          width: 300.0,
+          height: 500.0,
+          child: EqLayout(
+            theme: Themes.defaultTheme,
+            appBar: EqAppBar(
+              title: 'Test',
+              subtitle: 'v0.0.0',
+              centerTitle: true,
+            ),
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: EqCard(
+                  status: WidgetStatus.danger,
+                  statusAppearance: CardStatusAppearance.header,
+                  shape: WidgetShape.rectangle,
+                  header: Text('Nebula'),
+                  child: Text(
+                      'A nebula is an interstellar cloud of dust, hydrogen, helium and other ionized gases. Originally, nebula was a name for any diffuse astronomical object, including galaxies beyond the Milky Way.'),
+                  footer: Text('By Wikipedia'),
+                ),
+              ),
+            ),
           ),
         ),
       ),
-    );
+    )
+    ;
   }
 }
