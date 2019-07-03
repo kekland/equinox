@@ -1,7 +1,4 @@
-import 'package:eva_design_flutter/components/global/card.dart';
-import 'package:eva_design_flutter/components/global/layout.dart';
-import 'package:eva_design_flutter/components/global/themes/light_theme.dart';
-import 'package:eva_design_flutter/components/global/theming.dart';
+import 'package:eva_design_flutter/eva_design_flutter.dart';
 import 'package:flutter/widgets.dart';
 
 class HomePage extends StatefulWidget {

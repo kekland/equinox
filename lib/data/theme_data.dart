@@ -1,6 +1,4 @@
-import 'package:eva_design_flutter/data/color_group.dart';
-import 'package:eva_design_flutter/data/status.dart';
-import 'package:eva_design_flutter/data/text_theme.dart';
+import 'package:eva_design_flutter/eva_design_flutter.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
 
@@ -338,14 +336,15 @@ class EqThemeData {
     this.shadow,
   });
 
-  ColorGroup getColorsForStatus({Status status}) {
+  ColorGroup getColorsForStatus({WidgetStatus status}) {
     switch(status) {
-      case Status.primary: return primary;
-      case Status.success: return success;
-      case Status.info: return info;
-      case Status.warning: return warning;
-      case Status.danger: return danger;
-      case Status.basic: return basic;
+      case WidgetStatus.primary: return primary;
+      case WidgetStatus.success: return success;
+      case WidgetStatus.info: return info;
+      case WidgetStatus.warning: return warning;
+      case WidgetStatus.danger: return danger;
+      case WidgetStatus.basic: return basic;
+      default: return primary;
     }
   }
 }
