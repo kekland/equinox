@@ -73,7 +73,7 @@ class Themes {
       shade1000: Color(0xff151a30),
       shade1100: Color(0xff101426),
     ),
-    primaryFontFamily: 'OpenSans',
-    secondaryFontFamily: 'Raleway',
+    primaryFontFamily: 'Roboto',
+    secondaryFontFamily: 'Roboto',
   );
 }

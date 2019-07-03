@@ -7,6 +7,12 @@ class EqTheme extends StatelessWidget {
   final EqThemeData theme;
   final Widget child;
 
+  static EqThemeData of(BuildContext context) {
+    final InheritedEqTheme inheritedTheme = context.inheritFromWidgetOfExactType(InheritedEqTheme);
+    return inheritedTheme.theme;
+  }
+
+
   const EqTheme({Key key, this.theme, this.child}) : super(key: key);
 
   @override
