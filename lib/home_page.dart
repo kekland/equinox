@@ -1,4 +1,5 @@
 import 'package:eva_design_flutter/eva_design_flutter.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,18 +13,24 @@ class _HomePageState extends State<HomePage> {
     return EqLayout(
       theme: Themes.defaultTheme,
       child: Container(
-        width: double.infinity,
-        height: double.infinity,
-        child: Center(
-          child: EqButton(
-            label: 'Primary',
-            status: WidgetStatus.primary,
-            size: WidgetSize.giant,
-            shape: WidgetShape.semiRound,
-            appearance: ButtonAppearance.filled,
-            onTap: () {
-              print('hi!');
-            },
+        child: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: EqButton(
+                    icon: Icons.time_to_leave,
+                    size: WidgetSize.large,
+                    iconPosition: IconPositioning.right,
+                    label: 'Primary',
+                    onTap: () {
+                      print('hi!');
+                    },
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

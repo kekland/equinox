@@ -1,4 +1,5 @@
 export 'package:eva_design_flutter/components/button/button_appearance.dart';
+export 'package:eva_design_flutter/components/button/button_icon_positioning.dart';
 import 'package:eva_design_flutter/eva_design_flutter.dart';
 import 'package:flutter/material.dart' as MaterialDesign;
 import 'package:flutter/widgets.dart';
@@ -10,6 +11,8 @@ class EqButton extends MaterialDesign.StatefulWidget {
   final WidgetShape shape;
   final VoidCallback onTap;
   final String label;
+  final IconData icon;
+  final IconPositioning iconPosition;
 
   const EqButton({
     Key key,
@@ -19,6 +22,8 @@ class EqButton extends MaterialDesign.StatefulWidget {
     this.status = WidgetStatus.primary,
     this.appearance = ButtonAppearance.filled,
     this.shape = WidgetShape.rectangle,
+    this.icon,
+    this.iconPosition = IconPositioning.left,
   }) : super(key: key);
 
   @override
@@ -96,10 +101,36 @@ class _EqButtonState extends MaterialDesign.State<EqButton> {
           borderRadius: BorderRadius.circular(borderRadius),
           child: Padding(
             padding: padding,
-            child: Text(
-              text,
-              textAlign: TextAlign.center,
-              style: _getTextStyle(theme).copyWith(color: _getTextColor(theme)),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.baseline,
+              textBaseline: TextBaseline.ideographic,
+              children: [
+                if (widget.icon != null &&
+                    widget.iconPosition == IconPositioning.left) ...[
+                  Icon(
+                    widget.icon,
+                    size: _getTextStyle(theme).fontSize + 2.0,
+                    color: _getTextColor(theme),
+                  ),
+                  SizedBox(width: 8.0),
+                ],
+                Text(
+                  text,
+                  textAlign: TextAlign.center,
+                  style: _getTextStyle(theme)
+                      .copyWith(color: _getTextColor(theme)),
+                ),
+                if (widget.icon != null &&
+                    widget.iconPosition == IconPositioning.right) ...[
+                  SizedBox(width: 8.0),
+                  Icon(
+                    widget.icon,
+                    size: _getTextStyle(theme).fontSize + 2.0,
+                    color: _getTextColor(theme),
+                  ),
+                ],
+              ],
             ),
           ),
         ),
