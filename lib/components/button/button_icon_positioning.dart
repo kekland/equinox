@@ -1,4 +1,4 @@
-enum IconPositioning {
+enum Positioning {
   left,
   right,
   none,

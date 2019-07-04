@@ -12,7 +12,7 @@ class EqButton extends MaterialDesign.StatefulWidget {
   final VoidCallback onTap;
   final String label;
   final IconData icon;
-  final IconPositioning iconPosition;
+  final Positioning iconPosition;
 
   const EqButton({
     Key key,
@@ -23,7 +23,7 @@ class EqButton extends MaterialDesign.StatefulWidget {
     this.appearance = WidgetAppearance.filled,
     this.shape = WidgetShape.rectangle,
     this.icon,
-    this.iconPosition = IconPositioning.left,
+    this.iconPosition = Positioning.left,
   }) : super(key: key);
 
   @override
@@ -75,7 +75,7 @@ class _EqButtonState extends State<EqButton> {
 
     bool hasLabel = widget.label != null;
     bool hasIcon =
-        widget.icon != null && widget.iconPosition != IconPositioning.none;
+        widget.icon != null && widget.iconPosition != Positioning.none;
 
     if (hasLabel) {
       list.add(Text(
@@ -91,7 +91,7 @@ class _EqButtonState extends State<EqButton> {
         size: _getTextStyle(theme).fontSize + 2.0,
         color: _getTextColor(theme),
       );
-      if (widget.iconPosition == IconPositioning.left) {
+      if (widget.iconPosition == Positioning.left) {
         list.insert(0, icon);
         if (hasLabel) {
           list.insert(1, SizedBox(width: 8.0));

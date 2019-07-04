@@ -10,13 +10,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  bool checked;
+  bool checked = false;
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Themes.darkTheme.basic.shade1100,
       child: EqLayout(
-        theme: Themes.darkTheme,
+        theme: Themes.defaultTheme,
         appBar: EqAppBar(
           centerTitle: true,
           title: 'Auth test',
@@ -29,6 +29,7 @@ class _HomePageState extends State<HomePage> {
               shape: WidgetShape.rectangle,
               header: Text('Login'),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   EqTextField(
@@ -36,7 +37,7 @@ class _HomePageState extends State<HomePage> {
                     shape: WidgetShape.rectangle,
                     hint: 'Username',
                     icon: EvaIcons.emailOutline,
-                    iconPosition: IconPositioning.right,
+                    iconPosition: Positioning.right,
                   ),
                   SizedBox(height: 16.0),
                   EqTextField(
@@ -44,7 +45,7 @@ class _HomePageState extends State<HomePage> {
                     shape: WidgetShape.rectangle,
                     hint: 'Password',
                     icon: EvaIcons.lockOutline,
-                    iconPosition: IconPositioning.right,
+                    iconPosition: Positioning.right,
                     obscureText: true,
                   ),
                   SizedBox(height: 16.0),
@@ -60,6 +61,12 @@ class _HomePageState extends State<HomePage> {
                     value: checked,
                     description: 'Radio 1',
                   ),
+                  SizedBox(height: 16.0),
+                  EqToggle(
+                    value: checked,
+                    onChanged: (v) => setState(() => checked = v),
+                    shape: WidgetShape.rectangle,
+                  )
                 ],
               ),
               footerPadding: EdgeInsets.zero,

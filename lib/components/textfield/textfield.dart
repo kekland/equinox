@@ -15,7 +15,7 @@ class EqTextField extends StatefulWidget {
   final void Function(String) onSubmitted;
   final void Function() onEditingComplete;
   final IconData icon;
-  final IconPositioning iconPosition;
+  final Positioning iconPosition;
   final bool obscureText;
   final TextInputType keyboardType;
   final FocusNode focusNode;
@@ -33,7 +33,7 @@ class EqTextField extends StatefulWidget {
     this.onSubmitted,
     this.onEditingComplete,
     this.icon,
-    this.iconPosition = IconPositioning.left,
+    this.iconPosition = Positioning.left,
     this.label,
     this.description,
     this.obscureText = false,
@@ -136,11 +136,11 @@ class _EqTextFieldState extends State<EqTextField> {
                 filled: true,
                 fillColor: theme.backgroundBasicColors.color2,
                 prefixIcon: (widget.icon != null &&
-                        widget.iconPosition == IconPositioning.left)
+                        widget.iconPosition == Positioning.left)
                     ? Icon(widget.icon, color: theme.textHintColor)
                     : null,
                 suffixIcon: (widget.icon != null &&
-                        widget.iconPosition == IconPositioning.right)
+                        widget.iconPosition == Positioning.right)
                     ? Icon(widget.icon, color: theme.textHintColor)
                     : null,
                 contentPadding: const EdgeInsets.symmetric(

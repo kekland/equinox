@@ -40,6 +40,9 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
         outlineAnimation.reverse();
       }
     }
+    if(oldWidget.predefinedSize != widget.predefinedSize) {
+      this.itemSize = widget.predefinedSize;
+    }
     super.didUpdateWidget(oldWidget);
   }
 

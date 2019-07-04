@@ -1,32 +1,56 @@
-import 'package:eva_design_flutter/components/global/outlined_gesture_detector.dart';
 import 'package:eva_design_flutter/eva_design_flutter.dart';
-import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 
-class EqCheckbox extends StatefulWidget {
+class EqToggle extends StatefulWidget {
   final bool value;
-  final String description;
   final WidgetStatus status;
   final WidgetShape shape;
+  final String description;
   final Positioning descriptionPosition;
   final void Function(bool) onChanged;
 
-  const EqCheckbox({
+  const EqToggle({
     Key key,
     @required this.value,
     @required this.onChanged,
-    this.description,
     this.status,
     this.shape = WidgetShape.rectangle,
-    this.descriptionPosition = Positioning.right,
+    this.description,
+    this.descriptionPosition = Positioning.left,
   }) : super(key: key);
 
   @override
-  _EqCheckboxState createState() => _EqCheckboxState();
+  _EqToggleState createState() => _EqToggleState();
 }
 
-class _EqCheckboxState extends State<EqCheckbox> {
+class _EqToggleState extends State<EqToggle>
+    with SingleTickerProviderStateMixin {
+  AnimationController animationController;
+  Animation<double> animation;
+
   bool outlined = false;
+
+  @override
+  initState() {
+    animationController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 150));
+    animation =
+        CurvedAnimation(curve: Curves.easeInOut, parent: animationController);
+
+    super.initState();
+  }
+
+  @override
+  void didUpdateWidget(EqToggle oldWidget) {
+    if (oldWidget.value != widget.value) {
+      if (widget.value) {
+        animationController.forward();
+      } else {
+        animationController.reverse();
+      }
+    }
+    super.didUpdateWidget(oldWidget);
+  }
 
   _onTap() {
     if (widget.value == null)
@@ -56,8 +80,7 @@ class _EqCheckboxState extends State<EqCheckbox> {
   @override
   Widget build(BuildContext context) {
     var theme = EqTheme.of(context);
-    var borderRadius = theme.borderRadius *
-        WidgetShapeUtils.getMultiplier(shape: widget.shape);
+    var borderRadius = 16.0;
 
     var borderColor = (this.widget.status != null)
         ? theme.getColorsForStatus(status: widget.status).shade500
@@ -83,26 +106,34 @@ class _EqCheckboxState extends State<EqCheckbox> {
 
     list.add(OutlinedWidget(
       outlined: outlined,
-      predefinedSize: Size(24.0, 24.0),
+      predefinedSize: Size(52.0, 32.0),
       borderRadius: BorderRadius.circular(borderRadius),
       child: AnimatedContainer(
         duration: theme.minorAnimationDuration,
         curve: theme.minorAnimationCurve,
-        width: 24.0,
-        height: 24.0,
+        width: 52.0,
+        height: 32.0,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(borderRadius),
           color: fillColor,
           border: Border.all(color: borderColor, width: 1.0),
         ),
-        child: Material(
-          type: MaterialType.transparency,
-          child: Center(
-            child: (widget.value == null)
-                ? Icon(EvaIcons.minus, color: Colors.white, size: 16.0)
-                : (widget.value)
-                    ? Icon(EvaIcons.checkmark, color: Colors.white, size: 16.0)
-                    : SizedBox(),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 2.0),
+          alignment: Alignment.centerLeft,
+          child: AnimatedBuilder(
+            animation: animation,
+            builder: (context, _) => Transform.translate(
+                  offset: Offset(18.0 * animation.value, 0.0),
+                  child: Container(
+                    width: 28.0,
+                    height: 28.0,
+                    decoration: BoxDecoration(
+                      color: theme.backgroundBasicColors.color1,
+                      borderRadius: BorderRadius.circular(borderRadius),
+                    ),
+                  ),
+                ),
           ),
         ),
       ),
