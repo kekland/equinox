@@ -29,8 +29,10 @@ A [**Eva Design**](https://eva.design) implementation in Flutter.
 ## Screenshots
 
 <p float="left">
-  <img src="./screenshots/first.jpg" width="49%" />
-  <img src="./screenshots/second.jpg" width="49%" /> 
+  <img src="./screenshots/1.jpg" width="49%" />
+  <img src="./screenshots/2.jpg" width="49%" />
+  <img src="./screenshots/3.jpg" width="49%" />
+  <img src="./screenshots/4.jpg" width="49%" /> 
 </p>
 
 
