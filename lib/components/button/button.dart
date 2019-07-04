@@ -1,4 +1,5 @@
 export 'package:eva_design_flutter/components/button/button_icon_positioning.dart';
+import 'package:eva_design_flutter/components/global/outlined_gesture_detector.dart';
 import 'package:eva_design_flutter/eva_design_flutter.dart';
 import 'package:flutter/material.dart' as MaterialDesign;
 import 'package:flutter/widgets.dart';
@@ -133,15 +134,9 @@ class _EqButtonState extends State<EqButton> {
           border: border,
         ),
         child: SizedBox(
-          child: GestureDetector(
-            behavior: HitTestBehavior.opaque,
+          child: OutlinedGestureDetector(
             onTap: widget.onTap,
-            onTapDown: (widget.onTap != null)
-                ? (_) => setState(() => outlined = true)
-                : null,
-            onTapUp: (widget.onTap != null)
-                ? (_) => setState(() => outlined = false)
-                : null,
+            onOutlineChange: (v) => setState(() => outlined = v),
             child: Padding(
               padding: padding,
               child: Center(

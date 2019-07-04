@@ -1,4 +1,5 @@
 export 'package:eva_design_flutter/components/button/button_icon_positioning.dart';
+import 'package:eva_design_flutter/components/global/outlined_gesture_detector.dart';
 import 'package:eva_design_flutter/eva_design_flutter.dart';
 import 'package:flutter/material.dart' as MaterialDesign;
 import 'package:flutter/widgets.dart';
@@ -28,6 +29,7 @@ class EqIconButton extends StatefulWidget {
 }
 
 class _EqIconButtonState extends State<EqIconButton> {
+  bool outlined = false;
   TextStyle _getTextStyle(EqThemeData theme) {
     switch (this.widget.size) {
       case WidgetSize.giant:
@@ -50,7 +52,8 @@ class _EqIconButtonState extends State<EqIconButton> {
     if (this.widget.appearance == WidgetAppearance.filled)
       return widget.color ?? theme.textControlColor;
     else
-      return widget.color ?? theme.getColorsForStatus(status: widget.status).shade500;
+      return widget.color ??
+          theme.getColorsForStatus(status: widget.status).shade500;
   }
 
   Color _getFillColor(EqThemeData theme) {
@@ -82,20 +85,21 @@ class _EqIconButtonState extends State<EqIconButton> {
     var padding = WidgetSizeUtils.getPadding(size: widget.size);
     padding = EdgeInsets.all(padding.vertical / 2.0);
 
-    return AnimatedContainer(
-      duration: theme.minorAnimationDuration,
-      curve: theme.minorAnimationCurve,
-      decoration: BoxDecoration(
-        color: fillColor,
-        borderRadius: BorderRadius.circular(borderRadius),
-        border: border,
-      ),
-      child: MaterialDesign.Material(
-        type: MaterialDesign.MaterialType.transparency,
-        borderRadius: BorderRadius.circular(borderRadius),
-        child: MaterialDesign.InkWell(
-          onTap: widget.onTap,
+    return OutlinedWidget(
+      outlined: outlined,
+      borderRadius: BorderRadius.circular(borderRadius),
+      predefinedSize: Size.square(padding.horizontal + _getTextStyle(theme).fontSize + 2.0),
+      child: AnimatedContainer(
+        duration: theme.minorAnimationDuration,
+        curve: theme.minorAnimationCurve,
+        decoration: BoxDecoration(
+          color: fillColor,
           borderRadius: BorderRadius.circular(borderRadius),
+          border: border,
+        ),
+        child: OutlinedGestureDetector(
+          onTap: widget.onTap,
+          onOutlineChange: (v) => setState(() => outlined = v),
           child: Padding(
             padding: padding,
             child: Icon(

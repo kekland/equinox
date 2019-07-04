@@ -1,3 +1,4 @@
+import 'package:eva_design_flutter/components/global/outlined_gesture_detector.dart';
 import 'package:eva_design_flutter/eva_design_flutter.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
@@ -24,18 +25,6 @@ class EqCheckbox extends StatefulWidget {
 
 class _EqCheckboxState extends State<EqCheckbox> {
   bool outlined = false;
-
-  _onTapStart() {
-    setState(() {
-      outlined = true;
-    });
-  }
-
-  _onTapEnd() {
-    setState(() {
-      outlined = false;
-    });
-  }
 
   _onTap() {
     if (widget.value == null)
@@ -74,10 +63,9 @@ class _EqCheckboxState extends State<EqCheckbox> {
 
     var fillColor = _getFillColor(theme);
 
-    return GestureDetector(
+    return OutlinedGestureDetector(
       onTap: _onTap,
-      onTapDown: (_) => _onTapStart(),
-      onTapUp: (_) => _onTapEnd(),
+      onOutlineChange: (v) => setState(() => outlined = v),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
@@ -97,18 +85,13 @@ class _EqCheckboxState extends State<EqCheckbox> {
               ),
               child: Material(
                 type: MaterialType.transparency,
-                child: GestureDetector(
-                  onTap: _onTap,
-                  onTapDown: (_) => _onTapStart(),
-                  onTapUp: (_) => _onTapEnd(),
-                  child: Center(
-                    child: (widget.value == null)
-                        ? Icon(EvaIcons.minus, color: Colors.white, size: 16.0)
-                        : (widget.value)
-                            ? Icon(EvaIcons.checkmark,
-                                color: Colors.white, size: 16.0)
-                            : SizedBox(),
-                  ),
+                child: Center(
+                  child: (widget.value == null)
+                      ? Icon(EvaIcons.minus, color: Colors.white, size: 16.0)
+                      : (widget.value)
+                          ? Icon(EvaIcons.checkmark,
+                              color: Colors.white, size: 16.0)
+                          : SizedBox(),
                 ),
               ),
             ),

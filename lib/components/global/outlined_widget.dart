@@ -72,15 +72,15 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
     return value * outlineScaleAnimation.value + VectorMath.Vector3.all(1.0);
   }
 
-  Border calculateBorder(double outlineWidth, VectorMath.Vector3 scaleFactor) {
+  Border calculateBorder(EqThemeData theme, VectorMath.Vector3 scaleFactor) {
     var verticalBorderSide = BorderSide(
-      color: Colors.white.withOpacity(0.05),
-      width: ((outlineWidth / scaleFactor.y) * outlineScaleAnimation.value)
+      color: theme.outlineColor,
+      width: ((theme.outlineWidth / scaleFactor.y) * outlineScaleAnimation.value)
           .clamp(0.0, double.infinity),
     );
     var horizontalBorderSide = BorderSide(
-      color: Colors.white.withOpacity(0.05),
-      width: ((outlineWidth / scaleFactor.x) * outlineScaleAnimation.value)
+      color: theme.outlineColor,
+      width: ((theme.outlineWidth / scaleFactor.x) * outlineScaleAnimation.value)
           .clamp(0.0, double.infinity),
     );
     return Border(
@@ -116,7 +116,7 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
                         height: itemSize.height,
                         decoration: BoxDecoration(
                           border:
-                              calculateBorder(theme.outlineWidth, scaleFactor),
+                              calculateBorder(theme, scaleFactor),
                         ),
                       ),
                     ),
