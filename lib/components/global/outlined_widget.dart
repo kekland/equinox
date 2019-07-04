@@ -1,3 +1,4 @@
+import 'package:eva_design_flutter/components/global/inverted_cliprrect.dart';
 import 'package:eva_design_flutter/eva_design_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:vector_math/vector_math_64.dart' as VectorMath;
@@ -75,13 +76,15 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
   Border calculateBorder(EqThemeData theme, VectorMath.Vector3 scaleFactor) {
     var verticalBorderSide = BorderSide(
       color: theme.outlineColor,
-      width: ((theme.outlineWidth / scaleFactor.y) * outlineScaleAnimation.value)
-          .clamp(0.0, double.infinity),
+      width:
+          ((theme.outlineWidth / scaleFactor.y) * outlineScaleAnimation.value)
+              .clamp(0.0, double.infinity),
     );
     var horizontalBorderSide = BorderSide(
       color: theme.outlineColor,
-      width: ((theme.outlineWidth / scaleFactor.x) * outlineScaleAnimation.value)
-          .clamp(0.0, double.infinity),
+      width:
+          ((theme.outlineWidth / scaleFactor.x) * outlineScaleAnimation.value)
+              .clamp(0.0, double.infinity),
     );
     return Border(
       top: verticalBorderSide,
@@ -100,27 +103,44 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
               animation: outlineScaleAnimation,
               builder: (context, _) {
                 var scaleFactor = calculateScaleVector(theme);
-                return Opacity(
-                  opacity: 1.0,
-                  child: Transform(
-                    transform: Matrix4.compose(
-                      VectorMath.Vector3.zero(),
-                      VectorMath.Quaternion.identity(),
-                      scaleFactor,
-                    ),
-                    origin: Offset(itemSize.width / 2.0, itemSize.height / 2.0),
-                    child: ClipRRect(
-                      borderRadius: widget.borderRadius,
-                      child: Container(
-                        width: itemSize.width,
-                        height: itemSize.height,
-                        decoration: BoxDecoration(
-                          border:
-                              calculateBorder(theme, scaleFactor),
+                return Stack(
+                  children: <Widget>[
+                    Opacity(
+                      opacity: outlineScaleAnimation.value,
+                      child: Transform(
+                        transform: Matrix4.compose(
+                          VectorMath.Vector3.zero(),
+                          VectorMath.Quaternion.identity(),
+                          scaleFactor,
+                        ),
+                        origin:
+                            Offset(itemSize.width / 2.0, itemSize.height / 2.0),
+                        child: ClipRRect(
+                          borderRadius: widget.borderRadius,
+                          child: Container(
+                            width: itemSize.width,
+                            height: itemSize.height,
+                            decoration: BoxDecoration(
+                              border: calculateBorder(theme, scaleFactor),
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
+                    Opacity(
+                      opacity: outlineScaleAnimation.value,
+                      child: ClipPath(
+                        clipper: InvertedClipRRect(
+                          borderRadius: widget.borderRadius,
+                        ),
+                        child: Container(
+                          width: itemSize.width,
+                          height: itemSize.height,
+                          color: theme.outlineColor,
+                        ),
+                      ),
+                    ),
+                  ],
                 );
               }),
         SizedBox(

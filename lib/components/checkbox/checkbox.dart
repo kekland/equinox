@@ -46,7 +46,7 @@ class _EqCheckboxState extends State<EqCheckbox> {
             .shade500
             .withOpacity(0.125);
       } else {
-        return theme.borderBasicColors.color4;
+        return theme.backgroundBasicColors.color3;
       }
     }
   }

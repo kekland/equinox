@@ -53,7 +53,13 @@ class _HomePageState extends State<HomePage> {
                     onChanged: (v) => setState(() => checked = v),
                     description: 'Remember me',
                     shape: WidgetShape.rectangle,
-                  )
+                  ),
+                  SizedBox(height: 16.0),
+                  EqRadio(
+                    onSelected: () => setState(() => checked = !checked),
+                    value: checked,
+                    description: 'Radio 1',
+                  ),
                 ],
               ),
               footerPadding: EdgeInsets.zero,
