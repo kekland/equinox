@@ -28,8 +28,11 @@ A [**Eva Design**](https://eva.design) implementation in Flutter.
 
 ## Screenshots
 
-<img src="./screenshots/second.jpg" width="45%" />
-<img src="./screenshots/first.jpg" width="45%" />
+<p float="left">
+  <img src="./screenshots/first.jpg" width="49%" />
+  <img src="./screenshots/second.jpg" width="49%" /> 
+</p>
+
 
 ## Other Eva Design implementations
 
