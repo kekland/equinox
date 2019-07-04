@@ -10,6 +10,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool checked;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -46,6 +47,13 @@ class _HomePageState extends State<HomePage> {
                     iconPosition: IconPositioning.right,
                     obscureText: true,
                   ),
+                  SizedBox(height: 16.0),
+                  EqCheckbox(
+                    value: checked,
+                    onChanged: (v) => setState(() => checked = v),
+                    description: 'I agree',
+                    shape: WidgetShape.rectangle,
+                  )
                 ],
               ),
               footerPadding: EdgeInsets.zero,

@@ -12,3 +12,4 @@ export './components/card/card.dart';
 export './components/divider/divider.dart';
 export './components/appbar/appbar.dart';
 export './components/textfield/textfield.dart';
+export './components/checkbox/checkbox.dart';
