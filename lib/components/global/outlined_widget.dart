@@ -34,10 +34,9 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
   void didUpdateWidget(OutlinedWidget oldWidget) {
     if (oldWidget.outlined != widget.outlined) {
       if (widget.outlined) {
-        outlineAnimation.forward(from: outlineAnimation.value);
-      }
-      else {
-        outlineAnimation.reverse(from: outlineAnimation.value);
+        outlineAnimation.forward();
+      } else {
+        outlineAnimation.reverse();
       }
     }
     super.didUpdateWidget(oldWidget);
@@ -72,18 +71,14 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
   }
 
   VectorMath.Vector3 calculateScaleVector(EqThemeData theme) {
-    if (widget.outlined) {
-      var min = VectorMath.Vector3(1.0, 1.0, 0.0);
-      var max = VectorMath.Vector3(
-        (itemSize.width + theme.outlineWidth * 2) / itemSize.width,
-        (itemSize.height + theme.outlineWidth * 2) / itemSize.height,
-        0.0,
-      );
+    var min = VectorMath.Vector3(1.0, 1.0, 0.0);
+    var max = VectorMath.Vector3(
+      (itemSize.width + theme.outlineWidth * 2) / itemSize.width,
+      (itemSize.height + theme.outlineWidth * 2) / itemSize.height,
+      0.0,
+    );
 
-      return ((max - min) * outlineScaleAnimation.value) + min;
-    } else {
-      return VectorMath.Vector3.zero();
-    }
+    return ((max - min) * outlineScaleAnimation.value) + min;
   }
 
   Widget _build(BuildContext context) {
@@ -94,18 +89,21 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
           AnimatedBuilder(
               animation: outlineScaleAnimation,
               builder: (context, _) {
-                return Transform(
-                  transform: Matrix4.compose(
-                    calculateTranslationVector(theme),
-                    VectorMath.Quaternion.identity(),
-                    calculateScaleVector(theme),
-                  ),
-                  child: Container(
-                    width: itemSize.width,
-                    height: itemSize.height,
-                    decoration: BoxDecoration(
-                      borderRadius: widget.borderRadius,
-                      color: Colors.white.withOpacity(0.05),
+                return Opacity(
+                  opacity: outlineScaleAnimation.value,
+                  child: Transform(
+                    transform: Matrix4.compose(
+                      calculateTranslationVector(theme),
+                      VectorMath.Quaternion.identity(),
+                      calculateScaleVector(theme),
+                    ),
+                    child: Container(
+                      width: itemSize.width,
+                      height: itemSize.height,
+                      decoration: BoxDecoration(
+                        borderRadius: widget.borderRadius,
+                        color: Colors.white.withOpacity(0.05),
+                      ),
                     ),
                   ),
                 );

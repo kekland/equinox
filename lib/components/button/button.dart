@@ -29,7 +29,9 @@ class EqButton extends MaterialDesign.StatefulWidget {
   _EqButtonState createState() => _EqButtonState();
 }
 
-class _EqButtonState extends MaterialDesign.State<EqButton> {
+class _EqButtonState extends State<EqButton> {
+  bool outlined = false;
+
   TextStyle _getTextStyle(EqThemeData theme) {
     switch (this.widget.size) {
       case WidgetSize.giant:
@@ -93,8 +95,7 @@ class _EqButtonState extends MaterialDesign.State<EqButton> {
         if (hasLabel) {
           list.insert(1, SizedBox(width: 8.0));
         }
-      }
-      else {
+      } else {
         if (hasLabel) {
           list.add(SizedBox(width: 8.0));
         }
@@ -120,28 +121,36 @@ class _EqButtonState extends MaterialDesign.State<EqButton> {
 
     var padding = WidgetSizeUtils.getPadding(size: widget.size);
 
-    return AnimatedContainer(
-      duration: theme.minorAnimationDuration,
-      curve: theme.minorAnimationCurve,
-      decoration: BoxDecoration(
-        color: fillColor,
-        borderRadius: BorderRadius.circular(borderRadius),
-        border: border,
-      ),
-      child: MaterialDesign.Material(
-        type: MaterialDesign.MaterialType.transparency,
-        borderRadius: BorderRadius.circular(borderRadius),
-        child: MaterialDesign.InkWell(
-          onTap: widget.onTap,
+    return OutlinedWidget(
+      outlined: outlined,
+      borderRadius: BorderRadius.circular(borderRadius),
+      child: AnimatedContainer(
+        duration: theme.minorAnimationDuration,
+        curve: theme.minorAnimationCurve,
+        decoration: BoxDecoration(
+          color: fillColor,
           borderRadius: BorderRadius.circular(borderRadius),
-          child: Padding(
-            padding: padding,
-            child: Center(
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.baseline,
-                textBaseline: TextBaseline.ideographic,
-                children: _buildBody(theme),
+          border: border,
+        ),
+        child: SizedBox(
+          child: GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: widget.onTap,
+            onTapDown: (widget.onTap != null)
+                ? (_) => setState(() => outlined = true)
+                : null,
+            onTapUp: (widget.onTap != null)
+                ? (_) => setState(() => outlined = false)
+                : null,
+            child: Padding(
+              padding: padding,
+              child: Center(
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.baseline,
+                  textBaseline: TextBaseline.ideographic,
+                  children: _buildBody(theme),
+                ),
               ),
             ),
           ),
