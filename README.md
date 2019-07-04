@@ -12,7 +12,7 @@ A [**Eva Design**](https://eva.design) implementation in Flutter.
 - [ ] Accordion
 - [ ] Sidebar
 - [ ] Menu
-- [ ] Tabs
+- [x] Tabs
 - [x] Input
 - [x] Button
 - [x] IconButton
