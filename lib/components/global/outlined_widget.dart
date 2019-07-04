@@ -62,23 +62,33 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
         CurvedAnimation(parent: outlineAnimation, curve: Curves.decelerate);
   }
 
-  VectorMath.Vector3 calculateTranslationVector(EqThemeData theme) {
-    return VectorMath.Vector3(
-      -theme.outlineWidth * outlineScaleAnimation.value,
-      -theme.outlineWidth * outlineScaleAnimation.value,
+  VectorMath.Vector3 calculateScaleVector(EqThemeData theme) {
+    var value = VectorMath.Vector3(
+      2 * theme.outlineWidth / itemSize.width,
+      2 * theme.outlineWidth / itemSize.height,
       0.0,
     );
+
+    return value * outlineScaleAnimation.value + VectorMath.Vector3.all(1.0);
   }
 
-  VectorMath.Vector3 calculateScaleVector(EqThemeData theme) {
-    var min = VectorMath.Vector3(1.0, 1.0, 0.0);
-    var max = VectorMath.Vector3(
-      (itemSize.width + theme.outlineWidth * 2) / itemSize.width,
-      (itemSize.height + theme.outlineWidth * 2) / itemSize.height,
-      0.0,
+  Border calculateBorder(double outlineWidth, VectorMath.Vector3 scaleFactor) {
+    var verticalBorderSide = BorderSide(
+      color: Colors.white.withOpacity(0.05),
+      width: ((outlineWidth / scaleFactor.y) * outlineScaleAnimation.value)
+          .clamp(0.0, double.infinity),
     );
-
-    return ((max - min) * outlineScaleAnimation.value) + min;
+    var horizontalBorderSide = BorderSide(
+      color: Colors.white.withOpacity(0.05),
+      width: ((outlineWidth / scaleFactor.x) * outlineScaleAnimation.value)
+          .clamp(0.0, double.infinity),
+    );
+    return Border(
+      top: verticalBorderSide,
+      bottom: verticalBorderSide,
+      left: horizontalBorderSide,
+      right: horizontalBorderSide,
+    );
   }
 
   Widget _build(BuildContext context) {
@@ -89,20 +99,25 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
           AnimatedBuilder(
               animation: outlineScaleAnimation,
               builder: (context, _) {
+                var scaleFactor = calculateScaleVector(theme);
                 return Opacity(
-                  opacity: outlineScaleAnimation.value,
+                  opacity: 1.0,
                   child: Transform(
                     transform: Matrix4.compose(
-                      calculateTranslationVector(theme),
+                      VectorMath.Vector3.zero(),
                       VectorMath.Quaternion.identity(),
-                      calculateScaleVector(theme),
+                      scaleFactor,
                     ),
-                    child: Container(
-                      width: itemSize.width,
-                      height: itemSize.height,
-                      decoration: BoxDecoration(
-                        borderRadius: widget.borderRadius,
-                        color: Colors.white.withOpacity(0.05),
+                    origin: Offset(itemSize.width / 2.0, itemSize.height / 2.0),
+                    child: ClipRRect(
+                      borderRadius: widget.borderRadius,
+                      child: Container(
+                        width: itemSize.width,
+                        height: itemSize.height,
+                        decoration: BoxDecoration(
+                          border:
+                              calculateBorder(theme.outlineWidth, scaleFactor),
+                        ),
                       ),
                     ),
                   ),
