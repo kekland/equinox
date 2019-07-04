@@ -18,6 +18,7 @@ class EqTextField extends StatefulWidget {
   final IconPositioning iconPosition;
   final bool obscureText;
   final TextInputType keyboardType;
+  final FocusNode focusNode;
 
   const EqTextField({
     Key key,
@@ -37,12 +38,15 @@ class EqTextField extends StatefulWidget {
     this.description,
     this.obscureText = false,
     this.keyboardType = TextInputType.text,
+    this.focusNode,
   }) : super(key: key);
   @override
   _EqTextFieldState createState() => _EqTextFieldState();
 }
 
 class _EqTextFieldState extends State<EqTextField> {
+  bool outlined = false;
+  FocusNode focusNode;
   Color _getBorderColor(EqThemeData theme) {
     if (widget.error != null) {
       return theme.getColorsForStatus(status: WidgetStatus.danger).shade500;
@@ -63,6 +67,29 @@ class _EqTextFieldState extends State<EqTextField> {
     }
   }
 
+  void focusNodeListener() {
+    setState(() {
+      outlined = this.focusNode.hasFocus;
+    });
+  }
+
+  @override
+  void initState() {
+    if (widget.focusNode != null) {
+      this.focusNode = widget.focusNode;
+    } else {
+      this.focusNode = FocusNode();
+    }
+    this.focusNode.addListener(focusNodeListener);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    this.focusNode.addListener(focusNodeListener);
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     var theme = EqTheme.of(context);
@@ -79,55 +106,66 @@ class _EqTextFieldState extends State<EqTextField> {
             widget.label.toUpperCase(),
             style: theme.label.textStyle.copyWith(color: theme.textHintColor),
           ),
-          SizedBox(height: 4.0),
+          SizedBox(height: 8.0),
         ],
-        TextField(
-          obscureText: widget.obscureText,
-          keyboardType: widget.keyboardType,
-          controller: widget.controller,
-          cursorColor: _getFocusedBorderColor(theme),
-          onTap: widget.onTap,
-          onEditingComplete: widget.onEditingComplete,
-          onChanged: widget.onChanged,
-          onSubmitted: widget.onSubmitted,
-          enabled: widget.enabled,
-          style:
-              theme.subtitle1.textStyle.copyWith(color: theme.textBasicColor),
-          decoration: InputDecoration(
-            hintText: widget.hint,
-            hintStyle: theme.paragraph1.textStyle.copyWith(
-                color: (widget.enabled)
-                    ? theme.textHintColor
-                    : theme.textDisabledColor),
-            filled: true,
-            fillColor: theme.backgroundBasicColors.color2,
-            prefixIcon: (widget.icon != null &&
-                    widget.iconPosition == IconPositioning.left)
-                ? Icon(widget.icon, color: theme.textHintColor)
-                : null,
-            suffixIcon: (widget.icon != null &&
-                    widget.iconPosition == IconPositioning.right)
-                ? Icon(widget.icon, color: theme.textHintColor)
-                : null,
-            contentPadding:
-                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
-            border: OutlineInputBorder(
-              borderSide: BorderSide(color: _getBorderColor(theme), width: 1.0),
-              borderRadius: BorderRadius.circular(borderRadius),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: _getBorderColor(theme), width: 1.0),
-              borderRadius: BorderRadius.circular(borderRadius),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide:
-                  BorderSide(color: _getFocusedBorderColor(theme), width: 2.0),
-              borderRadius: BorderRadius.circular(borderRadius),
-            ),
-            disabledBorder: OutlineInputBorder(
-              borderSide:
-                  BorderSide(color: theme.borderBasicColors.color3, width: 1.0),
-              borderRadius: BorderRadius.circular(borderRadius),
+        GestureDetector(
+          onTapDown:
+              (widget.enabled) ? (_) => setState(() => outlined = true) : null,
+          child: OutlinedWidget(
+            outlined: outlined,
+            borderRadius: BorderRadius.circular(borderRadius),
+            child: TextField(
+              focusNode: focusNode,
+              obscureText: widget.obscureText,
+              keyboardType: widget.keyboardType,
+              controller: widget.controller,
+              cursorColor: _getFocusedBorderColor(theme),
+              onTap: widget.onTap,
+              onEditingComplete: widget.onEditingComplete,
+              onChanged: widget.onChanged,
+              onSubmitted: widget.onSubmitted,
+              enabled: widget.enabled,
+              style: theme.subtitle1.textStyle
+                  .copyWith(color: theme.textBasicColor),
+              decoration: InputDecoration(
+                hintText: widget.hint,
+                hintStyle: theme.paragraph1.textStyle.copyWith(
+                    color: (widget.enabled)
+                        ? theme.textHintColor
+                        : theme.textDisabledColor),
+                filled: true,
+                fillColor: theme.backgroundBasicColors.color2,
+                prefixIcon: (widget.icon != null &&
+                        widget.iconPosition == IconPositioning.left)
+                    ? Icon(widget.icon, color: theme.textHintColor)
+                    : null,
+                suffixIcon: (widget.icon != null &&
+                        widget.iconPosition == IconPositioning.right)
+                    ? Icon(widget.icon, color: theme.textHintColor)
+                    : null,
+                contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 16.0, vertical: 12.0),
+                border: OutlineInputBorder(
+                  borderSide:
+                      BorderSide(color: _getBorderColor(theme), width: 1.0),
+                  borderRadius: BorderRadius.circular(borderRadius),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide:
+                      BorderSide(color: _getBorderColor(theme), width: 1.0),
+                  borderRadius: BorderRadius.circular(borderRadius),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                      color: _getFocusedBorderColor(theme), width: 2.0),
+                  borderRadius: BorderRadius.circular(borderRadius),
+                ),
+                disabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                      color: theme.borderBasicColors.color3, width: 1.0),
+                  borderRadius: BorderRadius.circular(borderRadius),
+                ),
+              ),
             ),
           ),
         ),

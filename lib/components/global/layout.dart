@@ -1,6 +1,5 @@
-import 'package:eva_design_flutter/components/global/theming.dart';
-import 'package:eva_design_flutter/data/theme_data.dart';
-import 'package:flutter/material.dart';
+import 'package:eva_design_flutter/eva_design_flutter.dart';
+import 'package:flutter/material.dart' as MaterialDesign;
 import 'package:flutter/widgets.dart';
 
 class EqLayout extends StatefulWidget {
@@ -21,25 +20,30 @@ class EqLayout extends StatefulWidget {
 class _EqLayoutState extends State<EqLayout> {
   @override
   Widget build(BuildContext context) {
-    return EqTheme(
-      theme: widget.theme,
-      child: AnimatedDefaultTextStyle(
-        duration: widget.theme.majorAnimationDuration,
-        curve: widget.theme.majorAnimationCurve,
-        style: TextStyle(color: widget.theme.textBasicColor),
-        child: AnimatedContainer(
+    return MaterialDesign.Theme(
+      data: MaterialDesign.ThemeData(
+        splashFactory: const NoSplashFactory(),
+      ),
+      child: EqTheme(
+        theme: widget.theme,
+        child: AnimatedDefaultTextStyle(
           duration: widget.theme.majorAnimationDuration,
           curve: widget.theme.majorAnimationCurve,
-          color: widget.theme.backgroundBasicColors.color3,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              if (widget.appBar != null) widget.appBar,
-              Expanded(
-                child: widget.child,
-              ),
-            ],
+          style: TextStyle(color: widget.theme.textBasicColor),
+          child: AnimatedContainer(
+            duration: widget.theme.majorAnimationDuration,
+            curve: widget.theme.majorAnimationCurve,
+            color: widget.theme.backgroundBasicColors.color3,
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                if (widget.appBar != null) widget.appBar,
+                Expanded(
+                  child: widget.child,
+                ),
+              ],
+            ),
           ),
         ),
       ),
