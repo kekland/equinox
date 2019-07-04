@@ -21,12 +21,34 @@ class _HomePageState extends State<HomePage> {
           centerTitle: true,
           title: 'Auth test',
           subtitle: 'v0.0.1',
+          bottom: EqTabs(
+            defaultSelected: 0,
+            onSelect: (v) {},
+            tabs: [
+              EqTabData(
+                icon: EvaIcons.activityOutline,
+                title: 'Tab 1',
+              ),
+              EqTabData(
+                icon: EvaIcons.alertCircleOutline,
+                title: 'Tab 2',
+              ),
+              EqTabData(
+                icon: EvaIcons.imageOutline,
+                title: 'Tab 3',
+              ),
+              EqTabData(
+                icon: EvaIcons.inboxOutline,
+                title: 'Tab 4',
+              ),
+            ],
+          ),
         ),
         child: Center(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: EqCard(
-              shape: WidgetShape.rectangle,
+              shape: WidgetShape.semiRound,
               header: Text('Login'),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,7 +56,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   EqTextField(
                     label: 'Username',
-                    shape: WidgetShape.rectangle,
+                    shape: WidgetShape.semiRound,
                     hint: 'Username',
                     icon: EvaIcons.emailOutline,
                     iconPosition: Positioning.right,
@@ -42,7 +64,7 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(height: 16.0),
                   EqTextField(
                     label: 'Password',
-                    shape: WidgetShape.rectangle,
+                    shape: WidgetShape.semiRound,
                     hint: 'Password',
                     icon: EvaIcons.lockOutline,
                     iconPosition: Positioning.right,
@@ -56,10 +78,13 @@ class _HomePageState extends State<HomePage> {
                     shape: WidgetShape.rectangle,
                   ),
                   SizedBox(height: 16.0),
-                  EqRadio(
-                    onSelected: () => setState(() => checked = !checked),
-                    value: checked,
-                    description: 'Radio 1',
+                  SizedBox(
+                    width: double.infinity,
+                    child: EqRadio(
+                      onSelected: () => setState(() => checked = !checked),
+                      value: checked,
+                      description: 'Radio 1',
+                    ),
                   ),
                   SizedBox(height: 16.0),
                   EqToggle(

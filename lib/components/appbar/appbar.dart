@@ -9,6 +9,7 @@ class EqAppBar extends StatelessWidget {
   final bool inferLeading;
   final Widget leading;
   final List<Widget> actions;
+  final Widget bottom;
 
   const EqAppBar({
     Key key,
@@ -18,6 +19,7 @@ class EqAppBar extends StatelessWidget {
     this.leading,
     this.actions = const [],
     this.inferLeading = true,
+    this.bottom,
   }) : super(key: key);
 
   Widget _buildBody(BuildContext context, EqThemeData theme) {
@@ -90,10 +92,21 @@ class EqAppBar extends StatelessWidget {
       child: SafeArea(
         bottom: true,
         child: Container(
-          height: 64.0,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4.0),
-            child: _buildBody(context, theme),
+          height: (bottom != null) ? 64.0 + 56.0 : 64.0,
+          child: Column(
+            children: [
+              Container(
+                height: 64.0,
+                padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                child: _buildBody(context, theme),
+              ),
+              if (bottom != null)
+                Container(
+                  height: 56.0,
+                  padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                  child: bottom,
+                ),
+            ],
           ),
         ),
       ),

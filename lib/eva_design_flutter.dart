@@ -20,6 +20,7 @@ export 'package:eva_design_flutter/components/appbar/appbar.dart';
 export 'package:eva_design_flutter/components/textfield/textfield.dart';
 export 'package:eva_design_flutter/components/checkbox/checkbox.dart';
 export 'package:eva_design_flutter/components/radio/radio.dart';
+export 'package:eva_design_flutter/components/tabs/tabs.dart';
 export 'package:eva_design_flutter/components/toggle/toggle.dart';
 
 // Icons
