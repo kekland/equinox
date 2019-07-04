@@ -31,6 +31,7 @@ class _HomePageState extends State<HomePage> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   EqTextField(
+                    label: 'Username',
                     shape: WidgetShape.rectangle,
                     hint: 'Username',
                     icon: EvaIcons.emailOutline,
@@ -38,6 +39,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   SizedBox(height: 16.0),
                   EqTextField(
+                    label: 'Password',
                     shape: WidgetShape.rectangle,
                     hint: 'Password',
                     icon: EvaIcons.lockOutline,
