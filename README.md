@@ -17,7 +17,7 @@ A [**Eva Design**](https://eva.design) implementation in Flutter.
 - [x] Button
 - [x] IconButton
 - [x] Checkbox
-- [ ] Radio
+- [x] Radio
 - [ ] Select
 - [ ] Dialog
 - [ ] Toast

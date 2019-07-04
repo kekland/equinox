@@ -16,6 +16,5 @@ export 'package:eva_design_flutter/components/checkbox/checkbox.dart';
 export 'package:eva_design_flutter/components/global/outlined_widget.dart';
 export 'package:eva_design_flutter/components/global/no_splash_factory.dart';
 export 'package:eva_design_flutter/components/radio/radio.dart';
-export 'package:eva_design_flutter/components/radio/radio_group.dart';
 export 'package:eva_design_flutter/components/global/outlined_gesture_detector.dart';
 export 'package:eva_icons_flutter/eva_icons_flutter.dart';
