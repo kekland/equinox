@@ -1,5 +1,6 @@
 import 'package:eva_design_flutter/components/icon_button/icon_button.dart';
 import 'package:eva_design_flutter/eva_design_flutter.dart';
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -14,7 +15,7 @@ class _HomePageState extends State<HomePage> {
     return Container(
       color: Themes.darkTheme.basic.shade1100,
       child: EqLayout(
-        theme: Themes.defaultTheme,
+        theme: Themes.darkTheme,
         appBar: EqAppBar(
           centerTitle: true,
           title: 'Test',
@@ -24,13 +25,34 @@ class _HomePageState extends State<HomePage> {
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: EqCard(
-              status: WidgetStatus.danger,
-              statusAppearance: CardStatusAppearance.header,
               shape: WidgetShape.rectangle,
-              header: Text('Nebula'),
-              child: Text(
-                  'A nebula is an interstellar cloud of dust, hydrogen, helium and other ionized gases. Originally, nebula was a name for any diffuse astronomical object, including galaxies beyond the Milky Way.'),
-              footer: Text('By Wikipedia'),
+              header: Text('Login'),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  EqTextField(
+                    shape: WidgetShape.rectangle,
+                    hint: 'Username',
+                    icon: EvaIcons.emailOutline,
+                    iconPosition: IconPositioning.right,
+                  ),
+                  SizedBox(height: 16.0),
+                  EqTextField(
+                    shape: WidgetShape.rectangle,
+                    hint: 'Password',
+                    icon: EvaIcons.lockOutline,
+                    iconPosition: IconPositioning.right,
+                  ),
+                ],
+              ),
+              footerPadding: EdgeInsets.zero,
+              footer: EqButton(
+                appearance: WidgetAppearance.ghost,
+                onTap: () {},
+                label: 'Log in',
+                size: WidgetSize.large,
+                status: WidgetStatus.primary,
+              ),
             ),
           ),
         ),
