@@ -1,6 +1,7 @@
-# equinox
+# equinox 
+[<img src="https://i.imgur.com/oMcxwZ0.png" alt="Eva Design System" height="20px" />](https://eva.design)
 
-A [**Eva Design**](eva.design) implementation in Flutter.
+A [**Eva Design**](https://eva.design) implementation in Flutter.
 
 ## Work in progress:
 
