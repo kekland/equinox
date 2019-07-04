@@ -13,35 +13,28 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Container(
       color: Themes.darkTheme.basic.shade1100,
-      child: Center(
-        child: Container(
-          width: 300.0,
-          height: 500.0,
-          child: EqLayout(
-            theme: Themes.darkTheme,
-            appBar: EqAppBar(
-              centerTitle: true,
-              title: 'Test',
-              subtitle: 'v0.0.0',
-            ),
-            child: Center(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: EqCard(
-                  status: WidgetStatus.danger,
-                  statusAppearance: CardStatusAppearance.header,
-                  shape: WidgetShape.rectangle,
-                  header: Text('Nebula'),
-                  child: Text(
-                      'A nebula is an interstellar cloud of dust, hydrogen, helium and other ionized gases. Originally, nebula was a name for any diffuse astronomical object, including galaxies beyond the Milky Way.'),
-                  footer: Text('By Wikipedia'),
-                ),
-              ),
+      child: EqLayout(
+        theme: Themes.darkTheme,
+        appBar: EqAppBar(
+          centerTitle: true,
+          title: 'Test',
+          subtitle: 'v0.0.0',
+        ),
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: EqCard(
+              status: WidgetStatus.danger,
+              statusAppearance: CardStatusAppearance.header,
+              shape: WidgetShape.rectangle,
+              header: Text('Nebula'),
+              child: Text(
+                  'A nebula is an interstellar cloud of dust, hydrogen, helium and other ionized gases. Originally, nebula was a name for any diffuse astronomical object, including galaxies beyond the Milky Way.'),
+              footer: Text('By Wikipedia'),
             ),
           ),
         ),
       ),
-    )
-    ;
+    );
   }
 }

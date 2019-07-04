@@ -26,7 +26,7 @@ class EqAppBar extends StatelessWidget {
       leadingWidget = leading;
     } else if (leading == null &&
         inferLeading &&
-        !Navigator.of(context).canPop()) {
+        Navigator.of(context).canPop()) {
       leadingWidget = new EqIconButton(
         icon: EvaIcons.arrowBack,
         size: WidgetSize.giant,
