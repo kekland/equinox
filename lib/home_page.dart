@@ -14,7 +14,7 @@ class _HomePageState extends State<HomePage> {
     return Container(
       color: Themes.darkTheme.basic.shade1100,
       child: EqLayout(
-        theme: Themes.darkTheme,
+        theme: Themes.defaultTheme,
         appBar: EqAppBar(
           centerTitle: true,
           title: 'Test',
