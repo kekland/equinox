@@ -1,5 +1,6 @@
 import 'package:eva_design_flutter/eva_design_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 
 class EqAppBar extends StatelessWidget {
   final String title;
@@ -19,35 +20,61 @@ class EqAppBar extends StatelessWidget {
     this.inferLeading = true,
   }) : super(key: key);
 
-  List<Widget> _buildBody(BuildContext context, EqThemeData theme) {
-    var list = <Widget>[];
+  Widget _buildBody(BuildContext context, EqThemeData theme) {
+    var leadingWidget;
     if (leading != null) {
-      list.add(leading);
+      leadingWidget = leading;
     } else if (leading == null &&
         inferLeading &&
-        Navigator.of(context).canPop()) {
-      list.add(
-        new EqIconButton(
-          icon: Icons.arrow_back,
-          size: WidgetSize.giant,
-          color: Colors.black,
-          status: WidgetStatus.basic,
-          appearance: WidgetAppearance.ghost,
-          onTap: () => Navigator.pop(context),
-        ),
+        !Navigator.of(context).canPop()) {
+      leadingWidget = new EqIconButton(
+        icon: EvaIcons.arrowBack,
+        size: WidgetSize.giant,
+        color: theme.textBasicColor,
+        status: WidgetStatus.basic,
+        appearance: WidgetAppearance.ghost,
+        onTap: () => Navigator.pop(context),
       );
     }
 
-    list.add(
-      Expanded(
-        child: _AppBarTitle(
-          title: title,
-          subtitle: subtitle,
-          centered: centerTitle,
-        ),
-      ),
-    );
-    return list;
+    var actionsWidgets = actions ?? [];
+
+    if (centerTitle) {
+      return Stack(
+        alignment: Alignment.center,
+        children: [
+          Row(
+            children: [
+              if (leadingWidget != null) leadingWidget,
+              Expanded(child: SizedBox()),
+              ...actionsWidgets,
+            ],
+          ),
+          Align(
+            alignment: Alignment.center,
+            child: _AppBarTitle(
+              title: title,
+              subtitle: subtitle,
+              centered: centerTitle,
+            ),
+          ),
+        ],
+      );
+    } else {
+      return Row(
+        children: [
+          if (leadingWidget != null) ...[leadingWidget, SizedBox(width: 8.0)],
+          _AppBarTitle(
+            title: title,
+            subtitle: subtitle,
+            centered: centerTitle,
+          ),
+          SizedBox(width: 8.0),
+          Expanded(child: SizedBox()),
+          ...actionsWidgets,
+        ],
+      );
+    }
   }
 
   @override
@@ -66,7 +93,7 @@ class EqAppBar extends StatelessWidget {
           height: 64.0,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 4.0),
-            child: Row(children: _buildBody(context, theme)),
+            child: _buildBody(context, theme),
           ),
         ),
       ),

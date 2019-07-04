@@ -19,7 +19,7 @@ class EqIconButton extends StatefulWidget {
     this.size = WidgetSize.medium,
     this.status = WidgetStatus.primary,
     this.appearance = WidgetAppearance.filled,
-    this.shape = WidgetShape.rectangle,
+    this.shape = WidgetShape.round,
     this.color,
   }) : super(key: key);
 

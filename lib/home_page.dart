@@ -18,11 +18,11 @@ class _HomePageState extends State<HomePage> {
           width: 300.0,
           height: 500.0,
           child: EqLayout(
-            theme: Themes.defaultTheme,
+            theme: Themes.darkTheme,
             appBar: EqAppBar(
+              centerTitle: true,
               title: 'Test',
               subtitle: 'v0.0.0',
-              centerTitle: true,
             ),
             child: Center(
               child: Padding(
