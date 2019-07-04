@@ -44,6 +44,7 @@ class _HomePageState extends State<HomePage> {
                     hint: 'Password',
                     icon: EvaIcons.lockOutline,
                     iconPosition: IconPositioning.right,
+                    obscureText: true,
                   ),
                 ],
               ),

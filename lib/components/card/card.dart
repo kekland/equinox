@@ -42,7 +42,10 @@ class EqCard extends StatelessWidget {
         status: status,
         statusAppearance: statusAppearance,
       ));
-      widgets.add(EqDivider());
+      if (!(status != null &&
+          this.statusAppearance == CardStatusAppearance.header)) {
+        widgets.add(EqDivider());
+      }
     }
     widgets.add(Padding(padding: padding, child: child));
 

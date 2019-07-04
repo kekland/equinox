@@ -16,6 +16,8 @@ class EqTextField extends StatefulWidget {
   final void Function() onEditingComplete;
   final IconData icon;
   final IconPositioning iconPosition;
+  final bool obscureText;
+  final TextInputType keyboardType;
 
   const EqTextField({
     Key key,
@@ -33,6 +35,8 @@ class EqTextField extends StatefulWidget {
     this.iconPosition = IconPositioning.left,
     this.label,
     this.description,
+    this.obscureText = false,
+    this.keyboardType = TextInputType.text,
   }) : super(key: key);
   @override
   _EqTextFieldState createState() => _EqTextFieldState();
@@ -78,6 +82,8 @@ class _EqTextFieldState extends State<EqTextField> {
           SizedBox(height: 4.0),
         ],
         TextField(
+          obscureText: widget.obscureText,
+          keyboardType: widget.keyboardType,
           controller: widget.controller,
           cursorColor: _getFocusedBorderColor(theme),
           onTap: widget.onTap,
