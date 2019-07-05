@@ -1,3 +1,9 @@
+# Testing
+/ios/
+/android/
+/lib/main.dart
+/lib/home_page.dart
+
 # Miscellaneous
 *.class
 *.log

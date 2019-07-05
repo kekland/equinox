@@ -1,3 +1,5 @@
+library equinox;
+
 // Global
 export 'package:equinox/components/global/layout.dart';
 export 'package:equinox/components/global/theming.dart';
