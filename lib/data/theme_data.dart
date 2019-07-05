@@ -373,6 +373,25 @@ class EqThemeData {
         return primary;
     }
   }
+  
+  ColorStates getStatesForStatus({WidgetStatus status}) {
+    switch (status) {
+      case WidgetStatus.primary:
+        return textPrimaryStates;
+      case WidgetStatus.success:
+        return textSuccessStates;
+      case WidgetStatus.info:
+        return textInfoStates;
+      case WidgetStatus.warning:
+        return textWarningStates;
+      case WidgetStatus.danger:
+        return textDangerStates;
+      case WidgetStatus.basic:
+        return basicStates;
+      default:
+        return textPrimaryStates;
+    }
+  }
 
   EqThemeData extend({
     ColorGroup primary,

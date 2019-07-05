@@ -29,16 +29,16 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
 
   bool isFirstCallback = true;
 
-  AnimationController outlineAnimation;
-  Animation<double> outlineScaleAnimation;
+  AnimationController animationController;
+  Animation<double> animation;
 
   @override
   void didUpdateWidget(OutlinedWidget oldWidget) {
     if (oldWidget.outlined != widget.outlined) {
       if (widget.outlined) {
-        outlineAnimation.forward();
+        animationController.forward();
       } else {
-        outlineAnimation.reverse();
+        animationController.reverse();
       }
     }
     if (oldWidget.predefinedSize != widget.predefinedSize) {
@@ -50,6 +50,21 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
     super.didUpdateWidget(oldWidget);
   }
 
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    var theme = EqTheme.of(context);
+    var animationDuration = EqTheme.of(context).minorAnimationDuration;
+
+    if (animationController != null) {
+      animationController.duration = animationDuration;
+    } else {
+      animationController =
+          AnimationController(vsync: this, duration: animationDuration);
+    }
+    animation = CurvedAnimation(
+        parent: animationController, curve: theme.minorAnimationCurve);
+  }
   @override
   void initState() {
     super.initState();
@@ -64,11 +79,6 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
       });
     }
     borderRadius = widget.borderRadius ?? BorderRadius.zero;
-
-    outlineAnimation =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 150));
-    outlineScaleAnimation =
-        CurvedAnimation(parent: outlineAnimation, curve: Curves.decelerate);
   }
 
   VectorMath.Vector3 calculateScaleVector(EqThemeData theme) {
@@ -78,20 +88,20 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
       0.0,
     );
 
-    return value * outlineScaleAnimation.value + VectorMath.Vector3.all(1.0);
+    return value * animation.value + VectorMath.Vector3.all(1.0);
   }
 
   Border calculateBorder(EqThemeData theme, VectorMath.Vector3 scaleFactor) {
     var verticalBorderSide = BorderSide(
       color: theme.outlineColor,
       width:
-          ((theme.outlineWidth / scaleFactor.y) * outlineScaleAnimation.value)
+          ((theme.outlineWidth / scaleFactor.y) * animation.value)
               .clamp(0.0, double.infinity),
     );
     var horizontalBorderSide = BorderSide(
       color: theme.outlineColor,
       width:
-          ((theme.outlineWidth / scaleFactor.x) * outlineScaleAnimation.value)
+          ((theme.outlineWidth / scaleFactor.x) * animation.value)
               .clamp(0.0, double.infinity),
     );
     return Border(
@@ -108,13 +118,13 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
       children: [
         if (itemSize != null)
           AnimatedBuilder(
-              animation: outlineScaleAnimation,
+              animation: animation,
               builder: (context, _) {
                 var scaleFactor = calculateScaleVector(theme);
                 return Stack(
                   children: <Widget>[
                     Opacity(
-                      opacity: outlineScaleAnimation.value,
+                      opacity: animation.value,
                       child: Transform(
                         transform: Matrix4.compose(
                           VectorMath.Vector3.zero(),
@@ -136,7 +146,7 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
                       ),
                     ),
                     Opacity(
-                      opacity: outlineScaleAnimation.value,
+                      opacity: animation.value,
                       child: ClipPath(
                         clipper: InvertedClipRRect(
                           borderRadius: borderRadius,
@@ -166,7 +176,7 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
 
   @override
   void dispose() {
-    outlineAnimation.dispose();
+    animationController.dispose();
     super.dispose();
   }
 }

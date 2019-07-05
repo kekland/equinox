@@ -30,13 +30,29 @@ class _EqToggleState extends State<EqToggle>
 
   bool outlined = false;
 
+
+  didChangeDependencies() {
+    super.didChangeDependencies();
+    var theme = EqTheme.of(context);
+    var animationDuration = EqTheme.of(context).minorAnimationDuration;
+
+    if (animationController != null) {
+      animationController.duration = animationDuration;
+    } else {
+      animationController =
+          AnimationController(vsync: this, duration: animationDuration);
+    }
+    animation = CurvedAnimation(
+        parent: animationController, curve: theme.minorAnimationCurve);
+  }
+
+@override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
+  }
   @override
   initState() {
-    animationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 150));
-    animation =
-        CurvedAnimation(curve: Curves.easeInOut, parent: animationController);
-
     super.initState();
   }
 

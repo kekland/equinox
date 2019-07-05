@@ -75,9 +75,22 @@ class _HomePageState extends State<HomePage> {
                     label: 'Gender',
                     hint: 'Gender',
                     shape: WidgetShape.semiRound,
-                    items: [],
-                    description: 'aaaaaaaaa',
-                    onSelect: (v) {},
+                    items: [
+                      EqSelectItem(
+                          title: 'Male',
+                          value: 'male',
+                          icon: EvaIcons.inbox,
+                          subtitle: 'Male gender'),
+                      EqSelectItem(
+                          title: 'Female',
+                          value: 'female',
+                          icon: EvaIcons.archive,
+                          subtitle: 'Female gender'),
+                    ],
+                    description: 'Select your gender',
+                    onSelect: (v) {
+                      print(v);
+                    },
                   ),
                   SizedBox(height: 16.0),
                   EqCheckbox(

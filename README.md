@@ -19,7 +19,7 @@ A [**Eva Design**](https://eva.design) implementation in Flutter.
 - [x] Checkbox
 - [x] Toggle
 - [x] Radio
-- [ ] Select
+- [x] Select
 - [ ] Dialog
 - [ ] Toast
 - [ ] Avatar
