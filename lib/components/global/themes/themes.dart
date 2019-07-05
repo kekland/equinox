@@ -1,6 +1,6 @@
-import 'package:eva_design_flutter/components/global/theming.dart';
-import 'package:eva_design_flutter/data/color_group.dart';
-import 'package:eva_design_flutter/data/theme_data.dart';
+import 'package:equinox/components/global/theming.dart';
+import 'package:equinox/data/color_group.dart';
+import 'package:equinox/data/theme_data.dart';
 import 'package:flutter/rendering.dart';
 
 class Themes {

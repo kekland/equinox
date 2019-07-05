@@ -1,5 +1,5 @@
-import 'package:eva_design_flutter/components/global/inverted_cliprrect.dart';
-import 'package:eva_design_flutter/eva_design_flutter.dart';
+import 'package:equinox/components/global/inverted_cliprrect.dart';
+import 'package:equinox/equinox.dart';
 import 'package:flutter/material.dart';
 import 'package:vector_math/vector_math_64.dart' as VectorMath;
 

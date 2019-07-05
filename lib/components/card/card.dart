@@ -1,5 +1,5 @@
-export 'package:eva_design_flutter/components/card/card_status_appearance.dart';
-import 'package:eva_design_flutter/eva_design_flutter.dart';
+export 'package:equinox/components/card/card_status_appearance.dart';
+import 'package:equinox/equinox.dart';
 import 'package:flutter/material.dart' as MaterialDesign;
 import 'package:flutter/widgets.dart';
 

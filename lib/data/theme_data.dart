@@ -1,4 +1,4 @@
-import 'package:eva_design_flutter/eva_design_flutter.dart';
+import 'package:equinox/equinox.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';

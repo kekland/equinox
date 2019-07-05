@@ -1,4 +1,4 @@
-import 'package:eva_design_flutter/eva_design_flutter.dart';
+import 'package:equinox/equinox.dart';
 import 'package:flutter/widgets.dart';
 
 class EqDivider extends StatelessWidget {

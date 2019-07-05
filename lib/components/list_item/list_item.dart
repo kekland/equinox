@@ -1,4 +1,4 @@
-import 'package:eva_design_flutter/eva_design_flutter.dart';
+import 'package:equinox/equinox.dart';
 import 'package:flutter/material.dart';
 
 class EqListItem extends StatefulWidget {

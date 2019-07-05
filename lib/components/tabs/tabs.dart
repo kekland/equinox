@@ -1,6 +1,6 @@
-import 'package:eva_design_flutter/eva_design_flutter.dart';
+import 'package:equinox/equinox.dart';
 import 'package:flutter/material.dart';
-export 'package:eva_design_flutter/components/tabs/tab.dart';
+export 'package:equinox/components/tabs/tab.dart';
 
 class EqTabs extends StatefulWidget {
   final int defaultSelected;

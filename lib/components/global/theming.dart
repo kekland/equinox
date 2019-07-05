@@ -1,7 +1,7 @@
-import 'package:eva_design_flutter/components/global/no_splash_factory.dart';
-import 'package:eva_design_flutter/components/global/scroll_behavior.dart';
-import 'package:eva_design_flutter/data/color_group.dart';
-import 'package:eva_design_flutter/data/theme_data.dart';
+import 'package:equinox/components/global/no_splash_factory.dart';
+import 'package:equinox/components/global/scroll_behavior.dart';
+import 'package:equinox/data/color_group.dart';
+import 'package:equinox/data/theme_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 

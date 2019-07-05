@@ -1,6 +1,6 @@
-export 'package:eva_design_flutter/components/button/button_icon_positioning.dart';
-import 'package:eva_design_flutter/components/global/outlined_gesture_detector.dart';
-import 'package:eva_design_flutter/eva_design_flutter.dart';
+export 'package:equinox/components/button/button_icon_positioning.dart';
+import 'package:equinox/components/global/outlined_gesture_detector.dart';
+import 'package:equinox/equinox.dart';
 import 'package:flutter/material.dart' as MaterialDesign;
 import 'package:flutter/widgets.dart';
 

@@ -1,5 +1,5 @@
-import 'package:eva_design_flutter/components/icon_button/icon_button.dart';
-import 'package:eva_design_flutter/eva_design_flutter.dart';
+import 'package:equinox/components/icon_button/icon_button.dart';
+import 'package:equinox/equinox.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';

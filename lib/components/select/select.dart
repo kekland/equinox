@@ -1,9 +1,9 @@
 import 'dart:math';
 
-import 'package:eva_design_flutter/components/global/internal_card.dart';
-import 'package:eva_design_flutter/components/global/vertical_rectangle_clipper.dart';
-export 'package:eva_design_flutter/components/select/select_item.dart';
-import 'package:eva_design_flutter/eva_design_flutter.dart';
+import 'package:equinox/components/global/internal_card.dart';
+import 'package:equinox/components/global/vertical_rectangle_clipper.dart';
+export 'package:equinox/components/select/select_item.dart';
+import 'package:equinox/equinox.dart';
 import 'package:flutter/material.dart';
 
 class EqSelect<T> extends StatefulWidget {
