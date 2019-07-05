@@ -97,6 +97,7 @@ class _EqTextFieldState extends State<EqTextField> {
         theme.borderRadius;
 
     var errored = (widget.error != null);
+    var disabled = !(widget.enabled);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -106,7 +107,7 @@ class _EqTextFieldState extends State<EqTextField> {
             widget.label.toUpperCase(),
             style: theme.label.textStyle.copyWith(color: theme.textHintColor),
           ),
-          SizedBox(height: 8.0),
+          SizedBox(height: 6.0),
         ],
         GestureDetector(
           onTapDown:
@@ -137,11 +138,17 @@ class _EqTextFieldState extends State<EqTextField> {
                 fillColor: theme.backgroundBasicColors.color2,
                 prefixIcon: (widget.icon != null &&
                         widget.iconPosition == Positioning.left)
-                    ? Icon(widget.icon, color: theme.textHintColor)
+                    ? Icon(widget.icon,
+                        color: (disabled)
+                            ? theme.textDisabledColor
+                            : theme.textHintColor)
                     : null,
                 suffixIcon: (widget.icon != null &&
                         widget.iconPosition == Positioning.right)
-                    ? Icon(widget.icon, color: theme.textHintColor)
+                    ? Icon(widget.icon,
+                        color: (disabled)
+                            ? theme.textDisabledColor
+                            : theme.textHintColor)
                     : null,
                 contentPadding: const EdgeInsets.symmetric(
                     horizontal: 16.0, vertical: 12.0),

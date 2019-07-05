@@ -1,3 +1,5 @@
+import 'package:eva_design_flutter/components/global/no_splash_factory.dart';
+import 'package:eva_design_flutter/components/global/scroll_behavior.dart';
 import 'package:eva_design_flutter/data/color_group.dart';
 import 'package:eva_design_flutter/data/theme_data.dart';
 import 'package:flutter/material.dart';
@@ -8,16 +10,31 @@ class EqTheme extends StatelessWidget {
   final Widget child;
 
   static EqThemeData of(BuildContext context) {
-    final InheritedEqTheme inheritedTheme = context.inheritFromWidgetOfExactType(InheritedEqTheme);
+    final InheritedEqTheme inheritedTheme =
+        context.inheritFromWidgetOfExactType(InheritedEqTheme);
     return inheritedTheme.theme;
   }
-
 
   const EqTheme({Key key, this.theme, this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return InheritedEqTheme(child: child, theme: theme);
+    return Theme(
+        data: ThemeData(
+          splashFactory: const NoSplashFactory(),
+        ),
+        child: ScrollConfiguration(
+          behavior: EquinoxScrollBehavior(),
+          child: InheritedEqTheme(
+            theme: theme,
+            child: AnimatedDefaultTextStyle(
+              duration: theme.majorAnimationDuration,
+              curve: theme.majorAnimationCurve,
+              style: TextStyle(color: theme.textBasicColor),
+              child: child,
+            ),
+          ),
+        ));
   }
 }
 

@@ -20,31 +20,22 @@ class EqLayout extends StatefulWidget {
 class _EqLayoutState extends State<EqLayout> {
   @override
   Widget build(BuildContext context) {
-    return MaterialDesign.Theme(
-      data: MaterialDesign.ThemeData(
-        splashFactory: const NoSplashFactory(),
-      ),
-      child: EqTheme(
-        theme: widget.theme,
-        child: AnimatedDefaultTextStyle(
-          duration: widget.theme.majorAnimationDuration,
-          curve: widget.theme.majorAnimationCurve,
-          style: TextStyle(color: widget.theme.textBasicColor),
-          child: AnimatedContainer(
-            duration: widget.theme.majorAnimationDuration,
-            curve: widget.theme.majorAnimationCurve,
-            color: widget.theme.backgroundBasicColors.color3,
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                if (widget.appBar != null) widget.appBar,
-                Expanded(
-                  child: widget.child,
-                ),
-              ],
+    var theme = widget.theme ?? EqTheme.of(context);
+    return EqTheme(
+      theme: theme,
+      child: AnimatedContainer(
+        duration: theme.majorAnimationDuration,
+        curve: theme.majorAnimationCurve,
+        color: theme.backgroundBasicColors.color3,
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            if (widget.appBar != null) widget.appBar,
+            Expanded(
+              child: widget.child,
             ),
-          ),
+          ],
         ),
       ),
     );

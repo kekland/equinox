@@ -16,7 +16,6 @@ class _HomePageState extends State<HomePage> {
     return Container(
       color: Themes.darkTheme.basic.shade1100,
       child: EqLayout(
-        theme: Themes.defaultTheme,
         appBar: EqAppBar(
           centerTitle: true,
           title: 'Auth test',
@@ -60,6 +59,7 @@ class _HomePageState extends State<HomePage> {
                     hint: 'Username',
                     icon: EvaIcons.emailOutline,
                     iconPosition: Positioning.right,
+                    enabled: false,
                   ),
                   SizedBox(height: 16.0),
                   EqTextField(
@@ -69,6 +69,15 @@ class _HomePageState extends State<HomePage> {
                     icon: EvaIcons.lockOutline,
                     iconPosition: Positioning.right,
                     obscureText: true,
+                  ),
+                  SizedBox(height: 16.0),
+                  EqSelect(
+                    label: 'Gender',
+                    hint: 'Gender',
+                    shape: WidgetShape.semiRound,
+                    items: [],
+                    description: 'aaaaaaaaa',
+                    onSelect: (v) {},
                   ),
                   SizedBox(height: 16.0),
                   EqCheckbox(
@@ -91,7 +100,7 @@ class _HomePageState extends State<HomePage> {
                     value: checked,
                     onChanged: (v) => setState(() => checked = v),
                     shape: WidgetShape.rectangle,
-                  )
+                  ),
                 ],
               ),
               footerPadding: EdgeInsets.zero,

@@ -25,6 +25,7 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
     with SingleTickerProviderStateMixin {
   GlobalKey itemKey = GlobalKey();
   Size itemSize;
+  BorderRadius borderRadius;
 
   bool isFirstCallback = true;
 
@@ -40,8 +41,11 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
         outlineAnimation.reverse();
       }
     }
-    if(oldWidget.predefinedSize != widget.predefinedSize) {
+    if (oldWidget.predefinedSize != widget.predefinedSize) {
       this.itemSize = widget.predefinedSize;
+    }
+    if (oldWidget.borderRadius != widget.borderRadius) {
+      borderRadius = widget.borderRadius ?? BorderRadius.zero;
     }
     super.didUpdateWidget(oldWidget);
   }
@@ -59,6 +63,7 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
         itemSize = itemKey.currentContext.size;
       });
     }
+    borderRadius = widget.borderRadius ?? BorderRadius.zero;
 
     outlineAnimation =
         AnimationController(vsync: this, duration: Duration(milliseconds: 150));
@@ -119,7 +124,7 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
                         origin:
                             Offset(itemSize.width / 2.0, itemSize.height / 2.0),
                         child: ClipRRect(
-                          borderRadius: widget.borderRadius,
+                          borderRadius: borderRadius,
                           child: Container(
                             width: itemSize.width,
                             height: itemSize.height,
@@ -134,7 +139,7 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
                       opacity: outlineScaleAnimation.value,
                       child: ClipPath(
                         clipper: InvertedClipRRect(
-                          borderRadius: widget.borderRadius,
+                          borderRadius: borderRadius,
                         ),
                         child: Container(
                           width: itemSize.width,

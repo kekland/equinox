@@ -21,7 +21,9 @@ export 'package:eva_design_flutter/components/textfield/textfield.dart';
 export 'package:eva_design_flutter/components/checkbox/checkbox.dart';
 export 'package:eva_design_flutter/components/radio/radio.dart';
 export 'package:eva_design_flutter/components/tabs/tabs.dart';
+export 'package:eva_design_flutter/components/select/select.dart';
 export 'package:eva_design_flutter/components/toggle/toggle.dart';
+export 'package:eva_design_flutter/components/list_item/list_item.dart';
 
 // Icons
 export 'package:eva_icons_flutter/eva_icons_flutter.dart';
