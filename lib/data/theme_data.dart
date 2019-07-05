@@ -124,7 +124,7 @@ class EqThemeData {
     TextThemeData buttonGiant = const TextThemeData(
         fontSize: 18.0, fontWeight: FontWeight.w800, lineHeight: 24.0),
     double borderRadius = 4.0,
-    double outlineWidth = 8.0,
+    double outlineWidth = 6.0,
     double dividerWidth = 1.0,
     BoxShadow shadow = const BoxShadow(
       offset: Offset(0.0, 8.0),
