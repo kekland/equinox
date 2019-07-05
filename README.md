@@ -30,10 +30,8 @@ A [**Eva Design**](https://eva.design) implementation in Flutter.
 ## Screenshots
 
 <p float="left">
-  <img src="./screenshots/1.jpg" width="49%" />
-  <img src="./screenshots/2.jpg" width="49%" />
-  <img src="./screenshots/3.jpg" width="49%" />
-  <img src="./screenshots/4.jpg" width="49%" /> 
+  <img src="https://i.imgur.com/BxyrfHc.jpg" width="49%" />
+  <img src="https://i.imgur.com/qquWxVs.jpg" width="49%" />
 </p>
 
 
