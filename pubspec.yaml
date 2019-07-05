@@ -1,5 +1,7 @@
 name: equinox
 description: Flutter UI library based on Eva Design System ✨
+author: kekland <kk.erzhan@gmail.com>
+homepage: https://github.com/kekland/equinox
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -22,7 +24,8 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  eva_icons_flutter:
+  eva_icons_flutter: ^2.0.0
+  vector_math: ^2.0.8
 
 dev_dependencies:
   flutter_test:
