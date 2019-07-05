@@ -1,4 +1,3 @@
-import 'package:equinox/components/global/theming.dart';
 import 'package:equinox/data/color_group.dart';
 import 'package:equinox/data/theme_data.dart';
 import 'package:flutter/rendering.dart';
@@ -109,8 +108,11 @@ class Themes {
     textControlColor: defaultTheme.basic.shade100,
     textDisabledColor: defaultTheme.basic.shade700,
     textHintColor: defaultTheme.basic.shade600,
-
-    shadow: BoxShadow(offset: Offset(0.0, 8.0), blurRadius: 16.0, spreadRadius: 0.0, color: Color(0xFF1A1F33)),
+    shadow: BoxShadow(
+        offset: Offset(0.0, 8.0),
+        blurRadius: 16.0,
+        spreadRadius: 0.0,
+        color: Color(0xFF1A1F33)),
     outlineColor: defaultTheme.basic.shade700,
     dividerColor: defaultTheme.basic.shade1000,
   );

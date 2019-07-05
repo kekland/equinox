@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:equinox/components/global/internal_card.dart';
-import 'package:equinox/components/global/vertical_rectangle_clipper.dart';
 export 'package:equinox/components/select/select_item.dart';
 import 'package:equinox/equinox.dart';
 import 'package:flutter/material.dart';

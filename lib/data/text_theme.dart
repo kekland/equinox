@@ -25,5 +25,9 @@ class TextTheme {
   const TextTheme(
       {this.fontFamily, this.fontSize, this.fontWeight, this.lineHeight});
 
-  TextStyle get textStyle => TextStyle(fontFamily: fontFamily, fontSize: fontSize, fontWeight: fontWeight, height: lineHeight / fontSize);
+  TextStyle get textStyle => TextStyle(
+      fontFamily: fontFamily,
+      fontSize: fontSize,
+      fontWeight: fontWeight,
+      height: lineHeight / fontSize);
 }

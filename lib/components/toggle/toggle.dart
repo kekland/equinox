@@ -30,7 +30,6 @@ class _EqToggleState extends State<EqToggle>
 
   bool outlined = false;
 
-
   didChangeDependencies() {
     super.didChangeDependencies();
     var theme = EqTheme.of(context);
@@ -46,11 +45,12 @@ class _EqToggleState extends State<EqToggle>
         parent: animationController, curve: theme.minorAnimationCurve);
   }
 
-@override
+  @override
   void dispose() {
     animationController.dispose();
     super.dispose();
   }
+
   @override
   initState() {
     super.initState();

@@ -28,7 +28,6 @@ class _EqTabsState extends State<EqTabs> {
 
   @override
   Widget build(BuildContext context) {
-    var theme = EqTheme.of(context);
     return LayoutBuilder(
       builder: (context, constraints) {
         var tabs = <Widget>[];

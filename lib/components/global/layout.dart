@@ -1,5 +1,4 @@
 import 'package:equinox/equinox.dart';
-import 'package:flutter/material.dart' as MaterialDesign;
 import 'package:flutter/widgets.dart';
 
 class EqLayout extends StatefulWidget {

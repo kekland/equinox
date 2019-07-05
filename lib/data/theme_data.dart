@@ -373,7 +373,7 @@ class EqThemeData {
         return primary;
     }
   }
-  
+
   ColorStates getStatesForStatus({WidgetStatus status}) {
     switch (status) {
       case WidgetStatus.primary:

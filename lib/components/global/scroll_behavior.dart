@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 
 class EquinoxScrollBehavior implements ScrollBehavior {
   @override
-  Widget buildViewportChrome(BuildContext context, Widget child, AxisDirection axisDirection) {
+  Widget buildViewportChrome(
+      BuildContext context, Widget child, AxisDirection axisDirection) {
     return child;
   }
 
@@ -21,5 +22,4 @@ class EquinoxScrollBehavior implements ScrollBehavior {
   bool shouldNotify(ScrollBehavior oldDelegate) {
     return false;
   }
-
 }

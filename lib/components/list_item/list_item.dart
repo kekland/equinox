@@ -47,7 +47,7 @@ class _EqListItemState extends State<EqListItem> {
   @override
   Widget build(BuildContext context) {
     var theme = EqTheme.of(context);
-    
+
     var textColor = getTitleColor(theme);
     var subtitleTextColor = getSubtitleColor(theme);
 

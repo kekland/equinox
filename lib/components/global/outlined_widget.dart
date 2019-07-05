@@ -65,6 +65,7 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
     animation = CurvedAnimation(
         parent: animationController, curve: theme.minorAnimationCurve);
   }
+
   @override
   void initState() {
     super.initState();
@@ -94,15 +95,13 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
   Border calculateBorder(EqThemeData theme, VectorMath.Vector3 scaleFactor) {
     var verticalBorderSide = BorderSide(
       color: theme.outlineColor,
-      width:
-          ((theme.outlineWidth / scaleFactor.y) * animation.value)
-              .clamp(0.0, double.infinity),
+      width: ((theme.outlineWidth / scaleFactor.y) * animation.value)
+          .clamp(0.0, double.infinity),
     );
     var horizontalBorderSide = BorderSide(
       color: theme.outlineColor,
-      width:
-          ((theme.outlineWidth / scaleFactor.x) * animation.value)
-              .clamp(0.0, double.infinity),
+      width: ((theme.outlineWidth / scaleFactor.x) * animation.value)
+          .clamp(0.0, double.infinity),
     );
     return Border(
       top: verticalBorderSide,

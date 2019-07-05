@@ -230,7 +230,7 @@ class EquinoxApp extends StatelessWidget {
     return MaterialApp(
       builder: (context, child) {
         var modifiedChild = child;
-        if(builder != null) modifiedChild = builder(context, child);
+        if (builder != null) modifiedChild = builder(context, child);
         return EqTheme(
           theme: theme,
           child: modifiedChild,

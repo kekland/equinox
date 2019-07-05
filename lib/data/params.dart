@@ -75,11 +75,15 @@ class WidgetSizeUtils {
 
 class WidgetShapeUtils {
   static double getMultiplier({WidgetShape shape}) {
-    switch(shape) {
-      case WidgetShape.rectangle: return 1.0;
-      case WidgetShape.round: return 360.0; // Fix this
-      case WidgetShape.semiRound: return 3.0;
-      default: return 1.0;
+    switch (shape) {
+      case WidgetShape.rectangle:
+        return 1.0;
+      case WidgetShape.round:
+        return 360.0; // Fix this
+      case WidgetShape.semiRound:
+        return 3.0;
+      default:
+        return 1.0;
     }
   }
 }
