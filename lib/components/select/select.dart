@@ -223,18 +223,20 @@ class _EqSelectState<T> extends State<EqSelect>
                 ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
-                      selectedIndex != null
-                          ? widget.items[selectedIndex].title
-                          : widget.hint,
-                      style: theme.paragraph1.textStyle.copyWith(
-                        color: selectedIndex != null
-                            ? theme.textBasicColor
-                            : theme.textHintColor,
+                    Expanded(
+                      child: Text(
+                        selectedIndex != null
+                            ? widget.items[selectedIndex].title
+                            : widget.hint,
+                        style: (selectedIndex != null)
+                            ? theme.subtitle1.textStyle
+                            : theme.paragraph1.textStyle.copyWith(
+                                color: theme.textHintColor,
+                              ),
                       ),
                     ),
-                    Spacer(flex: 1),
                     SizedBox(width: 16.0),
                     AnimatedBuilder(
                       animation: animation,
