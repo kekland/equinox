@@ -34,8 +34,9 @@ class _EqSpinnerState extends State<EqSpinner>
   }
 
   dispose() {
-    super.dispose();
+    animationController.stop();
     animationController.dispose();
+    super.dispose();
   }
 
   double getSize() {
