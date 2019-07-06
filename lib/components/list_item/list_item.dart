@@ -9,6 +9,7 @@ class EqListItem extends StatefulWidget {
   final bool active;
   final WidgetStatus status;
   final VoidCallback onTap;
+  final EqThemeData themeOverride;
 
   const EqListItem({
     Key key,
@@ -18,6 +19,7 @@ class EqListItem extends StatefulWidget {
     this.subtitle,
     this.status,
     this.active = false,
+    this.themeOverride,
   }) : super(key: key);
 
   @override
@@ -47,7 +49,7 @@ class _EqListItemState extends State<EqListItem> {
 
   @override
   Widget build(BuildContext context) {
-    var theme = EqTheme.of(context);
+    var theme = widget.themeOverride ?? EqTheme.of(context);
 
     var textColor = getTitleColor(theme);
     var subtitleTextColor = getSubtitleColor(theme);

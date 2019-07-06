@@ -46,7 +46,6 @@ class _EqTabsState extends State<EqTabs> {
           );
           if (i != widget.tabs.length - 1) tabs.add(SizedBox(width: 4.0));
         }
-        print(constraints);
         return Container(
           height: 48.0,
           child: Row(

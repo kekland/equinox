@@ -14,13 +14,10 @@ class OutlinedGestureDetector extends StatelessWidget {
       : super(key: key);
 
   void onTapDown(data) {
-    print('ontapdown');
     onOutlineChange(true);
   }
 
   void clearOutline(EqThemeData theme) {
-    //onOutlineChange(false);
-    print('clear');
     Future.delayed(theme.minorAnimationDuration, () => onOutlineChange(false));
   }
 

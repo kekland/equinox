@@ -35,10 +35,8 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
   @override
   void didUpdateWidget(OutlinedWidget oldWidget) {
     if (widget.outlined) {
-      print('animation forward');
       animationController.forward();
     } else {
-      print('animation reverse');
       if (animationController.lastElapsedDuration == null) {
         animationController.reverse();
       } else {
@@ -181,7 +179,6 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
         itemSize = itemKey.currentContext.size;
       });
     }
-    print(itemSize);
     return _build(context);
   }
 

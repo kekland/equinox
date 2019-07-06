@@ -6,16 +6,18 @@ import 'package:flutter/widgets.dart';
 class EqInternalCard extends StatelessWidget {
   final Widget child;
   final BorderRadius borderRadius;
+  final EqThemeData themeOverride;
 
   const EqInternalCard({
     Key key,
     @required this.child,
     this.borderRadius = BorderRadius.zero,
+    this.themeOverride,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var theme = EqTheme.of(context);
+    var theme = themeOverride ?? EqTheme.of(context);
 
     var backgroundColor = theme.backgroundBasicColors.color1;
 

@@ -1,7 +1,9 @@
 export 'package:equinox/components/select/select_item.dart';
 import 'package:equinox/equinox.dart';
 import 'package:equinox/equinox_internal.dart';
+import 'package:flutter/material.dart';
 import 'dart:math';
+import 'package:equinox/components/select/select_overlay.dart';
 import 'package:flutter/widgets.dart';
 
 class EqSelect<T> extends StatefulWidget {
@@ -42,6 +44,7 @@ class _EqSelectState<T> extends State<EqSelect>
   AnimationController animationController;
   Animation<double> animation;
   Duration animationDuration;
+  bool openingFromBottom = null;
 
   didChangeDependencies() {
     super.didChangeDependencies();
@@ -98,6 +101,7 @@ class _EqSelectState<T> extends State<EqSelect>
 
         this._overlayEntry.remove();
         this._overlayEntry = null;
+        this.openingFromBottom = null;
         setState(() {});
       });
     }
@@ -116,51 +120,74 @@ class _EqSelectState<T> extends State<EqSelect>
     RenderBox renderBox = context.findRenderObject();
     var size = renderBox.size;
     var theme = EqTheme.of(context);
-    double verticalOffset = size.height - 2.0;
+
+    double containerHeight = size.height;
     if (widget.description != null)
-      verticalOffset -= theme.paragraph2.lineHeight + 4.0;
-    if (widget.label != null) verticalOffset -= theme.label.lineHeight + 6.0;
+      containerHeight -= theme.paragraph2.lineHeight + 4.0;
+
+    if (widget.label != null) containerHeight -= theme.label.lineHeight + 6.0;
+
+    double verticalOffset = containerHeight;
     var borderRadius = theme.borderRadius *
         WidgetShapeUtils.getMultiplier(shape: widget.shape);
+
+    print('overlay');
+
+    Size screen = MediaQuery.of(context).size;
+
+    var height = 0.0;
+    for (var item in widget.items) {
+      height += item.caluclateHeight(theme);
+    }
+    print(height);
+
+    var position = renderBox.localToGlobal(Offset.zero);
+    print(position);
+
+    var bottom = screen.height - position.dy - size.height;
+    var top = position.dy;
+    print(bottom);
+
+    openingFromBottom = true;
+
+    if (height > bottom && height < top) {
+      verticalOffset = -height;
+      openingFromBottom = false;
+    } else if (height > bottom && height > top) {
+      openingFromBottom = true;
+      height = bottom - 16.0;
+    }
+
     return OverlayEntry(
-        builder: (context) => Positioned(
-              width: size.width,
-              child: CompositedTransformFollower(
-                showWhenUnlinked: false,
-                link: this._layerLink,
-                offset: Offset(0.0, verticalOffset),
-                child: AnimatedBuilder(
+      builder: (context) => Positioned(
+            width: size.width,
+            child: CompositedTransformFollower(
+              showWhenUnlinked: false,
+              link: this._layerLink,
+              offset: Offset(0.0, verticalOffset),
+              child: Container(
+                height: height,
+                alignment: (openingFromBottom)
+                    ? Alignment.topCenter
+                    : Alignment.bottomCenter,
+                child: EqSelectOverlay(
+                  openingFromBottom: openingFromBottom,
                   animation: animation,
-                  builder: (context, _) => EqInternalCard(
-                        borderRadius: BorderRadius.vertical(
-                            bottom: Radius.circular(borderRadius)),
-                        child: SizeTransition(
-                          axis: Axis.vertical,
-                          sizeFactor: animation,
-                          child: ListView(
-                            padding: EdgeInsets.zero,
-                            shrinkWrap: true,
-                            children: widget.items.map((item) {
-                              int index = widget.items.indexOf(item);
-                              return EqListItem(
-                                title: item.title,
-                                subtitle: item.subtitle,
-                                icon: item.icon,
-                                onTap: () {
-                                  widget.onSelect(item.value);
-                                  setState(() => selectedIndex = index);
-                                  hideOverlay();
-                                },
-                                status: widget.status,
-                                active: index == selectedIndex,
-                              );
-                            }).toList(),
-                          ),
-                        ),
-                      ),
+                  borderRadius: borderRadius,
+                  items: widget.items,
+                  onSelect: (index, item) {
+                    widget.onSelect(item.value);
+                    setState(() => selectedIndex = index);
+                    hideOverlay();
+                  },
+                  selectedIndex: selectedIndex,
+                  status: widget.status,
+                  theme: theme,
                 ),
               ),
-            ));
+            ),
+          ),
+    );
   }
 
   @override
@@ -169,16 +196,18 @@ class _EqSelectState<T> extends State<EqSelect>
     var borderRadius = WidgetShapeUtils.getMultiplier(shape: widget.shape) *
         theme.borderRadius;
 
+    var normalRadius = Radius.circular(borderRadius);
+    var topRadius = (!_isOverlayOpen)? normalRadius : (!openingFromBottom)? Radius.zero : normalRadius;
+    var bottomRadius = (!_isOverlayOpen)? normalRadius : (!openingFromBottom)? normalRadius : Radius.zero;
+
     var borderRadiusModified = BorderRadius.vertical(
-      top: Radius.circular(borderRadius),
-      bottom: (!_isOverlayOpen) ? Radius.circular(borderRadius) : Radius.zero,
+      top: topRadius,
+      bottom: bottomRadius,
     );
 
     var borderRadiusModifiedOutline = BorderRadius.vertical(
-      top: Radius.circular(borderRadius),
-      bottom: (!_isOverlayOpen)
-          ? Radius.circular(borderRadius)
-          : Radius.circular(theme.borderRadius),
+      top: topRadius == Radius.zero? Radius.circular(borderRadius) : topRadius,
+      bottom: bottomRadius == Radius.zero? Radius.circular(borderRadius) : bottomRadius,
     );
 
     return Column(
@@ -196,7 +225,7 @@ class _EqSelectState<T> extends State<EqSelect>
           onTap: toggleOverlay,
           child: OutlinedWidget(
             outlined: outlined || (_overlayEntry != null),
-            borderRadius: borderRadiusModifiedOutline,
+            borderRadius: (openingFromBottom == null)? borderRadiusModified : borderRadiusModifiedOutline,
             child: CompositedTransformTarget(
               link: _layerLink,
               child: AnimatedContainer(
