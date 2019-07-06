@@ -1,4 +1,5 @@
 import 'package:equinox/components/global/internal_card.dart';
+import 'package:equinox/components/global/vertical_rectangle_clipper.dart';
 import 'package:equinox/components/list_item/list_item.dart';
 import 'package:equinox/equinox.dart';
 import 'package:flutter/material.dart';
@@ -24,34 +25,52 @@ class EqSelectOverlay extends StatelessWidget {
     this.status,
     this.openingFromBottom,
   }) : super(key: key);
+
+  Widget _buildBody(EqThemeData theme, Widget child) {
+    if (openingFromBottom)
+      return child;
+    else
+      return ClipRect(
+        child: child,
+        clipper: VerticalRectangleClipper(
+          shadowSize: theme.shadow.blurRadius,
+          verticalMultiplier: 1.0,
+        ),
+      );
+  }
+
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: animation,
-      builder: (ctx, child) => EqInternalCard(
-            themeOverride: theme,
-            borderRadius: BorderRadius.vertical(
-              top: Radius.circular((!openingFromBottom)? borderRadius : 0.0),
-              bottom: Radius.circular((openingFromBottom)? borderRadius : 0.0),
-            ),
-            child: SizeTransition(
-              axis: Axis.vertical,
-              sizeFactor: animation,
-              child: ListView(
-                padding: EdgeInsets.zero,
-                shrinkWrap: true,
-                children: items.map((item) {
-                  int index = items.indexOf(item);
-                  return EqListItem(
-                    themeOverride: theme,
-                    title: item.title,
-                    subtitle: item.subtitle,
-                    icon: item.icon,
-                    onTap: () => onSelect(index, item),
-                    status: status,
-                    active: index == selectedIndex,
-                  );
-                }).toList(),
+      builder: (ctx, child) => _buildBody(
+        theme,
+            EqInternalCard(
+              themeOverride: theme,
+              borderRadius: BorderRadius.vertical(
+                top: Radius.circular((!openingFromBottom) ? borderRadius : 0.0),
+                bottom:
+                    Radius.circular((openingFromBottom) ? borderRadius : 0.0),
+              ),
+              child: SizeTransition(
+                axis: Axis.vertical,
+                sizeFactor: animation,
+                child: ListView(
+                  padding: EdgeInsets.zero,
+                  shrinkWrap: true,
+                  children: items.map((item) {
+                    int index = items.indexOf(item);
+                    return EqListItem(
+                      themeOverride: theme,
+                      title: item.title,
+                      subtitle: item.subtitle,
+                      icon: item.icon,
+                      onTap: () => onSelect(index, item),
+                      status: status,
+                      active: index == selectedIndex,
+                    );
+                  }).toList(),
+                ),
               ),
             ),
           ),

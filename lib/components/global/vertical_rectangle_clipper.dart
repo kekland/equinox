@@ -12,7 +12,7 @@ class VerticalRectangleClipper extends CustomClipper<Rect> {
       -shadowSize,
       -shadowSize,
       size.width + shadowSize * 2,
-      (size.height + shadowSize * 2) * (verticalMultiplier ?? 1.0),
+      size.height + shadowSize,
     );
     return rect;
   }
