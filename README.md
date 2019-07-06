@@ -18,8 +18,10 @@ This project is still in development stages. There will be a proper documentatio
 <p float="left">
   <img src="https://i.imgur.com/nF02pxn.jpg" width="49%" />
   <img src="https://i.imgur.com/OSEEYIj.jpg" width="49%" />
-  <img src="https://i.imgur.com/fJA1muK.jpg" width="49%" />
-  <img src="https://i.imgur.com/MQMGGLv.jpg" width="49%" />
+  <img src="https://i.imgur.com/alMhkL8.jpg" width="49%" />
+  <img src="https://i.imgur.com/z7UEPAM.jpg" width="49%" />
+  <img src="https://i.imgur.com/DJiMafv.jpg" width="24%" />
+  <img src="https://i.imgur.com/U7HY0Z3.jpg" width="24%" />
 </p>
 
 ## Tutorials and documentation
