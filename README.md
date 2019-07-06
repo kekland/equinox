@@ -30,7 +30,7 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  equinox: ^0.0.2
+  equinox: ^0.0.3
 ```
 
 ### Install it
@@ -75,7 +75,7 @@ Widget build(BuildContext context) {
     appBar: EqAppBar(
       centerTitle: true,
       title: 'Auth test',
-      subtitle: 'v0.0.1',
+      subtitle: 'v0.0.3',
     ),
     child: MyBody(),
   );
