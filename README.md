@@ -22,6 +22,10 @@ This project is still in development stages. There will be a proper documentatio
   <img src="https://i.imgur.com/MQMGGLv.jpg" width="49%" />
 </p>
 
+## Tutorials and documentation
+
+You can check out the documentation in [**here**](https://github.com/kekland/equinox/wiki).
+
 ## Getting started
 
 ### Depend on it
