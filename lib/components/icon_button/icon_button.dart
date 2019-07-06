@@ -88,6 +88,7 @@ class _EqIconButtonState extends State<EqIconButton> {
     return OutlinedWidget(
       outlined: outlined,
       borderRadius: BorderRadius.circular(borderRadius),
+      clipInner: widget.appearance != WidgetAppearance.ghost,
       predefinedSize:
           Size.square(padding.horizontal + _getTextStyle(theme).fontSize + 2.0),
       child: AnimatedContainer(

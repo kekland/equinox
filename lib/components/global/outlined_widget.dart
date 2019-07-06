@@ -1,5 +1,7 @@
+import 'package:equinox/components/global/double_cliprrect.dart';
 import 'package:equinox/components/global/inverted_cliprrect.dart';
 import 'package:equinox/equinox.dart';
+import 'package:equinox/equinox_internal.dart';
 import 'package:flutter/widgets.dart';
 import 'package:vector_math/vector_math_64.dart' as VectorMath;
 
@@ -8,6 +10,7 @@ class OutlinedWidget extends StatefulWidget {
   final Widget child;
   final Size predefinedSize;
   final BorderRadius borderRadius;
+  final bool clipInner;
 
   const OutlinedWidget({
     Key key,
@@ -15,6 +18,7 @@ class OutlinedWidget extends StatefulWidget {
     @required this.child,
     this.predefinedSize,
     this.borderRadius,
+    this.clipInner = true,
   }) : super(key: key);
 
   @override
@@ -91,15 +95,9 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
 
   Border calculateBorder(EqThemeData theme, VectorMath.Vector3 scaleFactor) {
     var verticalBorderSide = BorderSide(
-      color: theme.outlineColor,
-      width: ((theme.outlineWidth / scaleFactor.y) * animation.value)
-          .clamp(0.0, double.infinity),
-    );
+        color: theme.outlineColor, width: theme.outlineWidth / (scaleFactor.y));
     var horizontalBorderSide = BorderSide(
-      color: theme.outlineColor,
-      width: ((theme.outlineWidth / scaleFactor.x) * animation.value)
-          .clamp(0.0, double.infinity),
-    );
+        color: theme.outlineColor, width: theme.outlineWidth / (scaleFactor.x));
     return Border(
       top: verticalBorderSide,
       bottom: verticalBorderSide,
@@ -129,18 +127,33 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
                         ),
                         origin:
                             Offset(itemSize.width / 2.0, itemSize.height / 2.0),
-                        child: ClipRRect(
-                          borderRadius: borderRadius,
-                          child: Container(
-                            width: itemSize.width,
-                            height: itemSize.height,
-                            decoration: BoxDecoration(
-                              border: calculateBorder(theme, scaleFactor),
-                            ),
-                          ),
-                        ),
+                        child: (widget.clipInner)
+                            ? ClipPath(
+                                clipper: DoubleClipRRect(
+                                  borderRadius: borderRadius,
+                                  outilneVerticalWidth: (theme.outlineWidth * animation.value) / scaleFactor.y,
+                                  outlineHorizontalWidth:
+                                      (theme.outlineWidth * animation.value) / (scaleFactor.x),
+                                ),
+                                child: Container(
+                                  width: itemSize.width,
+                                  height: itemSize.height,
+                                  decoration: BoxDecoration(
+                                    color: theme.outlineColor,
+                                    borderRadius: borderRadius,
+                                  ),
+                                ),
+                              )
+                            : Container(
+                                width: itemSize.width,
+                                height: itemSize.height,
+                                decoration: BoxDecoration(
+                                  color: theme.outlineColor,
+                                  borderRadius: borderRadius,
+                                ),
+                              ),
                       ),
-                    ),
+                    ), /*
                     Opacity(
                       opacity: animation.value,
                       child: ClipPath(
@@ -153,7 +166,7 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
                           color: theme.outlineColor,
                         ),
                       ),
-                    ),
+                    ),*/
                   ],
                 );
               }),
