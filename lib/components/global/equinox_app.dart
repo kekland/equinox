@@ -1,4 +1,3 @@
-
 import 'package:equinox/equinox.dart';
 
 import 'package:flutter/material.dart' as MaterialDesign;

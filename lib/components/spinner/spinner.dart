@@ -27,8 +27,8 @@ class _EqSpinnerState extends State<EqSpinner>
     animationController =
         AnimationController(vsync: this, duration: Duration(milliseconds: 800));
 
-    animation =
-        CurvedAnimation(curve: Cubic(0.275, 0.725, 0.725, 0.275), parent: animationController);
+    animation = CurvedAnimation(
+        curve: Cubic(0.275, 0.725, 0.725, 0.275), parent: animationController);
 
     animationController.repeat(min: 0.0, max: 1.0);
   }
