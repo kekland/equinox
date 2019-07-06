@@ -1,5 +1,7 @@
 import 'package:equinox/equinox.dart';
-import 'package:flutter/material.dart';
+import 'package:equinox/equinox_internal.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart' as MaterialDesign;
 
 class EqTextField extends StatefulWidget {
   final WidgetShape shape;
@@ -115,62 +117,65 @@ class _EqTextFieldState extends State<EqTextField> {
           child: OutlinedWidget(
             outlined: outlined,
             borderRadius: BorderRadius.circular(borderRadius),
-            child: TextField(
-              focusNode: focusNode,
-              obscureText: widget.obscureText,
-              keyboardType: widget.keyboardType,
-              controller: widget.controller,
-              cursorColor: _getFocusedBorderColor(theme),
-              onTap: widget.onTap,
-              onEditingComplete: widget.onEditingComplete,
-              onChanged: widget.onChanged,
-              onSubmitted: widget.onSubmitted,
-              enabled: widget.enabled,
-              style: theme.subtitle1.textStyle
-                  .copyWith(color: theme.textBasicColor),
-              decoration: InputDecoration(
-                hintText: widget.hint,
-                hintStyle: theme.paragraph1.textStyle.copyWith(
-                    color: (widget.enabled)
-                        ? theme.textHintColor
-                        : theme.textDisabledColor),
-                filled: true,
-                fillColor: theme.backgroundBasicColors.color2,
-                prefixIcon: (widget.icon != null &&
-                        widget.iconPosition == Positioning.left)
-                    ? Icon(widget.icon,
-                        color: (disabled)
-                            ? theme.textDisabledColor
-                            : theme.textHintColor)
-                    : null,
-                suffixIcon: (widget.icon != null &&
-                        widget.iconPosition == Positioning.right)
-                    ? Icon(widget.icon,
-                        color: (disabled)
-                            ? theme.textDisabledColor
-                            : theme.textHintColor)
-                    : null,
-                contentPadding: const EdgeInsets.symmetric(
-                    horizontal: 16.0, vertical: 12.0),
-                border: OutlineInputBorder(
-                  borderSide:
-                      BorderSide(color: _getBorderColor(theme), width: 1.0),
-                  borderRadius: BorderRadius.circular(borderRadius),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide:
-                      BorderSide(color: _getBorderColor(theme), width: 1.0),
-                  borderRadius: BorderRadius.circular(borderRadius),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                      color: _getFocusedBorderColor(theme), width: 2.0),
-                  borderRadius: BorderRadius.circular(borderRadius),
-                ),
-                disabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                      color: theme.borderBasicColors.color3, width: 1.0),
-                  borderRadius: BorderRadius.circular(borderRadius),
+            child: MaterialDesign.Material(
+              type: MaterialDesign.MaterialType.transparency,
+              child: MaterialDesign.TextField(
+                focusNode: focusNode,
+                obscureText: widget.obscureText,
+                keyboardType: widget.keyboardType,
+                controller: widget.controller,
+                cursorColor: _getFocusedBorderColor(theme),
+                onTap: widget.onTap,
+                onEditingComplete: widget.onEditingComplete,
+                onChanged: widget.onChanged,
+                onSubmitted: widget.onSubmitted,
+                enabled: widget.enabled,
+                style: theme.subtitle1.textStyle
+                    .copyWith(color: theme.textBasicColor),
+                decoration: MaterialDesign.InputDecoration(
+                  hintText: widget.hint,
+                  hintStyle: theme.paragraph1.textStyle.copyWith(
+                      color: (widget.enabled)
+                          ? theme.textHintColor
+                          : theme.textDisabledColor),
+                  filled: true,
+                  fillColor: theme.backgroundBasicColors.color2,
+                  prefixIcon: (widget.icon != null &&
+                          widget.iconPosition == Positioning.left)
+                      ? Icon(widget.icon,
+                          color: (disabled)
+                              ? theme.textDisabledColor
+                              : theme.textHintColor)
+                      : null,
+                  suffixIcon: (widget.icon != null &&
+                          widget.iconPosition == Positioning.right)
+                      ? Icon(widget.icon,
+                          color: (disabled)
+                              ? theme.textDisabledColor
+                              : theme.textHintColor)
+                      : null,
+                  contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 16.0, vertical: 12.0),
+                  border: MaterialDesign.OutlineInputBorder(
+                    borderSide:
+                        BorderSide(color: _getBorderColor(theme), width: 1.0),
+                    borderRadius: BorderRadius.circular(borderRadius),
+                  ),
+                  enabledBorder: MaterialDesign.OutlineInputBorder(
+                    borderSide:
+                        BorderSide(color: _getBorderColor(theme), width: 1.0),
+                    borderRadius: BorderRadius.circular(borderRadius),
+                  ),
+                  focusedBorder: MaterialDesign.OutlineInputBorder(
+                    borderSide: BorderSide(
+                        color: _getFocusedBorderColor(theme), width: 2.0),
+                    borderRadius: BorderRadius.circular(borderRadius),
+                  ),
+                  disabledBorder: MaterialDesign.OutlineInputBorder(
+                    borderSide: BorderSide(
+                        color: theme.borderBasicColors.color3, width: 1.0),
+                    borderRadius: BorderRadius.circular(borderRadius),
+                  ),
                 ),
               ),
             ),

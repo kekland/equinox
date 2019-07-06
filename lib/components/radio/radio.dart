@@ -1,5 +1,7 @@
 import 'package:equinox/equinox.dart';
-import 'package:flutter/material.dart';
+import 'package:equinox/equinox_internal.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart' as MaterialDesign;
 
 class EqRadio extends StatefulWidget {
   final VoidCallback onSelected;
@@ -85,8 +87,8 @@ class _EqRadioState extends State<EqRadio> {
           color: getBackgroundColor(theme),
           border: Border.all(color: getBorderColor(theme), width: 1.0),
         ),
-        child: Material(
-          type: MaterialType.transparency,
+        child: MaterialDesign.Material(
+          type: MaterialDesign.MaterialType.transparency,
           child: Center(
             child: AnimatedContainer(
               duration: theme.minorAnimationDuration,

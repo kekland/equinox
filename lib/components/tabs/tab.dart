@@ -1,5 +1,6 @@
 import 'package:equinox/equinox.dart';
-import 'package:flutter/material.dart';
+import 'package:equinox/equinox_internal.dart';
+import 'package:flutter/widgets.dart';
 
 class EqTabData {
   final IconData icon;

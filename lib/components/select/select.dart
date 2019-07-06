@@ -1,9 +1,8 @@
-import 'dart:math';
-
-import 'package:equinox/components/global/internal_card.dart';
 export 'package:equinox/components/select/select_item.dart';
 import 'package:equinox/equinox.dart';
-import 'package:flutter/material.dart';
+import 'package:equinox/equinox_internal.dart';
+import 'dart:math';
+import 'package:flutter/widgets.dart';
 
 class EqSelect<T> extends StatefulWidget {
   final List<EqSelectItem<T>> items;

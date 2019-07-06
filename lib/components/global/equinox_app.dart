@@ -1,5 +1,7 @@
+
 import 'package:equinox/equinox.dart';
-import 'package:flutter/material.dart';
+
+import 'package:flutter/material.dart' as MaterialDesign;
 import 'package:flutter/widgets.dart';
 
 class EquinoxApp extends StatelessWidget {
@@ -227,7 +229,7 @@ class EquinoxApp extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialDesign.MaterialApp(
       builder: (context, child) {
         var modifiedChild = child;
         if (builder != null) modifiedChild = builder(context, child);

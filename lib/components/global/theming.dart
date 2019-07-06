@@ -1,8 +1,8 @@
-import 'package:equinox/components/global/no_splash_factory.dart';
-import 'package:equinox/components/global/scroll_behavior.dart';
-import 'package:equinox/data/theme_data.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
+import 'package:equinox/equinox_internal.dart';
+import 'package:equinox/equinox.dart';
+
+import 'package:flutter/material.dart' as MaterialDesign;
+import 'package:flutter/widgets.dart';
 
 class EqTheme extends StatelessWidget {
   final EqThemeData theme;
@@ -18,8 +18,8 @@ class EqTheme extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Theme(
-        data: ThemeData(
+    return MaterialDesign.Theme(
+        data: MaterialDesign.ThemeData(
           splashFactory: const NoSplashFactory(),
         ),
         child: ScrollConfiguration(

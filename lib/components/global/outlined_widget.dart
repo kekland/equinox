@@ -1,6 +1,6 @@
 import 'package:equinox/components/global/inverted_cliprrect.dart';
 import 'package:equinox/equinox.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:vector_math/vector_math_64.dart' as VectorMath;
 
 class OutlinedWidget extends StatefulWidget {

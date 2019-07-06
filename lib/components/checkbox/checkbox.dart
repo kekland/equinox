@@ -1,7 +1,10 @@
 import 'package:equinox/components/global/outlined_gesture_detector.dart';
+
 import 'package:equinox/equinox.dart';
-import 'package:eva_icons_flutter/eva_icons_flutter.dart';
-import 'package:flutter/material.dart';
+import 'package:equinox/equinox_internal.dart';
+
+import 'package:flutter/material.dart' as MaterialDesign;
+import 'package:flutter/widgets.dart';
 
 class EqCheckbox extends StatefulWidget {
   final bool value;
@@ -95,8 +98,8 @@ class _EqCheckboxState extends State<EqCheckbox> {
           color: fillColor,
           border: Border.all(color: borderColor, width: 1.0),
         ),
-        child: Material(
-          type: MaterialType.transparency,
+        child: MaterialDesign.Material(
+          type: MaterialDesign.MaterialType.transparency,
           child: Center(
             child: (widget.value == null)
                 ? Icon(EvaIcons.minus, color: Colors.white, size: 16.0)
