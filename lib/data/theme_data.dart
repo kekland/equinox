@@ -286,7 +286,7 @@ class EqThemeData {
       borderRadius: borderRadius,
       dividerColor: basic.shade300,
       dividerWidth: dividerWidth,
-      outlineColor: basic.shade500.withOpacity(0.35),
+      outlineColor: basic.shade600.withOpacity(0.35),
       outlineWidth: outlineWidth,
       shadow: shadow,
       majorAnimationCurve: majorAnimationCurve,

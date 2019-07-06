@@ -109,11 +109,11 @@ class Themes {
     textDisabledColor: defaultTheme.basic.shade700,
     textHintColor: defaultTheme.basic.shade600,
     shadow: BoxShadow(
-        offset: Offset(0.0, 8.0),
-        blurRadius: 16.0,
-        spreadRadius: 0.0,
-        color: Color(0xFF1A1F33)),
-    outlineColor: defaultTheme.basic.shade700,
+      offset: Offset(0.0, 8.0),
+      blurRadius: 16.0,
+      spreadRadius: 0.0,
+      color: Color(0xFF1A1F33),
+    ),
     dividerColor: defaultTheme.basic.shade1000,
   );
 }
