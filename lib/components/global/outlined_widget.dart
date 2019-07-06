@@ -34,11 +34,19 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
 
   @override
   void didUpdateWidget(OutlinedWidget oldWidget) {
-    if (oldWidget.outlined != widget.outlined) {
-      if (widget.outlined) {
-        animationController.forward();
-      } else {
+    if (widget.outlined) {
+      print('animation forward');
+      animationController.forward();
+    } else {
+      print('animation reverse');
+      if (animationController.lastElapsedDuration == null) {
         animationController.reverse();
+      } else {
+        Future.delayed(
+          animationController.duration -
+              animationController.lastElapsedDuration,
+          animationController.reverse,
+        );
       }
     }
     if (oldWidget.predefinedSize != widget.predefinedSize) {
@@ -62,8 +70,8 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
       animationController =
           AnimationController(vsync: this, duration: animationDuration);
     }
-    animation = CurvedAnimation(
-        parent: animationController, curve: theme.minorAnimationCurve);
+    animation =
+        CurvedAnimation(parent: animationController, curve: Curves.decelerate);
   }
 
   @override
@@ -114,7 +122,7 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
                 return Stack(
                   children: <Widget>[
                     Opacity(
-                      opacity: animation.value,
+                      opacity: 1.0,
                       child: Transform(
                         transform: Matrix4.compose(
                           VectorMath.Vector3.zero(),
@@ -167,7 +175,7 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
           isFirstCallback = false;
           setState(() {});
         }
-        if(itemKey.currentContext.size != itemSize) {
+        if (itemKey.currentContext.size != itemSize) {
           setState(() {});
         }
         itemSize = itemKey.currentContext.size;
