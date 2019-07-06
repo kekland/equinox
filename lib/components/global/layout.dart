@@ -1,5 +1,6 @@
 import 'package:equinox/equinox.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart' as MaterialDesign;
 
 class EqLayout extends StatefulWidget {
   final EqThemeData theme;
@@ -26,15 +27,18 @@ class _EqLayoutState extends State<EqLayout> {
         duration: theme.majorAnimationDuration,
         curve: theme.majorAnimationCurve,
         color: theme.backgroundBasicColors.color3,
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            if (widget.appBar != null) widget.appBar,
-            Expanded(
-              child: widget.child,
-            ),
-          ],
+        child: MaterialDesign.Material(
+          type: MaterialDesign.MaterialType.transparency,
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              if (widget.appBar != null) widget.appBar,
+              Expanded(
+                child: widget.child,
+              ),
+            ],
+          ),
         ),
       ),
     );
