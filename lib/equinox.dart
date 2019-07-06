@@ -31,5 +31,7 @@ export 'package:equinox/components/toggle/toggle.dart';
 
 export 'package:equinox/components/list_item/list_item.dart';
 
+export 'package:equinox/components/spinner/spinner.dart';
+
 // Icons
 export 'package:eva_icons_flutter/eva_icons_flutter.dart';
