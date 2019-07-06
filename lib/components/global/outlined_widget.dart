@@ -70,15 +70,6 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
   void initState() {
     super.initState();
     itemSize = widget.predefinedSize;
-    if (widget.predefinedSize == null) {
-      WidgetsBinding.instance.addPersistentFrameCallback((_) {
-        if (isFirstCallback) {
-          isFirstCallback = false;
-          setState(() {});
-        }
-        itemSize = itemKey.currentContext.size;
-      });
-    }
     borderRadius = widget.borderRadius ?? BorderRadius.zero;
   }
 
@@ -170,6 +161,19 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
 
   @override
   Widget build(BuildContext context) {
+    if (widget.predefinedSize == null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (isFirstCallback) {
+          isFirstCallback = false;
+          setState(() {});
+        }
+        if(itemKey.currentContext.size != itemSize) {
+          setState(() {});
+        }
+        itemSize = itemKey.currentContext.size;
+      });
+    }
+    print(itemSize);
     return _build(context);
   }
 

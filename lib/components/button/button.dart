@@ -142,6 +142,8 @@ class _EqButtonState extends State<EqButton> {
             child: Padding(
               padding: padding,
               child: Center(
+                widthFactor: 1.0,
+                heightFactor: 1.0,
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.baseline,

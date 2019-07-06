@@ -3,6 +3,7 @@
 /android/
 /lib/main.dart
 /lib/home_page.dart
+/equinox_visualqa/
 
 # Miscellaneous
 *.class
