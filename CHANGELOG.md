@@ -1,3 +1,9 @@
+# 0.0.6
+
+- Fixed bug #4
+- Fixed issues with `OutlinedWidget`
+- Fixed issues with outline and `EqIconButton` 
+
 # 0.0.5
 
 Added EqSpinner widget

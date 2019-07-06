@@ -197,8 +197,12 @@ class _EqSelectState<T> extends State<EqSelect>
         theme.borderRadius;
 
     var normalRadius = Radius.circular(borderRadius);
-    var topRadius = (!_isOverlayOpen)? normalRadius : (!openingFromBottom)? Radius.zero : normalRadius;
-    var bottomRadius = (!_isOverlayOpen)? normalRadius : (!openingFromBottom)? normalRadius : Radius.zero;
+    var topRadius = (!_isOverlayOpen)
+        ? normalRadius
+        : (!openingFromBottom) ? Radius.zero : normalRadius;
+    var bottomRadius = (!_isOverlayOpen)
+        ? normalRadius
+        : (!openingFromBottom) ? normalRadius : Radius.zero;
 
     var borderRadiusModified = BorderRadius.vertical(
       top: topRadius,
@@ -206,8 +210,10 @@ class _EqSelectState<T> extends State<EqSelect>
     );
 
     var borderRadiusModifiedOutline = BorderRadius.vertical(
-      top: topRadius == Radius.zero? Radius.circular(borderRadius) : topRadius,
-      bottom: bottomRadius == Radius.zero? Radius.circular(borderRadius) : bottomRadius,
+      top: topRadius == Radius.zero ? Radius.circular(borderRadius) : topRadius,
+      bottom: bottomRadius == Radius.zero
+          ? Radius.circular(borderRadius)
+          : bottomRadius,
     );
 
     return Column(
@@ -225,7 +231,9 @@ class _EqSelectState<T> extends State<EqSelect>
           onTap: toggleOverlay,
           child: OutlinedWidget(
             outlined: outlined || (_overlayEntry != null),
-            borderRadius: (openingFromBottom == null)? borderRadiusModified : borderRadiusModifiedOutline,
+            borderRadius: (openingFromBottom == null)
+                ? borderRadiusModified
+                : borderRadiusModifiedOutline,
             child: CompositedTransformTarget(
               link: _layerLink,
               child: AnimatedContainer(

@@ -89,10 +89,9 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
       2 * theme.outlineWidth / itemSize.height,
       0.0,
     );
-    if(widget.clipInner) {
+    if (widget.clipInner) {
       return value * animation.value + VectorMath.Vector3.all(1.0);
-    }
-    else {
+    } else {
       return (value + VectorMath.Vector3.all(1.0)) * animation.value;
     }
   }
@@ -136,9 +135,12 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
                             ? ClipPath(
                                 clipper: DoubleClipRRect(
                                   borderRadius: borderRadius,
-                                  outilneVerticalWidth: (theme.outlineWidth * animation.value) / scaleFactor.y,
+                                  outilneVerticalWidth:
+                                      (theme.outlineWidth * animation.value) /
+                                          scaleFactor.y,
                                   outlineHorizontalWidth:
-                                      (theme.outlineWidth * animation.value) / (scaleFactor.x),
+                                      (theme.outlineWidth * animation.value) /
+                                          (scaleFactor.x),
                                 ),
                                 child: Container(
                                   width: itemSize.width,

@@ -44,7 +44,7 @@ class EqSelectOverlay extends StatelessWidget {
     return AnimatedBuilder(
       animation: animation,
       builder: (ctx, child) => _buildBody(
-        theme,
+            theme,
             EqInternalCard(
               themeOverride: theme,
               borderRadius: BorderRadius.vertical(
