@@ -16,8 +16,10 @@ This project is still in development stages. There will be a proper documentatio
 ## Screenshots
 
 <p float="left">
-  <img src="https://i.imgur.com/BxyrfHc.jpg" width="49%" />
-  <img src="https://i.imgur.com/qquWxVs.jpg" width="49%" />
+  <img src="https://i.imgur.com/nF02pxn.jpg" width="49%" />
+  <img src="https://i.imgur.com/OSEEYIj.jpg" width="49%" />
+  <img src="https://i.imgur.com/fJA1muK.jpg" width="49%" />
+  <img src="https://i.imgur.com/MQMGGLv.jpg" width="49%" />
 </p>
 
 ## Getting started
@@ -101,7 +103,7 @@ EqButton(
 
 ## Icons
 
-Get the icon pack from [here](https://github.com/piyushmaurya23/eva_icons_flutter).
+The [Eva Icons Flutter](https://github.com/piyushmaurya23/eva_icons_flutter) package is already integrated into Equinox, so you can use it right away by using `EvaIcons`.
 
 ## Credits
 
