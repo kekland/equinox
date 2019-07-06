@@ -89,8 +89,12 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
       2 * theme.outlineWidth / itemSize.height,
       0.0,
     );
-
-    return value * animation.value + VectorMath.Vector3.all(1.0);
+    if(widget.clipInner) {
+      return value * animation.value + VectorMath.Vector3.all(1.0);
+    }
+    else {
+      return (value + VectorMath.Vector3.all(1.0)) * animation.value;
+    }
   }
 
   Border calculateBorder(EqThemeData theme, VectorMath.Vector3 scaleFactor) {
@@ -116,6 +120,7 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
               builder: (context, _) {
                 var scaleFactor = calculateScaleVector(theme);
                 return Stack(
+                  alignment: Alignment.center,
                   children: <Widget>[
                     Opacity(
                       opacity: 1.0,
