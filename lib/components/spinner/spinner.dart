@@ -33,6 +33,11 @@ class _EqSpinnerState extends State<EqSpinner>
     animationController.repeat(min: 0.0, max: 1.0);
   }
 
+  dispose() {
+    super.dispose();
+    animationController.dispose();
+  }
+
   double getSize() {
     switch (widget.size) {
       case WidgetSize.giant:
