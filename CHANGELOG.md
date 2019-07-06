@@ -1,3 +1,7 @@
+# 0.0.5
+
+Added EqSpinner widget
+
 # 0.0.4
 
 Fixed few bugs in OutlinedWidget, updated screenshots
