@@ -21,8 +21,6 @@ class DoubleClipRRect extends CustomClipper<Path> {
       size.height - outilneVerticalWidth,
     );
 
-    print(rect);
-    print(innerRect);
     return new Path()
       ..addRRect(borderRadius.toRRect(rect))
       ..addRRect(borderRadius.toRRect(innerRect))

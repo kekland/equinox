@@ -131,7 +131,6 @@ class _EqSelectState<T> extends State<EqSelect>
     var borderRadius = theme.borderRadius *
         WidgetShapeUtils.getMultiplier(shape: widget.shape);
 
-    print('overlay');
 
     Size screen = MediaQuery.of(context).size;
 
@@ -139,14 +138,11 @@ class _EqSelectState<T> extends State<EqSelect>
     for (var item in widget.items) {
       height += item.caluclateHeight(theme);
     }
-    print(height);
 
     var position = renderBox.localToGlobal(Offset.zero);
-    print(position);
 
     var bottom = screen.height - position.dy - size.height;
     var top = position.dy;
-    print(bottom);
 
     openingFromBottom = true;
 
