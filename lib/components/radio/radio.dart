@@ -37,8 +37,9 @@ class _EqRadioState extends State<EqRadio> {
   }
 
   Color getCircleColor(EqThemeData theme) {
-    if (widget.onSelected == null) return theme.textDisabledColor;
-    var statusColor = theme.getColorsForStatus(status: widget.status).shade500;
+    var statusColor = widget.onSelected != null
+        ? theme.getColorsForStatus(status: widget.status).shade500
+        : theme.textDisabledColor;
 
     return widget.value ? statusColor : Colors.transparent;
   }
