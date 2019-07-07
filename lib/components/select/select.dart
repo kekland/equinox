@@ -87,6 +87,7 @@ class _EqSelectState<T> extends State<EqSelect>
 
   Color _getFillColor(EqThemeData theme) {
     if (widget.onSelect == null) return theme.backgroundBasicColors.color3;
+
     return theme.backgroundBasicColors.color2;
   }
 
@@ -235,7 +236,7 @@ class _EqSelectState<T> extends State<EqSelect>
         ],
         OutlinedGestureDetector(
           onOutlineChange: (v) => setState(() => outlined = v),
-          onTap: (widget.onSelect != null)? toggleOverlay : null,
+          onTap: (widget.onSelect != null) ? toggleOverlay : null,
           child: OutlinedWidget(
             outlined: outlined || (_overlayEntry != null),
             borderRadius: (openingFromBottom == null)
@@ -267,6 +268,13 @@ class _EqSelectState<T> extends State<EqSelect>
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                    if (widget.icon != null) ...[
+                      Icon(
+                        widget.icon,
+                        color: _getTextColor(theme),
+                      ),
+                      SizedBox(width: 16.0),
+                    ],
                     Expanded(
                       child: Text(
                         selectedIndex != null
