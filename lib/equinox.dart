@@ -1,5 +1,3 @@
-library equinox;
-
 // Global
 export 'package:equinox/src/components/global/theme.dart';
 export 'package:equinox/src/components/global/layout.dart';
