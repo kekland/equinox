@@ -72,15 +72,27 @@ class _EqSelectState<T> extends State<EqSelect>
   }
 
   Color _getBorderColor(EqThemeData theme) {
+    if (widget.onSelect == null) return theme.borderBasicColors.color4;
     return (widget.status != null)
         ? theme.getColorsForStatus(status: widget.status).shade500
         : theme.borderBasicColors.color3;
   }
 
   Color _getFocusedBorderColor(EqThemeData theme) {
+    if (widget.onSelect == null) return theme.borderBasicColors.color4;
     return (widget.status != null)
         ? theme.getColorsForStatus(status: widget.status).shade500
         : theme.primary.shade500;
+  }
+
+  Color _getFillColor(EqThemeData theme) {
+    if (widget.onSelect == null) return theme.backgroundBasicColors.color3;
+    return theme.backgroundBasicColors.color2;
+  }
+
+  Color _getTextColor(EqThemeData theme) {
+    if (widget.onSelect == null) return theme.textDisabledColor;
+    return theme.textHintColor;
   }
 
   showOverlay() {
@@ -130,7 +142,6 @@ class _EqSelectState<T> extends State<EqSelect>
     double verticalOffset = containerHeight;
     var borderRadius = theme.borderRadius *
         WidgetShapeUtils.getMultiplier(shape: widget.shape);
-
 
     Size screen = MediaQuery.of(context).size;
 
@@ -224,7 +235,7 @@ class _EqSelectState<T> extends State<EqSelect>
         ],
         OutlinedGestureDetector(
           onOutlineChange: (v) => setState(() => outlined = v),
-          onTap: toggleOverlay,
+          onTap: (widget.onSelect != null)? toggleOverlay : null,
           child: OutlinedWidget(
             outlined: outlined || (_overlayEntry != null),
             borderRadius: (openingFromBottom == null)
@@ -237,7 +248,7 @@ class _EqSelectState<T> extends State<EqSelect>
                 curve: theme.minorAnimationCurve,
                 decoration: BoxDecoration(
                   borderRadius: borderRadiusModified,
-                  color: theme.backgroundBasicColors.color2,
+                  color: _getFillColor(theme),
                   border: Border.all(
                     width: 1.0,
                     color: _isOverlayOpen
@@ -264,7 +275,7 @@ class _EqSelectState<T> extends State<EqSelect>
                         style: (selectedIndex != null)
                             ? theme.subtitle1.textStyle
                             : theme.paragraph1.textStyle.copyWith(
-                                color: theme.textHintColor,
+                                color: _getTextColor(theme),
                               ),
                       ),
                     ),
@@ -274,8 +285,10 @@ class _EqSelectState<T> extends State<EqSelect>
                       builder: (context, _) {
                         return Transform.rotate(
                           angle: (animation.value) * pi,
-                          child: Icon(EvaIcons.chevronDown,
-                              color: theme.textHintColor),
+                          child: Icon(
+                            EvaIcons.chevronDown,
+                            color: _getTextColor(theme),
+                          ),
                         );
                       },
                     ),
