@@ -29,6 +29,7 @@ class _EqTabsState extends State<EqTabs> {
   void onSelect(int index) {
     selected = index;
     widget.onSelect(index);
+    setState(() {});
   }
 
   @override
