@@ -76,11 +76,20 @@ class _EqToggleState extends State<EqToggle>
       widget.onChanged(!widget.value);
   }
 
+  Color _getBorderColor(EqThemeData theme) {
+    if (widget.onChanged == null) return theme.borderBasicColors.color3;
+    return (this.widget.status != null)
+        ? theme.getColorsForStatus(status: widget.status).shade500
+        : theme.borderBasicColors.color4;
+  }
+
   Color _getFillColor(EqThemeData theme) {
+    if (widget.onChanged == null) return theme.backgroundBasicColors.color2;
+
     var filledColor = (this.widget.status != null)
         ? theme.getColorsForStatus(status: widget.status).shade500
         : theme.primary.shade500;
-    if (this.widget.value == null || this.widget.value) {
+    if (this.widget.value) {
       return filledColor;
     } else {
       if (this.widget.status != null) {
@@ -94,14 +103,18 @@ class _EqToggleState extends State<EqToggle>
     }
   }
 
+  Color _getIconColor(EqThemeData theme) {
+    if (widget.onChanged == null) return theme.textDisabledColor;
+
+    return Colors.white;
+  }
+
   @override
   Widget build(BuildContext context) {
     var theme = EqTheme.of(context);
     var borderRadius = 16.0;
 
-    var borderColor = (this.widget.status != null)
-        ? theme.getColorsForStatus(status: widget.status).shade500
-        : theme.borderBasicColors.color4;
+    var borderColor = _getBorderColor(theme);
 
     var fillColor = _getFillColor(theme);
 
@@ -146,7 +159,7 @@ class _EqToggleState extends State<EqToggle>
                     width: 28.0,
                     height: 28.0,
                     decoration: BoxDecoration(
-                      color: theme.backgroundBasicColors.color1,
+                      color: _getIconColor(theme),
                       borderRadius: BorderRadius.circular(borderRadius),
                     ),
                   ),
@@ -165,7 +178,7 @@ class _EqToggleState extends State<EqToggle>
     }
 
     return OutlinedGestureDetector(
-      onTap: _onTap,
+      onTap: (widget.onChanged != null) ? _onTap : null,
       onOutlineChange: (v) => setState(() => outlined = v),
       child: Row(
         mainAxisSize: MainAxisSize.min,

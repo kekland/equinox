@@ -26,6 +26,7 @@ class _EqRadioState extends State<EqRadio> {
   bool outlined = false;
 
   Color getBorderColor(EqThemeData theme) {
+    if (widget.onSelected == null) return theme.borderBasicColors.color3;
     var statusColor = theme.getColorsForStatus(status: widget.status).shade500;
 
     if (widget.status != null) return statusColor;
@@ -36,12 +37,14 @@ class _EqRadioState extends State<EqRadio> {
   }
 
   Color getCircleColor(EqThemeData theme) {
+    if (widget.onSelected == null) return theme.textDisabledColor;
     var statusColor = theme.getColorsForStatus(status: widget.status).shade500;
 
     return widget.value ? statusColor : Colors.transparent;
   }
 
   Color getBackgroundColor(EqThemeData theme) {
+    if (widget.onSelected == null) return theme.backgroundBasicColors.color2;
     if (widget.status != null) {
       return theme
           .getColorsForStatus(status: widget.status)
