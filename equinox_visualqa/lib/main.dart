@@ -7,6 +7,7 @@ import 'package:equinox_visualqa/components/select.dart';
 import 'package:equinox_visualqa/components/spinner.dart';
 import 'package:equinox_visualqa/components/tabs.dart';
 import 'package:equinox_visualqa/components/textField.dart';
+import 'package:equinox_visualqa/components/toast.dart';
 import 'package:equinox_visualqa/components/toggle.dart';
 import 'package:equinox_visualqa/state.dart';
 import 'package:flutter/material.dart';
@@ -76,6 +77,10 @@ class MainPage extends StatelessWidget {
     ShowcaseData(
       builder: (_) => TextFieldShowcase(),
       title: 'TextField',
+    ),
+    ShowcaseData(
+      builder: (_) => ToastShowcase(),
+      title: 'Toast',
     ),
     ShowcaseData(
       builder: (_) => ToggleShowcase(),

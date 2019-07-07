@@ -31,7 +31,7 @@ export 'package:equinox/src/components/select/select.dart';
 export 'package:equinox/src/components/spinner/spinner.dart';
 export 'package:equinox/src/components/tabs/tabs.dart';
 export 'package:equinox/src/components/textfield/textfield.dart';
-// toggle
+export 'package:equinox/src/components/toast/toast.dart';
 export 'package:equinox/src/components/toggle/toggle.dart';
 
 

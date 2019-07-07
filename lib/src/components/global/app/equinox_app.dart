@@ -234,7 +234,9 @@ class EquinoxApp extends StatelessWidget {
         if (builder != null) modifiedChild = builder(context, child);
         return EqTheme(
           theme: theme,
-          child: modifiedChild,
+          child: EquinoxAppInheritedState(
+            child: modifiedChild,
+          ),
         );
       },
       checkerboardOffscreenLayers: checkerboardOffscreenLayers,
@@ -259,5 +261,9 @@ class EquinoxApp extends StatelessWidget {
       supportedLocales: supportedLocales,
       title: title,
     );
+  }
+
+  static EquinoxAppInheritedState of(BuildContext context) {
+    return context.inheritFromWidgetOfExactType(EquinoxAppInheritedState);
   }
 }

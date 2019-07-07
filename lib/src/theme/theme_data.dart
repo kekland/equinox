@@ -71,6 +71,7 @@ class EqThemeData {
   final double dividerWidth;
 
   final BoxShadow shadow;
+  final BoxShadow heavyShadow;
 
   final Duration minorAnimationDuration;
   final Curve minorAnimationCurve;
@@ -131,6 +132,12 @@ class EqThemeData {
       blurRadius: 20.0,
       spreadRadius: 0.0,
       color: Color.fromRGBO(218, 224, 235, 0.6),
+    ),
+    BoxShadow heavyShadow = const BoxShadow(
+      offset: Offset(0.0, 12.0),
+      blurRadius: 20.0,
+      spreadRadius: 0.0,
+      color: Color.fromRGBO(144, 150, 156, 0.66),
     ),
     Duration majorAnimationDuration = const Duration(milliseconds: 350),
     Duration minorAnimationDuration = const Duration(milliseconds: 150),
@@ -289,6 +296,7 @@ class EqThemeData {
       outlineColor: basic.shade600.withOpacity(0.35),
       outlineWidth: outlineWidth,
       shadow: shadow,
+      heavyShadow: heavyShadow,
       majorAnimationCurve: majorAnimationCurve,
       minorAnimationCurve: minorAnimationCurve,
       majorAnimationDuration: majorAnimationDuration,
@@ -349,6 +357,7 @@ class EqThemeData {
     this.dividerColor,
     this.dividerWidth,
     this.shadow,
+    this.heavyShadow,
     this.majorAnimationCurve,
     this.minorAnimationCurve,
     this.majorAnimationDuration,
@@ -446,6 +455,7 @@ class EqThemeData {
     Color dividerColor,
     double dividerWidth,
     BoxShadow shadow,
+    BoxShadow heavyShadow,
     Duration minorAnimationDuration,
     Curve minorAnimationCurve,
     Duration majorAnimationDuration,
@@ -514,6 +524,7 @@ class EqThemeData {
           majorAnimationDuration ?? this.majorAnimationDuration,
       minorAnimationDuration:
           minorAnimationDuration ?? this.minorAnimationDuration,
+      heavyShadow: heavyShadow ?? this.heavyShadow,
     );
   }
 }
