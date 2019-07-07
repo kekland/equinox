@@ -48,6 +48,7 @@ class EqToastServiceState extends State<EqToastService> {
         EqToastWidget(
           key: ValueKey(toast),
           data: toast,
+          padding: const EdgeInsets.only(top: 16.0),
           serviceRemoveToastCallback: () =>
             removeToast(toast),
         ),

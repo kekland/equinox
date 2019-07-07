@@ -1,48 +1,113 @@
-import 'dart:math';
-
 import 'package:equinox/equinox.dart';
-import 'package:equinox_visualqa/state.dart';
+import 'package:equinox_visualqa/management/showcase_state.dart';
+import 'package:equinox_visualqa/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:separated_column/separated_column.dart';
 
 class ToastShowcase extends StatefulWidget {
   @override
   _ToastShowcaseState createState() => _ToastShowcaseState();
 }
 
-class _ToastShowcaseState extends State<ToastShowcase> {
+class _ToastShowcaseState extends ShowcaseState<ToastShowcase> {
   @override
-  Widget build(BuildContext context) {
-    return EqLayout(
-      appBar: EqAppBar(
-        title: 'Showcase',
-        subtitle: 'Toast',
-        centerTitle: true,
-        actions: [
-          EqIconButton(
-            icon: EvaIcons.sunOutline,
-            onTap: AppState.toggleTheme,
-            status: WidgetStatus.basic,
-            appearance: WidgetAppearance.ghost,
-            size: WidgetSize.large,
-          ),
-        ],
+  Widget playgroundBuilder() => InteractivePlayground(
+        data: {
+          'subtitle': BoolTyped(true),
+          'icon': BoolTyped(true),
+          'status': EnumTyped(WidgetStatus.success, WidgetStatus.values),
+          'shape': EnumTyped(WidgetShape.semiRound, WidgetShape.values),
+        },
+        builder: (_, data) {
+          return SizedBox(
+            width: double.infinity,
+            child: EqButton(
+              status: data['status'],
+              shape: data['shape'],
+              label: 'Show toast',
+              onTap: () => showToast(
+                    EqToast(
+                      message: 'A message',
+                      subtitle: data['subtitle'] ? 'And a subtitle' : null,
+                      icon: data['icon'] ? EvaIcons.star : null,
+                      status: data['status'],
+                      shape: data['shape'],
+                      duration: Duration(seconds: 5),
+                    ),
+                  ),
+            ),
+          );
+        },
+      );
+
+  @override
+  String get showcaseName => 'Toasts';
+
+  showToast(EqToast data) {
+    EqToastService.of(context).pushToast(toast: data);
+  }
+
+  @override
+  List<ShowcaseWidgetData> get showcases {
+    return [
+      ShowcaseWidgetData(
+        title: 'Toasts',
+        builder: () => EqButton(
+              label: 'Show toast',
+              onTap: () => showToast(
+                    EqToast(
+                      message: 'Hi! I am a toast.',
+                      subtitle: 'Click me to dismiss!',
+                      icon: EvaIcons.star,
+                    ),
+                  ),
+            ),
       ),
-      child: Container(
-        padding: const EdgeInsets.all(16.0),
-        child: Center(
-          child: EqButton(
-            label: 'hi',
-            onTap: () {
-              EqToastService.of(context).pushToast(
-                toast: EqToast(
-                  message: 'ummmm' + Random.secure().nextInt(10000).toString(),
-                  duration: Duration(seconds: 3),
-                ),
-              );
-            },
-          ),
-        ),
+      ShowcaseWidgetData(
+        title: 'Toast colors',
+        builder: () => SeparatedColumn(
+              separatorBuilder: (_, i) => SizedBox(height: 8.0),
+              children: WidgetStatus.values
+                  .map((value) => SizedBox(
+                      width: double.infinity,
+                      child: EqButton(
+                        status: value,
+                        label: 'Show ${enumToString(value)} toast',
+                        onTap: () => showToast(
+                              EqToast(
+                                message:
+                                    'Hi! I am a ${enumToString(value)} toast.',
+                                subtitle: 'Click me to dismiss!',
+                                status: value,
+                                icon: EvaIcons.star,
+                              ),
+                            ),
+                      )))
+                  .toList(),
+            ),
       ),
-    );
+      ShowcaseWidgetData(
+        title: 'Toast shapes',
+        builder: () => SeparatedColumn(
+              separatorBuilder: (_, i) => SizedBox(height: 8.0),
+              children: WidgetShape.values
+                  .map((value) => SizedBox(
+                      width: double.infinity,
+                      child: EqButton(
+                        label: 'Show ${enumToString(value)} toast',
+                        onTap: () => showToast(
+                              EqToast(
+                                message:
+                                    'Hi! I am a ${enumToString(value)} toast.',
+                                subtitle: 'Click me to dismiss!',
+                                shape: value,
+                                icon: EvaIcons.star,
+                              ),
+                            ),
+                      )))
+                  .toList(),
+            ),
+      ),
+    ];
   }
 }

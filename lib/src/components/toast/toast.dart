@@ -7,9 +7,14 @@ export 'package:equinox/src/components/toast/toast_reveal.dart';
 class EqToastWidget extends StatefulWidget {
   final EqToast data;
   final VoidCallback serviceRemoveToastCallback;
+  final EdgeInsets padding;
 
-  const EqToastWidget({Key key, this.data, this.serviceRemoveToastCallback})
-      : super(key: key);
+  const EqToastWidget({
+    Key key,
+    this.data,
+    this.serviceRemoveToastCallback,
+    this.padding = EdgeInsets.zero,
+  }) : super(key: key);
 
   @override
   _EqToastWidgetState createState() => _EqToastWidgetState();
@@ -27,7 +32,7 @@ class _EqToastWidgetState extends State<EqToastWidget>
     if (controller == null) {
       controller = AnimationController(
         vsync: this,
-        duration: theme.majorAnimationDuration,
+        duration: theme.minorAnimationDuration,
       );
       animation = CurvedAnimation(
         curve: theme.minorAnimationCurve,
@@ -41,7 +46,7 @@ class _EqToastWidgetState extends State<EqToastWidget>
 
       Future.delayed(widget.data.duration, hide);
     } else {
-      controller.duration = theme.majorAnimationDuration;
+      controller.duration = theme.minorAnimationDuration;
     }
 
     super.didChangeDependencies();
@@ -92,7 +97,7 @@ class _EqToastWidgetState extends State<EqToastWidget>
         heightFactor: (!revealing) ? animation.value : 1.0,
         widthFactor: 1.0,
         child: Padding(
-          padding: const EdgeInsets.only(top: 16.0),
+          padding: widget.padding,
           child: AnimatedContainer(
             duration: theme.minorAnimationDuration,
             curve: theme.minorAnimationCurve,
