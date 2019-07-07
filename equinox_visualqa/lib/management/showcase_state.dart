@@ -1,6 +1,7 @@
 import 'package:equinox/equinox.dart';
 import 'package:equinox_visualqa/state.dart';
 import 'package:flutter/widgets.dart';
+export 'package:equinox_visualqa/management/interactive_playground.dart';
 
 class ShowcaseWidgetData {
   final String title;

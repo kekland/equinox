@@ -1,7 +1,6 @@
-import 'package:equinox_visualqa/management/interactive_playground.dart';
-import 'package:equinox_visualqa/management/showcase_state.dart';
-import 'package:flutter/material.dart';
 import 'package:equinox/equinox.dart';
+import 'package:flutter/material.dart';
+import 'package:equinox_visualqa/management/showcase_state.dart';
 
 String equinoxDescription =
     "An equinox is commonly regarded as the instant of time when the plane (extended indefinitely in all directions) of Earth's equator passes through the center of the Sun.";
