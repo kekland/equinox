@@ -112,6 +112,7 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
   Widget _build(BuildContext context) {
     var theme = EqTheme.of(context);
     return Stack(
+      fit: StackFit.passthrough,
       children: [
         if (itemSize != null)
           AnimatedBuilder(
@@ -160,20 +161,7 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
                                 ),
                               ),
                       ),
-                    ), /*
-                    Opacity(
-                      opacity: animation.value,
-                      child: ClipPath(
-                        clipper: InvertedClipRRect(
-                          borderRadius: borderRadius,
-                        ),
-                        child: Container(
-                          width: itemSize.width,
-                          height: itemSize.height,
-                          color: theme.outlineColor,
-                        ),
-                      ),
-                    ),*/
+                    ),
                   ],
                 );
               }),

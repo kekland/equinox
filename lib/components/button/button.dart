@@ -135,21 +135,19 @@ class _EqButtonState extends State<EqButton> {
           borderRadius: BorderRadius.circular(borderRadius),
           border: border,
         ),
-        child: SizedBox(
-          child: OutlinedGestureDetector(
-            onTap: widget.onTap,
-            onOutlineChange: (v) => setState(() => outlined = v),
-            child: Padding(
-              padding: padding,
-              child: Center(
-                widthFactor: 1.0,
-                heightFactor: 1.0,
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.baseline,
-                  textBaseline: TextBaseline.ideographic,
-                  children: _buildBody(theme),
-                ),
+        child: OutlinedGestureDetector(
+          onTap: widget.onTap,
+          onOutlineChange: (v) => setState(() => outlined = v),
+          child: Padding(
+            padding: padding,
+            child: Center(
+              widthFactor: 1.0,
+              heightFactor: 1.0,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.baseline,
+                textBaseline: TextBaseline.ideographic,
+                children: _buildBody(theme),
               ),
             ),
           ),
