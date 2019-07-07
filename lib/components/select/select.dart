@@ -63,6 +63,7 @@ class _EqSelectState<T> extends State<EqSelect>
 
   dispose() {
     animationController.dispose();
+    hideOverlay(true);
     super.dispose();
   }
 
@@ -105,8 +106,12 @@ class _EqSelectState<T> extends State<EqSelect>
     }
   }
 
-  hideOverlay() {
+  hideOverlay([bool forced = false]) {
     if (this._overlayEntry != null) {
+      if(forced) {
+        this._overlayEntry.remove();
+        return;
+      }
       animationController.reverse();
 
       Future.delayed(animationDuration, () {
