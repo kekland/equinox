@@ -1,6 +1,5 @@
 import 'package:equinox_visualqa/management/interactive_playground.dart';
 import 'package:equinox_visualqa/management/showcase_state.dart';
-import 'package:equinox_visualqa/utils.dart';
 import 'package:flutter/widgets.dart';
 import 'package:equinox/equinox.dart';
 

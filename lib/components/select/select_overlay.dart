@@ -1,8 +1,6 @@
-import 'package:equinox/components/global/internal_card.dart';
-import 'package:equinox/components/global/vertical_rectangle_clipper.dart';
-import 'package:equinox/components/list_item/list_item.dart';
 import 'package:equinox/equinox.dart';
-import 'package:flutter/material.dart';
+import 'package:equinox/equinox_internal.dart';
+import 'package:flutter/widgets.dart';
 
 class EqSelectOverlay extends StatelessWidget {
   final EqThemeData theme;

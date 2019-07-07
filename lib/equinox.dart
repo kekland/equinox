@@ -6,6 +6,7 @@ export 'package:equinox/components/global/theming.dart';
 export 'package:equinox/components/global/themes/themes.dart';
 export 'package:equinox/components/global/equinox_app.dart';
 
+export 'package:equinox/data/colors.dart';
 export 'package:equinox/data/color_group.dart';
 export 'package:equinox/data/params.dart';
 export 'package:equinox/data/status.dart';

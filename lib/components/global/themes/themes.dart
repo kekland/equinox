@@ -1,6 +1,5 @@
-import 'package:equinox/data/color_group.dart';
-import 'package:equinox/data/theme_data.dart';
-import 'package:flutter/rendering.dart';
+import 'package:equinox/equinox.dart';
+import 'package:flutter/widgets.dart';
 
 class Themes {
   static final defaultTheme = EqThemeData(

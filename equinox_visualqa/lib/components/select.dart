@@ -58,7 +58,6 @@ class _SelectShowcaseState extends ShowcaseState<SelectShowcase> {
   ];
 
   @override
-  // TODO: implement showcases
   List<ShowcaseWidgetData> get showcases => [
         ShowcaseWidgetData(
           title: 'Select',

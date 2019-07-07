@@ -1,5 +1,3 @@
-import 'package:equinox/components/global/double_cliprrect.dart';
-import 'package:equinox/components/global/inverted_cliprrect.dart';
 import 'package:equinox/equinox.dart';
 import 'package:equinox/equinox_internal.dart';
 import 'package:flutter/widgets.dart';
@@ -63,7 +61,6 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    var theme = EqTheme.of(context);
     var animationDuration = EqTheme.of(context).minorAnimationDuration;
 
     if (animationController != null) {

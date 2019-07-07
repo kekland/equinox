@@ -1,10 +1,8 @@
-export 'package:equinox/components/button/button_icon_positioning.dart';
-
 import 'package:equinox/equinox.dart';
 import 'package:equinox/equinox_internal.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:flutter/material.dart' as MaterialDesign;
-import 'package:flutter/widgets.dart';
 
 class EqButton extends MaterialDesign.StatefulWidget {
   final WidgetSize size;

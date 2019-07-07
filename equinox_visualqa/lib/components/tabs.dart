@@ -29,7 +29,6 @@ class _TabsShowcaseState extends ShowcaseState<TabsShowcase> {
   String get showcaseName => 'Tabs';
 
   @override
-  // TODO: implement showcases
   List<ShowcaseWidgetData> get showcases => [
         ShowcaseWidgetData(
           title: 'Tabs',

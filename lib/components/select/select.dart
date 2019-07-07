@@ -1,10 +1,12 @@
-export 'package:equinox/components/select/select_item.dart';
+import 'dart:math';
+
 import 'package:equinox/equinox.dart';
 import 'package:equinox/equinox_internal.dart';
-import 'package:flutter/material.dart';
-import 'dart:math';
-import 'package:equinox/components/select/select_overlay.dart';
 import 'package:flutter/widgets.dart';
+
+import 'package:equinox/components/select/select_overlay.dart';
+
+export 'package:equinox/components/select/select_item.dart';
 
 class EqSelect<T> extends StatefulWidget {
   final List<EqSelectItem<T>> items;
@@ -44,7 +46,7 @@ class _EqSelectState<T> extends State<EqSelect>
   AnimationController animationController;
   Animation<double> animation;
   Duration animationDuration;
-  bool openingFromBottom = null;
+  bool openingFromBottom;
 
   didChangeDependencies() {
     super.didChangeDependencies();

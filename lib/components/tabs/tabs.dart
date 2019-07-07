@@ -1,5 +1,5 @@
 import 'package:equinox/equinox.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 export 'package:equinox/components/tabs/tab.dart';
 
 class EqTabs extends StatefulWidget {

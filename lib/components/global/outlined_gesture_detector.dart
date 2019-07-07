@@ -1,7 +1,4 @@
-import 'package:equinox/components/global/theming.dart';
 import 'package:equinox/equinox.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class OutlinedGestureDetector extends StatelessWidget {

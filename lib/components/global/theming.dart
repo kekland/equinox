@@ -1,8 +1,8 @@
-import 'package:equinox/equinox_internal.dart';
 import 'package:equinox/equinox.dart';
+import 'package:equinox/equinox_internal.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:flutter/material.dart' as MaterialDesign;
-import 'package:flutter/widgets.dart';
 
 class EqTheme extends StatelessWidget {
   final EqThemeData theme;

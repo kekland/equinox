@@ -37,6 +37,12 @@ enum WidgetAppearance {
   ghost,
 }
 
+enum Positioning {
+  left,
+  right,
+  none,
+}
+
 class WidgetSizeUtils {
   static double getSizeValue({WidgetSize size}) {
     switch (size) {

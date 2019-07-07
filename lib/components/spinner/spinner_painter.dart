@@ -8,8 +8,6 @@ class SpinnerPainter extends CustomPainter {
   final Color color;
   final double strokeWidth;
 
-  static const double _twoPi = pi * 2.0;
-
   @override
   void paint(Canvas canvas, Size size) {
     final Paint paint = Paint()

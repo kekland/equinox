@@ -1,9 +1,9 @@
 export 'package:equinox/components/card/card_status_appearance.dart';
 
 import 'package:equinox/equinox.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:flutter/material.dart' as MaterialDesign;
-import 'package:flutter/widgets.dart';
 
 class EqCard extends StatelessWidget {
   final Widget child;

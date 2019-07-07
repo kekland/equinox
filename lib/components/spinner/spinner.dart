@@ -1,8 +1,7 @@
 import 'dart:math';
 import 'package:equinox/equinox.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:equinox/components/spinner/spinner_clipper.dart';
+export 'package:equinox/components/spinner/spinner_painter.dart';
 
 class EqSpinner extends StatefulWidget {
   final WidgetStatus status;
