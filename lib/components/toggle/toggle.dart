@@ -5,7 +5,6 @@ import 'package:flutter/widgets.dart';
 class EqToggle extends StatefulWidget {
   final bool value;
   final WidgetStatus status;
-  final WidgetShape shape;
   final String description;
   final Positioning descriptionPosition;
   final void Function(bool) onChanged;
@@ -15,7 +14,6 @@ class EqToggle extends StatefulWidget {
     @required this.value,
     @required this.onChanged,
     this.status,
-    this.shape = WidgetShape.rectangle,
     this.description,
     this.descriptionPosition = Positioning.left,
   }) : super(key: key);
