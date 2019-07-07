@@ -26,6 +26,11 @@ class _EqTabsState extends State<EqTabs> {
     super.initState();
   }
 
+  void onSelect(int index) {
+    selected = index;
+    widget.onSelect(index);
+  }
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -39,8 +44,9 @@ class _EqTabsState extends State<EqTabs> {
               child: EqTab(
                 data: tab,
                 active: selected == i,
-                onTap:
-                    (tab.disabled) ? null : () => setState(() => selected = i),
+                onTap: (tab.disabled || widget.onSelect == null)
+                    ? null
+                    : () => onSelect(i),
               ),
             ),
           );
