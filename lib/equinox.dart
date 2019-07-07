@@ -5,7 +5,7 @@ export 'package:equinox/src/components/global/outlined_widget.dart';
 export 'package:equinox/src/components/global/outlined_gesture_detector.dart';
 
 export 'package:equinox/src/components/global/app/equinox_app.dart';
-export 'package:equinox/src/components/global/app/equinox_app_state.dart';
+export 'package:equinox/src/components/global/app/equinox_toast_service.dart';
 
 // Model
 export 'package:equinox/src/model/colors.dart';

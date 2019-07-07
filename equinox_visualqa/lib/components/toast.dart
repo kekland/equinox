@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:equinox/equinox.dart';
 import 'package:equinox_visualqa/state.dart';
 import 'package:flutter/material.dart';
@@ -25,24 +27,20 @@ class _ToastShowcaseState extends State<ToastShowcase> {
           ),
         ],
       ),
-      child: Padding(
+      child: Container(
         padding: const EdgeInsets.all(16.0),
-        child: Stack(
-          children: [
-            Align(
-              alignment: Alignment.bottomRight,
-              child: EqToastWidget(
-                data: EqToast(
-                  icon: EvaIcons.checkmark,
-                  message: 'Purchase completed',
-                  subtitle: 'Click to check your inventory',
-                  onTap: () {},
-                  status: WidgetStatus.success,
-                  shape: WidgetShape.semiRound,
+        child: Center(
+          child: EqButton(
+            label: 'hi',
+            onTap: () {
+              EqToastService.of(context).pushToast(
+                toast: EqToast(
+                  message: 'ummmm' + Random.secure().nextInt(10000).toString(),
+                  duration: Duration(seconds: 3),
                 ),
-              ),
-            )
-          ],
+              );
+            },
+          ),
         ),
       ),
     );

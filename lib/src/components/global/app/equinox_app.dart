@@ -234,7 +234,7 @@ class EquinoxApp extends StatelessWidget {
         if (builder != null) modifiedChild = builder(context, child);
         return EqTheme(
           theme: theme,
-          child: EquinoxAppInheritedState(
+          child: EqToastService(
             child: modifiedChild,
           ),
         );
@@ -261,9 +261,5 @@ class EquinoxApp extends StatelessWidget {
       supportedLocales: supportedLocales,
       title: title,
     );
-  }
-
-  static EquinoxAppInheritedState of(BuildContext context) {
-    return context.inheritFromWidgetOfExactType(EquinoxAppInheritedState);
   }
 }

@@ -6,8 +6,10 @@ export 'package:equinox/src/components/toast/toast_reveal.dart';
 
 class EqToastWidget extends StatefulWidget {
   final EqToast data;
+  final VoidCallback serviceRemoveToastCallback;
 
-  const EqToastWidget({Key key, this.data}) : super(key: key);
+  const EqToastWidget({Key key, this.data, this.serviceRemoveToastCallback})
+      : super(key: key);
 
   @override
   _EqToastWidgetState createState() => _EqToastWidgetState();
@@ -17,6 +19,7 @@ class _EqToastWidgetState extends State<EqToastWidget>
     with SingleTickerProviderStateMixin {
   AnimationController controller;
   Animation<double> animation;
+  bool revealing = true;
 
   @override
   void didChangeDependencies() {
@@ -27,11 +30,16 @@ class _EqToastWidgetState extends State<EqToastWidget>
         duration: theme.majorAnimationDuration,
       );
       animation = CurvedAnimation(
-        curve: theme.majorAnimationCurve,
+        curve: theme.minorAnimationCurve,
         parent: controller,
       );
-      controller.addListener(() => setState(() {}));
+      controller.addListener(() {
+        if (!mounted) return;
+        setState(() {});
+      });
       controller.forward();
+
+      Future.delayed(widget.data.duration, hide);
     } else {
       controller.duration = theme.majorAnimationDuration;
     }
@@ -40,8 +48,33 @@ class _EqToastWidgetState extends State<EqToastWidget>
   }
 
   @override
+  void didUpdateWidget(EqToastWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+  }
+
+  void hide() {
+    if (mounted && revealing) {
+      revealing = false;
+      controller.reverse(from: 1.0);
+      Future.delayed(controller.duration, widget.serviceRemoveToastCallback);
+      setState(() {});
+    }
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   void initState() {
     super.initState();
+  }
+
+  void onTap(BuildContext context) {
+    if (widget.data.onTap != null) widget.data.onTap();
+    hide();
   }
 
   @override
@@ -53,20 +86,35 @@ class _EqToastWidgetState extends State<EqToastWidget>
         WidgetShapeUtils.getMultiplier(shape: widget.data.shape) *
             theme.borderRadius;
 
-    return AnimatedContainer(
-      duration: theme.minorAnimationDuration,
-      curve: theme.minorAnimationCurve,
-      decoration: BoxDecoration(
-        color: backgroundColor,
-        boxShadow: [theme.shadow],
-        borderRadius: BorderRadius.circular(borderRadius),
-      ),
-      child: ToastRevealAnimationWidget(
-        animation: animation,
-        outlineWidth: theme.outlineWidth,
-        child: _EqToastBody(
-          data: widget.data,
-          onTap: widget.data.onTap,
+    return Opacity(
+      opacity: (!revealing) ? animation.value : 1.0,
+      child: Align(
+        heightFactor: (!revealing) ? animation.value : 1.0,
+        widthFactor: 1.0,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 16.0),
+          child: AnimatedContainer(
+            duration: theme.minorAnimationDuration,
+            curve: theme.minorAnimationCurve,
+            decoration: BoxDecoration(
+              color: backgroundColor,
+              boxShadow: [theme.shadow],
+              borderRadius: BorderRadius.circular(borderRadius),
+            ),
+            child: (revealing)
+                ? ToastRevealAnimationWidget(
+                    animation: animation,
+                    outlineWidth: theme.outlineWidth,
+                    child: _EqToastBody(
+                      data: widget.data,
+                      onTap: () => onTap(context),
+                    ),
+                  )
+                : _EqToastBody(
+                    data: widget.data,
+                    onTap: () => onTap(context),
+                  ),
+          ),
         ),
       ),
     );
@@ -106,7 +154,10 @@ class __EqToastBodyState extends State<_EqToastBody> {
       outlined: outlined,
       borderRadius: BorderRadius.circular(borderRadius),
       child: OutlinedGestureDetector(
-        onOutlineChange: (v) => setState(() => outlined = v),
+        onOutlineChange: (v) {
+          if (!mounted) return;
+          setState(() => outlined = v);
+        },
         onTap: widget.onTap,
         child: Container(
           constraints: BoxConstraints(
