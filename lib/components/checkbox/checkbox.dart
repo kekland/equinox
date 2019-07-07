@@ -39,9 +39,12 @@ class _EqCheckboxState extends State<EqCheckbox> {
   }
 
   Color _getFillColor(EqThemeData theme) {
+    if (widget.onChanged == null) return theme.backgroundBasicColors.color2;
+
     var filledColor = (this.widget.status != null)
         ? theme.getColorsForStatus(status: widget.status).shade500
         : theme.primary.shade500;
+
     if (this.widget.value == null || this.widget.value) {
       return filledColor;
     } else {
@@ -56,15 +59,26 @@ class _EqCheckboxState extends State<EqCheckbox> {
     }
   }
 
+  Color _getBorderColor(EqThemeData theme) {
+    if (widget.onChanged == null) return theme.borderBasicColors.color3;
+
+    return (this.widget.status != null)
+        ? theme.getColorsForStatus(status: widget.status).shade500
+        : theme.borderBasicColors.color4;
+  }
+
+  Color _getIconColor(EqThemeData theme) {
+    if (widget.onChanged == null) return theme.textDisabledColor;
+    return Colors.white;
+  }
+
   @override
   Widget build(BuildContext context) {
     var theme = EqTheme.of(context);
     var borderRadius = theme.borderRadius *
         WidgetShapeUtils.getMultiplier(shape: widget.shape);
 
-    var borderColor = (this.widget.status != null)
-        ? theme.getColorsForStatus(status: widget.status).shade500
-        : theme.borderBasicColors.color4;
+    var borderColor = _getBorderColor(theme);
 
     var fillColor = _getFillColor(theme);
 
@@ -102,9 +116,10 @@ class _EqCheckboxState extends State<EqCheckbox> {
           type: MaterialDesign.MaterialType.transparency,
           child: Center(
             child: (widget.value == null)
-                ? Icon(EvaIcons.minus, color: Colors.white, size: 16.0)
+                ? Icon(EvaIcons.minus, color: _getIconColor(theme), size: 16.0)
                 : (widget.value)
-                    ? Icon(EvaIcons.checkmark, color: Colors.white, size: 16.0)
+                    ? Icon(EvaIcons.checkmark,
+                        color: _getIconColor(theme), size: 16.0)
                     : SizedBox(),
           ),
         ),
@@ -120,7 +135,7 @@ class _EqCheckboxState extends State<EqCheckbox> {
     }
 
     return OutlinedGestureDetector(
-      onTap: _onTap,
+      onTap: (widget.onChanged != null) ? _onTap : null,
       onOutlineChange: (v) => setState(() => outlined = v),
       child: Row(
         mainAxisSize: MainAxisSize.min,
