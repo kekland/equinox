@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
-class NoSplashFactory extends InteractiveInkFeatureFactory {
+class NoSplashFactory implements InteractiveInkFeatureFactory {
   const NoSplashFactory();
 
-  @override
   InteractiveInkFeature create(
       {MaterialInkController controller,
       RenderBox referenceBox,
@@ -27,12 +26,14 @@ class NoSplash extends InteractiveInkFeature {
   NoSplash({
     @required MaterialInkController controller,
     @required RenderBox referenceBox,
-  })  : assert(controller != null),
-        assert(referenceBox != null),
-        super(
+  }) : super(
           controller: controller,
           referenceBox: referenceBox,
-        );
+        ) {
+    assert(controller != null);
+    assert(referenceBox != null);
+    controller.addInkFeature(this);
+  }
 
   @override
   void paintFeature(Canvas canvas, Matrix4 transform) {}
