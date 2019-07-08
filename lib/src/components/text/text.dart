@@ -1,8 +1,11 @@
 import 'package:equinox/equinox.dart';
 import 'package:flutter/widgets.dart';
+export 'package:equinox/src/components/text/text_params.dart';
 
 class EqText extends StatelessWidget {
   final TextTheme eqStyle;
+  final TextState state;
+
   /// The text to display.
   ///
   /// This will be null if a [textSpan] is provided instead.
@@ -92,6 +95,7 @@ class EqText extends StatelessWidget {
 
   const EqText(
     this.data, {
+    this.state,
     this.style,
     @required this.eqStyle,
     this.strutStyle,
@@ -107,6 +111,7 @@ class EqText extends StatelessWidget {
 
   EqText.heading1(
     this.data, {
+    this.state,
     Key key,
     @required BuildContext context,
     this.style,
@@ -124,6 +129,7 @@ class EqText extends StatelessWidget {
 
   EqText.heading2(
     this.data, {
+    this.state,
     Key key,
     @required BuildContext context,
     this.style,
@@ -141,6 +147,7 @@ class EqText extends StatelessWidget {
 
   EqText.heading3(
     this.data, {
+    this.state,
     Key key,
     @required BuildContext context,
     this.style,
@@ -158,6 +165,7 @@ class EqText extends StatelessWidget {
 
   EqText.heading4(
     this.data, {
+    this.state,
     Key key,
     @required BuildContext context,
     this.style,
@@ -175,6 +183,7 @@ class EqText extends StatelessWidget {
 
   EqText.heading5(
     this.data, {
+    this.state,
     Key key,
     @required BuildContext context,
     this.style,
@@ -185,12 +194,14 @@ class EqText extends StatelessWidget {
     this.softWrap,
     this.textScaleFactor,
     this.maxLines,
-    this.semanticsLabel, this.overflow,
+    this.semanticsLabel,
+    this.overflow,
   })  : this.eqStyle = EqTheme.of(context).heading5,
         super(key: key);
 
   EqText.heading6(
     this.data, {
+    this.state,
     Key key,
     @required BuildContext context,
     this.style,
@@ -208,6 +219,7 @@ class EqText extends StatelessWidget {
 
   EqText.subtitle1(
     this.data, {
+    this.state,
     Key key,
     @required BuildContext context,
     this.style,
@@ -225,6 +237,7 @@ class EqText extends StatelessWidget {
 
   EqText.subtitle2(
     this.data, {
+    this.state,
     Key key,
     @required BuildContext context,
     this.style,
@@ -242,6 +255,7 @@ class EqText extends StatelessWidget {
 
   EqText.paragraph1(
     this.data, {
+    this.state,
     Key key,
     @required BuildContext context,
     this.style,
@@ -259,6 +273,7 @@ class EqText extends StatelessWidget {
 
   EqText.paragraph2(
     this.data, {
+    this.state,
     Key key,
     @required BuildContext context,
     this.style,
@@ -276,6 +291,7 @@ class EqText extends StatelessWidget {
 
   EqText.label(
     this.data, {
+    this.state,
     Key key,
     @required BuildContext context,
     this.style,
@@ -293,6 +309,7 @@ class EqText extends StatelessWidget {
 
   EqText.caption1(
     this.data, {
+    this.state,
     Key key,
     @required BuildContext context,
     this.style,
@@ -310,6 +327,7 @@ class EqText extends StatelessWidget {
 
   EqText.caption2(
     this.data, {
+    this.state,
     Key key,
     @required BuildContext context,
     this.style,
@@ -327,17 +345,34 @@ class EqText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var style;
-    if(this.style != null) {
+    var theme = EqTheme.of(context);
+    TextStyle style;
+    if (this.style != null) {
       style = this.style.copyWith(
-        fontSize: this.eqStyle.fontSize,
-        fontWeight: this.eqStyle.fontWeight,
-        fontFamily: this.eqStyle.fontFamily,
-        height: this.eqStyle.lineHeight / this.eqStyle.fontSize,
-      );
-    }
-    else {
+            fontSize: this.eqStyle.fontSize,
+            fontWeight: this.eqStyle.fontWeight,
+            fontFamily: this.eqStyle.fontFamily,
+            height: this.eqStyle.lineHeight / this.eqStyle.fontSize,
+          );
+    } else {
       style = this.eqStyle.textStyle;
+    }
+
+    if (this.state != null) {
+      switch (this.state) {
+        case TextState.basic:
+          style = style.copyWith(color: theme.textBasicColor);
+          break;
+        case TextState.alternate:
+          style = style.copyWith(color: theme.textAlternateColor);
+          break;
+        case TextState.disabled:
+          style = style.copyWith(color: theme.textDisabledColor);
+          break;
+        case TextState.hint:
+          style = style.copyWith(color: theme.textHintColor);
+          break;
+      }
     }
 
     return Text(

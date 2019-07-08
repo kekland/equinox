@@ -33,6 +33,7 @@ export 'package:equinox/src/components/radio/radio.dart';
 export 'package:equinox/src/components/select/select.dart';
 export 'package:equinox/src/components/spinner/spinner.dart';
 export 'package:equinox/src/components/tabs/tabs.dart';
+export 'package:equinox/src/components/text/text.dart';
 export 'package:equinox/src/components/textfield/textfield.dart';
 export 'package:equinox/src/components/toast/toast.dart';
 export 'package:equinox/src/components/toggle/toggle.dart';
