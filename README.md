@@ -10,10 +10,10 @@ A [**Eva Design**](https://eva.design) implementation in Flutter.
 This project is still in development stages. There will be a proper documentation soon.
 
 ### Done
-`EqTheme`, `EqAppBar`, `EqCard`, `EqTabs`, `EqTextField`, `EqButton`, `EqIconButton`, `EqCheckbox`, `EqToggle`, `EqRadio`, `EqSelect`, `EqSpinner`, `EqToastService`
+`EqTheme`, `EqAppBar`, `EqCard`, `EqTabs`, `EqTextField`, `EqButton`, `EqIconButton`, `EqCheckbox`, `EqToggle`, `EqRadio`, `EqSelect`, `EqSpinner`, `EqToastService`, `EqDialogService`
 
 ### Work in progress
-`Stepper`, `Accordion`, `Sidebar`, `Menu`, `Dialog`, `Avatar`, `Progress Bar`, `Badge`
+`Stepper`, `Accordion`, `Sidebar`, `Menu`, `Avatar`, `Progress Bar`, `Badge`
 
 ## Screenshots
 
@@ -38,7 +38,7 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  equinox: ^0.0.8
+  equinox: ^0.0.9
 ```
 
 ### Install it

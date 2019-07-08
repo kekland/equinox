@@ -1,3 +1,7 @@
+# 0.0.9
+
+- Added `EqDialogService` and dialogs.
+
 # 0.0.8
 
 - Added `EqToastService` and toasts.
