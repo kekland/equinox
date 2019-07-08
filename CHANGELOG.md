@@ -1,3 +1,7 @@
+# 0.0.12
+
+- Added `EqText`.
+
 # 0.0.11
 
 - Added `EqProgressBar`.
