@@ -38,7 +38,8 @@ class TransparentPageRoute<T> extends PageRoute<T> {
       child: AnimatedBuilder(
         animation: animation,
         builder: (BuildContext context, Widget child) => Opacity(
-              opacity: Themes.defaultTheme.minorAnimationCurve.transform(animation.value),
+              opacity: Themes.defaultTheme.minorAnimationCurve
+                  .transform(animation.value),
               child: GestureDetector(
                 onTap: () => Navigator.pop(context),
                 child: Container(

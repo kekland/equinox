@@ -40,7 +40,8 @@ class EqToastServiceState extends State<EqToastService> {
 
   void pushToast({EqToast toast}) {
     _toastQueue.add(toast);
-    _toastScrollController.animateTo(0.0, duration: Duration(milliseconds: 300), curve: Curves.easeInOut);
+    _toastScrollController.animateTo(0.0,
+        duration: Duration(milliseconds: 300), curve: Curves.easeInOut);
     setState(() {});
   }
 
@@ -102,21 +103,4 @@ class _EqToastServiceInherited extends InheritedWidget {
 
   @override
   bool updateShouldNotify(_EqToastServiceInherited oldWidget) => false;
-}
-
-class _EqToastColumnClipper extends CustomClipper<Rect> {
-  final double screenHeight;
-
-  _EqToastColumnClipper({this.screenHeight});
-  @override
-  Rect getClip(Size size) {
-    if (size.height > screenHeight) {
-      return Rect.fromLTWH(0.0, 0.0, size.width, screenHeight);
-    }
-    return Rect.fromLTWH(0.0, 0.0, size.width, size.height);
-  }
-
-  @override
-  bool shouldReclip(_EqToastColumnClipper oldClipper) =>
-      oldClipper.screenHeight != screenHeight;
 }

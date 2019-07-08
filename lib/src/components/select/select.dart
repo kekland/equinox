@@ -110,7 +110,7 @@ class _EqSelectState<T> extends State<EqSelect>
 
   hideOverlay([bool forced = false]) {
     if (this._overlayEntry != null) {
-      if(forced) {
+      if (forced) {
         this._overlayEntry.remove();
         return;
       }

@@ -29,9 +29,10 @@ class EqDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
-      constraints: BoxConstraints(minWidth: size.width * 0.6, maxWidth: size.width * 0.9),
+      constraints: BoxConstraints(
+          minWidth: size.width * 0.6, maxWidth: size.width * 0.9),
       padding: const EdgeInsets.all(16.0),
-          child: EqCard(
+      child: EqCard(
         header: header,
         child: child,
         footer: footer,
