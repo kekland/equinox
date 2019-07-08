@@ -4,6 +4,7 @@ import 'package:equinox_visualqa/components/card.dart';
 import 'package:equinox_visualqa/components/checkbox.dart';
 import 'package:equinox_visualqa/components/dialog.dart';
 import 'package:equinox_visualqa/components/icon_button.dart';
+import 'package:equinox_visualqa/components/progress_bar.dart';
 import 'package:equinox_visualqa/components/radio.dart';
 import 'package:equinox_visualqa/components/select.dart';
 import 'package:equinox_visualqa/components/spinner.dart';
@@ -67,6 +68,10 @@ class MainPage extends StatelessWidget {
     ShowcaseData(
       builder: (_) => IconButtonShowcase(),
       title: 'Icon Buttons',
+    ),
+    ShowcaseData(
+      builder: (_) => ProgressBarShowcase(),
+      title: 'Progress Bar',
     ),
     ShowcaseData(
       builder: (_) => RadioShowcase(),
