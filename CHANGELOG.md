@@ -1,3 +1,8 @@
+# 0.0.8
+
+- Added `EqToastService` and toasts.
+- Couple of bugfixes
+
 # 0.0.7
 
 - A ton of bugfixes
