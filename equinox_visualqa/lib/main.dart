@@ -1,5 +1,6 @@
 import 'package:equinox_visualqa/components/appbar.dart';
 import 'package:equinox_visualqa/components/button.dart';
+import 'package:equinox_visualqa/components/calendar.dart';
 import 'package:equinox_visualqa/components/card.dart';
 import 'package:equinox_visualqa/components/checkbox.dart';
 import 'package:equinox_visualqa/components/dialog.dart';
@@ -53,6 +54,10 @@ class MainPage extends StatelessWidget {
     ShowcaseData(
       builder: (_) => ButtonShowcase(),
       title: 'Buttons',
+    ),
+    ShowcaseData(
+      builder: (_) => CalendarShowcase(),
+      title: 'Calendar',
     ),
     ShowcaseData(
       builder: (_) => CardShowcase(),

@@ -36,7 +36,9 @@ class _EqLayoutState extends State<EqLayout> {
             children: <Widget>[
               if (widget.appBar != null) widget.appBar,
               Expanded(
-                child: widget.child,
+                child: SafeArea(
+                  child: widget.child,
+                ),
               ),
             ],
           ),

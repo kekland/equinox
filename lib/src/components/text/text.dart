@@ -349,10 +349,10 @@ class EqText extends StatelessWidget {
     TextStyle style;
     if (this.style != null) {
       style = this.style.copyWith(
-            fontSize: this.eqStyle.fontSize,
-            fontWeight: this.eqStyle.fontWeight,
-            fontFamily: this.eqStyle.fontFamily,
-            height: this.eqStyle.lineHeight / this.eqStyle.fontSize,
+            fontSize: this.style.fontSize ?? this.eqStyle.fontSize,
+            fontWeight: this.style.fontWeight ?? this.eqStyle.fontWeight,
+            fontFamily: this.style.fontFamily ?? this.eqStyle.fontFamily,
+            height: this.style.height ?? this.eqStyle.lineHeight / this.eqStyle.fontSize,
           );
     } else {
       style = this.eqStyle.textStyle;
@@ -371,6 +371,36 @@ class EqText extends StatelessWidget {
           break;
         case TextState.hint:
           style = style.copyWith(color: theme.textHintColor);
+          break;
+        case TextState.primary:
+          style = style.copyWith(color: theme.textPrimaryStates.normal);
+          break;
+        case TextState.success:
+          style = style.copyWith(color: theme.textSuccessStates.normal);
+          break;
+        case TextState.info:
+          style = style.copyWith(color: theme.textInfoStates.normal);
+          break;
+        case TextState.warning:
+          style = style.copyWith(color: theme.textWarningStates.normal);
+          break;
+        case TextState.danger:
+          style = style.copyWith(color: theme.textDangerStates.normal);
+          break;
+        case TextState.primaryDisabled:
+          style = style.copyWith(color: theme.textPrimaryStates.disabled);
+          break;
+        case TextState.successDisabled:
+          style = style.copyWith(color: theme.textSuccessStates.disabled);
+          break;
+        case TextState.infoDisabled:
+          style = style.copyWith(color: theme.textInfoStates.disabled);
+          break;
+        case TextState.warningDisabled:
+          style = style.copyWith(color: theme.textWarningStates.disabled);
+          break;
+        case TextState.dangerDisabled:
+          style = style.copyWith(color: theme.textDangerStates.disabled);
           break;
       }
     }

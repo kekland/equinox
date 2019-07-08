@@ -22,6 +22,7 @@ export 'package:equinox/src/theme/theme_data.dart';
 // Components
 export 'package:equinox/src/components/appbar/appbar.dart';
 export 'package:equinox/src/components/button/button.dart';
+export 'package:equinox/src/components/calendar/calendar.dart';
 export 'package:equinox/src/components/card/card.dart';
 export 'package:equinox/src/components/checkbox/checkbox.dart';
 export 'package:equinox/src/components/dialog/dialog.dart';
