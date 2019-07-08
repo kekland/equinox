@@ -125,7 +125,8 @@ class _EqProgressBarState extends State<EqProgressBar>
                   ? Center(
                       child: Text(
                         widget.text,
-                        style: _getTextStyle(theme).copyWith(color: Colors.white),
+                        style:
+                            _getTextStyle(theme).copyWith(color: Colors.white),
                       ),
                     )
                   : null,

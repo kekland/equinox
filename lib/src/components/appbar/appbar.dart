@@ -93,8 +93,8 @@ class EqAppBar extends StatelessWidget {
 
   double _calculateHeight() {
     double height = 0.0;
-    if(hasTitle) height += 64.0;
-    if(bottom != null) height += 56.0;
+    if (hasTitle) height += 64.0;
+    if (bottom != null) height += 56.0;
     return height;
   }
 
