@@ -1,5 +1,4 @@
 import 'package:equinox/equinox.dart';
-import 'package:equinox/src/components/text/text_params.dart';
 import 'package:flutter/material.dart';
 
 class CalendarDay extends StatelessWidget {

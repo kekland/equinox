@@ -1,4 +1,4 @@
-import 'package:equinox/src/components/calendar/calendar_day.dart';
+import 'package:equinox/equinox.dart';
 import 'package:flutter/material.dart';
 
 class EqCalendarWeek extends StatelessWidget {

@@ -1,8 +1,4 @@
 import 'package:equinox/equinox.dart';
-import 'package:equinox/src/components/calendar/calendar_calculations.dart';
-import 'package:equinox/src/components/calendar/calendar_day.dart';
-import 'package:equinox/src/components/calendar/calendar_week.dart';
-import 'package:equinox/src/components/calendar/calendar_weekdays.dart';
 import 'package:flutter/material.dart';
 
 class EqCalendarMonth extends StatelessWidget {
