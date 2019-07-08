@@ -9,6 +9,7 @@ class EqAppBar extends StatelessWidget {
   final Widget leading;
   final List<Widget> actions;
   final Widget bottom;
+  final bool hasTitle;
 
   const EqAppBar({
     Key key,
@@ -19,7 +20,19 @@ class EqAppBar extends StatelessWidget {
     this.actions = const [],
     this.inferLeading = true,
     this.bottom,
+    this.hasTitle = true,
   }) : super(key: key);
+
+  const EqAppBar.withoutTitle({
+    Key key,
+    @required this.bottom,
+  })  : this.title = null,
+        this.subtitle = null,
+        this.centerTitle = false,
+        this.leading = null,
+        this.actions = null,
+        this.inferLeading = false,
+        this.hasTitle = false;
 
   Widget _buildBody(BuildContext context, EqThemeData theme) {
     var leadingWidget;
@@ -78,6 +91,13 @@ class EqAppBar extends StatelessWidget {
     }
   }
 
+  double _calculateHeight() {
+    double height = 0.0;
+    if(hasTitle) height += 64.0;
+    if(bottom != null) height += 56.0;
+    return height;
+  }
+
   @override
   Widget build(BuildContext context) {
     var theme = EqTheme.of(context);
@@ -91,14 +111,15 @@ class EqAppBar extends StatelessWidget {
       child: SafeArea(
         bottom: true,
         child: Container(
-          height: (bottom != null) ? 64.0 + 56.0 : 64.0,
+          height: _calculateHeight(),
           child: Column(
             children: [
-              Container(
-                height: 64.0,
-                padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                child: _buildBody(context, theme),
-              ),
+              if (hasTitle)
+                Container(
+                  height: 64.0,
+                  padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                  child: _buildBody(context, theme),
+                ),
               if (bottom != null)
                 Container(
                   height: 56.0,

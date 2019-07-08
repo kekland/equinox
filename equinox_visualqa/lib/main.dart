@@ -1,3 +1,4 @@
+import 'package:equinox_visualqa/components/appbar.dart';
 import 'package:equinox_visualqa/components/button.dart';
 import 'package:equinox_visualqa/components/card.dart';
 import 'package:equinox_visualqa/components/checkbox.dart';
@@ -43,6 +44,10 @@ class MainPage extends StatelessWidget {
   }
 
   final List<ShowcaseData> showcases = [
+    ShowcaseData(
+      builder: (_) => AppBarShowcase(),
+      title: 'AppBar',
+    ),
     ShowcaseData(
       builder: (_) => ButtonShowcase(),
       title: 'Buttons',
