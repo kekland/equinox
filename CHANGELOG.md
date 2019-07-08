@@ -1,3 +1,7 @@
+# 0.0.10
+
+- Added `EqAppBar.withoutTitle()` method to fix #6.
+
 # 0.0.9
 
 - Added `EqDialogService` and dialogs.
