@@ -111,7 +111,7 @@ class Themes {
       offset: Offset(0.0, 8.0),
       blurRadius: 16.0,
       spreadRadius: 0.0,
-      color: Color(0xFF1A1F33),
+      color: Color.fromRGBO(44, 51, 73, 0.1),
     ),
     dividerColor: defaultTheme.basic.shade1000,
   );

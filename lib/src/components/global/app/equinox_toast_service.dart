@@ -19,15 +19,18 @@ class EqToastService extends StatefulWidget {
 
 class EqToastServiceState extends State<EqToastService> {
   List<EqToast> _toastQueue;
+  ScrollController _toastScrollController;
 
   @override
   void initState() {
     _toastQueue = [];
+    _toastScrollController = ScrollController();
     super.initState();
   }
 
   @override
   void dispose() {
+    _toastScrollController.dispose();
     super.dispose();
   }
 
@@ -38,6 +41,7 @@ class EqToastServiceState extends State<EqToastService> {
 
   void pushToast({EqToast toast}) {
     _toastQueue.add(toast);
+    _toastScrollController.animateTo(0.0, duration: Duration(milliseconds: 300), curve: Curves.easeInOut);
     setState(() {});
   }
 
@@ -49,19 +53,26 @@ class EqToastServiceState extends State<EqToastService> {
           key: ValueKey(toast),
           data: toast,
           padding: const EdgeInsets.only(top: 16.0),
-          serviceRemoveToastCallback: () =>
-            removeToast(toast),
+          serviceRemoveToastCallback: () => removeToast(toast),
         ),
       );
     }
 
     return Container(
       alignment: Alignment.bottomRight,
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: children,
+      padding: const EdgeInsets.only(
+        bottom: 48.0,
+        top: 128.0,
+      ),
+      child: SingleChildScrollView(
+        controller: _toastScrollController,
+        reverse: true,
+        padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 16.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: children,
+        ),
       ),
     );
   }
@@ -92,4 +103,21 @@ class _EqToastServiceInherited extends InheritedWidget {
 
   @override
   bool updateShouldNotify(_EqToastServiceInherited oldWidget) => false;
+}
+
+class _EqToastColumnClipper extends CustomClipper<Rect> {
+  final double screenHeight;
+
+  _EqToastColumnClipper({this.screenHeight});
+  @override
+  Rect getClip(Size size) {
+    if (size.height > screenHeight) {
+      return Rect.fromLTWH(0.0, 0.0, size.width, screenHeight);
+    }
+    return Rect.fromLTWH(0.0, 0.0, size.width, size.height);
+  }
+
+  @override
+  bool shouldReclip(_EqToastColumnClipper oldClipper) =>
+      oldClipper.screenHeight != screenHeight;
 }
