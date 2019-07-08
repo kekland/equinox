@@ -14,12 +14,7 @@ class DialogShowcase extends StatefulWidget {
 
 class _DialogShowcaseState extends ShowcaseState<DialogShowcase> {
   @override
-  Widget playgroundBuilder() => InteractivePlayground(
-    data: {
-      'title': BoolTyped(true),
-      'status': EnumTyped(WidgetStatus.success, WidgetStatus.values),
-    },
-  );
+  Widget playgroundBuilder() => SizedBox();
 
   @override
   String get showcaseName => 'Dialogs';
@@ -41,6 +36,35 @@ class _DialogShowcaseState extends ShowcaseState<DialogShowcase> {
                         context: context,
                         title: 'A title',
                         body: Text(equinoxDescription),
+                      );
+                    },
+                  ),
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  child: EqButton(
+                    label: 'Open dialog with actions',
+                    status: WidgetStatus.primary,
+                    onTap: () {
+                      EqDialogService.of(context).pushDialog(
+                        context: context,
+                        title: 'A title',
+                        body: Text(equinoxDescription),
+                        status: WidgetStatus.success,
+                        actions: [
+                          EqButton(
+                            appearance: WidgetAppearance.ghost,
+                            label: 'No',
+                            status: WidgetStatus.danger,
+                            onTap: () => Navigator.pop(context),
+                          ),
+                          EqButton(
+                            appearance: WidgetAppearance.ghost,
+                            label: 'Yes',
+                            status: WidgetStatus.primary,
+                            onTap: () => Navigator.pop(context),
+                          ),
+                        ],
                       );
                     },
                   ),

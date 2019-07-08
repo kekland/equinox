@@ -28,20 +28,28 @@ class EqDialogServiceState extends State<EqDialogService> {
     super.dispose();
   }
 
-  Future<T> pushDialog<T>(
-      {BuildContext context, String title, Widget body, List<Widget> actions}) {
+  Future<T> pushDialog<T>({
+    @required BuildContext context,
+    @required String title,
+    @required Widget body,
+    List<Widget> actions,
+    WidgetStatus status = WidgetStatus.primary,
+  }) {
     return Navigator.of(context).push(
       TransparentPageRoute(
         builder: (context) => EqDialog(
               child: body,
               header: Text(title),
-              status: WidgetStatus.info,
+              status: status,
               footerPadding: EdgeInsets.zero,
-              footer: Wrap(
-                spacing: 8.0,
-                runSpacing: 8.0,
-                children: actions,
-              ),
+              footer: actions != null
+                  ? Wrap(
+                      spacing: 8.0,
+                      runSpacing: 8.0,
+                      alignment: WrapAlignment.end,
+                      children: actions,
+                    )
+                  : null,
             ),
       ),
     );
