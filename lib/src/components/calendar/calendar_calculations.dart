@@ -29,8 +29,6 @@ class EqCalendarCalculations {
     DateTime lastDay = days.last;
     int daysToAddAfter = (days.length / 7.0).ceil() * 7 - days.length;
 
-    print(days.length);
-
     for (int i = 0; i < daysToAddAfter; i++) {
       days.add(lastDay.add(Duration(days: i + 1)));
     }

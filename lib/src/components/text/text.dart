@@ -346,17 +346,7 @@ class EqText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = EqTheme.of(context);
-    TextStyle style;
-    if (this.style != null) {
-      style = this.style.copyWith(
-            fontSize: this.style.fontSize ?? this.eqStyle.fontSize,
-            fontWeight: this.style.fontWeight ?? this.eqStyle.fontWeight,
-            fontFamily: this.style.fontFamily ?? this.eqStyle.fontFamily,
-            height: this.style.height ?? this.eqStyle.lineHeight / this.eqStyle.fontSize,
-          );
-    } else {
-      style = this.eqStyle.textStyle;
-    }
+    TextStyle style = this.eqStyle.textStyle;
 
     if (this.state != null) {
       switch (this.state) {
@@ -403,6 +393,17 @@ class EqText extends StatelessWidget {
           style = style.copyWith(color: theme.textDangerStates.disabled);
           break;
       }
+    }
+
+    if (this.style != null) {
+      style = this.style.copyWith(
+            fontSize: this.style.fontSize ?? style.fontSize,
+            fontWeight: this.style.fontWeight ?? style.fontWeight,
+            fontFamily: this.style.fontFamily ?? style.fontFamily,
+            height:
+                style.height ?? this.eqStyle.lineHeight / this.eqStyle.fontSize,
+            color: this.style.color ?? style.color,
+          );
     }
 
     return Text(

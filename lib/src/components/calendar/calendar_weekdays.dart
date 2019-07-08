@@ -38,7 +38,7 @@ class CalendarWeekdays extends StatelessWidget {
               child: Container(
                 constraints: BoxConstraints(minWidth: 32.0, maxWidth: 42.0),
                 height: 32.0,
-                alignment: Alignment.bottomCenter,
+                alignment: Alignment.center,
                 child: EqText.paragraph1(
                   weekdayName,
                   context: context,

@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 
 class EqCalendarMonth extends StatelessWidget {
   final DateTime date;
+  final DateTime selectedDate;
+  final void Function(DateTime) onSelected;
 
   const EqCalendarMonth({
     Key key,
     this.date,
+    this.selectedDate,
+    this.onSelected,
   }) : super(key: key);
-
-  Row buildDaysRow(List<DateTime> time) {
-    List<Widget> widgets = [];
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,12 @@ class EqCalendarMonth extends StatelessWidget {
             sundayIsFirstWeekday: sundayIsFirstWeekday,
           ),
           for (final week in weeks)
-            EqCalendarWeek(days: week, month: date.month),
+            EqCalendarWeek(
+              days: week,
+              month: date.month,
+              onSelected: onSelected,
+              selectedDate: selectedDate,
+            ),
         ],
       ),
     );

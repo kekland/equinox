@@ -12,7 +12,7 @@ class EqCalendar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: EqCalendarMonth(
-        date: DateTime(2020, 7),
+        date: DateTime(2019, 7),
       ),
     );
   }
