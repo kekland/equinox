@@ -25,7 +25,7 @@ class _ButtonShowcaseState extends ShowcaseState<ButtonShowcase> {
       builder: (_, data) => SizedBox(
             width: double.infinity,
             child: EqButton(
-              onTap: data['enabled'] ? () {} : null,
+              onTap: data['enabled'] ? onClick : null,
               appearance: data['appearance'],
               icon: data['iconEnabled'] ? EvaIcons.star : null,
               iconPosition: data['iconPosition'],
@@ -41,6 +41,16 @@ class _ButtonShowcaseState extends ShowcaseState<ButtonShowcase> {
   @override
   String get showcaseName => 'Buttons';
 
+  onClick() {
+    EqToastService.of(context).pushToast(
+      toast: EqToast(
+        message: 'I have been clicked!',
+        status: WidgetStatus.success,
+        icon: EvaIcons.star,
+      ),
+    );
+  }
+
   @override
   List<ShowcaseWidgetData> get showcases => [
         ShowcaseWidgetData(
@@ -50,7 +60,7 @@ class _ButtonShowcaseState extends ShowcaseState<ButtonShowcase> {
                 runSpacing: 8.0,
                 alignment: WrapAlignment.start,
                 children: [
-                  EqButton(onTap: () {}, label: 'Active'),
+                  EqButton(onTap: onClick, label: 'Active'),
                   EqButton(onTap: null, label: 'Disabled'),
                 ],
               ),
@@ -63,7 +73,7 @@ class _ButtonShowcaseState extends ShowcaseState<ButtonShowcase> {
                 alignment: WrapAlignment.start,
                 children: WidgetStatus.values
                     .map((status) => EqButton(
-                          onTap: () {},
+                          onTap: onClick,
                           label: enumToString(status),
                           status: status,
                         ))
@@ -78,7 +88,7 @@ class _ButtonShowcaseState extends ShowcaseState<ButtonShowcase> {
                 alignment: WrapAlignment.start,
                 children: WidgetSize.values.reversed
                     .map((size) => EqButton(
-                          onTap: () {},
+                          onTap: onClick,
                           label: enumToString(size),
                           size: size,
                         ))
@@ -93,7 +103,7 @@ class _ButtonShowcaseState extends ShowcaseState<ButtonShowcase> {
                 alignment: WrapAlignment.start,
                 children: WidgetStatus.values
                     .map((status) => EqButton(
-                          onTap: () {},
+                          onTap: onClick,
                           label: enumToString(status),
                           status: status,
                           appearance: WidgetAppearance.outline,
@@ -109,7 +119,7 @@ class _ButtonShowcaseState extends ShowcaseState<ButtonShowcase> {
                 alignment: WrapAlignment.start,
                 children: WidgetStatus.values
                     .map((status) => EqButton(
-                          onTap: () {},
+                          onTap: onClick,
                           label: enumToString(status),
                           status: status,
                           appearance: WidgetAppearance.ghost,
@@ -125,7 +135,7 @@ class _ButtonShowcaseState extends ShowcaseState<ButtonShowcase> {
                 alignment: WrapAlignment.start,
                 children: WidgetShape.values
                     .map((shape) => EqButton(
-                          onTap: () {},
+                          onTap: onClick,
                           label: enumToString(shape),
                           shape: shape,
                         ))
@@ -140,7 +150,7 @@ class _ButtonShowcaseState extends ShowcaseState<ButtonShowcase> {
                 alignment: WrapAlignment.start,
                 children: Positioning.values
                     .map((position) => EqButton(
-                          onTap: () {},
+                          onTap: onClick,
                           icon: EvaIcons.star,
                           iconPosition: position,
                           label: enumToString(position),

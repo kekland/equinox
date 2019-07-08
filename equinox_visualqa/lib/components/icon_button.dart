@@ -22,13 +22,23 @@ class _IconButtonShowcaseState extends ShowcaseState<IconButtonShowcase> {
       builder: (_, data) => Center(
             child: EqIconButton(
               icon: EvaIcons.star,
-              onTap: data['enabled'] ? () {} : null,
+              onTap: data['enabled'] ? onClick : null,
               appearance: data['appearance'],
               shape: data['shape'],
               status: data['status'],
               size: data['size'],
             ),
           ),
+    );
+  }
+
+  onClick() {
+    EqToastService.of(context).pushToast(
+      toast: EqToast(
+        message: 'I have been clicked!',
+        status: WidgetStatus.success,
+        icon: EvaIcons.star,
+      ),
     );
   }
 
@@ -45,7 +55,7 @@ class _IconButtonShowcaseState extends ShowcaseState<IconButtonShowcase> {
                 alignment: WrapAlignment.start,
                 children: [
                   EqIconButton(
-                    onTap: () {},
+                    onTap: onClick,
                     icon: EvaIcons.star,
                   ),
                   EqIconButton(
@@ -63,7 +73,7 @@ class _IconButtonShowcaseState extends ShowcaseState<IconButtonShowcase> {
                 alignment: WrapAlignment.start,
                 children: WidgetStatus.values
                     .map((status) => EqIconButton(
-                          onTap: () {},
+                          onTap: onClick,
                           icon: EvaIcons.star,
                           status: status,
                         ))
@@ -78,7 +88,7 @@ class _IconButtonShowcaseState extends ShowcaseState<IconButtonShowcase> {
                 alignment: WrapAlignment.start,
                 children: WidgetSize.values.reversed
                     .map((size) => EqIconButton(
-                          onTap: () {},
+                          onTap: onClick,
                           icon: EvaIcons.star,
                           size: size,
                         ))
@@ -93,7 +103,7 @@ class _IconButtonShowcaseState extends ShowcaseState<IconButtonShowcase> {
                 alignment: WrapAlignment.start,
                 children: WidgetStatus.values
                     .map((status) => EqIconButton(
-                          onTap: () {},
+                          onTap: onClick,
                           icon: EvaIcons.star,
                           status: status,
                           appearance: WidgetAppearance.outline,
@@ -109,7 +119,7 @@ class _IconButtonShowcaseState extends ShowcaseState<IconButtonShowcase> {
                 alignment: WrapAlignment.start,
                 children: WidgetStatus.values
                     .map((status) => EqIconButton(
-                          onTap: () {},
+                          onTap: onClick,
                           icon: EvaIcons.star,
                           status: status,
                           appearance: WidgetAppearance.ghost,
@@ -125,7 +135,7 @@ class _IconButtonShowcaseState extends ShowcaseState<IconButtonShowcase> {
                 alignment: WrapAlignment.start,
                 children: WidgetShape.values
                     .map((shape) => EqIconButton(
-                          onTap: () {},
+                          onTap: onClick,
                           icon: EvaIcons.star,
                           shape: shape,
                         ))
