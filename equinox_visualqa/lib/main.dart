@@ -1,6 +1,7 @@
 import 'package:equinox_visualqa/components/button.dart';
 import 'package:equinox_visualqa/components/card.dart';
 import 'package:equinox_visualqa/components/checkbox.dart';
+import 'package:equinox_visualqa/components/dialog.dart';
 import 'package:equinox_visualqa/components/icon_button.dart';
 import 'package:equinox_visualqa/components/radio.dart';
 import 'package:equinox_visualqa/components/select.dart';
@@ -53,6 +54,10 @@ class MainPage extends StatelessWidget {
     ShowcaseData(
       builder: (_) => CheckboxShowcase(),
       title: 'Checkbox',
+    ),
+    ShowcaseData(
+      builder: (_) => DialogShowcase(),
+      title: 'Dialog',
     ),
     ShowcaseData(
       builder: (_) => IconButtonShowcase(),

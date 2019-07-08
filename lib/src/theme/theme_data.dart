@@ -139,7 +139,7 @@ class EqThemeData {
       spreadRadius: 0.0,
       color: Color.fromRGBO(106, 111, 132, 0.16),
     ),
-    Duration majorAnimationDuration = const Duration(milliseconds: 350),
+    Duration majorAnimationDuration = const Duration(milliseconds: 250),
     Duration minorAnimationDuration = const Duration(milliseconds: 150),
     Curve majorAnimationCurve: Curves.easeInOut,
     Curve minorAnimationCurve = Curves.easeInOut,

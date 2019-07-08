@@ -1,5 +1,4 @@
 import 'package:equinox/equinox.dart';
-import 'package:equinox/src/components/toast/toast_data.dart';
 import 'package:flutter/material.dart';
 
 class EqToastService extends StatefulWidget {

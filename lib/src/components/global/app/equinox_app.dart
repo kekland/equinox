@@ -235,7 +235,9 @@ class EquinoxApp extends StatelessWidget {
         return EqTheme(
           theme: theme,
           child: EqToastService(
-            child: modifiedChild,
+            child: EqDialogService(
+              child: modifiedChild,
+            ),
           ),
         );
       },
