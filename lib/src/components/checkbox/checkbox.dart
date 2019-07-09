@@ -1,15 +1,35 @@
 import 'package:equinox/equinox.dart';
+export 'package:equinox/src/components/checkbox/checkbox_theme_inherited.dart';
+export 'package:equinox/src/components/checkbox/checkbox_theme.dart';
 import 'package:equinox/src/equinox_internal.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:flutter/material.dart' as MaterialDesign;
 
+/// A widget that represents a boolean. [value] can be null. Can be deeply customized using
+/// [EqCheckboxThemeData] or by passing `defaultCheckboxTheme` in `EqThemeData`.
+/// Theme that is set in `EquinoxApp` will be merged with the closest [EqCheckbox] widget's theme,
+/// with prevalence to the latter, and then combined with this butotn's settings.
 class EqCheckbox extends StatefulWidget {
+  /// Current value of the widget. Can be null (tristate).
   final bool value;
+
+  /// A description to put either on left or on the right of checkbox, controlled by [descriptionPosition].
   final String description;
+
+  /// Status of the widget. Controls the color of the checkbox.
   final WidgetStatus status;
+  
+  /// Status of the widget. Controls the color of the checkbox. Gets overwritten
+  /// if [EqCheckboxThemeData.borderRadius] is present.
   final WidgetShape shape;
+  
+  /// Controls the location of description.
   final Positioning descriptionPosition;
+
+  /// A method that is called when checkbox's value is changed. Checkbox is disabled if [onChanged] is null.
+  /// If [value] is null, returns `true`.
+  /// Otherwise, returns the opposite of [value].
   final void Function(bool) onChanged;
 
   const EqCheckbox({
@@ -29,6 +49,23 @@ class EqCheckbox extends StatefulWidget {
 class _EqCheckboxState extends State<EqCheckbox> {
   bool outlined = false;
 
+  EqCheckboxThemeData getThemeData(BuildContext context) {
+    final theme = EqTheme.of(context);
+    EqCheckboxThemeData themeData =
+        theme.defaultCheckboxTheme ?? EqCheckboxThemeData();
+
+    final inheritedTheme = EqCheckboxTheme.of(context);
+    if (inheritedTheme != null) {
+      themeData = themeData.merge(inheritedTheme);
+    }
+
+    return themeData.copyWith(
+      status: widget.status,
+      shape: widget.shape,
+      descriptionPosition: widget.descriptionPosition,
+    );
+  }
+
   _onTap() {
     if (widget.value == null)
       widget.onChanged(true);
@@ -36,77 +73,35 @@ class _EqCheckboxState extends State<EqCheckbox> {
       widget.onChanged(!widget.value);
   }
 
-  Color _getFillColor(EqThemeData theme) {
-    if (widget.onChanged == null) return theme.backgroundBasicColors.color2;
-
-    var filledColor = (this.widget.status != null)
-        ? theme.getColorsForStatus(status: widget.status).shade500
-        : theme.primary.shade500;
-
-    if (this.widget.value == null || this.widget.value) {
-      return filledColor;
-    } else {
-      if (this.widget.status != null) {
-        return theme
-            .getColorsForStatus(status: widget.status)
-            .shade500
-            .withOpacity(0.125);
-      } else {
-        return theme.backgroundBasicColors.color3;
-      }
-    }
-  }
-
-  Color _getBorderColor(EqThemeData theme) {
-    if (widget.onChanged == null) return theme.borderBasicColors.color3;
-
-    return (this.widget.status != null)
-        ? theme.getColorsForStatus(status: widget.status).shade500
-        : theme.borderBasicColors.color4;
-  }
-
-  Color _getIconColor(EqThemeData theme) {
-    if (widget.onChanged == null) return theme.textDisabledColor;
-    return Colors.white;
-  }
-
   @override
   Widget build(BuildContext context) {
-    var theme = EqTheme.of(context);
-    var borderRadius = theme.borderRadius *
-        WidgetShapeUtils.getMultiplier(shape: widget.shape);
+    final theme = EqTheme.of(context);
+    final themeData = getThemeData(context);
 
-    var borderColor = _getBorderColor(theme);
+    final selected = widget.value == null || widget.value;
+    final disabled = widget.onChanged == null;
 
-    var fillColor = _getFillColor(theme);
+    final borderRadius = themeData.getBorderRadius(theme: theme);
+    final borderColor =
+        themeData.getBorderColor(theme: theme, disabled: disabled);
+    final fillColor = themeData.getFillColor(
+        theme: theme, selected: selected, disabled: disabled);
+    final descriptionStyle = themeData.getDescriptionTextStyle(theme: theme);
+    final iconColor = themeData.getIconColor(theme: theme, disabled: disabled);
 
     var list = <Widget>[];
-    var description = widget.description != null
-        ? Text(
-            widget.description,
-            style: theme.subtitle2.textStyle
-                .copyWith(color: theme.textBasicColor, height: 1.0),
-          )
-        : null;
 
-    if (description != null && widget.descriptionPosition == Positioning.left) {
-      list.addAll([
-        description,
-        SizedBox(width: 8.0),
-      ]);
-    }
-
-    list.add(OutlinedWidget(
+    final checkbox = OutlinedWidget(
       outlined: outlined,
       predefinedSize: Size(24.0, 24.0),
-      borderRadius: BorderRadius.circular(borderRadius),
+      borderRadius: borderRadius,
       child: AnimatedContainer(
         duration: theme.minorAnimationDuration,
         curve: theme.minorAnimationCurve,
         width: 24.0,
         height: 24.0,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(borderRadius),
+          borderRadius: borderRadius,
           color: fillColor,
           border: Border.all(color: borderColor, width: 1.0),
         ),
@@ -114,22 +109,37 @@ class _EqCheckboxState extends State<EqCheckbox> {
           type: MaterialDesign.MaterialType.transparency,
           child: Center(
             child: (widget.value == null)
-                ? Icon(EvaIcons.minus, color: _getIconColor(theme), size: 16.0)
+                ? Icon(EvaIcons.minus, color: iconColor, size: 16.0)
                 : (widget.value)
-                    ? Icon(EvaIcons.checkmark,
-                        color: _getIconColor(theme), size: 16.0)
+                    ? Icon(EvaIcons.checkmark, color: iconColor, size: 16.0)
                     : SizedBox(),
           ),
         ),
       ),
-    ));
+    );
 
-    if (description != null &&
-        widget.descriptionPosition == Positioning.right) {
-      list.addAll([
+    if (widget.description != null &&
+        widget.descriptionPosition == Positioning.left) {
+      list = [
+        Text(
+          widget.description,
+          style: descriptionStyle,
+        ),
         SizedBox(width: 8.0),
-        description,
-      ]);
+        checkbox,
+      ];
+    } else if (widget.description != null &&
+        widget.descriptionPosition == Positioning.right) {
+      list = [
+        checkbox,
+        SizedBox(width: 8.0),
+        Text(
+          widget.description,
+          style: descriptionStyle,
+        ),
+      ];
+    } else {
+      list = [checkbox];
     }
 
     return OutlinedGestureDetector(

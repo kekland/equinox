@@ -84,6 +84,8 @@ class EqThemeData {
 
   final WidgetShape defaultWidgetShape;
   final EqButtonThemeData defaultButtonTheme;
+  final EqCheckboxThemeData defaultCheckboxTheme;
+
   factory EqThemeData({
     @required String primaryFontFamily,
     @required String secondaryFontFamily,
@@ -114,6 +116,7 @@ class EqThemeData {
     Curve minorAnimationCurve = Curves.easeInOut,
     WidgetShape defaultWidgetShape = WidgetShape.rectangle,
     EqButtonThemeData defaultButtonTheme,
+    EqCheckboxThemeData defaultCheckboxTheme,
   }) {
     return EqThemeData.configure(
       primaryFontFamily: primaryFontFamily,
@@ -135,6 +138,7 @@ class EqThemeData {
       minorAnimationDuration: minorAnimationDuration,
       defaultWidgetShape: defaultWidgetShape,
       defaultButtonTheme: defaultButtonTheme,
+      defaultCheckboxTheme: defaultCheckboxTheme,
     );
   }
   factory EqThemeData.configure({
@@ -203,6 +207,7 @@ class EqThemeData {
     Curve minorAnimationCurve = Curves.easeInOut,
     WidgetShape defaultWidgetShape = WidgetShape.rectangle,
     EqButtonThemeData defaultButtonTheme,
+    EqCheckboxThemeData defaultCheckboxTheme,
   }) {
     return EqThemeData.raw(
       primary: primary,
@@ -363,6 +368,7 @@ class EqThemeData {
       minorAnimationDuration: minorAnimationDuration,
       defaultWidgetShape: defaultWidgetShape,
       defaultButtonTheme: defaultButtonTheme,
+      defaultCheckboxTheme: defaultCheckboxTheme,
     );
   }
 
@@ -426,6 +432,7 @@ class EqThemeData {
     this.minorAnimationDuration,
     this.defaultWidgetShape,
     this.defaultButtonTheme,
+    this.defaultCheckboxTheme,
   });
 
   ColorGroup getColorsForStatus({WidgetStatus status}) {
@@ -526,6 +533,7 @@ class EqThemeData {
     Curve majorAnimationCurve,
     WidgetShape defaultWidgetShape,
     EqButtonThemeData defaultButtonTheme,
+    EqCheckboxThemeData defaultCheckboxTheme,
   }) {
     return new EqThemeData.raw(
       primary: primary ?? this.primary,
@@ -595,6 +603,9 @@ class EqThemeData {
       defaultButtonTheme: (this.defaultButtonTheme == null)
           ? defaultButtonTheme
           : this.defaultButtonTheme.merge(defaultButtonTheme),
+      defaultCheckboxTheme: (this.defaultCheckboxTheme == null)
+          ? defaultCheckboxTheme
+          : this.defaultCheckboxTheme.merge(defaultCheckboxTheme),
     );
   }
 

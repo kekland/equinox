@@ -83,6 +83,8 @@ class EqButtonThemeData {
     TextStyle activeTextStyle,
     TextStyle disabledTextStyle,
     Positioning iconPosition,
+    EdgeInsets padding,
+    BorderRadius borderRadius,
   }) {
     return EqButtonThemeData(
       size: size ?? this.size,
@@ -98,6 +100,8 @@ class EqButtonThemeData {
       activeTextStyle: activeTextStyle ?? this.activeTextStyle,
       disabledTextStyle: disabledTextStyle ?? this.disabledTextStyle,
       iconPosition: iconPosition ?? this.iconPosition,
+      borderRadius: borderRadius ?? this.borderRadius,
+      padding: padding ?? this.padding,
     );
   }
 
@@ -118,6 +122,8 @@ class EqButtonThemeData {
       shape: other.shape ?? shape,
       status: other.status ?? status,
       textStyle: other.textStyle ?? textStyle,
+      borderRadius: other.borderRadius ?? borderRadius,
+      padding: other.padding ?? padding,
     );
   }
 
