@@ -38,8 +38,8 @@ class EqCheckbox extends StatefulWidget {
     @required this.onChanged,
     this.description,
     this.status,
-    this.shape = WidgetShape.rectangle,
-    this.descriptionPosition = Positioning.right,
+    this.shape,
+    this.descriptionPosition,
   }) : super(key: key);
 
   @override
