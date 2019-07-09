@@ -5,15 +5,42 @@ import 'package:flutter/widgets.dart';
 
 import 'package:flutter/material.dart' as MaterialDesign;
 
+/// A widget that is used to display a block of content or information.
 class EqCard extends StatelessWidget {
+  /// A widget to use as card's body. Gets padded by [padding].
   final Widget child;
+
+  /// A widget to use as card's header. Gets padded by [headerPadding] or [padding].
+  /// Set [headerPadding] to `EdgeInsets.zero` if you want no padding.
   final Widget header;
+  
+  /// A widget to use as card's header. Gets padded by [footerPadding] or [padding].
+  /// Set [footerPadding] to `EdgeInsets.zero` if you want no padding.
   final Widget footer;
+  
+  /// A card's status. It will be dispalyed according to [statusAppearance].
+  /// - If [statusAppearance] is [CardStatusAppearance.body], entire card will be painted in
+  /// the status's color.
+  /// - If [statusAppearance] is [CardStatusAppearance.header], only the header will be painted in
+  /// the status's color.
+  /// - If [statusAppearance] is [CardStatusAppearance.strip], the status will be displayed as
+  /// tiny line on top of the card.
+  /// - Otherwise, no status will be displayed.
   final WidgetStatus status;
+
+  /// Controls the card's border radius. If none is passed, uses [EqThemeData.defaultWidgetShape].
   final WidgetShape shape;
+
+  /// Controls the card's status appearance. See [status] for more details.
   final CardStatusAppearance statusAppearance;
+
+  /// Controls the padding of the child. Also sets the [headerPadding] and [footerPadding] if they're null.
   final EdgeInsets padding;
+
+  /// Controls the padding for the header. Gets set by [padding] if it's `null`. See [header].
   final EdgeInsets headerPadding;
+  
+  /// Controls the padding for the footer. Gets set by [padding] if it's `null`. See [footer].
   final EdgeInsets footerPadding;
 
   const EqCard({
@@ -22,7 +49,7 @@ class EqCard extends StatelessWidget {
     this.header,
     this.footer,
     this.status = WidgetStatus.primary,
-    this.shape = WidgetShape.rectangle,
+    this.shape,
     this.statusAppearance = CardStatusAppearance.header,
     this.padding = const EdgeInsets.all(16.0),
     this.headerPadding,
@@ -88,7 +115,7 @@ class EqCard extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = EqTheme.of(context);
     var borderRadius =
-        WidgetShapeUtils.getMultiplier(shape: shape) * theme.borderRadius;
+        WidgetShapeUtils.getMultiplier(shape: shape ?? theme.defaultWidgetShape) * theme.borderRadius;
 
     var backgroundColor = (this.statusAppearance != CardStatusAppearance.body)
         ? theme.backgroundBasicColors.color1
