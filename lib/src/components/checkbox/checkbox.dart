@@ -1,5 +1,4 @@
 import 'package:equinox/equinox.dart';
-export 'package:equinox/src/components/checkbox/checkbox_theme_inherited.dart';
 export 'package:equinox/src/components/checkbox/checkbox_theme.dart';
 import 'package:equinox/src/equinox_internal.dart';
 import 'package:flutter/widgets.dart';
@@ -53,11 +52,6 @@ class _EqCheckboxState extends State<EqCheckbox> {
     final theme = EqTheme.of(context);
     EqCheckboxThemeData themeData =
         theme.defaultCheckboxTheme ?? EqCheckboxThemeData();
-
-    final inheritedTheme = EqCheckboxTheme.of(context);
-    if (inheritedTheme != null) {
-      themeData = themeData.merge(inheritedTheme);
-    }
 
     return themeData.copyWith(
       status: widget.status,

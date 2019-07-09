@@ -4,7 +4,6 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart' as MaterialDesign;
 
 export 'package:equinox/src/components/radio/radio_theme.dart';
-export 'package:equinox/src/components/radio/radio_theme_inherited.dart';
 
 /// Toggle represents a selection in a list of items.
 class EqRadio extends StatefulWidget {
@@ -42,11 +41,6 @@ class _EqRadioState extends State<EqRadio> {
     final theme = EqTheme.of(context);
     EqRadioThemeData themeData =
         theme.defaultRadioTheme ?? EqRadioThemeData();
-
-    final inheritedTheme = EqRadioTheme.of(context);
-    if (inheritedTheme != null) {
-      themeData = themeData.merge(inheritedTheme);
-    }
 
     return themeData.copyWith(
       status: widget.status,

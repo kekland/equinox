@@ -80,15 +80,6 @@ class EqThemes {
       size: WidgetSize.medium,
       iconPosition: Positioning.left,
     ),
-    defaultCheckboxTheme: EqCheckboxThemeData(
-      descriptionPosition: Positioning.left,
-    ),
-    defaultRadioTheme: EqRadioThemeData(
-      descriptionPosition: Positioning.left,
-    ),
-    defaultToggleTheme: EqToggleThemeData(
-      descriptionPosition: Positioning.left,
-    ),
   );
 
   static final defaultDarkTheme = defaultLightTheme.extend(

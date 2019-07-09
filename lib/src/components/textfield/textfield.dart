@@ -1,5 +1,4 @@
 import 'package:equinox/equinox.dart';
-export 'package:equinox/src/components/textfield/textfield_theme_inherited.dart';
 import 'package:equinox/src/equinox_internal.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart' as MaterialDesign;
@@ -16,46 +15,46 @@ class EqTextField extends StatefulWidget {
 
   /// Text to put as error. Will repaint the text field. If `null` is provided, no error will be drawn.
   final String error;
-  
+
   /// Text to put as a hint.
   final String hint;
-  
+
   /// Text to put as a label. Can be `null`.
   final String label;
-  
+
   /// Text to put as a description. Can be `null`.
   final String description;
-  
+
   /// Can this text field be used?
   final bool enabled;
-  
+
   /// TextEditingController to pass to the TextField
   final TextEditingController controller;
-  
+
   /// Gets called when user taps the TextField
   final void Function() onTap;
-  
+
   /// Gets called when the text in the TextField is changed
   final void Function(String) onChanged;
-  
+
   /// Gets called when user submits text through keyboard
   final void Function(String) onSubmitted;
-  
+
   /// Gets called when user is finished editing this field
   final void Function() onEditingComplete;
-  
+
   /// Icon to put into TextField. Position is controlled using [iconPosition].
   final IconData icon;
-  
+
   /// Controls the position of [icon].
   final Positioning iconPosition;
-  
+
   /// Whether to obscure the text or not. For example, when editing password you need to set this to true.
   final bool obscureText;
-  
+
   /// Type of the keyboard.
   final TextInputType keyboardType;
-  
+
   /// A [FocusNode] to pass to [TextField].
   final FocusNode focusNode;
 
@@ -91,11 +90,6 @@ class _EqTextFieldState extends State<EqTextField> {
     final theme = EqTheme.of(context);
     EqTextFieldThemeData themeData =
         theme.defaultTextFieldTheme ?? EqTextFieldThemeData();
-
-    final inheritedTheme = EqTextFieldTheme.of(context);
-    if (inheritedTheme != null) {
-      themeData = themeData.merge(inheritedTheme);
-    }
 
     return themeData.copyWith(
       status: widget.status,
@@ -151,7 +145,7 @@ class _EqTextFieldState extends State<EqTextField> {
         if (widget.label != null) ...[
           EqText.label(
             widget.label.toUpperCase(),
-            style: TextStyle(color: theme.textHintColor).merge(themeData.labelStyle),
+            style: TextStyle(color: theme.textHintColor),
           ),
           SizedBox(height: 6.0),
         ],
@@ -175,16 +169,13 @@ class _EqTextFieldState extends State<EqTextField> {
                 onSubmitted: widget.onSubmitted,
                 enabled: widget.enabled,
                 style: theme.subtitle1.textStyle
-                    .copyWith(color: theme.textBasicColor)
-                    .merge(themeData.textStyle),
+                    .copyWith(color: theme.textBasicColor),
                 decoration: MaterialDesign.InputDecoration(
                   hintText: widget.hint,
-                  hintStyle: theme.paragraph1.textStyle
-                      .copyWith(
-                          color: (widget.enabled)
-                              ? theme.textHintColor
-                              : theme.textDisabledColor)
-                      .merge(themeData.hintStyle),
+                  hintStyle: theme.paragraph1.textStyle.copyWith(
+                      color: (widget.enabled)
+                          ? theme.textHintColor
+                          : theme.textDisabledColor),
                   filled: true,
                   fillColor: backgroundColor,
                   prefixIcon: (widget.icon != null &&
@@ -203,33 +194,29 @@ class _EqTextFieldState extends State<EqTextField> {
                       : null,
                   contentPadding: padding,
                   border: MaterialDesign.OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: borderColor, width: 1.0),
+                    borderSide: BorderSide(color: borderColor, width: 1.0),
                     borderRadius: borderRadius,
                   ),
                   enabledBorder: MaterialDesign.OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: borderColor, width: 1.0),
+                    borderSide: BorderSide(color: borderColor, width: 1.0),
                     borderRadius: borderRadius,
                   ),
                   focusedBorder: MaterialDesign.OutlineInputBorder(
-                    borderSide: BorderSide(
-                        color: focusedBorderColor, width: 2.0),
+                    borderSide:
+                        BorderSide(color: focusedBorderColor, width: 2.0),
                     borderRadius: borderRadius,
                   ),
                   disabledBorder: MaterialDesign.OutlineInputBorder(
-                    borderSide: BorderSide(
-                        color: disabledBorderColor, width: 1.0),
+                    borderSide:
+                        BorderSide(color: disabledBorderColor, width: 1.0),
                     borderRadius: borderRadius,
                   ),
                   errorBorder: MaterialDesign.OutlineInputBorder(
-                    borderSide: BorderSide(
-                        color: errorBorderColor, width: 1.0),
+                    borderSide: BorderSide(color: errorBorderColor, width: 1.0),
                     borderRadius: borderRadius,
                   ),
                   focusedErrorBorder: MaterialDesign.OutlineInputBorder(
-                    borderSide: BorderSide(
-                        color: errorBorderColor, width: 2.0),
+                    borderSide: BorderSide(color: errorBorderColor, width: 2.0),
                     borderRadius: borderRadius,
                   ),
                 ),
@@ -241,7 +228,7 @@ class _EqTextFieldState extends State<EqTextField> {
           SizedBox(height: 4.0),
           EqText.paragraph2(
             widget.description,
-            style: TextStyle(color: theme.textHintColor).merge(themeData.descriptionStyle),
+            style: TextStyle(color: theme.textHintColor),
           ),
         ],
         if (errored) ...[
@@ -249,7 +236,6 @@ class _EqTextFieldState extends State<EqTextField> {
           EqText.paragraph2(
             widget.error,
             state: TextState.danger,
-            style: themeData.errorStyle,
           ),
         ],
       ],

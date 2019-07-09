@@ -3,7 +3,6 @@ import 'package:equinox/src/equinox_internal.dart';
 import 'package:flutter/widgets.dart';
 
 export 'package:equinox/src/components/toggle/toggle_theme.dart';
-export 'package:equinox/src/components/toggle/toggle_theme_inherited.dart';
 
 /// Toggle represents a bool value. [value] cannot be null, unlike [EqCheckbox].
 class EqToggle extends StatefulWidget {
@@ -47,11 +46,6 @@ class _EqToggleState extends State<EqToggle>
     final theme = EqTheme.of(context);
     EqToggleThemeData themeData =
         theme.defaultToggleTheme ?? EqToggleThemeData();
-
-    final inheritedTheme = EqToggleTheme.of(context);
-    if (inheritedTheme != null) {
-      themeData = themeData.merge(inheritedTheme);
-    }
 
     return themeData.copyWith(
       status: widget.status,

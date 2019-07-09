@@ -5,7 +5,6 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart' as MaterialDesign;
 
 export 'package:equinox/src/components/button/button_theme.dart';
-export 'package:equinox/src/components/button/button_theme_inherited.dart';
 
 /// A widget that displays a Eva Design styled button. Can be deeply customized using
 /// [EqButtonThemeData] or by passing `defaultButtonTheme` in `EquinoxApp`'s theme.
@@ -98,11 +97,6 @@ class _EqButtonState extends State<EqButton> {
     final theme = EqTheme.of(context);
     EqButtonThemeData themeData =
         theme.defaultButtonTheme ?? EqButtonThemeData();
-
-    final inheritedTheme = EqButtonTheme.of(context);
-    if (inheritedTheme != null) {
-      themeData = themeData.merge(inheritedTheme);
-    }
 
     return themeData.copyWith(
       size: widget.size,
