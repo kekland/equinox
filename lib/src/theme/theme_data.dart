@@ -83,8 +83,61 @@ class EqThemeData {
   final Curve majorAnimationCurve;
 
   final WidgetShape defaultWidgetShape;
-
+  final EqButtonThemeData defaultButtonTheme;
   factory EqThemeData({
+    @required String primaryFontFamily,
+    @required String secondaryFontFamily,
+    @required ColorGroup primary,
+    @required ColorGroup success,
+    @required ColorGroup info,
+    @required ColorGroup warning,
+    @required ColorGroup danger,
+    @required ColorGroup basic,
+    double borderRadius = 4.0,
+    double outlineWidth = 6.0,
+    double dividerWidth = 1.0,
+    BoxShadow shadow = const BoxShadow(
+      offset: Offset(0.0, 8.0),
+      blurRadius: 16.0,
+      spreadRadius: 0.0,
+      color: Color.fromRGBO(44, 51, 73, 0.1),
+    ),
+    BoxShadow heavyShadow = const BoxShadow(
+      offset: Offset(0.0, 8.0),
+      blurRadius: 20.0,
+      spreadRadius: 0.0,
+      color: Color.fromRGBO(106, 111, 132, 0.16),
+    ),
+    Duration majorAnimationDuration = const Duration(milliseconds: 250),
+    Duration minorAnimationDuration = const Duration(milliseconds: 150),
+    Curve majorAnimationCurve: Curves.easeInOut,
+    Curve minorAnimationCurve = Curves.easeInOut,
+    WidgetShape defaultWidgetShape = WidgetShape.rectangle,
+    EqButtonThemeData defaultButtonTheme,
+  }) {
+    return EqThemeData.configure(
+      primaryFontFamily: primaryFontFamily,
+      secondaryFontFamily: secondaryFontFamily,
+      primary: primary,
+      success: success,
+      info: info,
+      warning: warning,
+      danger: danger,
+      basic: basic,
+      borderRadius: borderRadius,
+      dividerWidth: dividerWidth,
+      outlineWidth: outlineWidth,
+      shadow: shadow,
+      heavyShadow: heavyShadow,
+      majorAnimationCurve: majorAnimationCurve,
+      minorAnimationCurve: minorAnimationCurve,
+      majorAnimationDuration: majorAnimationDuration,
+      minorAnimationDuration: minorAnimationDuration,
+      defaultWidgetShape: defaultWidgetShape,
+      defaultButtonTheme: defaultButtonTheme,
+    );
+  }
+  factory EqThemeData.configure({
     @required String primaryFontFamily,
     @required String secondaryFontFamily,
     @required ColorGroup primary,
@@ -149,6 +202,7 @@ class EqThemeData {
     Curve majorAnimationCurve: Curves.easeInOut,
     Curve minorAnimationCurve = Curves.easeInOut,
     WidgetShape defaultWidgetShape = WidgetShape.rectangle,
+    EqButtonThemeData defaultButtonTheme,
   }) {
     return EqThemeData.raw(
       primary: primary,
@@ -308,6 +362,7 @@ class EqThemeData {
       majorAnimationDuration: majorAnimationDuration,
       minorAnimationDuration: minorAnimationDuration,
       defaultWidgetShape: defaultWidgetShape,
+      defaultButtonTheme: defaultButtonTheme,
     );
   }
 
@@ -370,6 +425,7 @@ class EqThemeData {
     this.majorAnimationDuration,
     this.minorAnimationDuration,
     this.defaultWidgetShape,
+    this.defaultButtonTheme,
   });
 
   ColorGroup getColorsForStatus({WidgetStatus status}) {

@@ -4,7 +4,10 @@ import 'package:flutter/widgets.dart';
 
 import 'package:flutter/material.dart' as MaterialDesign;
 
-class EqButton extends MaterialDesign.StatefulWidget {
+export 'package:equinox/src/components/button/button_theme.dart';
+export 'package:equinox/src/components/button/button_theme_inherited.dart';
+
+class EqButton extends StatefulWidget {
   final WidgetSize size;
   final WidgetStatus status;
   final WidgetAppearance appearance;
@@ -16,15 +19,51 @@ class EqButton extends MaterialDesign.StatefulWidget {
 
   const EqButton({
     Key key,
-    this.label,
+    @required this.label,
     @required this.onTap,
-    this.size = WidgetSize.medium,
-    this.status = WidgetStatus.primary,
-    this.appearance = WidgetAppearance.filled,
-    this.shape = WidgetShape.rectangle,
+    this.size,
+    this.status,
+    this.appearance,
+    this.shape,
     this.icon,
     this.iconPosition = Positioning.left,
   }) : super(key: key);
+
+  const EqButton.filled({
+    Key key,
+    @required this.label,
+    @required this.onTap,
+    this.size,
+    this.status,
+    this.shape,
+    this.icon,
+    this.iconPosition,
+  })  : this.appearance = WidgetAppearance.filled,
+        super(key: key);
+
+  const EqButton.outline({
+    Key key,
+    @required this.label,
+    @required this.onTap,
+    this.size,
+    this.status,
+    this.shape,
+    this.icon,
+    this.iconPosition,
+  })  : this.appearance = WidgetAppearance.outline,
+        super(key: key);
+
+  const EqButton.ghost({
+    Key key,
+    @required this.label,
+    @required this.onTap,
+    this.size = WidgetSize.medium,
+    this.status,
+    this.shape = WidgetShape.rectangle,
+    this.icon,
+    this.iconPosition = Positioning.left,
+  })  : this.appearance = WidgetAppearance.ghost,
+        super(key: key);
 
   @override
   _EqButtonState createState() => _EqButtonState();
@@ -33,104 +72,90 @@ class EqButton extends MaterialDesign.StatefulWidget {
 class _EqButtonState extends State<EqButton> {
   bool outlined = false;
 
-  TextStyle _getTextStyle(EqThemeData theme) {
-    switch (this.widget.size) {
-      case WidgetSize.giant:
-        return theme.buttonGiant.textStyle;
-      case WidgetSize.large:
-        return theme.buttonLarge.textStyle;
-      case WidgetSize.medium:
-        return theme.buttonMedium.textStyle;
-      case WidgetSize.small:
-        return theme.buttonSmall.textStyle;
-      case WidgetSize.tiny:
-        return theme.buttonTiny.textStyle;
-      default:
-        return theme.buttonMedium.textStyle;
+  EqButtonThemeData getThemeData(BuildContext context) {
+    final theme = EqTheme.of(context);
+    EqButtonThemeData themeData =
+        theme.defaultButtonTheme ?? EqButtonThemeData();
+
+    final inheritedTheme = EqButtonTheme.of(context);
+    if (inheritedTheme != null) {
+      themeData = themeData.merge(inheritedTheme);
     }
+
+    return themeData.copyWith(
+      size: widget.size,
+      status: widget.status,
+      appearance: widget.appearance,
+      shape: widget.shape,
+      iconPosition: widget.iconPosition,
+    );
   }
 
-  Color _getTextColor(EqThemeData theme) {
-    if (this.widget.onTap == null) return theme.textDisabledColor;
-    if (this.widget.appearance == WidgetAppearance.filled)
-      return theme.textControlColor;
-    else
-      return theme.getColorsForStatus(status: widget.status).shade500;
-  }
-
-  Color _getFillColor(EqThemeData theme) {
-    if (this.widget.onTap == null) return theme.backgroundBasicColors.color3;
-    return (widget.appearance == WidgetAppearance.filled)
-        ? theme.getColorsForStatus(status: widget.status).shade500
-        : MaterialDesign.Colors.transparent;
-  }
-
-  Color _getOutlineColor(EqThemeData theme) {
-    if (this.widget.onTap == null) return theme.backgroundBasicColors.color4;
-    return theme.getColorsForStatus(status: widget.status).shade500;
-  }
-
-  List<Widget> _buildBody(EqThemeData theme) {
+  Widget _buildBody(BuildContext context) {
     var list = <Widget>[];
 
-    bool hasLabel = widget.label != null;
-    bool hasIcon =
+    final theme = EqTheme.of(context);
+    final themeData = getThemeData(context);
+    final disabled = widget.onTap == null;
+    final hasIcon =
         widget.icon != null && widget.iconPosition != Positioning.none;
 
-    if (hasLabel) {
-      list.add(Text(
-        widget.label.toUpperCase(),
-        textAlign: TextAlign.center,
-        style: _getTextStyle(theme).copyWith(color: _getTextColor(theme)),
-      ));
-    }
+    final iconSize = themeData.getIconSize(theme: theme, disabled: disabled);
+    final textColor = themeData.getTextColor(theme: theme, disabled: disabled);
+    final textStyle = themeData.getTextStyle(theme: theme, disabled: disabled);
+
+    Text text = Text(
+      widget.label.toUpperCase(),
+      textAlign: TextAlign.center,
+    );
 
     if (hasIcon) {
       Widget icon = Icon(
         widget.icon,
-        size: _getTextStyle(theme).fontSize + 2.0,
-        color: _getTextColor(theme),
+        size: iconSize,
+        color: textColor,
       );
       if (widget.iconPosition == Positioning.left) {
-        list.insert(0, icon);
-        if (hasLabel) {
-          list.insert(1, SizedBox(width: 8.0));
-        }
+        list = [icon, SizedBox(width: 8.0), text];
       } else {
-        if (hasLabel) {
-          list.add(SizedBox(width: 8.0));
-        }
-        list.add(icon);
+        list = [text, SizedBox(width: 8.0), icon];
       }
     }
-    return list;
+
+    return AnimatedDefaultTextStyle(
+      duration: theme.minorAnimationDuration,
+      curve: theme.minorAnimationCurve,
+      style: textStyle,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.baseline,
+        textBaseline: TextBaseline.ideographic,
+        children: list,
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    var theme = EqTheme.of(context);
-    var fillColor = _getFillColor(theme);
+    final theme = EqTheme.of(context);
+    final themeData = getThemeData(context);
+    final disabled = widget.onTap == null;
 
-    var borderRadius = theme.borderRadius *
-        WidgetShapeUtils.getMultiplier(shape: widget.shape);
-    var border = (widget.appearance == WidgetAppearance.outline)
-        ? Border.all(
-            color: _getOutlineColor(theme),
-            width: 2.0,
-          )
-        : null;
+    final fillColor = themeData.getFillColor(theme: theme, disabled: disabled);
 
-    var padding = WidgetSizeUtils.getPadding(size: widget.size);
+    final padding = themeData.getPadding(theme: theme);
+    final borderRadius = themeData.getBorderRadius(theme: theme);
+    final border = themeData.getBorder(theme: theme, disabled: disabled);
 
     return OutlinedWidget(
       outlined: outlined,
-      borderRadius: BorderRadius.circular(borderRadius),
+      borderRadius: borderRadius,
       child: AnimatedContainer(
         duration: theme.minorAnimationDuration,
         curve: theme.minorAnimationCurve,
         decoration: BoxDecoration(
           color: fillColor,
-          borderRadius: BorderRadius.circular(borderRadius),
+          borderRadius: borderRadius,
           border: border,
         ),
         child: OutlinedGestureDetector(
@@ -141,12 +166,7 @@ class _EqButtonState extends State<EqButton> {
             child: Center(
               widthFactor: 1.0,
               heightFactor: 1.0,
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.baseline,
-                textBaseline: TextBaseline.ideographic,
-                children: _buildBody(theme),
-              ),
+              child: _buildBody(context),
             ),
           ),
         ),
