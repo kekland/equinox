@@ -2,11 +2,25 @@ import 'package:equinox/equinox.dart';
 import 'package:equinox/src/equinox_internal.dart';
 import 'package:flutter/widgets.dart';
 
+export 'package:equinox/src/components/toggle/toggle_theme.dart';
+export 'package:equinox/src/components/toggle/toggle_theme_inherited.dart';
+
+/// Toggle represents a bool value. [value] cannot be null, unlike [EqCheckbox].
 class EqToggle extends StatefulWidget {
+  /// The value of toggle. Cannot be null.
   final bool value;
+
+  /// Status of the widget. Controls the color of the toggle.
   final WidgetStatus status;
+
+  /// A description to put either on left or on the right of checkbox, controlled by [descriptionPosition].
   final String description;
+
+  /// Controls the location of description.
   final Positioning descriptionPosition;
+
+  /// A method to call when user presses the toggle. Passes the inverse of [value].
+  /// If it is null, then toggle is disabled.
   final void Function(bool) onChanged;
 
   const EqToggle({
@@ -28,6 +42,22 @@ class _EqToggleState extends State<EqToggle>
   Animation<double> animation;
 
   bool outlined = false;
+
+  EqToggleThemeData getThemeData(BuildContext context) {
+    final theme = EqTheme.of(context);
+    EqToggleThemeData themeData =
+        theme.defaultCheckboxTheme ?? EqToggleThemeData();
+
+    final inheritedTheme = EqToggleTheme.of(context);
+    if (inheritedTheme != null) {
+      themeData = themeData.merge(inheritedTheme);
+    }
+
+    return themeData.copyWith(
+      status: widget.status,
+      descriptionPosition: widget.descriptionPosition,
+    );
+  }
 
   didChangeDependencies() {
     super.didChangeDependencies();
@@ -74,75 +104,32 @@ class _EqToggleState extends State<EqToggle>
       widget.onChanged(!widget.value);
   }
 
-  Color _getBorderColor(EqThemeData theme) {
-    if (widget.onChanged == null) return theme.borderBasicColors.color3;
-    return (this.widget.status != null)
-        ? theme.getColorsForStatus(status: widget.status).shade500
-        : theme.borderBasicColors.color4;
-  }
-
-  Color _getFillColor(EqThemeData theme) {
-    if (widget.onChanged == null) return theme.backgroundBasicColors.color2;
-
-    var filledColor = (this.widget.status != null)
-        ? theme.getColorsForStatus(status: widget.status).shade500
-        : theme.primary.shade500;
-    if (this.widget.value) {
-      return filledColor;
-    } else {
-      if (this.widget.status != null) {
-        return theme
-            .getColorsForStatus(status: widget.status)
-            .shade500
-            .withOpacity(0.125);
-      } else {
-        return theme.backgroundBasicColors.color3;
-      }
-    }
-  }
-
-  Color _getIconColor(EqThemeData theme) {
-    if (widget.onChanged == null) return theme.textDisabledColor;
-
-    return Colors.white;
-  }
-
   @override
   Widget build(BuildContext context) {
-    var theme = EqTheme.of(context);
-    var borderRadius = 16.0;
+    final theme = EqTheme.of(context);
+    final themeData = getThemeData(context);
+    final disabled = (widget.onChanged == null);
 
-    var borderColor = _getBorderColor(theme);
-
-    var fillColor = _getFillColor(theme);
+    final borderRadius = BorderRadius.circular(16.0);
+    final borderColor =
+        themeData.getBorderColor(theme: theme, disabled: disabled);
+    final fillColor = themeData.getFillColor(
+        theme: theme, disabled: disabled, selected: widget.value);
+    final knobColor = themeData.getKnobColor(theme: theme, disabled: disabled);
 
     var list = <Widget>[];
-    var description = widget.description != null
-        ? Text(
-            widget.description,
-            style: theme.subtitle2.textStyle
-                .copyWith(color: theme.textBasicColor, height: 1.0),
-          )
-        : null;
 
-    if (description != null && widget.descriptionPosition == Positioning.left) {
-      list.addAll([
-        description,
-        SizedBox(width: 8.0),
-      ]);
-    }
-
-    list.add(OutlinedWidget(
+    final toggle = OutlinedWidget(
       outlined: outlined,
       predefinedSize: Size(52.0, 32.0),
-      borderRadius: BorderRadius.circular(borderRadius),
+      borderRadius: borderRadius,
       child: AnimatedContainer(
         duration: theme.minorAnimationDuration,
         curve: theme.minorAnimationCurve,
         width: 52.0,
         height: 32.0,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(borderRadius),
+          borderRadius: borderRadius,
           color: fillColor,
           border: Border.all(color: borderColor, width: 1.0),
         ),
@@ -157,22 +144,40 @@ class _EqToggleState extends State<EqToggle>
                     width: 28.0,
                     height: 28.0,
                     decoration: BoxDecoration(
-                      color: _getIconColor(theme),
-                      borderRadius: BorderRadius.circular(borderRadius),
+                      color: knobColor,
+                      borderRadius: borderRadius,
                     ),
                   ),
                 ),
           ),
         ),
       ),
-    ));
+    );
 
-    if (description != null &&
-        widget.descriptionPosition == Positioning.right) {
-      list.addAll([
+    if (widget.description != null &&
+        widget.descriptionPosition == Positioning.left) {
+      list = [
+        Text(
+          widget.description,
+          style: theme.subtitle2.textStyle
+              .copyWith(color: theme.textBasicColor, height: 1.0),
+        ),
         SizedBox(width: 8.0),
-        description,
-      ]);
+        toggle,
+      ];
+    }
+
+    if (widget.description != null &&
+        widget.descriptionPosition == Positioning.right) {
+      list = [
+        toggle,
+        SizedBox(width: 8.0),
+        Text(
+          widget.description,
+          style: theme.subtitle2.textStyle
+              .copyWith(color: theme.textBasicColor, height: 1.0),
+        ),
+      ];
     }
 
     return OutlinedGestureDetector(

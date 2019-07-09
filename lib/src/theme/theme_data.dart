@@ -85,6 +85,7 @@ class EqThemeData {
   final WidgetShape defaultWidgetShape;
   final EqButtonThemeData defaultButtonTheme;
   final EqCheckboxThemeData defaultCheckboxTheme;
+  final EqToggleThemeData defaultToggleTheme;
 
   factory EqThemeData({
     @required String primaryFontFamily,
@@ -208,6 +209,7 @@ class EqThemeData {
     WidgetShape defaultWidgetShape = WidgetShape.rectangle,
     EqButtonThemeData defaultButtonTheme,
     EqCheckboxThemeData defaultCheckboxTheme,
+    EqToggleThemeData defaultToggleTheme,
   }) {
     return EqThemeData.raw(
       primary: primary,
@@ -369,6 +371,7 @@ class EqThemeData {
       defaultWidgetShape: defaultWidgetShape,
       defaultButtonTheme: defaultButtonTheme,
       defaultCheckboxTheme: defaultCheckboxTheme,
+      defaultToggleTheme: defaultToggleTheme,
     );
   }
 
@@ -433,6 +436,7 @@ class EqThemeData {
     this.defaultWidgetShape,
     this.defaultButtonTheme,
     this.defaultCheckboxTheme,
+    this.defaultToggleTheme,
   });
 
   ColorGroup getColorsForStatus({WidgetStatus status}) {
@@ -534,6 +538,7 @@ class EqThemeData {
     WidgetShape defaultWidgetShape,
     EqButtonThemeData defaultButtonTheme,
     EqCheckboxThemeData defaultCheckboxTheme,
+    EqToggleThemeData defaultToggleTheme,
   }) {
     return new EqThemeData.raw(
       primary: primary ?? this.primary,
@@ -606,6 +611,9 @@ class EqThemeData {
       defaultCheckboxTheme: (this.defaultCheckboxTheme == null)
           ? defaultCheckboxTheme
           : this.defaultCheckboxTheme.merge(defaultCheckboxTheme),
+      defaultToggleTheme: (this.defaultToggleTheme == null)
+          ? defaultToggleTheme
+          : this.defaultToggleTheme.merge(defaultToggleTheme),
     );
   }
 
