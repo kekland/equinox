@@ -79,6 +79,8 @@ class EqThemeData {
   final Duration majorAnimationDuration;
   final Curve majorAnimationCurve;
 
+  final WidgetShape defaultWidgetShape;
+
   factory EqThemeData({
     @required String primaryFontFamily,
     @required String secondaryFontFamily,
@@ -143,6 +145,7 @@ class EqThemeData {
     Duration minorAnimationDuration = const Duration(milliseconds: 150),
     Curve majorAnimationCurve: Curves.easeInOut,
     Curve minorAnimationCurve = Curves.easeInOut,
+    WidgetShape defaultWidgetShape = WidgetShape.rectangle,
   }) {
     return EqThemeData.raw(
       primary: primary,
@@ -301,6 +304,7 @@ class EqThemeData {
       minorAnimationCurve: minorAnimationCurve,
       majorAnimationDuration: majorAnimationDuration,
       minorAnimationDuration: minorAnimationDuration,
+      defaultWidgetShape: defaultWidgetShape,
     );
   }
 
@@ -362,6 +366,7 @@ class EqThemeData {
     this.minorAnimationCurve,
     this.majorAnimationDuration,
     this.minorAnimationDuration,
+    this.defaultWidgetShape,
   });
 
   ColorGroup getColorsForStatus({WidgetStatus status}) {
@@ -525,6 +530,16 @@ class EqThemeData {
       minorAnimationDuration:
           minorAnimationDuration ?? this.minorAnimationDuration,
       heavyShadow: heavyShadow ?? this.heavyShadow,
+    );
+  }
+
+  static Future<EqThemeData> loadFromAsset({@required String assetName, bool light = true}) async {
+    
+  }
+
+  static EqThemeData loadFromJson({@required Map data, bool light = true}) {
+    return EqThemeData(
+      
     );
   }
 }

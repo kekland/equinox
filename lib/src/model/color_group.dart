@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class BackgroundColors {
@@ -88,4 +89,38 @@ class ColorGroup {
           shade1100,
           shade1200,
         ];
+
+  factory ColorGroup.fromJson(List<String> data) {
+    return ColorGroup(
+      shade100: Color(int.parse("0xFF${data[0].substring(1)}")),
+      shade200: Color(int.parse("0xFF${data[1].substring(1)}")),
+      shade300: Color(int.parse("0xFF${data[2].substring(1)}")),
+      shade400: Color(int.parse("0xFF${data[3].substring(1)}")),
+      shade500: Color(int.parse("0xFF${data[4].substring(1)}")),
+      shade600: Color(int.parse("0xFF${data[5].substring(1)}")),
+      shade700: Color(int.parse("0xFF${data[6].substring(1)}")),
+      shade800: Color(int.parse("0xFF${data[7].substring(1)}")),
+      shade900: Color(int.parse("0xFF${data[8].substring(1)}")),
+      shade1000: Color(int.parse("0xFF${data[8].substring(1)}")),
+      shade1100: Color(int.parse("0xFF${data[8].substring(1)}")),
+      shade1200: Color(int.parse("0xFF${data[8].substring(1)}")),
+    );
+  }
+
+  factory ColorGroup.fromMaterialColor(MaterialColor color) {
+    return ColorGroup(
+      shade100: color.shade100,
+      shade200: color.shade200,
+      shade300: color.shade300,
+      shade400: color.shade400,
+      shade500: color.shade500,
+      shade600: color.shade600,
+      shade700: color.shade700,
+      shade800: color.shade800,
+      shade900: color.shade900,
+      shade1000: color.shade900,
+      shade1100: color.shade900,
+      shade1200: color.shade900,
+    );
+  }
 }
