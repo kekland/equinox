@@ -12,7 +12,7 @@ class EqAppBar extends StatelessWidget {
   /// Whether the title should be centered.
   final bool centerTitle;
 
-  /// Recognizes if this page can be popped (using [Navigator.canPop()]) and adds back button 
+  /// Recognizes if this page can be popped (using [Navigator.canPop()]) and adds back button
   /// if it can be. Overwritten by [leading].
   final bool inferLeading;
 
@@ -21,7 +21,7 @@ class EqAppBar extends StatelessWidget {
 
   /// Set of actions. Usually a list of [EqIconButton].
   final List<Widget> actions;
-  
+
   /// Widget to display on the bottom. Must be 56 pixels tall. Usually it is [EqTabs].
   final Widget bottom;
 

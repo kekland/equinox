@@ -1,8 +1,8 @@
 import 'package:equinox/equinox.dart';
 import 'package:flutter/material.dart';
 
-/// Use this to push toasts using [EqToastService.of()]. 
-/// 
+/// Use this to push toasts using [EqToastService.of()].
+///
 /// ```dart
 /// EqToastService.of(context).pushToast(toast: EqToast(...));
 /// ```

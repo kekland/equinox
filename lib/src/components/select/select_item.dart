@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class EqSelectItem<T> {
   /// Icon to display alongisde the title and subtitle.
   final IconData icon;
-  
+
   /// Main information.
   final String title;
 

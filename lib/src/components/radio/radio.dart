@@ -12,7 +12,7 @@ class EqRadio extends StatefulWidget {
 
   /// The value of radio. Cannot be null.
   final bool value;
-  
+
   /// A description to put either on left or on the right of checkbox, controlled by [descriptionPosition].
   final String description;
 
@@ -39,8 +39,7 @@ class _EqRadioState extends State<EqRadio> {
 
   EqRadioThemeData getThemeData(BuildContext context) {
     final theme = EqTheme.of(context);
-    EqRadioThemeData themeData =
-        theme.defaultRadioTheme ?? EqRadioThemeData();
+    EqRadioThemeData themeData = theme.defaultRadioTheme ?? EqRadioThemeData();
 
     return themeData.copyWith(
       status: widget.status,
@@ -57,10 +56,14 @@ class _EqRadioState extends State<EqRadio> {
     final selected = widget.value;
     final borderRadius = BorderRadius.circular(12.0);
 
-    final descriptionTextStyle = themeData.getDescriptionTextStyle(theme: theme);
-    final backgroundColor = themeData.getFillColor(theme: theme, disabled: disabled, selected: selected);
-    final borderColor = themeData.getBorderColor(theme: theme, disabled: disabled, selected: selected);
-    final circleColor = themeData.getKnobColor(theme: theme, disabled: disabled, selected: selected);
+    final descriptionTextStyle =
+        themeData.getDescriptionTextStyle(theme: theme);
+    final backgroundColor = themeData.getFillColor(
+        theme: theme, disabled: disabled, selected: selected);
+    final borderColor = themeData.getBorderColor(
+        theme: theme, disabled: disabled, selected: selected);
+    final circleColor = themeData.getKnobColor(
+        theme: theme, disabled: disabled, selected: selected);
 
     var list = <Widget>[];
 
@@ -96,25 +99,27 @@ class _EqRadioState extends State<EqRadio> {
       ),
     );
 
-    if (widget.description != null && themeData.descriptionPosition == Positioning.left) {
+    if (widget.description != null &&
+        themeData.descriptionPosition == Positioning.left) {
       list = [
         Text(
-            widget.description,
-            style: descriptionTextStyle,
-          ),
+          widget.description,
+          style: descriptionTextStyle,
+        ),
         SizedBox(width: 8.0),
         radio,
       ];
     }
 
-    if (widget.description != null && themeData.descriptionPosition == Positioning.right) {
+    if (widget.description != null &&
+        themeData.descriptionPosition == Positioning.right) {
       list = [
         radio,
         SizedBox(width: 8.0),
         Text(
-            widget.description,
-            style: descriptionTextStyle,
-          ),
+          widget.description,
+          style: descriptionTextStyle,
+        ),
       ];
     }
 

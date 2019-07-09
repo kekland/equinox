@@ -51,8 +51,7 @@ class EqCheckboxThemeData {
 
   Color getFillColor(
       {EqThemeData theme, bool selected = false, bool disabled = false}) {
-    if (disabled)
-      return theme.backgroundBasicColors.color2;
+    if (disabled) return theme.backgroundBasicColors.color2;
 
     var filledColor = (this.status != null)
         ? theme.getColorsForStatus(status: this.status).shade500

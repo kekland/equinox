@@ -10,7 +10,7 @@ export 'package:equinox/src/components/select/select_overlay.dart';
 export 'package:equinox/src/components/select/select_item.dart';
 
 /// This widget is used to select an item in a list of items of type [T].
-/// 
+///
 /// [items] must not be null.
 class EqSelect<T> extends StatefulWidget {
   /// List of items to select from. Refer to [EqSelectItem].
@@ -24,7 +24,7 @@ class EqSelect<T> extends StatefulWidget {
 
   /// Hint is displayed inside the widget.
   final String hint;
-  
+
   /// Description is displayed below the widget. Optional.
   final String description;
 
@@ -33,7 +33,7 @@ class EqSelect<T> extends StatefulWidget {
 
   /// WidgetShape controls the borderRadius.
   final WidgetShape shape;
-  
+
   /// WidgetStatus controls the color.
   final WidgetStatus status;
 

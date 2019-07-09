@@ -7,7 +7,7 @@ import 'package:flutter/material.dart' as MaterialDesign;
 class EqLayout extends StatefulWidget {
   /// A theme to use in this page. Overwrites the [EquinoxApp.theme].
   final EqThemeData theme;
-  
+
   /// Page's body. Will be placed below [appBar].
   final Widget child;
 

@@ -43,8 +43,7 @@ class EqToggleThemeData {
 
   Color getFillColor(
       {EqThemeData theme, bool selected = false, bool disabled = false}) {
-    if (disabled)
-      return theme.backgroundBasicColors.color2;
+    if (disabled) return theme.backgroundBasicColors.color2;
 
     var filledColor = (this.status != null)
         ? theme.getColorsForStatus(status: status).shade500
@@ -65,8 +64,7 @@ class EqToggleThemeData {
   }
 
   Color getBorderColor({EqThemeData theme, bool disabled = false}) {
-    if (disabled)
-      return theme.borderBasicColors.color3;
+    if (disabled) return theme.borderBasicColors.color3;
 
     return (this.status != null)
         ? theme.getColorsForStatus(status: this.status).shade500

@@ -27,7 +27,7 @@ class _EqSpinnerState extends State<EqSpinner>
     with SingleTickerProviderStateMixin {
   AnimationController animationController;
   Animation<double> animation;
-  
+
   EqSpinnerThemeData getThemeData(BuildContext context) {
     final theme = EqTheme.of(context);
     EqSpinnerThemeData themeData =
@@ -38,6 +38,7 @@ class _EqSpinnerState extends State<EqSpinner>
       size: widget.size,
     );
   }
+
   initState() {
     super.initState();
     animationController =

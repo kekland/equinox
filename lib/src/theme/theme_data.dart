@@ -673,7 +673,7 @@ class EqThemeData {
       defaultSelectTheme: (this.defaultSelectTheme == null)
           ? defaultSelectTheme
           : this.defaultSelectTheme.merge(defaultSelectTheme),
-      defaultSpinnerTheme : (this.defaultSpinnerTheme == null)
+      defaultSpinnerTheme: (this.defaultSpinnerTheme == null)
           ? defaultSpinnerTheme
           : this.defaultSpinnerTheme.merge(defaultSpinnerTheme),
     );

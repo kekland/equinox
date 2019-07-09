@@ -31,7 +31,7 @@ class EqProgressBarThemeData {
       shape: shape ?? this.shape,
     );
   }
-  
+
   /// Merges two [EqTextFieldThemeData]'s, giving the prevalence to the second one.
   EqProgressBarThemeData merge(EqProgressBarThemeData other) {
     if (other == null) return this;
@@ -75,7 +75,7 @@ class EqProgressBarThemeData {
         return theme.subtitle1.textStyle.copyWith(height: 1.0);
     }
   }
-  
+
   Color getBackgroundColor({EqThemeData theme}) {
     return theme.backgroundBasicColors.color3;
   }

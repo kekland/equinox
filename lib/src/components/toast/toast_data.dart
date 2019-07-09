@@ -5,7 +5,7 @@ import 'package:flutter/widgets.dart';
 class EqToast {
   /// Message gets displayed as the largest element in the tab.
   final String message;
-  
+
   /// Subtitle provides some additional information besides [message]. Optional.
   final String subtitle;
 
@@ -14,13 +14,13 @@ class EqToast {
 
   /// Status of this toast
   final WidgetStatus status;
-  
+
   /// The shape of this toast. Uses [EqThemeData.defaultWidgetShape] as default.
   final WidgetShape shape;
 
   /// Duration of this toast. After [duration] elapses, tab will hide automatically.
   final Duration duration;
-  
+
   /// Gets called when user taps the toast. Optional.
   final VoidCallback onTap;
 

@@ -13,11 +13,11 @@ class EqCard extends StatelessWidget {
   /// A widget to use as card's header. Gets padded by [headerPadding] or [padding].
   /// Set [headerPadding] to `EdgeInsets.zero` if you want no padding.
   final Widget header;
-  
+
   /// A widget to use as card's header. Gets padded by [footerPadding] or [padding].
   /// Set [footerPadding] to `EdgeInsets.zero` if you want no padding.
   final Widget footer;
-  
+
   /// A card's status. It will be dispalyed according to [statusAppearance].
   /// - If [statusAppearance] is [CardStatusAppearance.body], entire card will be painted in
   /// the status's color.
@@ -39,7 +39,7 @@ class EqCard extends StatelessWidget {
 
   /// Controls the padding for the header. Gets set by [padding] if it's `null`. See [header].
   final EdgeInsets headerPadding;
-  
+
   /// Controls the padding for the footer. Gets set by [padding] if it's `null`. See [footer].
   final EdgeInsets footerPadding;
 
@@ -114,8 +114,9 @@ class EqCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = EqTheme.of(context);
-    var borderRadius =
-        WidgetShapeUtils.getMultiplier(shape: shape ?? theme.defaultWidgetShape) * theme.borderRadius;
+    var borderRadius = WidgetShapeUtils.getMultiplier(
+            shape: shape ?? theme.defaultWidgetShape) *
+        theme.borderRadius;
 
     var backgroundColor = (this.statusAppearance != CardStatusAppearance.body)
         ? theme.backgroundBasicColors.color1

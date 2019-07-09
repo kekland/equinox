@@ -2,8 +2,6 @@ import 'package:equinox/equinox.dart';
 import 'package:equinox/src/equinox_internal.dart';
 import 'package:flutter/widgets.dart';
 
-import 'package:flutter/material.dart' as MaterialDesign;
-
 export 'package:equinox/src/components/button/button_theme.dart';
 
 /// A widget that displays a Eva Design styled button. Can be deeply customized using
@@ -19,13 +17,13 @@ class EqButton extends StatefulWidget {
 
   /// Controls the appearance of the button. It can be either filled, outlined, or ghost. Will overwrite the value set by [EqButtonThemeData].
   final WidgetAppearance appearance;
-  
+
   /// Controls the BorderRadius of the button. Will overwrite the value set by [EqButtonThemeData].
   final WidgetShape shape;
 
   /// Method that is called when user presses the button. Button will become disabled if `null` is passed;
   final VoidCallback onTap;
-  
+
   /// Text to display inside of the button. Can be styled using [EqButtonThemeData].
   final String label;
 
@@ -137,8 +135,7 @@ class _EqButtonState extends State<EqButton> {
       } else {
         list = [text, SizedBox(width: 8.0), icon];
       }
-    }
-    else {
+    } else {
       list = [text];
     }
 

@@ -3,8 +3,6 @@ export 'package:equinox/src/components/icon_button/icon_button_theme.dart';
 import 'package:equinox/src/equinox_internal.dart';
 import 'package:flutter/widgets.dart';
 
-import 'package:flutter/material.dart' as MaterialDesign;
-
 /// This widget is used to display a button without a label.
 /// Customize this using [EqIconButtonThemeData].
 class EqIconButton extends StatefulWidget {
@@ -14,7 +12,7 @@ class EqIconButton extends StatefulWidget {
   /// Controls the colors.
   final WidgetStatus status;
 
-  /// If provided, overwrites the color set by [status] in [WidgetAppearance.ghost] and 
+  /// If provided, overwrites the color set by [status] in [WidgetAppearance.ghost] and
   /// [WidgetAppearance.outline] appearances.
   final Color color;
 
@@ -79,8 +77,7 @@ class _EqIconButtonState extends State<EqIconButton> {
       outlined: outlined,
       borderRadius: borderRadius,
       clipInner: widget.appearance != WidgetAppearance.ghost,
-      predefinedSize:
-          Size.square(padding.horizontal + size),
+      predefinedSize: Size.square(padding.horizontal + size),
       child: AnimatedContainer(
         duration: theme.minorAnimationDuration,
         curve: theme.minorAnimationCurve,

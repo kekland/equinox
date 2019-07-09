@@ -25,10 +25,10 @@ class EqSpinnerThemeData {
       size: size ?? this.size,
     );
   }
-  
+
   /// Merges two [EqSpinnerThemeData]'s.
   EqSpinnerThemeData merge(EqSpinnerThemeData other) {
-    if(other == null) return this;
+    if (other == null) return this;
     return EqSpinnerThemeData(
       status: other.status ?? this.status,
       size: other.size ?? this.size,
@@ -38,6 +38,7 @@ class EqSpinnerThemeData {
   Color getColor({EqThemeData theme}) {
     return theme.getColorsForStatus(status: status).shade500;
   }
+
   double getSize() {
     switch (size) {
       case WidgetSize.giant:
@@ -54,7 +55,7 @@ class EqSpinnerThemeData {
         return 24.0;
     }
   }
-  
+
   double getStrokeWidth() {
     switch (size) {
       case WidgetSize.giant:

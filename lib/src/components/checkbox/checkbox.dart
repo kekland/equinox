@@ -18,11 +18,11 @@ class EqCheckbox extends StatefulWidget {
 
   /// Status of the widget. Controls the color of the checkbox.
   final WidgetStatus status;
-  
+
   /// Status of the widget. Controls the color of the checkbox. Gets overwritten
   /// if [EqCheckboxThemeData.borderRadius] is present.
   final WidgetShape shape;
-  
+
   /// Controls the location of description.
   final Positioning descriptionPosition;
 

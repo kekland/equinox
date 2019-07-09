@@ -9,11 +9,11 @@ class EqDialog extends StatelessWidget {
   /// A widget to use as dialog's header. Gets padded by [headerPadding] or [padding].
   /// Set [headerPadding] to `EdgeInsets.zero` if you want no padding.
   final Widget header;
-  
+
   /// A widget to use as dialog's header. Gets padded by [footerPadding] or [padding].
   /// Set [footerPadding] to `EdgeInsets.zero` if you want no padding.
   final Widget footer;
-  
+
   /// A dialog's status. It will be dispalyed according to [statusAppearance].
   /// - If [statusAppearance] is [CardStatusAppearance.body], entire dialog will be painted in
   /// the status's color.
@@ -35,7 +35,7 @@ class EqDialog extends StatelessWidget {
 
   /// Controls the padding for the header. Gets set by [padding] if it's `null`. See [header].
   final EdgeInsets headerPadding;
-  
+
   /// Controls the padding for the footer. Gets set by [padding] if it's `null`. See [footer].
   final EdgeInsets footerPadding;
 

@@ -13,10 +13,10 @@ class EqProgressBar extends StatefulWidget {
 
   /// Size controls the size of the progress.
   final WidgetSize size;
-  
+
   /// Size controls the borderRadius of the progress.
   final WidgetShape shape;
-  
+
   /// Text is displayed inside of the progress. Not visible at all times. Optional.
   final String text;
 
