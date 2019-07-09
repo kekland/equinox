@@ -2,13 +2,27 @@ import 'package:equinox/equinox.dart';
 import 'package:equinox/src/equinox_internal.dart';
 import 'package:flutter/widgets.dart';
 
+/// EqListItem is used to display a line of information, typically in a list.
 class EqListItem extends StatefulWidget {
+  /// Icon to display before the content.
   final IconData icon;
+
+  /// The main information of this item.
   final String title;
+
+  /// Additional information.
   final String subtitle;
+
+  /// Active means that this list item is highlighted (selected).
   final bool active;
+
+  /// Controls the colors.
   final WidgetStatus status;
+
+  /// This method is called when user presses the item.
   final VoidCallback onTap;
+
+  /// Use this if you want to override the theme.
   final EqThemeData themeOverride;
 
   const EqListItem({

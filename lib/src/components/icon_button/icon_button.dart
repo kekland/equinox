@@ -1,16 +1,33 @@
 import 'package:equinox/equinox.dart';
+export 'package:equinox/src/components/icon_button/icon_button_theme.dart';
 import 'package:equinox/src/equinox_internal.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:flutter/material.dart' as MaterialDesign;
 
+/// This widget is used to display a button without a label.
+/// Customize this using [EqIconButtonThemeData].
 class EqIconButton extends StatefulWidget {
+  /// Controls the size of the button
   final WidgetSize size;
+
+  /// Controls the colors.
   final WidgetStatus status;
+
+  /// If provided, overwrites the color set by [status] in [WidgetAppearance.ghost] and 
+  /// [WidgetAppearance.outline] appearances.
   final Color color;
+
+  /// Controls the appearance of the widget.
   final WidgetAppearance appearance;
+
+  /// Controls the border radius.
   final WidgetShape shape;
+
+  /// Method is called when user taps on the button. Can be null to disable this button.
   final VoidCallback onTap;
+
+  /// Icon to display.
   final IconData icon;
 
   const EqIconButton({
@@ -30,73 +47,46 @@ class EqIconButton extends StatefulWidget {
 
 class _EqIconButtonState extends State<EqIconButton> {
   bool outlined = false;
-  TextStyle _getTextStyle(EqThemeData theme) {
-    switch (this.widget.size) {
-      case WidgetSize.giant:
-        return theme.buttonGiant.textStyle;
-      case WidgetSize.large:
-        return theme.buttonLarge.textStyle;
-      case WidgetSize.medium:
-        return theme.buttonMedium.textStyle;
-      case WidgetSize.small:
-        return theme.buttonSmall.textStyle;
-      case WidgetSize.tiny:
-        return theme.buttonTiny.textStyle;
-      default:
-        return theme.buttonMedium.textStyle;
-    }
-  }
 
-  Color _getTextColor(EqThemeData theme) {
-    if (this.widget.onTap == null) return theme.textDisabledColor;
-    if (this.widget.appearance == WidgetAppearance.filled)
-      return widget.color ?? theme.textControlColor;
-    else
-      return widget.color ??
-          theme.getColorsForStatus(status: widget.status).shade500;
-  }
+  EqIconButtonThemeData getThemeData(BuildContext context) {
+    final theme = EqTheme.of(context);
+    EqIconButtonThemeData themeData =
+        theme.defaultIconButtonTheme ?? EqIconButtonThemeData();
 
-  Color _getFillColor(EqThemeData theme) {
-    if (this.widget.onTap == null) return theme.backgroundBasicColors.color3;
-    return (widget.appearance == WidgetAppearance.filled)
-        ? theme.getColorsForStatus(status: widget.status).shade500
-        : MaterialDesign.Colors.transparent;
-  }
-
-  Color _getOutlineColor(EqThemeData theme) {
-    if (this.widget.onTap == null) return theme.backgroundBasicColors.color4;
-    return theme.getColorsForStatus(status: widget.status).shade500;
+    return themeData.copyWith(
+      appearance: widget.appearance,
+      color: widget.color,
+      status: widget.status,
+      shape: widget.shape,
+      size: widget.size,
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    var theme = EqTheme.of(context);
-    var fillColor = _getFillColor(theme);
+    final theme = EqTheme.of(context);
+    final themeData = getThemeData(context);
+    final disabled = widget.onTap == null;
 
-    var borderRadius = theme.borderRadius *
-        WidgetShapeUtils.getMultiplier(shape: widget.shape);
-    var border = (widget.appearance == WidgetAppearance.outline)
-        ? Border.all(
-            color: _getOutlineColor(theme),
-            width: 2.0,
-          )
-        : null;
-
-    var padding = WidgetSizeUtils.getPadding(size: widget.size);
-    padding = EdgeInsets.all(padding.vertical / 2.0);
+    final border = themeData.getBorder(theme: theme, disabled: disabled);
+    final padding = themeData.getPadding(theme: theme);
+    final borderRadius = themeData.getBorderRadius(theme: theme);
+    final fillColor = themeData.getFillColor(theme: theme, disabled: disabled);
+    final size = themeData.getIconSize(theme: theme);
+    final iconColor = themeData.getIconColor(theme: theme, disabled: disabled);
 
     return OutlinedWidget(
       outlined: outlined,
-      borderRadius: BorderRadius.circular(borderRadius),
+      borderRadius: borderRadius,
       clipInner: widget.appearance != WidgetAppearance.ghost,
       predefinedSize:
-          Size.square(padding.horizontal + _getTextStyle(theme).fontSize + 2.0),
+          Size.square(padding.horizontal + size),
       child: AnimatedContainer(
         duration: theme.minorAnimationDuration,
         curve: theme.minorAnimationCurve,
         decoration: BoxDecoration(
           color: fillColor,
-          borderRadius: BorderRadius.circular(borderRadius),
+          borderRadius: borderRadius,
           border: border,
         ),
         child: OutlinedGestureDetector(
@@ -106,8 +96,8 @@ class _EqIconButtonState extends State<EqIconButton> {
             padding: padding,
             child: Icon(
               widget.icon,
-              color: _getTextColor(theme),
-              size: _getTextStyle(theme).fontSize + 2.0,
+              color: iconColor,
+              size: size,
             ),
           ),
         ),
