@@ -2,8 +2,9 @@ import 'package:equinox/equinox.dart';
 import 'package:flutter/widgets.dart';
 export 'package:equinox/src/components/text/text_params.dart';
 
+/// This widget provides quick and easy access to Equinox's text styles. See the constructors for more info.
 class EqText extends StatelessWidget {
-  final TextTheme eqStyle;
+  final TextTheme Function(EqThemeData) eqStyle;
   final TextState state;
 
   /// The text to display.
@@ -95,6 +96,7 @@ class EqText extends StatelessWidget {
 
   const EqText(
     this.data, {
+    Key key,
     this.state,
     this.style,
     @required this.eqStyle,
@@ -107,246 +109,430 @@ class EqText extends StatelessWidget {
     this.maxLines,
     this.semanticsLabel,
     this.overflow,
-  });
+  }) : super(key: key);
 
-  EqText.heading1(
-    this.data, {
-    this.state,
+  factory EqText.heading1(
+    String data, {
+    TextState state,
     Key key,
-    @required BuildContext context,
-    this.style,
-    this.strutStyle,
-    this.textAlign,
-    this.textDirection,
-    this.locale,
-    this.softWrap,
-    this.textScaleFactor,
-    this.maxLines,
-    this.semanticsLabel,
-    this.overflow,
-  })  : this.eqStyle = EqTheme.of(context).heading1,
-        super(key: key);
+    TextStyle style,
+    StrutStyle strutStyle,
+    TextAlign textAlign,
+    TextDirection textDirection,
+    Locale locale,
+    bool softWrap,
+    double textScaleFactor,
+    int maxLines,
+    String semanticsLabel,
+    TextOverflow overflow,
+  }) {
+    return EqText(
+      data,
+      state: state,
+      style: style,
+      strutStyle: strutStyle,
+      textAlign: textAlign,
+      textDirection: textDirection,
+      locale: locale,
+      softWrap: softWrap,
+      textScaleFactor: textScaleFactor,
+      maxLines: maxLines,
+      semanticsLabel: semanticsLabel,
+      overflow: overflow,
+      key: key,
+      eqStyle: (theme) => theme.heading1,
+    );
+  }
 
-  EqText.heading2(
-    this.data, {
-    this.state,
+  factory EqText.heading2(
+    String data, {
+    TextState state,
     Key key,
-    @required BuildContext context,
-    this.style,
-    this.strutStyle,
-    this.textAlign,
-    this.textDirection,
-    this.locale,
-    this.softWrap,
-    this.textScaleFactor,
-    this.maxLines,
-    this.semanticsLabel,
-    this.overflow,
-  })  : this.eqStyle = EqTheme.of(context).heading2,
-        super(key: key);
-
-  EqText.heading3(
-    this.data, {
-    this.state,
+    TextStyle style,
+    StrutStyle strutStyle,
+    TextAlign textAlign,
+    TextDirection textDirection,
+    Locale locale,
+    bool softWrap,
+    double textScaleFactor,
+    int maxLines,
+    String semanticsLabel,
+    TextOverflow overflow,
+  }) {
+    return EqText(
+      data,
+      state: state,
+      style: style,
+      strutStyle: strutStyle,
+      textAlign: textAlign,
+      textDirection: textDirection,
+      locale: locale,
+      softWrap: softWrap,
+      textScaleFactor: textScaleFactor,
+      maxLines: maxLines,
+      semanticsLabel: semanticsLabel,
+      overflow: overflow,
+      key: key,
+      eqStyle: (theme) => theme.heading2,
+    );
+  }
+  factory EqText.heading3(
+    String data, {
+    TextState state,
     Key key,
-    @required BuildContext context,
-    this.style,
-    this.strutStyle,
-    this.textAlign,
-    this.textDirection,
-    this.locale,
-    this.softWrap,
-    this.textScaleFactor,
-    this.maxLines,
-    this.semanticsLabel,
-    this.overflow,
-  })  : this.eqStyle = EqTheme.of(context).heading3,
-        super(key: key);
-
-  EqText.heading4(
-    this.data, {
-    this.state,
+    TextStyle style,
+    StrutStyle strutStyle,
+    TextAlign textAlign,
+    TextDirection textDirection,
+    Locale locale,
+    bool softWrap,
+    double textScaleFactor,
+    int maxLines,
+    String semanticsLabel,
+    TextOverflow overflow,
+  }) {
+    return EqText(
+      data,
+      state: state,
+      style: style,
+      strutStyle: strutStyle,
+      textAlign: textAlign,
+      textDirection: textDirection,
+      locale: locale,
+      softWrap: softWrap,
+      textScaleFactor: textScaleFactor,
+      maxLines: maxLines,
+      semanticsLabel: semanticsLabel,
+      overflow: overflow,
+      key: key,
+      eqStyle: (theme) => theme.heading3,
+    );
+  }
+  factory EqText.heading4(
+    String data, {
+    TextState state,
     Key key,
-    @required BuildContext context,
-    this.style,
-    this.strutStyle,
-    this.textAlign,
-    this.textDirection,
-    this.locale,
-    this.softWrap,
-    this.textScaleFactor,
-    this.maxLines,
-    this.semanticsLabel,
-    this.overflow,
-  })  : this.eqStyle = EqTheme.of(context).heading4,
-        super(key: key);
-
-  EqText.heading5(
-    this.data, {
-    this.state,
+    TextStyle style,
+    StrutStyle strutStyle,
+    TextAlign textAlign,
+    TextDirection textDirection,
+    Locale locale,
+    bool softWrap,
+    double textScaleFactor,
+    int maxLines,
+    String semanticsLabel,
+    TextOverflow overflow,
+  }) {
+    return EqText(
+      data,
+      state: state,
+      style: style,
+      strutStyle: strutStyle,
+      textAlign: textAlign,
+      textDirection: textDirection,
+      locale: locale,
+      softWrap: softWrap,
+      textScaleFactor: textScaleFactor,
+      maxLines: maxLines,
+      semanticsLabel: semanticsLabel,
+      overflow: overflow,
+      key: key,
+      eqStyle: (theme) => theme.heading4,
+    );
+  }
+  factory EqText.heading5(
+    String data, {
+    TextState state,
     Key key,
-    @required BuildContext context,
-    this.style,
-    this.strutStyle,
-    this.textAlign,
-    this.textDirection,
-    this.locale,
-    this.softWrap,
-    this.textScaleFactor,
-    this.maxLines,
-    this.semanticsLabel,
-    this.overflow,
-  })  : this.eqStyle = EqTheme.of(context).heading5,
-        super(key: key);
-
-  EqText.heading6(
-    this.data, {
-    this.state,
+    TextStyle style,
+    StrutStyle strutStyle,
+    TextAlign textAlign,
+    TextDirection textDirection,
+    Locale locale,
+    bool softWrap,
+    double textScaleFactor,
+    int maxLines,
+    String semanticsLabel,
+    TextOverflow overflow,
+  }) {
+    return EqText(
+      data,
+      state: state,
+      style: style,
+      strutStyle: strutStyle,
+      textAlign: textAlign,
+      textDirection: textDirection,
+      locale: locale,
+      softWrap: softWrap,
+      textScaleFactor: textScaleFactor,
+      maxLines: maxLines,
+      semanticsLabel: semanticsLabel,
+      overflow: overflow,
+      key: key,
+      eqStyle: (theme) => theme.heading5,
+    );
+  }
+  factory EqText.heading6(
+    String data, {
+    TextState state,
     Key key,
-    @required BuildContext context,
-    this.style,
-    this.strutStyle,
-    this.textAlign,
-    this.textDirection,
-    this.locale,
-    this.softWrap,
-    this.textScaleFactor,
-    this.maxLines,
-    this.semanticsLabel,
-    this.overflow,
-  })  : this.eqStyle = EqTheme.of(context).heading6,
-        super(key: key);
-
-  EqText.subtitle1(
-    this.data, {
-    this.state,
+    TextStyle style,
+    StrutStyle strutStyle,
+    TextAlign textAlign,
+    TextDirection textDirection,
+    Locale locale,
+    bool softWrap,
+    double textScaleFactor,
+    int maxLines,
+    String semanticsLabel,
+    TextOverflow overflow,
+  }) {
+    return EqText(
+      data,
+      state: state,
+      style: style,
+      strutStyle: strutStyle,
+      textAlign: textAlign,
+      textDirection: textDirection,
+      locale: locale,
+      softWrap: softWrap,
+      textScaleFactor: textScaleFactor,
+      maxLines: maxLines,
+      semanticsLabel: semanticsLabel,
+      overflow: overflow,
+      key: key,
+      eqStyle: (theme) => theme.heading6,
+    );
+  }
+  factory EqText.paragraph1(
+    String data, {
+    TextState state,
     Key key,
-    @required BuildContext context,
-    this.style,
-    this.strutStyle,
-    this.textAlign,
-    this.textDirection,
-    this.locale,
-    this.softWrap,
-    this.textScaleFactor,
-    this.maxLines,
-    this.semanticsLabel,
-    this.overflow,
-  })  : this.eqStyle = EqTheme.of(context).subtitle1,
-        super(key: key);
-
-  EqText.subtitle2(
-    this.data, {
-    this.state,
+    TextStyle style,
+    StrutStyle strutStyle,
+    TextAlign textAlign,
+    TextDirection textDirection,
+    Locale locale,
+    bool softWrap,
+    double textScaleFactor,
+    int maxLines,
+    String semanticsLabel,
+    TextOverflow overflow,
+  }) {
+    return EqText(
+      data,
+      state: state,
+      style: style,
+      strutStyle: strutStyle,
+      textAlign: textAlign,
+      textDirection: textDirection,
+      locale: locale,
+      softWrap: softWrap,
+      textScaleFactor: textScaleFactor,
+      maxLines: maxLines,
+      semanticsLabel: semanticsLabel,
+      overflow: overflow,
+      key: key,
+      eqStyle: (theme) => theme.paragraph1,
+    );
+  }
+  factory EqText.paragraph2(
+    String data, {
+    TextState state,
     Key key,
-    @required BuildContext context,
-    this.style,
-    this.strutStyle,
-    this.textAlign,
-    this.textDirection,
-    this.locale,
-    this.softWrap,
-    this.textScaleFactor,
-    this.maxLines,
-    this.semanticsLabel,
-    this.overflow,
-  })  : this.eqStyle = EqTheme.of(context).subtitle2,
-        super(key: key);
-
-  EqText.paragraph1(
-    this.data, {
-    this.state,
+    TextStyle style,
+    StrutStyle strutStyle,
+    TextAlign textAlign,
+    TextDirection textDirection,
+    Locale locale,
+    bool softWrap,
+    double textScaleFactor,
+    int maxLines,
+    String semanticsLabel,
+    TextOverflow overflow,
+  }) {
+    return EqText(
+      data,
+      state: state,
+      style: style,
+      strutStyle: strutStyle,
+      textAlign: textAlign,
+      textDirection: textDirection,
+      locale: locale,
+      softWrap: softWrap,
+      textScaleFactor: textScaleFactor,
+      maxLines: maxLines,
+      semanticsLabel: semanticsLabel,
+      overflow: overflow,
+      key: key,
+      eqStyle: (theme) => theme.paragraph2,
+    );
+  }
+  factory EqText.subtitle1(
+    String data, {
+    TextState state,
     Key key,
-    @required BuildContext context,
-    this.style,
-    this.strutStyle,
-    this.textAlign,
-    this.textDirection,
-    this.locale,
-    this.softWrap,
-    this.textScaleFactor,
-    this.maxLines,
-    this.semanticsLabel,
-    this.overflow,
-  })  : this.eqStyle = EqTheme.of(context).paragraph1,
-        super(key: key);
-
-  EqText.paragraph2(
-    this.data, {
-    this.state,
+    TextStyle style,
+    StrutStyle strutStyle,
+    TextAlign textAlign,
+    TextDirection textDirection,
+    Locale locale,
+    bool softWrap,
+    double textScaleFactor,
+    int maxLines,
+    String semanticsLabel,
+    TextOverflow overflow,
+  }) {
+    return EqText(
+      data,
+      state: state,
+      style: style,
+      strutStyle: strutStyle,
+      textAlign: textAlign,
+      textDirection: textDirection,
+      locale: locale,
+      softWrap: softWrap,
+      textScaleFactor: textScaleFactor,
+      maxLines: maxLines,
+      semanticsLabel: semanticsLabel,
+      overflow: overflow,
+      key: key,
+      eqStyle: (theme) => theme.subtitle1,
+    );
+  }
+  factory EqText.subtitle2(
+    String data, {
+    TextState state,
     Key key,
-    @required BuildContext context,
-    this.style,
-    this.strutStyle,
-    this.textAlign,
-    this.textDirection,
-    this.locale,
-    this.softWrap,
-    this.textScaleFactor,
-    this.maxLines,
-    this.semanticsLabel,
-    this.overflow,
-  })  : this.eqStyle = EqTheme.of(context).paragraph2,
-        super(key: key);
-
-  EqText.label(
-    this.data, {
-    this.state,
+    TextStyle style,
+    StrutStyle strutStyle,
+    TextAlign textAlign,
+    TextDirection textDirection,
+    Locale locale,
+    bool softWrap,
+    double textScaleFactor,
+    int maxLines,
+    String semanticsLabel,
+    TextOverflow overflow,
+  }) {
+    return EqText(
+      data,
+      state: state,
+      style: style,
+      strutStyle: strutStyle,
+      textAlign: textAlign,
+      textDirection: textDirection,
+      locale: locale,
+      softWrap: softWrap,
+      textScaleFactor: textScaleFactor,
+      maxLines: maxLines,
+      semanticsLabel: semanticsLabel,
+      overflow: overflow,
+      key: key,
+      eqStyle: (theme) => theme.subtitle2,
+    );
+  }
+  factory EqText.label(
+    String data, {
+    TextState state,
     Key key,
-    @required BuildContext context,
-    this.style,
-    this.strutStyle,
-    this.textAlign,
-    this.textDirection,
-    this.locale,
-    this.softWrap,
-    this.textScaleFactor,
-    this.maxLines,
-    this.semanticsLabel,
-    this.overflow,
-  })  : this.eqStyle = EqTheme.of(context).label,
-        super(key: key);
-
-  EqText.caption1(
-    this.data, {
-    this.state,
+    TextStyle style,
+    StrutStyle strutStyle,
+    TextAlign textAlign,
+    TextDirection textDirection,
+    Locale locale,
+    bool softWrap,
+    double textScaleFactor,
+    int maxLines,
+    String semanticsLabel,
+    TextOverflow overflow,
+  }) {
+    return EqText(
+      data,
+      state: state,
+      style: style,
+      strutStyle: strutStyle,
+      textAlign: textAlign,
+      textDirection: textDirection,
+      locale: locale,
+      softWrap: softWrap,
+      textScaleFactor: textScaleFactor,
+      maxLines: maxLines,
+      semanticsLabel: semanticsLabel,
+      overflow: overflow,
+      key: key,
+      eqStyle: (theme) => theme.label,
+    );
+  }
+  factory EqText.caption1(
+    String data, {
+    TextState state,
     Key key,
-    @required BuildContext context,
-    this.style,
-    this.strutStyle,
-    this.textAlign,
-    this.textDirection,
-    this.locale,
-    this.softWrap,
-    this.textScaleFactor,
-    this.maxLines,
-    this.semanticsLabel,
-    this.overflow,
-  })  : this.eqStyle = EqTheme.of(context).caption1,
-        super(key: key);
-
-  EqText.caption2(
-    this.data, {
-    this.state,
+    TextStyle style,
+    StrutStyle strutStyle,
+    TextAlign textAlign,
+    TextDirection textDirection,
+    Locale locale,
+    bool softWrap,
+    double textScaleFactor,
+    int maxLines,
+    String semanticsLabel,
+    TextOverflow overflow,
+  }) {
+    return EqText(
+      data,
+      state: state,
+      style: style,
+      strutStyle: strutStyle,
+      textAlign: textAlign,
+      textDirection: textDirection,
+      locale: locale,
+      softWrap: softWrap,
+      textScaleFactor: textScaleFactor,
+      maxLines: maxLines,
+      semanticsLabel: semanticsLabel,
+      overflow: overflow,
+      key: key,
+      eqStyle: (theme) => theme.caption1,
+    );
+  }
+  factory EqText.caption2(
+    String data, {
+    TextState state,
     Key key,
-    @required BuildContext context,
-    this.style,
-    this.strutStyle,
-    this.textAlign,
-    this.textDirection,
-    this.locale,
-    this.softWrap,
-    this.textScaleFactor,
-    this.maxLines,
-    this.semanticsLabel,
-    this.overflow,
-  })  : this.eqStyle = EqTheme.of(context).caption2,
-        super(key: key);
+    TextStyle style,
+    StrutStyle strutStyle,
+    TextAlign textAlign,
+    TextDirection textDirection,
+    Locale locale,
+    bool softWrap,
+    double textScaleFactor,
+    int maxLines,
+    String semanticsLabel,
+    TextOverflow overflow,
+  }) {
+    return EqText(
+      data,
+      state: state,
+      style: style,
+      strutStyle: strutStyle,
+      textAlign: textAlign,
+      textDirection: textDirection,
+      locale: locale,
+      softWrap: softWrap,
+      textScaleFactor: textScaleFactor,
+      maxLines: maxLines,
+      semanticsLabel: semanticsLabel,
+      overflow: overflow,
+      key: key,
+      eqStyle: (theme) => theme.caption2,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     var theme = EqTheme.of(context);
-    TextStyle style = this.eqStyle.textStyle;
+    TextStyle style = this.eqStyle(theme).textStyle;
 
     if (this.state != null) {
       switch (this.state) {
@@ -400,8 +586,7 @@ class EqText extends StatelessWidget {
             fontSize: this.style.fontSize ?? style.fontSize,
             fontWeight: this.style.fontWeight ?? style.fontWeight,
             fontFamily: this.style.fontFamily ?? style.fontFamily,
-            height:
-                style.height ?? this.eqStyle.lineHeight / this.eqStyle.fontSize,
+            height: style.height ?? style.height,
             color: this.style.color ?? style.color,
           );
     }
