@@ -41,7 +41,7 @@ class _EqRadioState extends State<EqRadio> {
   EqRadioThemeData getThemeData(BuildContext context) {
     final theme = EqTheme.of(context);
     EqRadioThemeData themeData =
-        theme.defaultCheckboxTheme ?? EqRadioThemeData();
+        theme.defaultRadioTheme ?? EqRadioThemeData();
 
     final inheritedTheme = EqRadioTheme.of(context);
     if (inheritedTheme != null) {

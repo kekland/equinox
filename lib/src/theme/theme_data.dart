@@ -86,6 +86,7 @@ class EqThemeData {
   final EqButtonThemeData defaultButtonTheme;
   final EqCheckboxThemeData defaultCheckboxTheme;
   final EqToggleThemeData defaultToggleTheme;
+  final EqRadioThemeData defaultRadioTheme;
 
   factory EqThemeData({
     @required String primaryFontFamily,
@@ -118,6 +119,8 @@ class EqThemeData {
     WidgetShape defaultWidgetShape = WidgetShape.rectangle,
     EqButtonThemeData defaultButtonTheme,
     EqCheckboxThemeData defaultCheckboxTheme,
+    EqToggleThemeData defaultToggleTheme,
+    EqRadioThemeData defaultRadioTheme,
   }) {
     return EqThemeData.configure(
       primaryFontFamily: primaryFontFamily,
@@ -140,6 +143,8 @@ class EqThemeData {
       defaultWidgetShape: defaultWidgetShape,
       defaultButtonTheme: defaultButtonTheme,
       defaultCheckboxTheme: defaultCheckboxTheme,
+      defaultToggleTheme: defaultToggleTheme,
+      defaultRadioTheme: defaultRadioTheme,
     );
   }
   factory EqThemeData.configure({
@@ -210,6 +215,7 @@ class EqThemeData {
     EqButtonThemeData defaultButtonTheme,
     EqCheckboxThemeData defaultCheckboxTheme,
     EqToggleThemeData defaultToggleTheme,
+    EqRadioThemeData defaultRadioTheme,
   }) {
     return EqThemeData.raw(
       primary: primary,
@@ -372,6 +378,7 @@ class EqThemeData {
       defaultButtonTheme: defaultButtonTheme,
       defaultCheckboxTheme: defaultCheckboxTheme,
       defaultToggleTheme: defaultToggleTheme,
+      defaultRadioTheme: defaultRadioTheme,
     );
   }
 
@@ -437,6 +444,7 @@ class EqThemeData {
     this.defaultButtonTheme,
     this.defaultCheckboxTheme,
     this.defaultToggleTheme,
+    this.defaultRadioTheme,
   });
 
   ColorGroup getColorsForStatus({WidgetStatus status}) {
@@ -539,6 +547,7 @@ class EqThemeData {
     EqButtonThemeData defaultButtonTheme,
     EqCheckboxThemeData defaultCheckboxTheme,
     EqToggleThemeData defaultToggleTheme,
+    EqRadioThemeData defaultRadioTheme,
   }) {
     return new EqThemeData.raw(
       primary: primary ?? this.primary,
@@ -614,6 +623,9 @@ class EqThemeData {
       defaultToggleTheme: (this.defaultToggleTheme == null)
           ? defaultToggleTheme
           : this.defaultToggleTheme.merge(defaultToggleTheme),
+      defaultRadioTheme: (this.defaultRadioTheme == null)
+          ? defaultRadioTheme
+          : this.defaultRadioTheme.merge(defaultRadioTheme),
     );
   }
 

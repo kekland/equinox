@@ -46,7 +46,7 @@ class _EqToggleState extends State<EqToggle>
   EqToggleThemeData getThemeData(BuildContext context) {
     final theme = EqTheme.of(context);
     EqToggleThemeData themeData =
-        theme.defaultCheckboxTheme ?? EqToggleThemeData();
+        theme.defaultToggleTheme ?? EqToggleThemeData();
 
     final inheritedTheme = EqToggleTheme.of(context);
     if (inheritedTheme != null) {

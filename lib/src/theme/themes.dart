@@ -81,7 +81,12 @@ class EqThemes {
       iconPosition: Positioning.left,
     ),
     defaultCheckboxTheme: EqCheckboxThemeData(
-      status: WidgetStatus.primary,
+      descriptionPosition: Positioning.left,
+    ),
+    defaultRadioTheme: EqRadioThemeData(
+      descriptionPosition: Positioning.left,
+    ),
+    defaultToggleTheme: EqToggleThemeData(
       descriptionPosition: Positioning.left,
     ),
   );
