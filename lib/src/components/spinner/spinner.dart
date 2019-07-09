@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:equinox/equinox.dart';
-import 'package:equinox/src/components/spinner/spinner_theme.dart';
+export 'package:equinox/src/components/spinner/spinner_theme.dart';
 import 'package:flutter/widgets.dart';
 export 'package:equinox/src/components/spinner/spinner_painter.dart';
 

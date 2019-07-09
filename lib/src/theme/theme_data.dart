@@ -88,6 +88,10 @@ class EqThemeData {
   final EqToggleThemeData defaultToggleTheme;
   final EqRadioThemeData defaultRadioTheme;
   final EqTextFieldThemeData defaultTextFieldTheme;
+  final EqSpinnerThemeData defaultSpinnerTheme;
+  final EqSelectThemeData defaultSelectTheme;
+  final EqProgressBarThemeData defaultProgressBarTheme;
+  final EqIconButtonThemeData defaultIconButtonTheme;
 
   factory EqThemeData({
     @required String primaryFontFamily,
@@ -123,6 +127,10 @@ class EqThemeData {
     EqToggleThemeData defaultToggleTheme,
     EqRadioThemeData defaultRadioTheme,
     EqTextFieldThemeData defaultTextFieldTheme,
+    EqSpinnerThemeData defaultSpinnerTheme,
+    EqSelectThemeData defaultSelectTheme,
+    EqProgressBarThemeData defaultProgressBarTheme,
+    EqIconButtonThemeData defaultIconButtonTheme,
   }) {
     return EqThemeData.configure(
       primaryFontFamily: primaryFontFamily,
@@ -148,6 +156,10 @@ class EqThemeData {
       defaultToggleTheme: defaultToggleTheme,
       defaultRadioTheme: defaultRadioTheme,
       defaultTextFieldTheme: defaultTextFieldTheme,
+      defaultIconButtonTheme: defaultIconButtonTheme,
+      defaultProgressBarTheme: defaultProgressBarTheme,
+      defaultSelectTheme: defaultSelectTheme,
+      defaultSpinnerTheme: defaultSpinnerTheme,
     );
   }
   factory EqThemeData.configure({
@@ -220,6 +232,10 @@ class EqThemeData {
     EqToggleThemeData defaultToggleTheme,
     EqRadioThemeData defaultRadioTheme,
     EqTextFieldThemeData defaultTextFieldTheme,
+    EqSpinnerThemeData defaultSpinnerTheme,
+    EqSelectThemeData defaultSelectTheme,
+    EqProgressBarThemeData defaultProgressBarTheme,
+    EqIconButtonThemeData defaultIconButtonTheme,
   }) {
     return EqThemeData.raw(
       primary: primary,
@@ -384,6 +400,10 @@ class EqThemeData {
       defaultToggleTheme: defaultToggleTheme,
       defaultRadioTheme: defaultRadioTheme,
       defaultTextFieldTheme: defaultTextFieldTheme,
+      defaultIconButtonTheme: defaultIconButtonTheme,
+      defaultProgressBarTheme: defaultProgressBarTheme,
+      defaultSelectTheme: defaultSelectTheme,
+      defaultSpinnerTheme: defaultSpinnerTheme,
     );
   }
 
@@ -451,6 +471,10 @@ class EqThemeData {
     this.defaultToggleTheme,
     this.defaultRadioTheme,
     this.defaultTextFieldTheme,
+    this.defaultIconButtonTheme,
+    this.defaultProgressBarTheme,
+    this.defaultSelectTheme,
+    this.defaultSpinnerTheme,
   });
 
   ColorGroup getColorsForStatus({WidgetStatus status}) {
@@ -555,6 +579,10 @@ class EqThemeData {
     EqToggleThemeData defaultToggleTheme,
     EqRadioThemeData defaultRadioTheme,
     EqTextFieldThemeData defaultTextFieldTheme,
+    EqSpinnerThemeData defaultSpinnerTheme,
+    EqSelectThemeData defaultSelectTheme,
+    EqProgressBarThemeData defaultProgressBarTheme,
+    EqIconButtonThemeData defaultIconButtonTheme,
   }) {
     return new EqThemeData.raw(
       primary: primary ?? this.primary,
@@ -636,6 +664,18 @@ class EqThemeData {
       defaultTextFieldTheme: (this.defaultTextFieldTheme == null)
           ? defaultTextFieldTheme
           : this.defaultTextFieldTheme.merge(defaultTextFieldTheme),
+      defaultIconButtonTheme: (this.defaultIconButtonTheme == null)
+          ? defaultIconButtonTheme
+          : this.defaultIconButtonTheme.merge(defaultIconButtonTheme),
+      defaultProgressBarTheme: (this.defaultProgressBarTheme == null)
+          ? defaultProgressBarTheme
+          : this.defaultProgressBarTheme.merge(defaultProgressBarTheme),
+      defaultSelectTheme: (this.defaultSelectTheme == null)
+          ? defaultSelectTheme
+          : this.defaultSelectTheme.merge(defaultSelectTheme),
+      defaultSpinnerTheme : (this.defaultSpinnerTheme == null)
+          ? defaultSpinnerTheme
+          : this.defaultSpinnerTheme.merge(defaultSpinnerTheme),
     );
   }
 

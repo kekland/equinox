@@ -47,6 +47,19 @@ class EqIconButtonThemeData {
       color: color ?? this.color,
     );
   }
+  
+  /// Merges two [EqTextFieldThemeData]'s, giving the prevalence to the second one.
+  EqIconButtonThemeData merge(EqIconButtonThemeData other) {
+    if (other == null) return this;
+    return EqIconButtonThemeData(
+      shape: other.shape ?? this.shape,
+      status: other.status ?? this.status,
+      size: other.size ?? this.size,
+      appearance: other.appearance ?? this.appearance,
+      color: other.color ?? this.color,
+    );
+  }
+
 
   TextStyle _getTextStyleBasedOnSize({EqThemeData theme}) {
     switch (this.size) {

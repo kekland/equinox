@@ -25,6 +25,15 @@ class EqSpinnerThemeData {
       size: size ?? this.size,
     );
   }
+  
+  /// Merges two [EqSpinnerThemeData]'s.
+  EqSpinnerThemeData merge(EqSpinnerThemeData other) {
+    if(other == null) return this;
+    return EqSpinnerThemeData(
+      status: other.status ?? this.status,
+      size: other.size ?? this.size,
+    );
+  }
 
   Color getColor({EqThemeData theme}) {
     return theme.getColorsForStatus(status: status).shade500;

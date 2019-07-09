@@ -31,6 +31,16 @@ class EqProgressBarThemeData {
       shape: shape ?? this.shape,
     );
   }
+  
+  /// Merges two [EqTextFieldThemeData]'s, giving the prevalence to the second one.
+  EqProgressBarThemeData merge(EqProgressBarThemeData other) {
+    if (other == null) return this;
+    return EqProgressBarThemeData(
+      shape: other.shape ?? this.shape,
+      status: other.status ?? this.status,
+      size: other.size ?? this.size,
+    );
+  }
 
   double getHeight() {
     switch (size) {
