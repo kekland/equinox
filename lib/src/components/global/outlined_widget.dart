@@ -178,10 +178,10 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
           isFirstCallback = false;
           setState(() {});
         }
-        if (itemKey.currentContext.size != itemSize) {
+        if (itemKey.currentContext?.size != itemSize) {
           setState(() {});
         }
-        itemSize = itemKey.currentContext.size;
+        itemSize = itemKey.currentContext?.size;
       });
     }
     return _build(context);

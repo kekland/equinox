@@ -7,14 +7,33 @@ import 'package:flutter/material.dart' as MaterialDesign;
 export 'package:equinox/src/components/button/button_theme.dart';
 export 'package:equinox/src/components/button/button_theme_inherited.dart';
 
+/// A widget that displays a Eva Design styled button. Can be deeply customized using
+/// [EqButtonThemeData] or by passing `defaultButtonTheme` in `EquinoxApp`'s theme.
+/// Theme that is set in `EquinoxApp` will be merged with the closest [EqButtonTheme] widget's theme,
+/// with prevalence to the latter, and then combined with this butotn's settings.
 class EqButton extends StatefulWidget {
+  /// Controls the size of the widget. Will overwrite the value set by [EqButtonThemeData].
   final WidgetSize size;
+
+  /// Controls the status - and color of the widget. Will overwrite the value set by [EqButtonThemeData].
   final WidgetStatus status;
+
+  /// Controls the appearance of the button. It can be either filled, outlined, or ghost. Will overwrite the value set by [EqButtonThemeData].
   final WidgetAppearance appearance;
+  
+  /// Controls the BorderRadius of the button. Will overwrite the value set by [EqButtonThemeData].
   final WidgetShape shape;
+
+  /// Method that is called when user presses the button. Button will become disabled if `null` is passed;
   final VoidCallback onTap;
+  
+  /// Text to display inside of the button. Can be styled using [EqButtonThemeData].
   final String label;
+
+  /// Icon to display inside of the button. Position is controlled by [iconPosition]. Has the same color as [label].
   final IconData icon;
+
+  /// Sets the position of the icon. Will overwrite the value set by [EqButtonThemeData].
   final Positioning iconPosition;
 
   const EqButton({
@@ -26,39 +45,42 @@ class EqButton extends StatefulWidget {
     this.appearance,
     this.shape,
     this.icon,
-    this.iconPosition = Positioning.left,
+    this.iconPosition,
   }) : super(key: key);
 
+  /// Automatically sets the [appearance] to be `WidgetAppearance.filled`.
   const EqButton.filled({
     Key key,
     @required this.label,
     @required this.onTap,
     this.size,
-    this.status = WidgetStatus.primary,
+    this.status,
     this.shape,
     this.icon,
     this.iconPosition,
   })  : this.appearance = WidgetAppearance.filled,
         super(key: key);
 
+  /// Automatically sets the [appearance] to be `WidgetAppearance.outline`.
   const EqButton.outline({
     Key key,
     @required this.label,
     @required this.onTap,
     this.size,
-    this.status = WidgetStatus.primary,
+    this.status,
     this.shape,
     this.icon,
     this.iconPosition,
   })  : this.appearance = WidgetAppearance.outline,
         super(key: key);
 
+  /// Automatically sets the [appearance] to be `WidgetAppearance.ghost`.
   const EqButton.ghost({
     Key key,
     @required this.label,
     @required this.onTap,
     this.size,
-    this.status = WidgetStatus.primary,
+    this.status,
     this.shape,
     this.icon,
     this.iconPosition,

@@ -78,6 +78,7 @@ class EqThemes {
       appearance: WidgetAppearance.filled,
       status: WidgetStatus.primary,
       size: WidgetSize.medium,
+      iconPosition: Positioning.left,
     ),
   );
 

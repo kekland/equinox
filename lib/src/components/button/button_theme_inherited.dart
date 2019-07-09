@@ -2,8 +2,13 @@ import 'package:equinox/equinox.dart';
 import 'package:equinox/src/components/button/button_theme.dart';
 import 'package:flutter/widgets.dart';
 
+/// Controls the [EqButtonThemeData]. Uses `InheritedWidget`, so changes will propogate
+/// down the tree automatically.
 class EqButtonTheme extends StatelessWidget {
+  /// A theme to apply to the buttons. See [EqButtonThemeData] for more info.
   final EqButtonThemeData theme;
+
+  /// A child
   final Widget child;
 
   static EqButtonThemeData of(BuildContext context) {

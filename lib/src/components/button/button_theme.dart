@@ -1,23 +1,55 @@
 import 'package:equinox/equinox.dart';
 import 'package:flutter/widgets.dart';
 
+/// A class that contains all the customizations for [EqButton], and provides methods to access color, etc.
+/// Can be used in [EqThemeData], or in [EqButtonTheme] widget.
 class EqButtonThemeData {
+  /// The size of the widget. Sets the paddings (ignored if [padding] is non-null), also the font size.
   final WidgetSize size;
+
+  /// Status of the widget. Controls the background color (ignored if [backgroundColor] is non-null).
+  /// Also controls the disabled background color (ignored if [backgroundDisabledColor] is non-null).
   final WidgetStatus status;
+
+  /// Appearance of the widget. Has three states (`.filled`, `.outline`, `.ghost`).
+  /// Filled has no borders, and displays color set by [backgroundColor] or [status] as its background.
+  /// Outline has transparent background, and displays border that has color set by [borderColor] or [status].
+  /// Ghost has no border and background.
   final WidgetAppearance appearance;
+
+  /// Controls the border radius. Can be either `.rectangle`, `.semiRound`, `.round`. Will be overwritten
+  /// if [borderRadius] is present.
   final WidgetShape shape;
 
+  /// Controls the border's color. Will overwrite the color set by [status].
   final Color borderColor;
+  
+  /// Controls the border's color when button is disabled. Will overwrite the color set by [status].
   final Color borderDisabledColor;
+  
+  /// Controls the background color. Will overwrite the color set by [status].
   final Color backgroundColor;
+  
+  /// Controls the background color when button is disabled. Will overwrite the color set by [status].
   final Color backgroundDisabledColor;
 
+  /// Controls the styling of the label. Will be merged with [activeTextStyle] or [disabledTextStyle] and the
+  /// text style provided by application's theme.
   final TextStyle textStyle;
+
+  /// Controls the styling of the label when the button is not disabled. See [textStyle].
   final TextStyle activeTextStyle;
+  
+  /// Controls the styling of the label when the button is disabled. See [textStyle].
   final TextStyle disabledTextStyle;
 
+  /// Controls the position of the icon. Can be either `.left`, `.right` or `.none`, which displays no icon.
   final Positioning iconPosition;
+
+  /// Controls the border radius of the button. Overwrites the value set by [shape].
   final BorderRadius borderRadius;
+  
+  /// Controls the padding of the button. Overwrites the value set by [size].
   final EdgeInsets padding;
 
   const EqButtonThemeData({
@@ -37,6 +69,7 @@ class EqButtonThemeData {
     this.padding,
   });
 
+  /// Merges two [EqButtonThemeData]'s.
   EqButtonThemeData copyWith({
     WidgetSize size,
     WidgetStatus status,
@@ -68,6 +101,7 @@ class EqButtonThemeData {
     );
   }
 
+  /// Merges two [EqButtonThemeData]'s, giving the prevalence to the second one.
   EqButtonThemeData merge(EqButtonThemeData other) {
     if(other == null) return this;
     return EqButtonThemeData(

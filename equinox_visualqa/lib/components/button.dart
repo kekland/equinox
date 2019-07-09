@@ -72,11 +72,13 @@ class _ButtonShowcaseState extends ShowcaseState<ButtonShowcase> {
                 runSpacing: 8.0,
                 alignment: WrapAlignment.start,
                 children: WidgetStatus.values
-                    .map((status) => EqButton(
-                          onTap: onClick,
-                          label: enumToString(status),
-                          status: status,
-                        ))
+                    .map(
+                      (status) => EqButton(
+                            onTap: onClick,
+                            label: enumToString(status),
+                            status: status,
+                          ),
+                    )
                     .toList(),
               ),
         ),
