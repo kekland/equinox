@@ -77,11 +77,11 @@ class EqProgressBarThemeData {
   }
   
   Color getBackgroundColor({EqThemeData theme}) {
-    return theme.getColorsForStatus(status: status).shade500;
+    return theme.backgroundBasicColors.color3;
   }
 
   Color getProgressColor({EqThemeData theme}) {
-    return theme.backgroundBasicColors.color3;
+    return theme.getColorsForStatus(status: status).shade500;
   }
 
   BorderRadius getBorderRadius({EqThemeData theme}) {
