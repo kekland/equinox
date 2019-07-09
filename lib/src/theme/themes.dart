@@ -80,6 +80,31 @@ class EqThemes {
       size: WidgetSize.medium,
       iconPosition: Positioning.left,
     ),
+    defaultCheckboxTheme: EqCheckboxThemeData(
+      descriptionPosition: Positioning.right,
+    ),
+    defaultIconButtonTheme: EqIconButtonThemeData(
+      appearance: WidgetAppearance.filled,
+      status: WidgetStatus.primary,
+      size: WidgetSize.medium,
+    ),
+    defaultProgressBarTheme: EqProgressBarThemeData(
+      size: WidgetSize.medium,
+      status: WidgetStatus.primary,
+    ),
+    defaultRadioTheme: EqRadioThemeData(
+      descriptionPosition: Positioning.right,
+    ),
+    defaultSelectTheme: EqSelectThemeData(),
+    defaultSpinnerTheme: EqSpinnerThemeData(
+      status: WidgetStatus.primary,
+    ),
+    defaultTextFieldTheme: EqTextFieldThemeData(
+      iconPosition: Positioning.left,
+    ),
+    defaultToggleTheme: EqToggleThemeData(
+      descriptionPosition: Positioning.left,
+    ),
   );
 
   static final defaultDarkTheme = defaultLightTheme.extend(
