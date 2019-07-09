@@ -1,14 +1,17 @@
 
 import 'package:equinox/equinox.dart';
+import 'package:equinox_visualqa/theme.dart';
 import 'package:flutter/widgets.dart';
 
 class AppState {
-  static EqThemeData theme = EqThemes.defaultLightTheme;
+  static EqThemeData theme = Theme.lightTheme;
+  static bool isDark = false;
   static VoidCallback _subscriber;
 
   static toggleTheme() {
-    if(theme == EqThemes.defaultLightTheme) theme = EqThemes.defaultDarkTheme;
-    else theme = EqThemes.defaultLightTheme;
+    if(!AppState.isDark) AppState.theme = Theme.darkTheme;
+    else theme = Theme.lightTheme;
+    AppState.isDark = !AppState.isDark;
     _subscriber();
   }
 
