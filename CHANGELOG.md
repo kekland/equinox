@@ -1,3 +1,8 @@
+# 0.1.2
+
+- Added support for global widgets theming.
+- Added public API documentation.
+
 # 0.1.1
 
 - Breaking changes: `Themes` has been renamed to `EqThemes`.

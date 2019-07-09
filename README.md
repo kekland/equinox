@@ -38,7 +38,7 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  equinox: ^0.1.1
+  equinox: ^0.1.2
 ```
 
 ### Install it
