@@ -3,11 +3,24 @@ import 'package:equinox/src/equinox_internal.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart' as MaterialDesign;
 
+export 'package:equinox/src/components/radio/radio_theme.dart';
+export 'package:equinox/src/components/radio/radio_theme_inherited.dart';
+
+/// Toggle represents a selection in a list of items.
 class EqRadio extends StatefulWidget {
+  /// A method to call when user selects this radio button.
   final VoidCallback onSelected;
+
+  /// The value of radio. Cannot be null.
   final bool value;
+  
+  /// A description to put either on left or on the right of checkbox, controlled by [descriptionPosition].
   final String description;
+
+  /// Status of the widget. Controls the color of the toggle.
   final WidgetStatus status;
+
+  /// Controls the location of description.
   final Positioning descriptionPosition;
 
   const EqRadio({
@@ -25,71 +38,51 @@ class EqRadio extends StatefulWidget {
 class _EqRadioState extends State<EqRadio> {
   bool outlined = false;
 
-  Color getBorderColor(EqThemeData theme) {
-    if (widget.onSelected == null) return theme.borderBasicColors.color3;
-    var statusColor = theme.getColorsForStatus(status: widget.status).shade500;
+  EqRadioThemeData getThemeData(BuildContext context) {
+    final theme = EqTheme.of(context);
+    EqRadioThemeData themeData =
+        theme.defaultCheckboxTheme ?? EqRadioThemeData();
 
-    if (widget.status != null) return statusColor;
-
-    return widget.value
-        ? theme.primary.shade500
-        : theme.borderBasicColors.color4;
-  }
-
-  Color getCircleColor(EqThemeData theme) {
-    var statusColor = widget.onSelected != null
-        ? theme.getColorsForStatus(status: widget.status).shade500
-        : theme.textDisabledColor;
-
-    return widget.value ? statusColor : Colors.transparent;
-  }
-
-  Color getBackgroundColor(EqThemeData theme) {
-    if (widget.onSelected == null) return theme.backgroundBasicColors.color2;
-    if (widget.status != null) {
-      return theme
-          .getColorsForStatus(status: widget.status)
-          .shade500
-          .withOpacity(0.125);
-    } else {
-      return theme.backgroundBasicColors.color3;
+    final inheritedTheme = EqRadioTheme.of(context);
+    if (inheritedTheme != null) {
+      themeData = themeData.merge(inheritedTheme);
     }
+
+    return themeData.copyWith(
+      status: widget.status,
+      descriptionPosition: widget.descriptionPosition,
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    var theme = EqTheme.of(context);
-    var borderRadius = 12.0;
+    final theme = EqTheme.of(context);
+    final themeData = getThemeData(context);
+
+    final disabled = widget.onSelected == null;
+    final selected = widget.value;
+    final borderRadius = BorderRadius.circular(12.0);
+
+    final descriptionTextStyle = themeData.getDescriptionTextStyle(theme: theme);
+    final backgroundColor = themeData.getFillColor(theme: theme, disabled: disabled, selected: selected);
+    final borderColor = themeData.getBorderColor(theme: theme, disabled: disabled, selected: selected);
+    final circleColor = themeData.getKnobColor(theme: theme, disabled: disabled, selected: selected);
 
     var list = <Widget>[];
-    var description = widget.description != null
-        ? Text(
-            widget.description,
-            style: theme.subtitle2.textStyle
-                .copyWith(color: theme.textBasicColor, height: 1.0),
-          )
-        : null;
 
-    if (description != null && widget.descriptionPosition == Positioning.left) {
-      list.addAll([
-        description,
-        SizedBox(width: 8.0),
-      ]);
-    }
-
-    list.add(OutlinedWidget(
+    final radio = OutlinedWidget(
       outlined: outlined,
       predefinedSize: Size(24.0, 24.0),
-      borderRadius: BorderRadius.circular(borderRadius),
+      borderRadius: borderRadius,
       child: AnimatedContainer(
         duration: theme.minorAnimationDuration,
         curve: theme.minorAnimationCurve,
         width: 24.0,
         height: 24.0,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(borderRadius),
-          color: getBackgroundColor(theme),
-          border: Border.all(color: getBorderColor(theme), width: 1.0),
+          borderRadius: borderRadius,
+          color: backgroundColor,
+          border: Border.all(color: borderColor, width: 1.0),
         ),
         child: MaterialDesign.Material(
           type: MaterialDesign.MaterialType.transparency,
@@ -101,20 +94,34 @@ class _EqRadioState extends State<EqRadio> {
               height: 16.0,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.0),
-                color: getCircleColor(theme),
+                color: circleColor,
               ),
             ),
           ),
         ),
       ),
-    ));
+    );
 
-    if (description != null &&
-        widget.descriptionPosition == Positioning.right) {
-      list.addAll([
+    if (widget.description != null && themeData.descriptionPosition == Positioning.left) {
+      list = [
+        Text(
+            widget.description,
+            style: descriptionTextStyle,
+          ),
         SizedBox(width: 8.0),
-        description,
-      ]);
+        radio,
+      ];
+    }
+
+    if (widget.description != null && themeData.descriptionPosition == Positioning.right) {
+      list = [
+        radio,
+        SizedBox(width: 8.0),
+        Text(
+            widget.description,
+            style: descriptionTextStyle,
+          ),
+      ];
     }
 
     return OutlinedGestureDetector(

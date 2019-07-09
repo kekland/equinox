@@ -1,9 +1,9 @@
 import 'package:equinox/equinox.dart';
 import 'package:flutter/widgets.dart';
 
-/// A class that contains the customizations for [EqToggle], and provides methods to access color, etc.
-/// Can be used in [EqThemeData], or in [EqToggleTheme] widget.
-class EqToggleThemeData {
+/// A class that contains the customizations for [EqRadio], and provides methods to access color, etc.
+/// Can be used in [EqThemeData], or in [EqRadioTheme] widget.
+class EqRadioThemeData {
   /// Status of the widget. Controls the background color (ignored if [backgroundColor] is non-null).
   /// Also controls the disabled background color (ignored if [backgroundDisabledColor] is non-null).
   final WidgetStatus status;
@@ -11,22 +11,25 @@ class EqToggleThemeData {
   /// Controls the border's color. Will overwrite the color set by [status].
   final Color borderColor;
 
-  /// Controls the border's color when toggle is disabled. Will overwrite the color set by [status].
+  /// Controls the border's color when radio is selected. Will overwrite the color set by [status].
+  final Color borderSelectedColor;
+
+  /// Controls the border's color when radio is disabled. Will overwrite the color set by [status].
   final Color borderDisabledColor;
 
   /// Controls the background color. Will overwrite the color set by [status].
   final Color backgroundColor;
 
-  /// Controls the background color when the toggle is selected. Will overwrite the color set by [status].
+  /// Controls the background color when the radio is selected. Will overwrite the color set by [status].
   final Color backgroundSelectedColor;
 
-  /// Controls the background color when toggle is disabled. Will overwrite the color set by [status].
+  /// Controls the background color when radio is disabled. Will overwrite the color set by [status].
   final Color backgroundDisabledColor;
 
   /// Controls the color of the knob. [EqThemeData.control] if none is present.
   final Color knobColor;
 
-  /// Controls the color of the knob when the toggle is disabled. [EqThemeData.textDisabledColor] if none is present.
+  /// Controls the color of the knob when the radio is disabled. [EqThemeData.textDisabledColor] if none is present.
   final Color knobDisabledColor;
 
   /// Controls the styling of the description. Will be merged with the
@@ -36,9 +39,10 @@ class EqToggleThemeData {
   /// Controls the position of the description.
   final Positioning descriptionPosition;
 
-  const EqToggleThemeData({
+  const EqRadioThemeData({
     this.status,
     this.borderColor,
+    this.borderSelectedColor,
     this.borderDisabledColor,
     this.backgroundColor,
     this.backgroundDisabledColor,
@@ -49,10 +53,11 @@ class EqToggleThemeData {
     this.descriptionPosition,
   });
 
-  /// Merges two [EqToggleThemeData]'s.
-  EqToggleThemeData copyWith({
+  /// Merges two [EqRadioThemeData]'s.
+  EqRadioThemeData copyWith({
     WidgetStatus status,
     Color borderColor,
+    Color borderSelectedColor,
     Color borderDisabledColor,
     Color backgroundColor,
     Color backgroundSelectedColor,
@@ -62,7 +67,7 @@ class EqToggleThemeData {
     Color knobColor,
     Color knobDisabledColor,
   }) {
-    return EqToggleThemeData(
+    return EqRadioThemeData(
       status: status ?? this.status,
       borderColor: borderColor ?? this.borderColor,
       borderDisabledColor: borderDisabledColor ?? this.borderDisabledColor,
@@ -75,13 +80,14 @@ class EqToggleThemeData {
       knobColor: knobColor,
       descriptionPosition: descriptionPosition ?? this.descriptionPosition,
       knobDisabledColor: knobDisabledColor ?? this.knobDisabledColor,
+      borderSelectedColor: borderSelectedColor ?? this.borderSelectedColor,
     );
   }
 
-  /// Merges two [EqToggleThemeData]'s, giving the prevalence to the second one.
-  EqToggleThemeData merge(EqToggleThemeData other) {
+  /// Merges two [EqRadioThemeData]'s, giving the prevalence to the second one.
+  EqRadioThemeData merge(EqRadioThemeData other) {
     if (other == null) return this;
-    return EqToggleThemeData(
+    return EqRadioThemeData(
       backgroundColor: other.backgroundColor ?? backgroundColor,
       backgroundDisabledColor:
           other.backgroundDisabledColor ?? backgroundDisabledColor,
@@ -94,6 +100,7 @@ class EqToggleThemeData {
       knobColor: other.knobColor ?? knobColor,
       descriptionPosition: other.descriptionPosition ?? descriptionPosition,
       knobDisabledColor: other.knobDisabledColor ?? knobDisabledColor,
+      borderSelectedColor: other.borderSelectedColor ?? borderSelectedColor,
     );
   }
 
@@ -106,32 +113,38 @@ class EqToggleThemeData {
   Color getFillColor(
       {EqThemeData theme, bool selected = false, bool disabled = false}) {
     if (disabled)
-      return this.backgroundDisabledColor ?? theme.backgroundBasicColors.color2;
-
-    var filledColor = (this.status != null)
-        ? theme.getColorsForStatus(status: status).shade500
-        : theme.primary.shade500;
-
-    if (selected) {
-      return this.backgroundSelectedColor ?? filledColor;
-    } else {
-      return this.backgroundColor ?? (this.status != null)
-          ? theme.getColorsForStatus(status: status).shade500.withOpacity(0.125)
-          : theme.backgroundBasicColors.color3;
+      return backgroundDisabledColor ?? theme.backgroundBasicColors.color2;
+    if (selected && this.backgroundSelectedColor != null) {
+      return this.backgroundSelectedColor;
     }
+
+    return (status != null)
+        ? theme.getColorsForStatus(status: status).shade500.withOpacity(0.125)
+        : this.backgroundColor ?? theme.backgroundBasicColors.color3;
   }
 
-  Color getKnobColor({EqThemeData theme, bool disabled = false}) {
-    if (disabled) return this.knobDisabledColor ?? theme.textDisabledColor;
-    return this.knobColor ?? theme.textControlColor;
+  Color getKnobColor(
+      {EqThemeData theme, bool selected = false, bool disabled = false}) {
+    var statusColor = !disabled
+        ? knobColor ?? theme.getColorsForStatus(status: status).shade500
+        : knobDisabledColor ?? theme.textDisabledColor;
+
+    return selected ? statusColor : Colors.transparent;
   }
 
-  Color getBorderColor({EqThemeData theme, bool disabled = false}) {
+  Color getBorderColor(
+      {EqThemeData theme, bool selected = false, bool disabled = false}) {
     if (disabled)
       return this.borderDisabledColor ?? theme.borderBasicColors.color3;
 
-    return this.borderColor ?? (this.status != null)
-        ? theme.getColorsForStatus(status: this.status).shade500
-        : theme.borderBasicColors.color4;
+    if (selected) {
+      return this.borderSelectedColor ??
+          theme.getColorsForStatus(status: status).shade500 ??
+          theme.primary.shade500;
+    } else {
+      return this.borderColor ??
+          theme.getColorsForStatus(status: status).shade500 ??
+          theme.borderBasicColors.color4;
+    }
   }
 }

@@ -2,7 +2,7 @@ import 'package:equinox/equinox.dart';
 import 'package:equinox/src/components/button/button_theme.dart';
 import 'package:flutter/widgets.dart';
 
-/// Controls the [EqChecboxThemeData]. Uses `InheritedWidget`, so changes will propogate
+/// Controls the [EqCheckboxThemeData]. Uses `InheritedWidget`, so changes will propogate
 /// down the tree automatically.
 class EqCheckboxTheme extends StatelessWidget {
   /// A theme to apply to the checkboxes. See [EqCheckboxThemeData] for more info.

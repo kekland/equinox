@@ -155,7 +155,7 @@ class _EqToggleState extends State<EqToggle>
     );
 
     if (widget.description != null &&
-        widget.descriptionPosition == Positioning.left) {
+        themeData.descriptionPosition == Positioning.left) {
       list = [
         Text(
           widget.description,
@@ -168,7 +168,7 @@ class _EqToggleState extends State<EqToggle>
     }
 
     if (widget.description != null &&
-        widget.descriptionPosition == Positioning.right) {
+        themeData.descriptionPosition == Positioning.right) {
       list = [
         toggle,
         SizedBox(width: 8.0),
