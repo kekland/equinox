@@ -73,6 +73,12 @@ class EqThemes {
     ),
     primaryFontFamily: 'Roboto',
     secondaryFontFamily: 'Roboto',
+    defaultWidgetShape: WidgetShape.rectangle,
+    defaultButtonTheme: EqButtonThemeData(
+      appearance: WidgetAppearance.filled,
+      status: WidgetStatus.primary,
+      size: WidgetSize.medium,
+    ),
   );
 
   static final defaultDarkTheme = defaultLightTheme.extend(

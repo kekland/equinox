@@ -9,7 +9,7 @@ class EqButtonTheme extends StatelessWidget {
   static EqButtonThemeData of(BuildContext context) {
     final InheritedEqButtonTheme inheritedTheme =
         context.inheritFromWidgetOfExactType(InheritedEqButtonTheme);
-    return inheritedTheme.theme;
+    return inheritedTheme?.theme;
   }
 
   const EqButtonTheme({Key key, this.theme, this.child}) : super(key: key);

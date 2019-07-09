@@ -102,11 +102,10 @@ class _ButtonShowcaseState extends ShowcaseState<ButtonShowcase> {
                 runSpacing: 8.0,
                 alignment: WrapAlignment.start,
                 children: WidgetStatus.values
-                    .map((status) => EqButton(
+                    .map((status) => EqButton.outline(
                           onTap: onClick,
                           label: enumToString(status),
                           status: status,
-                          appearance: WidgetAppearance.outline,
                         ))
                     .toList(),
               ),
@@ -118,11 +117,10 @@ class _ButtonShowcaseState extends ShowcaseState<ButtonShowcase> {
                 runSpacing: 8.0,
                 alignment: WrapAlignment.start,
                 children: WidgetStatus.values
-                    .map((status) => EqButton(
+                    .map((status) => EqButton.ghost(
                           onTap: onClick,
                           label: enumToString(status),
                           status: status,
-                          appearance: WidgetAppearance.ghost,
                         ))
                     .toList(),
               ),

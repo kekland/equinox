@@ -69,6 +69,7 @@ class EqButtonThemeData {
   }
 
   EqButtonThemeData merge(EqButtonThemeData other) {
+    if(other == null) return this;
     return EqButtonThemeData(
       size: other.size ?? size,
       activeTextStyle: other.activeTextStyle ?? activeTextStyle,

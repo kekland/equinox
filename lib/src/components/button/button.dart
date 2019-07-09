@@ -34,7 +34,7 @@ class EqButton extends StatefulWidget {
     @required this.label,
     @required this.onTap,
     this.size,
-    this.status,
+    this.status = WidgetStatus.primary,
     this.shape,
     this.icon,
     this.iconPosition,
@@ -46,7 +46,7 @@ class EqButton extends StatefulWidget {
     @required this.label,
     @required this.onTap,
     this.size,
-    this.status,
+    this.status = WidgetStatus.primary,
     this.shape,
     this.icon,
     this.iconPosition,
@@ -57,11 +57,11 @@ class EqButton extends StatefulWidget {
     Key key,
     @required this.label,
     @required this.onTap,
-    this.size = WidgetSize.medium,
-    this.status,
-    this.shape = WidgetShape.rectangle,
+    this.size,
+    this.status = WidgetStatus.primary,
+    this.shape,
     this.icon,
-    this.iconPosition = Positioning.left,
+    this.iconPosition,
   })  : this.appearance = WidgetAppearance.ghost,
         super(key: key);
 
@@ -107,6 +107,7 @@ class _EqButtonState extends State<EqButton> {
     Text text = Text(
       widget.label.toUpperCase(),
       textAlign: TextAlign.center,
+      style: textStyle,
     );
 
     if (hasIcon) {
@@ -121,17 +122,14 @@ class _EqButtonState extends State<EqButton> {
         list = [text, SizedBox(width: 8.0), icon];
       }
     }
+    else {
+      list = [text];
+    }
 
-    return AnimatedDefaultTextStyle(
-      duration: theme.minorAnimationDuration,
-      curve: theme.minorAnimationCurve,
-      style: textStyle,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.baseline,
-        textBaseline: TextBaseline.ideographic,
-        children: list,
-      ),
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: list,
     );
   }
 

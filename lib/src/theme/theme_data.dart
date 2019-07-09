@@ -525,6 +525,7 @@ class EqThemeData {
     Duration majorAnimationDuration,
     Curve majorAnimationCurve,
     WidgetShape defaultWidgetShape,
+    EqButtonThemeData defaultButtonTheme,
   }) {
     return new EqThemeData.raw(
       primary: primary ?? this.primary,
@@ -590,7 +591,10 @@ class EqThemeData {
       minorAnimationDuration:
           minorAnimationDuration ?? this.minorAnimationDuration,
       heavyShadow: heavyShadow ?? this.heavyShadow,
-      defaultWidgetShape: defaultWidgetShape,
+      defaultWidgetShape: defaultWidgetShape ?? this.defaultWidgetShape,
+      defaultButtonTheme: (this.defaultButtonTheme == null)
+          ? defaultButtonTheme
+          : this.defaultButtonTheme.merge(defaultButtonTheme),
     );
   }
 
