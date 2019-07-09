@@ -1,3 +1,9 @@
+# 0.1.1
+
+- Breaking changes: `Themes` has been renamed to `EqThemes`.
+- Added methods for custom theming: `EqThemeData.loadFromAsset`, `EqThemeData.loadFromJson`. You can use these methods with [Eva Color Generator](https://colors.eva.design).
+- Will start working on documenting public API.
+
 # 0.0.13
 
 - Fixed #7 (AppBar unused space).

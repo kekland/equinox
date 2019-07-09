@@ -38,7 +38,7 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  equinox: ^0.0.13
+  equinox: ^0.1.1
 ```
 
 ### Install it
@@ -66,7 +66,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return EquinoxApp(
-      theme: Themes.defaultTheme,
+      theme: EqThemes.defaultTheme,
       title: 'Flutter Demo',
       home: HomePage(),
     );

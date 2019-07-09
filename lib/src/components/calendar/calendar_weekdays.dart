@@ -18,7 +18,6 @@ class EqCalendarWeekdays extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var theme = EqTheme.of(context);
     var localizations = MaterialLocalizations.of(context);
     var weekdays = List.from(localizations.narrowWeekdays);
 
