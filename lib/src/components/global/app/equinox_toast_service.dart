@@ -1,6 +1,11 @@
 import 'package:equinox/equinox.dart';
 import 'package:flutter/material.dart';
 
+/// Use this to push toasts using [EqToastService.of()]. 
+/// 
+/// ```dart
+/// EqToastService.of(context).pushToast(toast: EqToast(...));
+/// ```
 class EqToastService extends StatefulWidget {
   final Widget child;
 
@@ -33,11 +38,13 @@ class EqToastServiceState extends State<EqToastService> {
     super.dispose();
   }
 
+  /// Removes a toast from the list. Refer to [EqToast] for styling info.
   void removeToast(EqToast toast) {
     _toastQueue.remove(toast);
     setState(() {});
   }
 
+  /// Pushes a new toast to the list. Refer to [EqToast] for styling info.
   void pushToast({EqToast toast}) {
     _toastQueue.add(toast);
     _toastScrollController.animateTo(0.0,

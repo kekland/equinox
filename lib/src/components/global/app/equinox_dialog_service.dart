@@ -2,6 +2,7 @@ import 'package:equinox/equinox.dart';
 import 'package:equinox/src/equinox_internal.dart';
 import 'package:flutter/material.dart';
 
+/// This is used to show dialogs. Use it with [EqDialogService.of()].
 class EqDialogService extends StatefulWidget {
   final Widget child;
 
@@ -28,11 +29,12 @@ class EqDialogServiceState extends State<EqDialogService> {
     super.dispose();
   }
 
+  /// Pushes a general dialog with title, body, and actions. [title], [body], [context], [actions] must not be null.
   Future<T> pushDialog<T>({
     @required BuildContext context,
     @required String title,
     @required Widget body,
-    List<Widget> actions,
+    List<Widget> actions = const [],
     WidgetStatus status = WidgetStatus.primary,
   }) {
     return Navigator.of(context).push(
@@ -55,6 +57,7 @@ class EqDialogServiceState extends State<EqDialogService> {
     );
   }
 
+  /// Pushes a custom dialog. Refer to [EqDialog] for styling info. [dialog] and [context] must not be null.
   Future<T> pushCustomDialog<T>({
     @required BuildContext context,
     @required EqDialog dialog,
@@ -66,6 +69,7 @@ class EqDialogServiceState extends State<EqDialogService> {
     );
   }
 
+  /// Pushes an informational dialog. [title], [body], [context] must not be null. Provides 'close' button on bottom.
   Future pushInformationDialog({
     @required BuildContext context,
     @required String title,
@@ -90,6 +94,7 @@ class EqDialogServiceState extends State<EqDialogService> {
     );
   }
 
+  /// Pushes a loading dialog. [context] must not be null.
   pushLoadingDialog({
     @required BuildContext context,
     WidgetStatus status = WidgetStatus.primary,
