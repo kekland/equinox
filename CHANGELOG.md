@@ -1,3 +1,8 @@
+# 0.0.13
+
+- Fixed #7 (AppBar unused space).
+- Added calendar (unfinished).
+
 # 0.0.12
 
 - Added `EqText`.
