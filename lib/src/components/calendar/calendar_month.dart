@@ -5,12 +5,14 @@ class EqCalendarMonth extends StatelessWidget {
   final DateTime date;
   final DateTime selectedDate;
   final void Function(DateTime) onSelected;
+  final bool displayHeader;
 
   const EqCalendarMonth({
     Key key,
     this.date,
     this.selectedDate,
     this.onSelected,
+    this.displayHeader = true,
   }) : super(key: key);
 
   @override
@@ -25,23 +27,21 @@ class EqCalendarMonth extends StatelessWidget {
       sundayIsFirstWeekday: sundayIsFirstWeekday,
     );
 
-    return EqCard(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          EqText.heading4(monthYear, context: context),
-          CalendarWeekdays(
-            sundayIsFirstWeekday: sundayIsFirstWeekday,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        if (displayHeader) EqText.heading4(monthYear, context: context),
+        EqCalendarWeekdays(
+          sundayIsFirstWeekday: sundayIsFirstWeekday,
+        ),
+        for (final week in weeks)
+          EqCalendarWeek(
+            days: week,
+            month: date.month,
+            onSelected: onSelected,
+            selectedDate: selectedDate,
           ),
-          for (final week in weeks)
-            EqCalendarWeek(
-              days: week,
-              month: date.month,
-              onSelected: onSelected,
-              selectedDate: selectedDate,
-            ),
-        ],
-      ),
+      ],
     );
   }
 }

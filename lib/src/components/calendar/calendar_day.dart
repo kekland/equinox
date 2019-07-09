@@ -1,14 +1,14 @@
 import 'package:equinox/equinox.dart';
 import 'package:flutter/widgets.dart';
 
-class CalendarDay extends StatefulWidget {
+class EqCalendarDay extends StatefulWidget {
   final DateTime date;
   final bool workingDay;
   final bool disabled;
   final bool selected;
   final VoidCallback onSelected;
 
-  const CalendarDay({
+  const EqCalendarDay({
     Key key,
     this.date,
     this.workingDay = true,
@@ -18,10 +18,10 @@ class CalendarDay extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _CalendarDayState createState() => _CalendarDayState();
+  _EqCalendarDayState createState() => _EqCalendarDayState();
 }
 
-class _CalendarDayState extends State<CalendarDay> {
+class _EqCalendarDayState extends State<EqCalendarDay> {
   bool outlined = false;
 
   bool get isToday {

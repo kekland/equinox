@@ -1,10 +1,10 @@
 import 'package:equinox/equinox.dart';
 import 'package:flutter/material.dart';
 
-class CalendarWeekdays extends StatelessWidget {
+class EqCalendarWeekdays extends StatelessWidget {
   final bool sundayIsFirstWeekday;
 
-  const CalendarWeekdays({
+  const EqCalendarWeekdays({
     Key key,
     this.sundayIsFirstWeekday = true,
   }) : super(key: key);

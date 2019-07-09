@@ -29,7 +29,7 @@ class EqCalendarWeek extends StatelessWidget {
       children: days
           .map(
             (day) => Flexible(
-                  child: CalendarDay(
+                  child: EqCalendarDay(
                     disabled: day.month != month,
                     workingDay: (day.weekday != DateTime.saturday &&
                         day.weekday != DateTime.sunday),

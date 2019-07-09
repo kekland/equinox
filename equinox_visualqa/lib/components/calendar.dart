@@ -11,7 +11,7 @@ class _CalendarShowcaseState extends State<CalendarShowcase> {
   Widget build(BuildContext context) {
     return EqLayout(
       child: Center(
-        child: EqCalendar(),
+        child: EqCalendarSelectDay(),
       ),
     );
   }

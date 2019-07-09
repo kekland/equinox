@@ -109,7 +109,8 @@ class EqAppBar extends StatelessWidget {
         boxShadow: [theme.shadow],
       ),
       child: SafeArea(
-        bottom: true,
+        top: true,
+        bottom: false,
         child: Container(
           height: _calculateHeight(),
           child: Column(
