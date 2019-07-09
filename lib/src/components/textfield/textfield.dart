@@ -90,7 +90,7 @@ class _EqTextFieldState extends State<EqTextField> {
   EqTextFieldThemeData getThemeData(BuildContext context) {
     final theme = EqTheme.of(context);
     EqTextFieldThemeData themeData =
-        theme.defaultRadioTheme ?? EqTextFieldThemeData();
+        theme.defaultTextFieldTheme ?? EqTextFieldThemeData();
 
     final inheritedTheme = EqTextFieldTheme.of(context);
     if (inheritedTheme != null) {

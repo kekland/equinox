@@ -87,6 +87,7 @@ class EqThemeData {
   final EqCheckboxThemeData defaultCheckboxTheme;
   final EqToggleThemeData defaultToggleTheme;
   final EqRadioThemeData defaultRadioTheme;
+  final EqTextFieldThemeData defaultTextFieldTheme;
 
   factory EqThemeData({
     @required String primaryFontFamily,
@@ -121,6 +122,7 @@ class EqThemeData {
     EqCheckboxThemeData defaultCheckboxTheme,
     EqToggleThemeData defaultToggleTheme,
     EqRadioThemeData defaultRadioTheme,
+    EqTextFieldThemeData defaultTextFieldTheme,
   }) {
     return EqThemeData.configure(
       primaryFontFamily: primaryFontFamily,
@@ -145,6 +147,7 @@ class EqThemeData {
       defaultCheckboxTheme: defaultCheckboxTheme,
       defaultToggleTheme: defaultToggleTheme,
       defaultRadioTheme: defaultRadioTheme,
+      defaultTextFieldTheme: defaultTextFieldTheme,
     );
   }
   factory EqThemeData.configure({
@@ -216,6 +219,7 @@ class EqThemeData {
     EqCheckboxThemeData defaultCheckboxTheme,
     EqToggleThemeData defaultToggleTheme,
     EqRadioThemeData defaultRadioTheme,
+    EqTextFieldThemeData defaultTextFieldTheme,
   }) {
     return EqThemeData.raw(
       primary: primary,
@@ -379,6 +383,7 @@ class EqThemeData {
       defaultCheckboxTheme: defaultCheckboxTheme,
       defaultToggleTheme: defaultToggleTheme,
       defaultRadioTheme: defaultRadioTheme,
+      defaultTextFieldTheme: defaultTextFieldTheme,
     );
   }
 
@@ -445,6 +450,7 @@ class EqThemeData {
     this.defaultCheckboxTheme,
     this.defaultToggleTheme,
     this.defaultRadioTheme,
+    this.defaultTextFieldTheme,
   });
 
   ColorGroup getColorsForStatus({WidgetStatus status}) {
@@ -548,6 +554,7 @@ class EqThemeData {
     EqCheckboxThemeData defaultCheckboxTheme,
     EqToggleThemeData defaultToggleTheme,
     EqRadioThemeData defaultRadioTheme,
+    EqTextFieldThemeData defaultTextFieldTheme,
   }) {
     return new EqThemeData.raw(
       primary: primary ?? this.primary,
@@ -626,6 +633,9 @@ class EqThemeData {
       defaultRadioTheme: (this.defaultRadioTheme == null)
           ? defaultRadioTheme
           : this.defaultRadioTheme.merge(defaultRadioTheme),
+      defaultTextFieldTheme: (this.defaultTextFieldTheme == null)
+          ? defaultTextFieldTheme
+          : this.defaultTextFieldTheme.merge(defaultTextFieldTheme),
     );
   }
 
