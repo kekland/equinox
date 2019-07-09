@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:equinox/equinox.dart';
+export 'package:equinox/src/components/select/select_theme.dart';
 import 'package:equinox/src/equinox_internal.dart';
 import 'package:flutter/widgets.dart';
 
@@ -8,15 +9,35 @@ export 'package:equinox/src/components/select/select_overlay.dart';
 
 export 'package:equinox/src/components/select/select_item.dart';
 
+/// This widget is used to select an item in a list of items of type [T].
+/// 
+/// [items] must not be null.
 class EqSelect<T> extends StatefulWidget {
+  /// List of items to select from. Refer to [EqSelectItem].
   final List<EqSelectItem<T>> items;
+
+  /// This method is called when user selects an item in a list. Can be null to make the widget disabled.
   final void Function(T) onSelect;
+
+  /// Label is displayed on top of the widget. Optional.
   final String label;
+
+  /// Hint is displayed inside the widget.
   final String hint;
+  
+  /// Description is displayed below the widget. Optional.
   final String description;
+
+  /// Icon is displayed on the left side of the widget. Optional.
   final IconData icon;
+
+  /// WidgetShape controls the borderRadius.
   final WidgetShape shape;
+  
+  /// WidgetStatus controls the color.
   final WidgetStatus status;
+
+  /// Index of an item that is selected by default.
   final int selectedIndex;
 
   const EqSelect({
@@ -50,7 +71,7 @@ class _EqSelectState<T> extends State<EqSelect>
 
   didChangeDependencies() {
     super.didChangeDependencies();
-    var theme = EqTheme.of(context);
+    final theme = EqTheme.of(context);
     animationDuration = EqTheme.of(context).minorAnimationDuration;
 
     if (animationController != null) {
@@ -69,34 +90,20 @@ class _EqSelectState<T> extends State<EqSelect>
     super.dispose();
   }
 
+  EqSelectThemeData getThemeData(BuildContext context) {
+    final theme = EqTheme.of(context);
+    EqSelectThemeData themeData =
+        theme.defaultSelectTheme ?? EqSelectThemeData();
+
+    return themeData.copyWith(
+      status: widget.status,
+      shape: widget.shape,
+    );
+  }
+
   initState() {
     super.initState();
     selectedIndex = widget.selectedIndex ?? null;
-  }
-
-  Color _getBorderColor(EqThemeData theme) {
-    if (widget.onSelect == null) return theme.borderBasicColors.color4;
-    return (widget.status != null)
-        ? theme.getColorsForStatus(status: widget.status).shade500
-        : theme.borderBasicColors.color3;
-  }
-
-  Color _getFocusedBorderColor(EqThemeData theme) {
-    if (widget.onSelect == null) return theme.borderBasicColors.color4;
-    return (widget.status != null)
-        ? theme.getColorsForStatus(status: widget.status).shade500
-        : theme.primary.shade500;
-  }
-
-  Color _getFillColor(EqThemeData theme) {
-    if (widget.onSelect == null) return theme.backgroundBasicColors.color3;
-
-    return theme.backgroundBasicColors.color2;
-  }
-
-  Color _getTextColor(EqThemeData theme) {
-    if (widget.onSelect == null) return theme.textDisabledColor;
-    return theme.textHintColor;
   }
 
   showOverlay() {
@@ -138,8 +145,8 @@ class _EqSelectState<T> extends State<EqSelect>
 
   OverlayEntry createOverlay() {
     RenderBox renderBox = context.findRenderObject();
-    var size = renderBox.size;
-    var theme = EqTheme.of(context);
+    final size = renderBox.size;
+    final theme = EqTheme.of(context);
 
     double containerHeight = size.height;
     if (widget.description != null)
@@ -148,20 +155,20 @@ class _EqSelectState<T> extends State<EqSelect>
     if (widget.label != null) containerHeight -= theme.label.lineHeight + 6.0;
 
     double verticalOffset = containerHeight;
-    var borderRadius = theme.borderRadius *
+    final borderRadius = theme.borderRadius *
         WidgetShapeUtils.getMultiplier(shape: widget.shape);
 
     Size screen = MediaQuery.of(context).size;
 
     var height = 0.0;
-    for (var item in widget.items) {
+    for (final item in widget.items) {
       height += item.caluclateHeight(theme);
     }
 
-    var position = renderBox.localToGlobal(Offset.zero);
+    final position = renderBox.localToGlobal(Offset.zero);
 
-    var bottom = screen.height - position.dy - size.height;
-    var top = position.dy;
+    final bottom = screen.height - position.dy - size.height;
+    final top = position.dy;
 
     openingFromBottom = true;
 
@@ -207,29 +214,38 @@ class _EqSelectState<T> extends State<EqSelect>
 
   @override
   Widget build(BuildContext context) {
-    var theme = EqTheme.of(context);
-    var borderRadius = WidgetShapeUtils.getMultiplier(shape: widget.shape) *
-        theme.borderRadius;
+    final theme = EqTheme.of(context);
+    final themeData = getThemeData(context);
+    final borderRadius = themeData.getBorderRadius(theme: theme);
+    final radius = borderRadius.topLeft;
 
-    var normalRadius = Radius.circular(borderRadius);
-    var topRadius = (!_isOverlayOpen)
+    final normalRadius = radius;
+    final topRadius = (!_isOverlayOpen)
         ? normalRadius
         : (!openingFromBottom) ? Radius.zero : normalRadius;
-    var bottomRadius = (!_isOverlayOpen)
+    final bottomRadius = (!_isOverlayOpen)
         ? normalRadius
         : (!openingFromBottom) ? normalRadius : Radius.zero;
 
-    var borderRadiusModified = BorderRadius.vertical(
+    final borderRadiusModified = BorderRadius.vertical(
       top: topRadius,
       bottom: bottomRadius,
     );
 
-    var borderRadiusModifiedOutline = BorderRadius.vertical(
-      top: topRadius == Radius.zero ? Radius.circular(borderRadius) : topRadius,
-      bottom: bottomRadius == Radius.zero
-          ? Radius.circular(borderRadius)
-          : bottomRadius,
+    final borderRadiusModifiedOutline = BorderRadius.vertical(
+      top: topRadius == Radius.zero ? radius : topRadius,
+      bottom: bottomRadius == Radius.zero ? radius : bottomRadius,
     );
+
+    final disabled = widget.onSelect == null;
+
+    final fillColor =
+        themeData.getBackgroundColor(theme: theme, disabled: disabled);
+    final borderColor = _isOverlayOpen
+        ? themeData.getFocusedBorderColor(theme: theme)
+        : themeData.getBorderColor(theme: theme, disabled: disabled);
+
+    final textColor = themeData.getTextColor(theme: theme, disabled: disabled);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -256,12 +272,10 @@ class _EqSelectState<T> extends State<EqSelect>
                 curve: theme.minorAnimationCurve,
                 decoration: BoxDecoration(
                   borderRadius: borderRadiusModified,
-                  color: _getFillColor(theme),
+                  color: fillColor,
                   border: Border.all(
                     width: 1.0,
-                    color: _isOverlayOpen
-                        ? _getFocusedBorderColor(theme)
-                        : _getBorderColor(theme),
+                    color: borderColor,
                   ),
                 ),
                 alignment: Alignment.centerLeft,
@@ -278,7 +292,7 @@ class _EqSelectState<T> extends State<EqSelect>
                     if (widget.icon != null) ...[
                       Icon(
                         widget.icon,
-                        color: _getTextColor(theme),
+                        color: textColor,
                       ),
                       SizedBox(width: 16.0),
                     ],
@@ -290,7 +304,7 @@ class _EqSelectState<T> extends State<EqSelect>
                         style: (selectedIndex != null)
                             ? theme.subtitle1.textStyle
                             : theme.paragraph1.textStyle.copyWith(
-                                color: _getTextColor(theme),
+                                color: textColor,
                               ),
                       ),
                     ),
@@ -302,7 +316,7 @@ class _EqSelectState<T> extends State<EqSelect>
                           angle: (animation.value) * pi,
                           child: Icon(
                             EvaIcons.chevronDown,
-                            color: _getTextColor(theme),
+                            color: textColor,
                           ),
                         );
                       },
