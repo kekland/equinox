@@ -26,7 +26,8 @@ class TransparentPageRoute<T> extends PageRoute<T> {
   bool get maintainState => true;
 
   @override
-  Duration get transitionDuration => EqThemes.defaultLightTheme.majorAnimationDuration;
+  Duration get transitionDuration =>
+      EqThemes.defaultLightTheme.majorAnimationDuration;
 
   @override
   Widget buildPage(BuildContext context, Animation<double> animation,

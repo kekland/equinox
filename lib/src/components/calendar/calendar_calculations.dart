@@ -9,17 +9,18 @@ class EqCalendarCalculations {
       {DateTime date, bool sundayIsFirstWeekday = true}) {
     var daysInThisMonth = DateTime(date.year, date.month + 1, 0).day;
     var firstDayWeekday = DateTime(date.year, date.month, 1).weekday;
-  
+
     List<DateTime> days = [];
     List<List<DateTime>> weeks = [[]];
 
     // Add days that are before this month
-    int daysToAddBeforeThisMonth = (sundayIsFirstWeekday)? firstDayWeekday % 7 : firstDayWeekday - 1;
+    int daysToAddBeforeThisMonth =
+        (sundayIsFirstWeekday) ? firstDayWeekday % 7 : firstDayWeekday - 1;
 
     for (int i = 1; i <= daysToAddBeforeThisMonth; i++) {
       days.insert(0, date.add(Duration(days: -i)));
     }
-    
+
     // Add days that are in this month
     for (int i = 0; i < daysInThisMonth; i++) {
       days.add(date.add(Duration(days: i)));

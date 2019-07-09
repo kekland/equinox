@@ -16,8 +16,10 @@ class EqCalendarWeek extends StatelessWidget {
   }) : super(key: key);
 
   bool isDaySelected(DateTime date) {
-    if(selectedDate != null) {
-      return date.day == selectedDate.day && date.month == selectedDate.month && date.year == selectedDate.year;
+    if (selectedDate != null) {
+      return date.day == selectedDate.day &&
+          date.month == selectedDate.month &&
+          date.year == selectedDate.year;
     }
     return false;
   }
