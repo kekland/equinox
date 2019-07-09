@@ -1,7 +1,7 @@
 import 'package:equinox/equinox.dart';
 import 'package:flutter/widgets.dart';
 
-/// A class that contains all the customizations for [EqButton], and provides methods to access color, etc.
+/// A class that contains the customizations for [EqButton], and provides methods to access color, etc.
 /// Can be used in [EqThemeData], or in [EqButtonTheme] widget.
 class EqButtonThemeData {
   /// The size of the widget. Sets the paddings (ignored if [padding] is non-null), also the font size.
