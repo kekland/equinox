@@ -40,7 +40,6 @@ class EqCalendarWeekdays extends StatelessWidget {
                 alignment: Alignment.center,
                 child: EqText.paragraph1(
                   weekdayName,
-                  context: context,
                   state: colored ? TextState.danger : TextState.hint,
                 ),
               ),

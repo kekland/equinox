@@ -17,32 +17,31 @@ class _TextShowcaseState extends ShowcaseState<TextShowcase> {
   String get showcaseName => 'Text';
 
   List<EqText Function(TextState)> get texts => [
-        (state) => EqText.caption1('${enumToString(state)} Caption 1',
-            context: context, state: state),
-        (state) => EqText.caption2('${enumToString(state)} Caption 2',
-            context: context, state: state),
-        (state) => EqText.label('${enumToString(state)} Label',
-            context: context, state: state),
+        (state) =>
+            EqText.caption1('${enumToString(state)} Caption 1', state: state),
+        (state) =>
+            EqText.caption2('${enumToString(state)} Caption 2', state: state),
+        (state) => EqText.label('${enumToString(state)} Label', state: state),
         (state) => EqText.paragraph1('${enumToString(state)} Paragraph 1',
-            context: context, state: state),
+            state: state),
         (state) => EqText.paragraph2('${enumToString(state)} Paragraph 2',
-            context: context, state: state),
-        (state) => EqText.subtitle1('${enumToString(state)} Subtitle 1',
-            context: context, state: state),
-        (state) => EqText.subtitle2('${enumToString(state)} Subtitle 2',
-            context: context, state: state),
-        (state) => EqText.heading1('${enumToString(state)} Heading 1',
-            context: context, state: state),
-        (state) => EqText.heading2('${enumToString(state)} Heading 2',
-            context: context, state: state),
-        (state) => EqText.heading3('${enumToString(state)} Heading 3',
-            context: context, state: state),
-        (state) => EqText.heading4('${enumToString(state)} Heading 4',
-            context: context, state: state),
-        (state) => EqText.heading5('${enumToString(state)} Heading 5',
-            context: context, state: state),
-        (state) => EqText.heading6('${enumToString(state)} Heading 6',
-            context: context, state: state),
+            state: state),
+        (state) =>
+            EqText.subtitle1('${enumToString(state)} Subtitle 1', state: state),
+        (state) =>
+            EqText.subtitle2('${enumToString(state)} Subtitle 2', state: state),
+        (state) =>
+            EqText.heading1('${enumToString(state)} Heading 1', state: state),
+        (state) =>
+            EqText.heading2('${enumToString(state)} Heading 2', state: state),
+        (state) =>
+            EqText.heading3('${enumToString(state)} Heading 3', state: state),
+        (state) =>
+            EqText.heading4('${enumToString(state)} Heading 4', state: state),
+        (state) =>
+            EqText.heading5('${enumToString(state)} Heading 5', state: state),
+        (state) =>
+            EqText.heading6('${enumToString(state)} Heading 6', state: state),
       ];
 
   @override
@@ -51,8 +50,8 @@ class _TextShowcaseState extends ShowcaseState<TextShowcase> {
         (text) => ShowcaseWidgetData(
               override: true,
               builder: () => EqCard(
-                status: WidgetStatus.primary,
-                statusAppearance: CardStatusAppearance.body,
+                    status: WidgetStatus.primary,
+                    statusAppearance: CardStatusAppearance.body,
                     child: SeparatedColumn(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children:

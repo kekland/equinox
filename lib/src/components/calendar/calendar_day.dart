@@ -77,7 +77,6 @@ class _EqCalendarDayState extends State<EqCalendarDay> {
           alignment: Alignment.center,
           child: EqText.paragraph1(
             widget.date.day.toString(),
-            context: context,
             state: getTextState(),
             style: getTextStyle(),
           ),

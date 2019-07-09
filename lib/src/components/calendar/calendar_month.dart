@@ -30,7 +30,7 @@ class EqCalendarMonth extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (displayHeader) EqText.heading4(monthYear, context: context),
+        if (displayHeader) EqText.heading4(monthYear),
         EqCalendarWeekdays(
           sundayIsFirstWeekday: sundayIsFirstWeekday,
         ),
