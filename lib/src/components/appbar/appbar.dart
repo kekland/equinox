@@ -1,14 +1,31 @@
 import 'package:equinox/equinox.dart';
 import 'package:flutter/widgets.dart';
 
+/// AppBar is used in [EqLayout]. It is displayed on top of a page.
 class EqAppBar extends StatelessWidget {
+  /// Title of the page. Use [EqAppBar.withoutTitle()] if you want no title.
   final String title;
+
+  /// Text under the title. Optional.
   final String subtitle;
+
+  /// Whether the title should be centered.
   final bool centerTitle;
+
+  /// Recognizes if this page can be popped (using [Navigator.canPop()]) and adds back button 
+  /// if it can be. Overwritten by [leading].
   final bool inferLeading;
+
+  /// A widget (usually a [EqIconButton]) in the left.
   final Widget leading;
+
+  /// Set of actions. Usually a list of [EqIconButton].
   final List<Widget> actions;
+  
+  /// Widget to display on the bottom. Must be 56 pixels tall. Usually it is [EqTabs].
   final Widget bottom;
+
+  /// Does this app bar have a title?
   final bool hasTitle;
 
   const EqAppBar({
