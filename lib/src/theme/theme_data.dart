@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:equinox/equinox.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
 class EqThemeData {
@@ -465,6 +468,7 @@ class EqThemeData {
     Curve minorAnimationCurve,
     Duration majorAnimationDuration,
     Curve majorAnimationCurve,
+    WidgetShape defaultWidgetShape,
   }) {
     return new EqThemeData.raw(
       primary: primary ?? this.primary,
@@ -530,16 +534,58 @@ class EqThemeData {
       minorAnimationDuration:
           minorAnimationDuration ?? this.minorAnimationDuration,
       heavyShadow: heavyShadow ?? this.heavyShadow,
+      defaultWidgetShape: defaultWidgetShape,
     );
   }
 
-  static Future<EqThemeData> loadFromAsset({@required String assetName, bool light = true}) async {
-    
+  static Future<EqThemeData> loadFromAsset(
+      {@required String assetName, bool light = true}) async {
+    final contents = await rootBundle.loadString(assetName);
+    final value = json.decode(contents);
+
+    return EqThemeData.loadFromJson(data: value, light: light);
   }
 
-  static EqThemeData loadFromJson({@required Map data, bool light = true}) {
-    return EqThemeData(
-      
-    );
+  factory EqThemeData.loadFromJson({@required Map data, bool light = true}) {
+    Map<WidgetStatus, String> widgetStatusAsString = {
+      WidgetStatus.primary: 'primary',
+      WidgetStatus.info: 'info',
+      WidgetStatus.warning: 'warning',
+      WidgetStatus.danger: 'danger',
+      WidgetStatus.success: 'success',
+    };
+
+    Map<WidgetStatus, List<String>> widgetStatusColors = {
+      WidgetStatus.primary: [],
+      WidgetStatus.info: [],
+      WidgetStatus.warning: [],
+      WidgetStatus.danger: [],
+      WidgetStatus.success: [],
+    };
+
+    for (final widgetStatus in widgetStatusAsString.keys) {
+      final name = widgetStatusAsString[widgetStatus];
+      for (int i = 1; i <= 9; i++) {
+        widgetStatusColors[widgetStatus].add(data['color-$name-${i * 100}']);
+      }
+    }
+
+    if (light) {
+      return EqThemes.defaultLightTheme.extend(
+        primary: ColorGroup.fromJson(widgetStatusColors[WidgetStatus.primary]),
+        success: ColorGroup.fromJson(widgetStatusColors[WidgetStatus.success]),
+        info: ColorGroup.fromJson(widgetStatusColors[WidgetStatus.info]),
+        warning: ColorGroup.fromJson(widgetStatusColors[WidgetStatus.warning]),
+        danger: ColorGroup.fromJson(widgetStatusColors[WidgetStatus.danger]),
+      );
+    } else {
+      return EqThemes.defaultDarkTheme.extend(
+        primary: ColorGroup.fromJson(widgetStatusColors[WidgetStatus.primary]),
+        success: ColorGroup.fromJson(widgetStatusColors[WidgetStatus.success]),
+        info: ColorGroup.fromJson(widgetStatusColors[WidgetStatus.info]),
+        warning: ColorGroup.fromJson(widgetStatusColors[WidgetStatus.warning]),
+        danger: ColorGroup.fromJson(widgetStatusColors[WidgetStatus.danger]),
+      );
+    }
   }
 }

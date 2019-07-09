@@ -2,7 +2,7 @@ import 'package:equinox/equinox.dart';
 import 'package:flutter/widgets.dart';
 
 class EqThemes {
-  static final defaultTheme = EqThemeData(
+  static final defaultLightTheme = EqThemeData(
     primary: ColorGroup(
       shade100: Color(0xfff2f6ff),
       shade200: Color(0xffd9e4ff),
@@ -75,44 +75,44 @@ class EqThemes {
     secondaryFontFamily: 'Roboto',
   );
 
-  static final darkTheme = defaultTheme.extend(
+  static final defaultDarkTheme = defaultLightTheme.extend(
     backgroundBasicColors: BackgroundColors(
-      color1: defaultTheme.basic.shade800,
-      color2: defaultTheme.basic.shade900,
-      color3: defaultTheme.basic.shade1000,
-      color4: defaultTheme.basic.shade1100,
+      color1: defaultLightTheme.basic.shade800,
+      color2: defaultLightTheme.basic.shade900,
+      color3: defaultLightTheme.basic.shade1000,
+      color4: defaultLightTheme.basic.shade1100,
     ),
     borderBasicColors: BorderColors(
-      color1: defaultTheme.basic.shade800,
-      color2: defaultTheme.basic.shade900,
-      color3: defaultTheme.basic.shade1000,
-      color4: defaultTheme.basic.shade1100,
-      color5: defaultTheme.basic.shade1100,
+      color1: defaultLightTheme.basic.shade800,
+      color2: defaultLightTheme.basic.shade900,
+      color3: defaultLightTheme.basic.shade1000,
+      color4: defaultLightTheme.basic.shade1100,
+      color5: defaultLightTheme.basic.shade1100,
     ),
     backgroundAlternativeColors: BackgroundColors(
-      color1: defaultTheme.basic.shade100,
-      color2: defaultTheme.basic.shade200,
-      color3: defaultTheme.basic.shade300,
-      color4: defaultTheme.basic.shade400,
+      color1: defaultLightTheme.basic.shade100,
+      color2: defaultLightTheme.basic.shade200,
+      color3: defaultLightTheme.basic.shade300,
+      color4: defaultLightTheme.basic.shade400,
     ),
     borderAlternativeColors: BorderColors(
-      color1: defaultTheme.basic.shade100,
-      color2: defaultTheme.basic.shade200,
-      color3: defaultTheme.basic.shade300,
-      color4: defaultTheme.basic.shade400,
-      color5: defaultTheme.basic.shade500,
+      color1: defaultLightTheme.basic.shade100,
+      color2: defaultLightTheme.basic.shade200,
+      color3: defaultLightTheme.basic.shade300,
+      color4: defaultLightTheme.basic.shade400,
+      color5: defaultLightTheme.basic.shade500,
     ),
-    textBasicColor: defaultTheme.basic.shade100,
-    textAlternateColor: defaultTheme.basic.shade900,
-    textControlColor: defaultTheme.basic.shade100,
-    textDisabledColor: defaultTheme.basic.shade700,
-    textHintColor: defaultTheme.basic.shade600,
+    textBasicColor: defaultLightTheme.basic.shade100,
+    textAlternateColor: defaultLightTheme.basic.shade900,
+    textControlColor: defaultLightTheme.basic.shade100,
+    textDisabledColor: defaultLightTheme.basic.shade700,
+    textHintColor: defaultLightTheme.basic.shade600,
     shadow: BoxShadow(
       offset: Offset(0.0, 8.0),
       blurRadius: 16.0,
       spreadRadius: 0.0,
       color: Color.fromRGBO(44, 51, 73, 0.1),
     ),
-    dividerColor: defaultTheme.basic.shade1000,
+    dividerColor: defaultLightTheme.basic.shade1000,
   );
 }

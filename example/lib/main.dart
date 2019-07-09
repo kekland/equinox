@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return EquinoxApp(
-      theme: EqThemes.darkTheme,
+      theme: EqThemes.defaultDarkTheme,
       title: 'Flutter Demo',
       home: HomePage(),
     );
