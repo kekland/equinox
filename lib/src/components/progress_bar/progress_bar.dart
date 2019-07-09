@@ -1,23 +1,36 @@
 import 'package:equinox/equinox.dart';
+export 'package:equinox/src/components/progress_bar/progress_bar_theme.dart';
 import 'package:equinox/src/model/params.dart';
 import 'package:flutter/widgets.dart';
 
+/// EqProgressBar is used to show a progress of some event. Use [EqProgressBarThemeData] to style this globally.
 class EqProgressBar extends StatefulWidget {
+  /// Current value of the progress. Change this to animate the widget.
   final double value;
+
+  /// Status changes the color.
   final WidgetStatus status;
+
+  /// Size controls the size of the progress.
   final WidgetSize size;
+  
+  /// Size controls the borderRadius of the progress.
   final WidgetShape shape;
+  
+  /// Text is displayed inside of the progress. Not visible at all times. Optional.
   final String text;
+
+  /// Color overwrites the color set by [status]. Use it if you, for example, want to animate the color.
   final Color color;
 
   const EqProgressBar({
     Key key,
     @required this.value,
-    this.status = WidgetStatus.primary,
+    this.status,
     this.color,
     this.text,
-    this.shape = WidgetShape.rectangle,
-    this.size = WidgetSize.medium,
+    this.shape,
+    this.size,
   }) : super(key: key);
   @override
   _EqProgressBarState createState() => _EqProgressBarState();
@@ -58,51 +71,37 @@ class _EqProgressBarState extends State<EqProgressBar>
     super.didChangeDependencies();
   }
 
-  double _getHeight() {
-    switch (widget.size) {
-      case WidgetSize.giant:
-        return 28.0;
-      case WidgetSize.large:
-        return 24.0;
-      case WidgetSize.medium:
-        return 22.0;
-      case WidgetSize.small:
-        return 20.0;
-      case WidgetSize.tiny:
-        return 16.0;
-      default:
-        return 22.0;
-    }
-  }
+  EqProgressBarThemeData getThemeData(BuildContext context) {
+    final theme = EqTheme.of(context);
+    EqProgressBarThemeData themeData =
+        theme.defaultProgressBarTheme ?? EqProgressBarThemeData();
 
-  TextStyle _getTextStyle(EqThemeData theme) {
-    switch (widget.size) {
-      case WidgetSize.giant:
-        return theme.subtitle1.textStyle.copyWith(height: 1.0);
-      case WidgetSize.large:
-        return theme.subtitle1.textStyle.copyWith(height: 1.0);
-      case WidgetSize.medium:
-        return theme.subtitle1.textStyle.copyWith(height: 1.0);
-      case WidgetSize.small:
-        return theme.subtitle2.textStyle.copyWith(height: 1.0);
-      case WidgetSize.tiny:
-        return theme.subtitle2.textStyle.copyWith(height: 1.0);
-      default:
-        return theme.subtitle1.textStyle.copyWith(height: 1.0);
-    }
+    return themeData.copyWith(
+      status: widget.status,
+      shape: widget.shape,
+      size: widget.size,
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    var theme = EqTheme.of(context);
-    var borderRadius = theme.borderRadius *
-        WidgetShapeUtils.getMultiplier(shape: widget.shape);
+    final theme = EqTheme.of(context);
+    final themeData = getThemeData(context);
+
+    final height = themeData.getHeight();
+    final borderRadius = themeData.getBorderRadius(theme: theme);
+    final backgroundColor = themeData.getBackgroundColor(theme: theme);
+    final progressColor =
+        widget.color ?? themeData.getProgressColor(theme: theme);
+    final textStyle =
+        themeData.getTextStyle(theme: theme).copyWith(color: Colors.white);
+
     return Container(
       width: double.infinity,
-      height: _getHeight(),
+      height: height,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(borderRadius),
-        color: theme.backgroundBasicColors.color3,
+        borderRadius: borderRadius,
+        color: backgroundColor,
       ),
       child: AnimatedBuilder(
         animation: controller,
@@ -114,19 +113,16 @@ class _EqProgressBarState extends State<EqProgressBar>
             child: AnimatedContainer(
               duration: theme.minorAnimationDuration,
               curve: theme.minorAnimationCurve,
-              height: _getHeight(),
+              height: height,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(borderRadius),
-                color: (widget.color == null)
-                    ? theme.getColorsForStatus(status: widget.status).shade500
-                    : widget.color,
+                borderRadius: borderRadius,
+                color: progressColor,
               ),
               child: widget.text != null
                   ? Center(
                       child: Text(
                         widget.text,
-                        style:
-                            _getTextStyle(theme).copyWith(color: Colors.white),
+                        style: textStyle,
                       ),
                     )
                   : null,

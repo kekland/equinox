@@ -1,10 +1,18 @@
 import 'package:equinox/equinox.dart';
 import 'package:flutter/material.dart';
 
+/// Represents an item in Select list.
 class EqSelectItem<T> {
+  /// Icon to display alongisde the title and subtitle.
   final IconData icon;
+  
+  /// Main information.
   final String title;
+
+  /// Additional information.
   final String subtitle;
+
+  /// Underlying value that this item holds.
   final T value;
 
   EqSelectItem({
