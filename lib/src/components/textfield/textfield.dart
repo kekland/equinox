@@ -1,25 +1,62 @@
 import 'package:equinox/equinox.dart';
+export 'package:equinox/src/components/textfield/textfield_theme_inherited.dart';
 import 'package:equinox/src/equinox_internal.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart' as MaterialDesign;
 
+export 'package:equinox/src/components/textfield/textfield_theme.dart';
+
+/// A Widget that is used to receive text information from user. Can be styled using [EqTextFieldTheme].
 class EqTextField extends StatefulWidget {
+  /// Controls the TextField's border radius.
   final WidgetShape shape;
+
+  /// Controls the TextField's color.
   final WidgetStatus status;
+
+  /// Text to put as error. Will repaint the text field. If `null` is provided, no error will be drawn.
   final String error;
+  
+  /// Text to put as a hint.
   final String hint;
+  
+  /// Text to put as a label. Can be `null`.
   final String label;
+  
+  /// Text to put as a description. Can be `null`.
   final String description;
+  
+  /// Can this text field be used?
   final bool enabled;
+  
+  /// TextEditingController to pass to the TextField
   final TextEditingController controller;
+  
+  /// Gets called when user taps the TextField
   final void Function() onTap;
+  
+  /// Gets called when the text in the TextField is changed
   final void Function(String) onChanged;
+  
+  /// Gets called when user submits text through keyboard
   final void Function(String) onSubmitted;
+  
+  /// Gets called when user is finished editing this field
   final void Function() onEditingComplete;
+  
+  /// Icon to put into TextField. Position is controlled using [iconPosition].
   final IconData icon;
+  
+  /// Controls the position of [icon].
   final Positioning iconPosition;
+  
+  /// Whether to obscure the text or not. For example, when editing password you need to set this to true.
   final bool obscureText;
+  
+  /// Type of the keyboard.
   final TextInputType keyboardType;
+  
+  /// A [FocusNode] to pass to [TextField].
   final FocusNode focusNode;
 
   const EqTextField({
@@ -49,24 +86,22 @@ class EqTextField extends StatefulWidget {
 class _EqTextFieldState extends State<EqTextField> {
   bool outlined = false;
   FocusNode focusNode;
-  Color _getBorderColor(EqThemeData theme) {
-    if (widget.error != null) {
-      return theme.getColorsForStatus(status: WidgetStatus.danger).shade500;
-    } else {
-      return (widget.status != null)
-          ? theme.getColorsForStatus(status: widget.status).shade500
-          : theme.borderBasicColors.color3;
-    }
-  }
 
-  Color _getFocusedBorderColor(EqThemeData theme) {
-    if (widget.error != null) {
-      return theme.getColorsForStatus(status: WidgetStatus.danger).shade500;
-    } else {
-      return (widget.status != null)
-          ? theme.getColorsForStatus(status: widget.status).shade500
-          : theme.primary.shade500;
+  EqTextFieldThemeData getThemeData(BuildContext context) {
+    final theme = EqTheme.of(context);
+    EqTextFieldThemeData themeData =
+        theme.defaultRadioTheme ?? EqTextFieldThemeData();
+
+    final inheritedTheme = EqTextFieldTheme.of(context);
+    if (inheritedTheme != null) {
+      themeData = themeData.merge(inheritedTheme);
     }
+
+    return themeData.copyWith(
+      status: widget.status,
+      shape: widget.shape,
+      iconPosition: widget.iconPosition,
+    );
   }
 
   void focusNodeListener() {
@@ -94,20 +129,29 @@ class _EqTextFieldState extends State<EqTextField> {
 
   @override
   Widget build(BuildContext context) {
-    var theme = EqTheme.of(context);
-    var borderRadius = WidgetShapeUtils.getMultiplier(shape: widget.shape) *
-        theme.borderRadius;
+    final theme = EqTheme.of(context);
+    final themeData = getThemeData(context);
 
-    var errored = (widget.error != null);
-    var disabled = !(widget.enabled);
+    final errored = (widget.error != null);
+    final disabled = !(widget.enabled);
+
+    final borderRadius = themeData.getBorderRadius(theme: theme);
+    final borderColor =
+        themeData.getBorderColor(theme: theme, errored: errored);
+    final focusedBorderColor =
+        themeData.getFocusedBorderColor(theme: theme, errored: errored);
+    final errorBorderColor = themeData.getErroredBorderColor(theme: theme);
+    final disabledBorderColor = themeData.getDisabledBorderColor(theme: theme);
+    final padding = themeData.getPadding(theme: theme);
+    final backgroundColor = themeData.getBackgroundColor(theme: theme);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         if (widget.label != null) ...[
-          Text(
+          EqText.label(
             widget.label.toUpperCase(),
-            style: theme.label.textStyle.copyWith(color: theme.textHintColor),
+            style: TextStyle(color: theme.textHintColor).merge(themeData.labelStyle),
           ),
           SizedBox(height: 6.0),
         ],
@@ -116,7 +160,7 @@ class _EqTextFieldState extends State<EqTextField> {
               (widget.enabled) ? (_) => setState(() => outlined = true) : null,
           child: OutlinedWidget(
             outlined: outlined,
-            borderRadius: BorderRadius.circular(borderRadius),
+            borderRadius: borderRadius,
             child: MaterialDesign.Material(
               type: MaterialDesign.MaterialType.transparency,
               child: MaterialDesign.TextField(
@@ -124,57 +168,69 @@ class _EqTextFieldState extends State<EqTextField> {
                 obscureText: widget.obscureText,
                 keyboardType: widget.keyboardType,
                 controller: widget.controller,
-                cursorColor: _getFocusedBorderColor(theme),
+                cursorColor: focusedBorderColor,
                 onTap: widget.onTap,
                 onEditingComplete: widget.onEditingComplete,
                 onChanged: widget.onChanged,
                 onSubmitted: widget.onSubmitted,
                 enabled: widget.enabled,
                 style: theme.subtitle1.textStyle
-                    .copyWith(color: theme.textBasicColor),
+                    .copyWith(color: theme.textBasicColor)
+                    .merge(themeData.textStyle),
                 decoration: MaterialDesign.InputDecoration(
                   hintText: widget.hint,
-                  hintStyle: theme.paragraph1.textStyle.copyWith(
-                      color: (widget.enabled)
-                          ? theme.textHintColor
-                          : theme.textDisabledColor),
+                  hintStyle: theme.paragraph1.textStyle
+                      .copyWith(
+                          color: (widget.enabled)
+                              ? theme.textHintColor
+                              : theme.textDisabledColor)
+                      .merge(themeData.hintStyle),
                   filled: true,
-                  fillColor: theme.backgroundBasicColors.color2,
+                  fillColor: backgroundColor,
                   prefixIcon: (widget.icon != null &&
-                          widget.iconPosition == Positioning.left)
+                          themeData.iconPosition == Positioning.left)
                       ? Icon(widget.icon,
                           color: (disabled)
                               ? theme.textDisabledColor
                               : theme.textHintColor)
                       : null,
                   suffixIcon: (widget.icon != null &&
-                          widget.iconPosition == Positioning.right)
+                          themeData.iconPosition == Positioning.right)
                       ? Icon(widget.icon,
                           color: (disabled)
                               ? theme.textDisabledColor
                               : theme.textHintColor)
                       : null,
-                  contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 16.0, vertical: 12.0),
+                  contentPadding: padding,
                   border: MaterialDesign.OutlineInputBorder(
                     borderSide:
-                        BorderSide(color: _getBorderColor(theme), width: 1.0),
-                    borderRadius: BorderRadius.circular(borderRadius),
+                        BorderSide(color: borderColor, width: 1.0),
+                    borderRadius: borderRadius,
                   ),
                   enabledBorder: MaterialDesign.OutlineInputBorder(
                     borderSide:
-                        BorderSide(color: _getBorderColor(theme), width: 1.0),
-                    borderRadius: BorderRadius.circular(borderRadius),
+                        BorderSide(color: borderColor, width: 1.0),
+                    borderRadius: borderRadius,
                   ),
                   focusedBorder: MaterialDesign.OutlineInputBorder(
                     borderSide: BorderSide(
-                        color: _getFocusedBorderColor(theme), width: 2.0),
-                    borderRadius: BorderRadius.circular(borderRadius),
+                        color: focusedBorderColor, width: 2.0),
+                    borderRadius: borderRadius,
                   ),
                   disabledBorder: MaterialDesign.OutlineInputBorder(
                     borderSide: BorderSide(
-                        color: theme.borderBasicColors.color3, width: 1.0),
-                    borderRadius: BorderRadius.circular(borderRadius),
+                        color: disabledBorderColor, width: 1.0),
+                    borderRadius: borderRadius,
+                  ),
+                  errorBorder: MaterialDesign.OutlineInputBorder(
+                    borderSide: BorderSide(
+                        color: errorBorderColor, width: 1.0),
+                    borderRadius: borderRadius,
+                  ),
+                  focusedErrorBorder: MaterialDesign.OutlineInputBorder(
+                    borderSide: BorderSide(
+                        color: errorBorderColor, width: 2.0),
+                    borderRadius: borderRadius,
                   ),
                 ),
               ),
@@ -183,18 +239,17 @@ class _EqTextFieldState extends State<EqTextField> {
         ),
         if (!errored && widget.description != null) ...[
           SizedBox(height: 4.0),
-          Text(
+          EqText.paragraph2(
             widget.description,
-            style:
-                theme.paragraph2.textStyle.copyWith(color: theme.textHintColor),
+            style: TextStyle(color: theme.textHintColor).merge(themeData.descriptionStyle),
           ),
         ],
         if (errored) ...[
           SizedBox(height: 4.0),
-          Text(
+          EqText.paragraph2(
             widget.error,
-            style: theme.paragraph2.textStyle
-                .copyWith(color: theme.danger.shade500),
+            state: TextState.danger,
+            style: themeData.errorStyle,
           ),
         ],
       ],
