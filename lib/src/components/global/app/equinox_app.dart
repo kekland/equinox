@@ -3,7 +3,12 @@ import 'package:flutter/widgets.dart';
 
 import 'package:flutter/material.dart' as MaterialDesign;
 
+/// An application that uses Eva Design.
+/// 
+/// Requires [EqThemeData] to work. Everything else is the same as in [MaterialApp].
 class EquinoxApp extends StatelessWidget {
+  /// A theme that application uses. It can be your own theme, see [EqThemeData.configure()] or [EqThemeData.loadFromJson()],
+  /// or one of default themes from [EqThemes], such as [EqThemes.defaultLightTheme] or [EqThemes.defaultDarkTheme]
   final EqThemeData theme;
 
   /// {@macro flutter.widgets.widgetsApp.navigatorKey}
