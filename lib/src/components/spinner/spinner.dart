@@ -1,16 +1,23 @@
 import 'dart:math';
 import 'package:equinox/equinox.dart';
+import 'package:equinox/src/components/spinner/spinner_theme.dart';
 import 'package:flutter/widgets.dart';
 export 'package:equinox/src/components/spinner/spinner_painter.dart';
 
+/// Spinners are used to show user that something is downloading or in progress.
+/// To customize a spinner globally, you can use [EqThemeData.defaultSpinnerTheme] and
+/// [EqSpinnerThemeData].
 class EqSpinner extends StatefulWidget {
+  /// Status of a spinner. Controls its color.
   final WidgetStatus status;
+
+  /// Size of a spinner.
   final WidgetSize size;
 
   const EqSpinner({
     Key key,
-    this.status = WidgetStatus.primary,
-    this.size = WidgetSize.medium,
+    this.status,
+    this.size,
   }) : super(key: key);
   @override
   _EqSpinnerState createState() => _EqSpinnerState();
@@ -20,7 +27,17 @@ class _EqSpinnerState extends State<EqSpinner>
     with SingleTickerProviderStateMixin {
   AnimationController animationController;
   Animation<double> animation;
+  
+  EqSpinnerThemeData getThemeData(BuildContext context) {
+    final theme = EqTheme.of(context);
+    EqSpinnerThemeData themeData =
+        theme.defaultSpinnerTheme ?? EqSpinnerThemeData();
 
+    return themeData.copyWith(
+      status: widget.status,
+      size: widget.size,
+    );
+  }
   initState() {
     super.initState();
     animationController =
@@ -38,45 +55,15 @@ class _EqSpinnerState extends State<EqSpinner>
     super.dispose();
   }
 
-  double getSize() {
-    switch (widget.size) {
-      case WidgetSize.giant:
-        return 40.0;
-      case WidgetSize.large:
-        return 36.0;
-      case WidgetSize.medium:
-        return 32.0;
-      case WidgetSize.small:
-        return 28.0;
-      case WidgetSize.tiny:
-        return 24.0;
-      default:
-        return 24.0;
-    }
-  }
-
-  double getStrokeWidth() {
-    switch (widget.size) {
-      case WidgetSize.giant:
-        return 7.0;
-      case WidgetSize.large:
-        return 6.0;
-      case WidgetSize.medium:
-        return 5.0;
-      case WidgetSize.small:
-        return 4.0;
-      case WidgetSize.tiny:
-        return 3.0;
-      default:
-        return 5.0;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    var theme = EqTheme.of(context);
-    double size = getSize();
-    var color = theme.getColorsForStatus(status: widget.status).shade500;
+    final theme = EqTheme.of(context);
+    final themeData = getThemeData(context);
+
+    final size = themeData.getSize();
+    final strokeWidth = themeData.getStrokeWidth();
+
+    final color = themeData.getColor(theme: theme);
 
     return Center(
       widthFactor: 1.0,
@@ -89,7 +76,7 @@ class _EqSpinnerState extends State<EqSpinner>
             child: CustomPaint(
               painter: SpinnerPainter(
                 color: color,
-                strokeWidth: getStrokeWidth(),
+                strokeWidth: strokeWidth,
               ),
               isComplex: false,
               willChange: false,

@@ -1,7 +1,7 @@
 import 'package:equinox/equinox.dart';
 import 'package:flutter/widgets.dart';
 
-/// This is used to style TextFields globally. Set this in `EqThemeData.defaultTextFieldTheme`.
+/// This is used to style TextFields globally. Set this in [EqThemeData.defaultTextFieldTheme].
 class EqTextFieldThemeData {
   /// Controls text field's border radius
   final WidgetShape shape;

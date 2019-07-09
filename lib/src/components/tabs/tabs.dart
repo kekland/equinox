@@ -2,9 +2,18 @@ import 'package:equinox/equinox.dart';
 import 'package:flutter/widgets.dart';
 export 'package:equinox/src/components/tabs/tab.dart';
 
+/// Tabs are generally put inside [EqAppBar.bottom]. It can be used to display various
+/// paths or pages. 
+/// 
+/// [tabs] must not be null.
 class EqTabs extends StatefulWidget {
+  /// Index of a tab that is selected by default.
   final int defaultSelected;
+
+  /// This method is called when a tab is selected. Can be `null` to make all tabs disabled.
   final Function(int) onSelect;
+
+  /// List of all tabs. See [EqTabData] for more;
   final List<EqTabData> tabs;
 
   const EqTabs({

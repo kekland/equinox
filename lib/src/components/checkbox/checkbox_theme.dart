@@ -2,7 +2,7 @@ import 'package:equinox/equinox.dart';
 import 'package:flutter/widgets.dart';
 
 /// A class that contains the customizations for [EqCheckbox], and provides methods to access color, etc.
-/// Can be used in [EqThemeData], or in [EqCheckboxTheme] widget.
+/// Can be used in [EqThemeData.defaultCheckboxTheme].
 class EqCheckboxThemeData {
   /// Status of the widget. Controls the background color (ignored if [backgroundColor] is non-null).
   /// Also controls the disabled background color (ignored if [backgroundDisabledColor] is non-null).

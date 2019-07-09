@@ -2,14 +2,21 @@ import 'package:equinox/equinox.dart';
 import 'package:equinox/src/equinox_internal.dart';
 import 'package:flutter/widgets.dart';
 
+/// A data for tab. Either [icon] or [title] must be present.
 class EqTabData {
+  /// Icon to display alongside [title], if it exists. Can be null.
   final IconData icon;
+
+  /// Label to display. Can be null.
   final String title;
+
+  /// Whether the tab is disabled or not. By default it is false.
   final bool disabled;
 
   EqTabData({this.icon, this.title, this.disabled = false});
 }
 
+/// A singular tab. [data] must not be null.
 class EqTab extends StatefulWidget {
   final EqTabData data;
   final bool active;
