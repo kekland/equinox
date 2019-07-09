@@ -26,8 +26,8 @@ class _EqCalendarSelectDayState extends State<EqCalendarSelectDay> {
               width: 200.0,
               height: 200.0,
               color: i % 2 == 0
-                  ? Themes.defaultTheme.primary.shade500
-                  : Themes.defaultTheme.success.shade500,
+                  ? EqThemes.defaultTheme.primary.shade500
+                  : EqThemes.defaultTheme.success.shade500,
             );
           },
         ),

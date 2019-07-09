@@ -1,7 +1,7 @@
 import 'package:equinox/equinox.dart';
 import 'package:flutter/widgets.dart';
 
-class Themes {
+class EqThemes {
   static final defaultTheme = EqThemeData(
     primary: ColorGroup(
       shade100: Color(0xfff2f6ff),
