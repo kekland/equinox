@@ -14,11 +14,15 @@ class EqLayout extends StatefulWidget {
   /// A slot for [EqAppBar] or other application bars. Can be `null`.
   final Widget appBar;
 
+  /// A slot for [EqTabBar.bottom()] or other widget to place on the bottom. Can be `null`.
+  final Widget bottomTabBar;
+
   const EqLayout({
     Key key,
     this.theme,
     @required this.child,
     this.appBar,
+    this.bottomTabBar,
   }) : super(key: key);
   @override
   _EqLayoutState createState() => _EqLayoutState();
@@ -46,6 +50,7 @@ class _EqLayoutState extends State<EqLayout> {
                   child: widget.child,
                 ),
               ),
+              if (widget.bottomTabBar != null) widget.bottomTabBar,
             ],
           ),
         ),
