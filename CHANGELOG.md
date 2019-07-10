@@ -1,3 +1,9 @@
+# 0.1.3
+
+- Added new widget - `EqTabBar`, a wrapper for `EqTabs`. Has two constructors,
+`EqTabBar.top()` and `EqTabBar.bottom()` to use as top tab bar and bottom tab bar.
+- Added slot for bottom tab bar in `EqLayout`.
+
 # 0.1.2
 
 - Added support for global widgets theming.
