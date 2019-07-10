@@ -43,6 +43,11 @@ enum Positioning {
   none,
 }
 
+enum VerticalPositioning {
+  top,
+  bottom,
+}
+
 class WidgetSizeUtils {
   static double getSizeValue({WidgetSize size}) {
     switch (size) {

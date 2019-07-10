@@ -21,12 +21,16 @@ class EqTab extends StatefulWidget {
   final EqTabData data;
   final bool active;
   final VoidCallback onTap;
+  final bool showPagerIndicator;
+  final Alignment pagerIndicatorAlignment;
 
   const EqTab({
     Key key,
     this.data,
     this.active = false,
     this.onTap,
+    this.showPagerIndicator = true,
+    this.pagerIndicatorAlignment = Alignment.bottomCenter,
   }) : super(key: key);
 
   @override
@@ -85,19 +89,20 @@ class _EqTabState extends State<EqTab> {
                 ],
               ),
             ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: AnimatedContainer(
-                duration: theme.minorAnimationDuration,
-                curve: theme.minorAnimationCurve,
-                width: double.infinity,
-                height: 4.0,
-                decoration: BoxDecoration(
-                  color: containerColor,
-                  borderRadius: BorderRadius.circular(2.0),
+            if (widget.showPagerIndicator)
+              Align(
+                alignment: widget.pagerIndicatorAlignment,
+                child: AnimatedContainer(
+                  duration: theme.minorAnimationDuration,
+                  curve: theme.minorAnimationCurve,
+                  width: double.infinity,
+                  height: 4.0,
+                  decoration: BoxDecoration(
+                    color: containerColor,
+                    borderRadius: BorderRadius.circular(2.0),
+                  ),
                 ),
               ),
-            ),
           ],
         ),
       ),
