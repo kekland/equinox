@@ -6,7 +6,8 @@ export 'package:equinox/src/theme/themings/animation_theme.dart';
 export 'package:equinox/src/theme/themings/border_radius_theme.dart';
 export 'package:equinox/src/theme/themings/divider_theme.dart';
 export 'package:equinox/src/theme/themings/outline_theme.dart';
-export 'package:equinox/src/theme/themings/text_theme.dart';
+export 'package:equinox/src/components/text/text_theme.dart';
+export 'package:equinox/src/components/icon/icon_theme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
@@ -24,12 +25,33 @@ class EqThemeData {
   final EqWidgetShape widgetShape;
 
   final EqTextThemeData textTheme;
+  final EqIconThemeData iconTheme;
   final EqBackgroundThemeData backgroundTheme;
   final EqOutlineThemeData outlineTheme;
   final EqBorderThemeData borderTheme;
   final EqBorderRadiusThemeData borderRadiusTheme;
   final EqAnimationThemeData majorAnimationTheme;
   final EqAnimationThemeData minorAnimationTheme;
+
+
+  EqThemeData.raw({
+    @required this.primary,
+    @required this.success,
+    @required this.info,
+    @required this.warning,
+    @required this.danger,
+    @required this.basic,
+    @required this.shadow,
+    @required this.widgetShape,
+    @required this.textTheme,
+    @required this.backgroundTheme,
+    @required this.borderTheme,
+    @required this.borderRadiusTheme,
+    @required this.majorAnimationTheme,
+    @required this.minorAnimationTheme,
+    @required this.outlineTheme,
+    @required this.iconTheme,
+  });
 
   factory EqThemeData({
     @required String primaryFontFamily,
@@ -77,6 +99,7 @@ class EqThemeData {
     EqBorderThemeData borderTheme,
     EqBorderRadiusThemeData borderRadiusTheme,
     EqOutlineThemeData outlineTheme,
+    EqIconThemeData iconTheme,
     BoxShadow shadow = const BoxShadow(
       offset: Offset(0.0, 8.0),
       blurRadius: 16.0,
@@ -183,6 +206,10 @@ class EqThemeData {
       color: basic.shade300,
       colorDisabled: basic.shade200,
     );
+    final defaultIconTheme = EqIconThemeData(
+      color: basic.shade900,
+      size: 24.0,
+    );
     return EqThemeData.raw(
       primary: primary,
       success: success,
@@ -201,26 +228,51 @@ class EqThemeData {
       minorAnimationTheme:
           defaultMinorAnimationTheme.merge(minorAnimationTheme),
       outlineTheme: defaultOutlineTheme.merge(outlineTheme),
+      iconTheme: defaultIconTheme.merge(iconTheme),
     );
   }
 
-  EqThemeData.raw({
-    @required this.primary,
-    @required this.success,
-    @required this.info,
-    @required this.warning,
-    @required this.danger,
-    @required this.basic,
-    @required this.shadow,
-    @required this.widgetShape,
-    @required this.textTheme,
-    @required this.backgroundTheme,
-    @required this.borderTheme,
-    @required this.borderRadiusTheme,
-    @required this.majorAnimationTheme,
-    @required this.minorAnimationTheme,
-    @required this.outlineTheme,
-  });
+  EqThemeData extend({
+    String primaryFontFamily,
+    String secondaryFontFamily,
+    ColorGroup primary,
+    ColorGroup success,
+    ColorGroup info,
+    ColorGroup warning,
+    ColorGroup danger,
+    ColorGroup basic,
+    BoxShadow shadow,
+    EqWidgetShape widgetShape,
+    EqTextThemeData textTheme,
+    EqBackgroundThemeData backgroundTheme,
+    EqBorderThemeData borderTheme,
+    EqBorderRadiusThemeData borderRadiusTheme,
+    EqAnimationThemeData majorAnimationTheme,
+    EqAnimationThemeData minorAnimationTheme,
+    EqOutlineThemeData outlineTheme,
+    EqIconThemeData iconTheme,
+  }) {
+    return new EqThemeData.configure(
+      primary: primary ?? this.primary,
+      success: success ?? this.success,
+      info: info ?? this.info,
+      warning: warning ?? this.warning,
+      danger: danger ?? this.danger,
+      basic: basic ?? this.basic,
+      shadow: shadow ?? this.shadow,
+      primaryFontFamily: primaryFontFamily ?? this.textTheme.primaryFontFamily,
+      secondaryFontFamily: secondaryFontFamily ?? this.textTheme.secondaryFontFamily,
+      widgetShape: widgetShape ?? this.widgetShape,
+      textTheme: this.textTheme.merge(textTheme),
+      backgroundTheme: this.backgroundTheme.merge(backgroundTheme),
+      borderRadiusTheme: this.borderRadiusTheme.merge(borderRadiusTheme),
+      borderTheme: this.borderTheme.merge(borderTheme),
+      majorAnimationTheme: this.majorAnimationTheme.merge(majorAnimationTheme),
+      minorAnimationTheme: this.minorAnimationTheme.merge(minorAnimationTheme),
+      outlineTheme: this.outlineTheme.merge(outlineTheme),
+      iconTheme: this.iconTheme.merge(iconTheme),
+    );
+  }
 
   ColorGroup getColorsForStatus({EqWidgetStatus status}) {
     switch (status) {
@@ -258,46 +310,6 @@ class EqThemeData {
       default:
         return null;
     }
-  }
-
-  EqThemeData extend({
-    String primaryFontFamily,
-    String secondaryFontFamily,
-    ColorGroup primary,
-    ColorGroup success,
-    ColorGroup info,
-    ColorGroup warning,
-    ColorGroup danger,
-    ColorGroup basic,
-    BoxShadow shadow,
-    EqWidgetShape widgetShape,
-    EqTextThemeData textTheme,
-    EqBackgroundThemeData backgroundTheme,
-    EqBorderThemeData borderTheme,
-    EqBorderRadiusThemeData borderRadiusTheme,
-    EqAnimationThemeData majorAnimationTheme,
-    EqAnimationThemeData minorAnimationTheme,
-    EqOutlineThemeData outlineTheme,
-  }) {
-    return new EqThemeData.configure(
-      primary: primary ?? this.primary,
-      success: success ?? this.success,
-      info: info ?? this.info,
-      warning: warning ?? this.warning,
-      danger: danger ?? this.danger,
-      basic: basic ?? this.basic,
-      shadow: shadow ?? this.shadow,
-      primaryFontFamily: primaryFontFamily ?? this.textTheme.primaryFontFamily,
-      secondaryFontFamily: secondaryFontFamily ?? this.textTheme.secondaryFontFamily,
-      widgetShape: widgetShape ?? this.widgetShape,
-      textTheme: this.textTheme.merge(textTheme),
-      backgroundTheme: this.backgroundTheme.merge(backgroundTheme),
-      borderRadiusTheme: this.borderRadiusTheme.merge(borderRadiusTheme),
-      borderTheme: this.borderTheme.merge(borderTheme),
-      majorAnimationTheme: this.majorAnimationTheme.merge(majorAnimationTheme),
-      minorAnimationTheme: this.minorAnimationTheme.merge(minorAnimationTheme),
-      outlineTheme: this.outlineTheme.merge(outlineTheme),
-    );
   }
 
   static Future<EqThemeData> loadFromAsset(
