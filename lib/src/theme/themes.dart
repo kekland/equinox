@@ -76,6 +76,19 @@ class EqThemes {
   );
 
   static final defaultDarkTheme = defaultLightTheme.extend(
+    basicBackgroundColors: EqBackgroundColors(
+      color1: defaultLightTheme.basic.shade800,
+      color2: defaultLightTheme.basic.shade900,
+      color3: defaultLightTheme.basic.shade1000,
+      color4: defaultLightTheme.basic.shade1100,
+    ),
+    basicBorderColors: EqBorderColors(
+      color1: defaultLightTheme.basic.shade800,
+      color2: defaultLightTheme.basic.shade900,
+      color3: defaultLightTheme.basic.shade1000,
+      color4: defaultLightTheme.basic.shade1100,
+      color5: defaultLightTheme.basic.shade1100,
+    ),
     backgroundTheme: EqBackgroundThemeData(
       color: defaultLightTheme.basic.shade900,
       colorDisabled: defaultLightTheme.basic.shade1000,

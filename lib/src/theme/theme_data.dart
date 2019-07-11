@@ -23,8 +23,8 @@ class EqThemeData {
   final ColorGroup danger;
   final ColorGroup basic;
 
-  final BackgroundColors basicBackgroundColors;
-  final BorderColors basicBorderColors;
+  final EqBackgroundColors basicBackgroundColors;
+  final EqBorderColors basicBorderColors;
 
   final BoxShadow shadow;
   final EqWidgetShape widgetShape;
@@ -84,7 +84,7 @@ class EqThemeData {
     @required this.outlineTheme,
     @required this.iconTheme,
     @required this.controlElementsTheme,
-  }): radioTheme = null;
+  }) : radioTheme = null;
 
   factory EqThemeData({
     @required String primaryFontFamily,
@@ -124,6 +124,8 @@ class EqThemeData {
     @required ColorGroup warning,
     @required ColorGroup danger,
     @required ColorGroup basic,
+    EqBackgroundColors basicBackgroundColors,
+    EqBorderColors basicBorderColors,
     EqTextThemeData textTheme,
     EqWidgetShape widgetShape = EqWidgetShape.rectangle,
     EqAnimationThemeData majorAnimationTheme,
@@ -142,19 +144,19 @@ class EqThemeData {
       color: Color.fromRGBO(44, 51, 73, 0.1),
     ),
   }) {
-    final finalBasicBackgroundColors = BackgroundColors(
+    final finalBasicBackgroundColors = EqBackgroundColors(
       color1: basic.shade100,
       color2: basic.shade200,
       color3: basic.shade300,
       color4: basic.shade400,
-    );
-    final finalBasicBorderColors = BorderColors(
+    ).merge(basicBackgroundColors);
+    final finalBasicBorderColors = EqBorderColors(
       color1: basic.shade100,
       color2: basic.shade200,
       color3: basic.shade300,
       color4: basic.shade400,
       color5: basic.shade500,
-    );
+    ).merge(basicBorderColors);
     final finalControlElementsTheme = EqControlElementsThemeData(
       descriptionPadding: 8.0,
       padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
@@ -315,6 +317,8 @@ class EqThemeData {
     ColorGroup danger,
     ColorGroup basic,
     BoxShadow shadow,
+    EqBackgroundColors basicBackgroundColors,
+    EqBorderColors basicBorderColors,
     EqWidgetShape widgetShape,
     EqTextThemeData textTheme,
     EqBackgroundThemeData backgroundTheme,
@@ -339,6 +343,8 @@ class EqThemeData {
       secondaryFontFamily:
           secondaryFontFamily ?? this.textTheme.secondaryFontFamily,
       widgetShape: widgetShape ?? this.widgetShape,
+      basicBackgroundColors: this.basicBackgroundColors.merge(basicBackgroundColors),
+      basicBorderColors: this.basicBorderColors.merge(basicBorderColors),
       textTheme: this.textTheme.merge(textTheme),
       backgroundTheme: this.backgroundTheme.merge(backgroundTheme),
       borderRadiusTheme: this.borderRadiusTheme.merge(borderRadiusTheme),

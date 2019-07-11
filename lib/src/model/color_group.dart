@@ -1,34 +1,85 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class BackgroundColors {
+class EqBackgroundColors {
   final Color color1;
   final Color color2;
   final Color color3;
   final Color color4;
 
-  BackgroundColors({
+  EqBackgroundColors({
     @required this.color1,
     @required this.color2,
     @required this.color3,
     @required this.color4,
   });
+
+  EqBackgroundColors copyWith({
+    Color color1,
+    Color color2,
+    Color color3,
+    Color color4,
+  }) {
+    return EqBackgroundColors(
+      color1: color1 ?? this.color1,
+      color2: color2 ?? this.color2,
+      color3: color3 ?? this.color3,
+      color4: color4 ?? this.color4,
+    );
+  }
+
+  EqBackgroundColors merge(EqBackgroundColors other) {
+    if(other == null) return this;
+    return copyWith(
+      color1: other.color1,
+      color2: other.color2,
+      color3: other.color3,
+      color4: other.color4,
+    );
+  }
 }
 
-class BorderColors {
+class EqBorderColors {
   final Color color1;
   final Color color2;
   final Color color3;
   final Color color4;
   final Color color5;
 
-  BorderColors({
+  EqBorderColors({
     @required this.color1,
     @required this.color2,
     @required this.color3,
     @required this.color4,
     @required this.color5,
   });
+  
+  EqBorderColors copyWith({
+    Color color1,
+    Color color2,
+    Color color3,
+    Color color4,
+    Color color5,
+  }) {
+    return EqBorderColors(
+      color1: color1 ?? this.color1,
+      color2: color2 ?? this.color2,
+      color3: color3 ?? this.color3,
+      color4: color4 ?? this.color4,
+      color5: color5 ?? this.color5,
+    );
+  }
+
+  EqBorderColors merge(EqBorderColors other) {
+    if(other == null) return this;
+    return copyWith(
+      color1: other.color1,
+      color2: other.color2,
+      color3: other.color3,
+      color4: other.color4,
+      color5: other.color5,
+    );
+  }
 }
 
 class ColorStates {
