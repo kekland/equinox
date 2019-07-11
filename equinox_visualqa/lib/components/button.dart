@@ -15,12 +15,12 @@ class _ButtonShowcaseState extends ShowcaseState<ButtonShowcase> {
       data: {
         'enabled': BoolTyped(true),
         'iconEnabled': BoolTyped(false),
-        'iconPosition': EnumTyped(Positioning.left, Positioning.values),
+        'iconPosition': EnumTyped(EqPositioning.left, EqPositioning.values),
         'appearance':
-            EnumTyped(WidgetAppearance.filled, WidgetAppearance.values),
-        'shape': EnumTyped(WidgetShape.rectangle, WidgetShape.values),
-        'status': EnumTyped(WidgetStatus.primary, WidgetStatus.values),
-        'size': EnumTyped(WidgetSize.large, WidgetSize.values),
+            EnumTyped(EqWidgetAppearance.filled, EqWidgetAppearance.values),
+        'shape': EnumTyped(EqWidgetShape.rectangle, EqWidgetShape.values),
+        'status': EnumTyped(EqWidgetStatus.primary, EqWidgetStatus.values),
+        'size': EnumTyped(EqWidgetSize.large, EqWidgetSize.values),
       },
       builder: (_, data) => SizedBox(
             width: double.infinity,
@@ -45,7 +45,7 @@ class _ButtonShowcaseState extends ShowcaseState<ButtonShowcase> {
     EqToastService.of(context).pushToast(
       toast: EqToast(
         message: 'I have been clicked!',
-        status: WidgetStatus.success,
+        status: EqWidgetStatus.success,
         icon: EvaIcons.star,
       ),
     );
@@ -71,7 +71,7 @@ class _ButtonShowcaseState extends ShowcaseState<ButtonShowcase> {
                 spacing: 8.0,
                 runSpacing: 8.0,
                 alignment: WrapAlignment.start,
-                children: WidgetStatus.values
+                children: EqWidgetStatus.values
                     .map(
                       (status) => EqButton(
                             onTap: onClick,
@@ -88,7 +88,7 @@ class _ButtonShowcaseState extends ShowcaseState<ButtonShowcase> {
                 spacing: 8.0,
                 runSpacing: 8.0,
                 alignment: WrapAlignment.start,
-                children: WidgetSize.values.reversed
+                children: EqWidgetSize.values.reversed
                     .map((size) => EqButton(
                           onTap: onClick,
                           label: enumToString(size),
@@ -103,7 +103,7 @@ class _ButtonShowcaseState extends ShowcaseState<ButtonShowcase> {
                 spacing: 8.0,
                 runSpacing: 8.0,
                 alignment: WrapAlignment.start,
-                children: WidgetStatus.values
+                children: EqWidgetStatus.values
                     .map((status) => EqButton.outline(
                           onTap: onClick,
                           label: enumToString(status),
@@ -118,7 +118,7 @@ class _ButtonShowcaseState extends ShowcaseState<ButtonShowcase> {
                 spacing: 8.0,
                 runSpacing: 8.0,
                 alignment: WrapAlignment.start,
-                children: WidgetStatus.values
+                children: EqWidgetStatus.values
                     .map((status) => EqButton.ghost(
                           onTap: onClick,
                           label: enumToString(status),
@@ -133,7 +133,7 @@ class _ButtonShowcaseState extends ShowcaseState<ButtonShowcase> {
                 spacing: 8.0,
                 runSpacing: 8.0,
                 alignment: WrapAlignment.start,
-                children: WidgetShape.values
+                children: EqWidgetShape.values
                     .map((shape) => EqButton(
                           onTap: onClick,
                           label: enumToString(shape),
@@ -148,14 +148,14 @@ class _ButtonShowcaseState extends ShowcaseState<ButtonShowcase> {
                 spacing: 8.0,
                 runSpacing: 8.0,
                 alignment: WrapAlignment.start,
-                children: Positioning.values
+                children: EqPositioning.values
                     .map((position) => EqButton(
                           onTap: onClick,
                           icon: EvaIcons.star,
                           iconPosition: position,
                           label: enumToString(position),
-                          status: WidgetStatus.success,
-                          shape: WidgetShape.semiRound,
+                          status: EqWidgetStatus.success,
+                          shape: EqWidgetShape.semiRound,
                         ))
                     .toList(),
               ),

@@ -16,14 +16,14 @@ class EqTabBar extends StatelessWidget {
   final List<EqTabData> tabs;
 
   /// Whether this is a top tabbar or bottom tab bar.
-  final VerticalPositioning position;
+  final EqVerticalPositioning position;
 
   const EqTabBar({
     Key key,
     this.defaultSelected,
     @required this.onSelect,
     @required this.tabs,
-    this.position = VerticalPositioning.top,
+    this.position = EqVerticalPositioning.top,
   }) : super(key: key);
 
   const EqTabBar.top({
@@ -31,7 +31,7 @@ class EqTabBar extends StatelessWidget {
     this.defaultSelected,
     @required this.onSelect,
     @required this.tabs,
-  })  : this.position = VerticalPositioning.top,
+  })  : this.position = EqVerticalPositioning.top,
         super(key: key);
 
   const EqTabBar.bottom({
@@ -39,7 +39,7 @@ class EqTabBar extends StatelessWidget {
     this.defaultSelected,
     @required this.onSelect,
     @required this.tabs,
-  })  : this.position = VerticalPositioning.bottom,
+  })  : this.position = EqVerticalPositioning.bottom,
         super(key: key);
 
   @override
@@ -48,10 +48,10 @@ class EqTabBar extends StatelessWidget {
       onSelect: onSelect,
       tabs: tabs,
       defaultSelected: defaultSelected,
-      showPagerIndicator: position == VerticalPositioning.top,
-      pagerIndicatorPosition: this.position == VerticalPositioning.top
-          ? VerticalPositioning.bottom
-          : VerticalPositioning.top,
+      showPagerIndicator: position == EqVerticalPositioning.top,
+      pagerIndicatorPosition: this.position == EqVerticalPositioning.top
+          ? EqVerticalPositioning.bottom
+          : EqVerticalPositioning.top,
     );
   }
 }

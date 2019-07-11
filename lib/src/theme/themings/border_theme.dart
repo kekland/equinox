@@ -60,7 +60,7 @@ class EqBorderThemeData {
   ///
   /// [selected] and [enabled] must not be null.
   Border getBorder(
-      {bool selected = false, bool enabled = true, WidgetStatus status}) {
+      {bool selected = false, bool enabled = true, EqWidgetStatus status}) {
     return Border.all(
       color: (enabled)
           ? (selected) ? colorSelected ?? color : color

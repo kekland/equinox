@@ -17,8 +17,8 @@ class _SelectShowcaseState extends ShowcaseState<SelectShowcase> {
           'label': BoolTyped(true),
           'description': BoolTyped(true),
           'icon': BoolTyped(false),
-          'status': EnumTyped(WidgetStatus.primary, WidgetStatus.values),
-          'shape': EnumTyped(WidgetShape.rectangle, WidgetShape.values),
+          'status': EnumTyped(EqWidgetStatus.primary, EqWidgetStatus.values),
+          'shape': EnumTyped(EqWidgetShape.rectangle, EqWidgetShape.values),
         },
         builder: (_, data) => EqSelect(
               hint: 'Hint',
@@ -89,7 +89,7 @@ class _SelectShowcaseState extends ShowcaseState<SelectShowcase> {
         ShowcaseWidgetData(
           title: 'Select colors',
           builder: () => SeparatedColumn(
-                children: WidgetStatus.values
+                children: EqWidgetStatus.values
                     .map(
                       (value) => EqSelect(
                             hint: enumToString(value),
@@ -105,7 +105,7 @@ class _SelectShowcaseState extends ShowcaseState<SelectShowcase> {
         ShowcaseWidgetData(
           title: 'Select shapes',
           builder: () => SeparatedColumn(
-                children: WidgetShape.values
+                children: EqWidgetShape.values
                     .map(
                       (value) => EqSelect(
                             hint: enumToString(value),

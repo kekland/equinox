@@ -17,7 +17,7 @@ class EqListItem extends StatefulWidget {
   final bool active;
 
   /// Controls the colors.
-  final WidgetStatus status;
+  final EqWidgetStatus status;
 
   /// This method is called when user presses the item.
   final VoidCallback onTap;

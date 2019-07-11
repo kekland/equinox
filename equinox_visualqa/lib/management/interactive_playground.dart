@@ -49,7 +49,7 @@ class _InteractivePlaygroundState extends State<InteractivePlayground> {
             value: data.value,
             onChanged: (v) => setState(() => dataCopy[key].value = v),
             description: description,
-            descriptionPosition: Positioning.right,
+            descriptionPosition: EqPositioning.right,
           ),
         );
       } else if (data is EnumTyped) {

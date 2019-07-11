@@ -19,9 +19,9 @@ class _TextFieldShowcaseState extends ShowcaseState<TextFieldShowcase> {
           'error': BoolTyped(false),
           'icon': BoolTyped(false),
           'obscured': BoolTyped(false),
-          'iconPosition': EnumTyped(Positioning.left, Positioning.values),
-          'status': EnumTyped(WidgetStatus.primary, WidgetStatus.values),
-          'shape': EnumTyped(WidgetShape.rectangle, WidgetShape.values),
+          'iconPosition': EnumTyped(EqPositioning.left, EqPositioning.values),
+          'status': EnumTyped(EqWidgetStatus.primary, EqWidgetStatus.values),
+          'shape': EnumTyped(EqWidgetShape.rectangle, EqWidgetShape.values),
         },
         builder: (_, data) => EqTextField(
           hint: 'Hint',
@@ -68,7 +68,7 @@ class _TextFieldShowcaseState extends ShowcaseState<TextFieldShowcase> {
         ShowcaseWidgetData(
           title: 'TextField shapes',
           builder: () => SeparatedColumn(
-                children: WidgetShape.values
+                children: EqWidgetShape.values
                     .map((shape) => EqTextField(hint: enumToString(shape), shape: shape))
                     .toList(),
                 separatorBuilder: (_, i) => SizedBox(height: 16.0),
@@ -77,7 +77,7 @@ class _TextFieldShowcaseState extends ShowcaseState<TextFieldShowcase> {
         ShowcaseWidgetData(
           title: 'TextField color',
           builder: () => SeparatedColumn(
-                children: WidgetStatus.values
+                children: EqWidgetStatus.values
                     .map((value) => EqTextField(hint: enumToString(value), status: value))
                     .toList(),
                 separatorBuilder: (_, i) => SizedBox(height: 16.0),
@@ -96,14 +96,14 @@ class _TextFieldShowcaseState extends ShowcaseState<TextFieldShowcase> {
                     label: 'On left',
                     hint: 'Hint',
                     icon: EvaIcons.star,
-                    iconPosition: Positioning.left,
+                    iconPosition: EqPositioning.left,
                   ),
                   SizedBox(height: 16.0),
                   EqTextField(
                     label: 'On right',
                     hint: 'Hint',
                     icon: EvaIcons.star,
-                    iconPosition: Positioning.right,
+                    iconPosition: EqPositioning.right,
                   ),
                 ],
               ),

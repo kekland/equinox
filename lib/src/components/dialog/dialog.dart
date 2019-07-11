@@ -22,10 +22,10 @@ class EqDialog extends StatelessWidget {
   /// - If [statusAppearance] is [CardStatusAppearance.strip], the status will be displayed as
   /// tiny line on top of the dialog.
   /// - Otherwise, no status will be displayed.
-  final WidgetStatus status;
+  final EqWidgetStatus status;
 
   /// Controls the dialog's border radius. If none is passed, uses [EqThemeData.defaultWidgetShape].
-  final WidgetShape shape;
+  final EqWidgetShape shape;
 
   /// Controls the dialog's status appearance. See [status] for more details.
   final CardStatusAppearance statusAppearance;
@@ -46,8 +46,8 @@ class EqDialog extends StatelessWidget {
     this.headerPadding,
     this.footerPadding,
     this.padding = const EdgeInsets.all(16.0),
-    this.status = WidgetStatus.primary,
-    this.shape = WidgetShape.rectangle,
+    this.status = EqWidgetStatus.primary,
+    this.shape = EqWidgetShape.rectangle,
     this.statusAppearance = CardStatusAppearance.header,
     @required this.child,
   }) : super(key: key);

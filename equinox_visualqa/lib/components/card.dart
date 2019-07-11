@@ -24,8 +24,8 @@ class _CardShowcaseState extends ShowcaseState<CardShowcase> {
           data: {
             'header': BoolTyped(true),
             'footer': BoolTyped(true),
-            'shape': EnumTyped(WidgetShape.rectangle, WidgetShape.values),
-            'status': EnumTyped(WidgetStatus.primary, WidgetStatus.values),
+            'shape': EnumTyped(EqWidgetShape.rectangle, EqWidgetShape.values),
+            'status': EnumTyped(EqWidgetStatus.primary, EqWidgetStatus.values),
             'appearance': EnumTyped(
                 CardStatusAppearance.header, CardStatusAppearance.values),
           });
@@ -54,7 +54,7 @@ class _CardShowcaseState extends ShowcaseState<CardShowcase> {
         ),
         ShowcaseWidgetData(
           builder: () => EqCard(
-                status: WidgetStatus.success,
+                status: EqWidgetStatus.success,
                 statusAppearance: CardStatusAppearance.header,
                 header: Text('With status'),
                 child: Text(equinoxDescription),
@@ -64,7 +64,7 @@ class _CardShowcaseState extends ShowcaseState<CardShowcase> {
         ),
         ShowcaseWidgetData(
           builder: () => EqCard(
-                status: WidgetStatus.warning,
+                status: EqWidgetStatus.warning,
                 statusAppearance: CardStatusAppearance.strip,
                 header: Text('With status as a tiny strip'),
                 child: Text(equinoxDescription),
@@ -74,7 +74,7 @@ class _CardShowcaseState extends ShowcaseState<CardShowcase> {
         ),
         ShowcaseWidgetData(
           builder: () => EqCard(
-                status: WidgetStatus.danger,
+                status: EqWidgetStatus.danger,
                 statusAppearance: CardStatusAppearance.body,
                 header: Text('Full colored'),
                 child: Text(equinoxDescription),
@@ -86,17 +86,17 @@ class _CardShowcaseState extends ShowcaseState<CardShowcase> {
           builder: () => Column(
                 children: [
                   EqCard(
-                    status: WidgetStatus.success,
+                    status: EqWidgetStatus.success,
                     statusAppearance: CardStatusAppearance.strip,
                     header: Text('Rectangle'),
                     child: Text(equinoxDescription),
-                    shape: WidgetShape.rectangle,
+                    shape: EqWidgetShape.rectangle,
                     footer: Text('By Wikipedia'),
                   ),
                   SizedBox(height: 16.0),
                   EqCard(
-                    status: WidgetStatus.danger,
-                    shape: WidgetShape.semiRound,
+                    status: EqWidgetStatus.danger,
+                    shape: EqWidgetShape.semiRound,
                     statusAppearance: CardStatusAppearance.strip,
                     header: Text('Semi Round'),
                     child: Text(equinoxDescription),

@@ -8,10 +8,10 @@ export 'package:equinox/src/components/textfield/textfield_theme.dart';
 /// A Widget that is used to receive text information from user. Can be styled using [EqTextFieldTheme].
 class EqTextField extends StatefulWidget {
   /// Controls the TextField's border radius.
-  final WidgetShape shape;
+  final EqWidgetShape shape;
 
   /// Controls the TextField's color.
-  final WidgetStatus status;
+  final EqWidgetStatus status;
 
   /// Text to put as error. Will repaint the text field. If `null` is provided, no error will be drawn.
   final String error;
@@ -47,7 +47,7 @@ class EqTextField extends StatefulWidget {
   final IconData icon;
 
   /// Controls the position of [icon].
-  final Positioning iconPosition;
+  final EqPositioning iconPosition;
 
   /// Whether to obscure the text or not. For example, when editing password you need to set this to true.
   final bool obscureText;
@@ -61,7 +61,7 @@ class EqTextField extends StatefulWidget {
   const EqTextField({
     Key key,
     @required this.hint,
-    this.shape = WidgetShape.rectangle,
+    this.shape = EqWidgetShape.rectangle,
     this.status,
     this.error,
     this.enabled = true,
@@ -71,7 +71,7 @@ class EqTextField extends StatefulWidget {
     this.onSubmitted,
     this.onEditingComplete,
     this.icon,
-    this.iconPosition = Positioning.left,
+    this.iconPosition = EqPositioning.left,
     this.label,
     this.description,
     this.obscureText = false,
@@ -179,14 +179,14 @@ class _EqTextFieldState extends State<EqTextField> {
                   filled: true,
                   fillColor: backgroundColor,
                   prefixIcon: (widget.icon != null &&
-                          themeData.iconPosition == Positioning.left)
+                          themeData.iconPosition == EqPositioning.left)
                       ? Icon(widget.icon,
                           color: (disabled)
                               ? theme.textDisabledColor
                               : theme.textHintColor)
                       : null,
                   suffixIcon: (widget.icon != null &&
-                          themeData.iconPosition == Positioning.right)
+                          themeData.iconPosition == EqPositioning.right)
                       ? Icon(widget.icon,
                           color: (disabled)
                               ? theme.textDisabledColor

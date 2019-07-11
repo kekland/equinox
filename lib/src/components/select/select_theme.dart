@@ -4,15 +4,15 @@ import 'package:flutter/widgets.dart';
 /// This is used to style Selects globally. Set this in [EqThemeData.defaultSelectTheme].
 class EqSelectThemeData {
   /// Controls select's border radius
-  final WidgetShape shape;
+  final EqWidgetShape shape;
 
   /// Controls select's color
-  final WidgetStatus status;
+  final EqWidgetStatus status;
 
   /// Merges two [EqSelectThemeData]'s.
   EqSelectThemeData copyWith({
-    WidgetShape shape,
-    WidgetStatus status,
+    EqWidgetShape shape,
+    EqWidgetStatus status,
   }) {
     return EqSelectThemeData(
       shape: shape ?? this.shape,

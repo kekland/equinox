@@ -15,8 +15,8 @@ class _ToastShowcaseState extends ShowcaseState<ToastShowcase> {
         data: {
           'subtitle': BoolTyped(true),
           'icon': BoolTyped(true),
-          'status': EnumTyped(WidgetStatus.success, WidgetStatus.values),
-          'shape': EnumTyped(WidgetShape.semiRound, WidgetShape.values),
+          'status': EnumTyped(EqWidgetStatus.success, EqWidgetStatus.values),
+          'shape': EnumTyped(EqWidgetShape.semiRound, EqWidgetShape.values),
         },
         builder: (_, data) {
           return SizedBox(
@@ -67,7 +67,7 @@ class _ToastShowcaseState extends ShowcaseState<ToastShowcase> {
         title: 'Toast colors',
         builder: () => SeparatedColumn(
               separatorBuilder: (_, i) => SizedBox(height: 8.0),
-              children: WidgetStatus.values
+              children: EqWidgetStatus.values
                   .map((value) => SizedBox(
                       width: double.infinity,
                       child: EqButton(
@@ -90,7 +90,7 @@ class _ToastShowcaseState extends ShowcaseState<ToastShowcase> {
         title: 'Toast shapes',
         builder: () => SeparatedColumn(
               separatorBuilder: (_, i) => SizedBox(height: 8.0),
-              children: WidgetShape.values
+              children: EqWidgetShape.values
                   .map((value) => SizedBox(
                       width: double.infinity,
                       child: EqButton(

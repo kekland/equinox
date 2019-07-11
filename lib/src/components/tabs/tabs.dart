@@ -20,7 +20,7 @@ class EqTabs extends StatefulWidget {
   final bool showPagerIndicator;
 
   /// Position of the pager indicator (on top or on bottom)
-  final VerticalPositioning pagerIndicatorPosition;
+  final EqVerticalPositioning pagerIndicatorPosition;
 
   const EqTabs({
     Key key,
@@ -28,7 +28,7 @@ class EqTabs extends StatefulWidget {
     @required this.onSelect,
     @required this.tabs,
     this.showPagerIndicator = true,
-    this.pagerIndicatorPosition = VerticalPositioning.bottom,
+    this.pagerIndicatorPosition = EqVerticalPositioning.bottom,
   }) : super(key: key);
   @override
   _EqTabsState createState() => _EqTabsState();
@@ -61,7 +61,7 @@ class _EqTabsState extends State<EqTabs> {
               flex: 1,
               child: EqTab(
                 pagerIndicatorAlignment:
-                    (widget.pagerIndicatorPosition == VerticalPositioning.top)
+                    (widget.pagerIndicatorPosition == EqVerticalPositioning.top)
                         ? Alignment.topCenter
                         : Alignment.bottomCenter,
                 showPagerIndicator: widget.showPagerIndicator,

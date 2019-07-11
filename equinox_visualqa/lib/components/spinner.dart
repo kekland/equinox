@@ -11,8 +11,8 @@ class _SpinnerShowcaseState extends ShowcaseState<SpinnerShowcase> {
   @override
   InteractivePlayground playgroundBuilder() => InteractivePlayground(
         data: {
-          'status': EnumTyped(WidgetStatus.primary, WidgetStatus.values),
-          'size': EnumTyped(WidgetSize.medium, WidgetSize.values),
+          'status': EnumTyped(EqWidgetStatus.primary, EqWidgetStatus.values),
+          'size': EnumTyped(EqWidgetSize.medium, EqWidgetSize.values),
         },
         builder: (_, data) => Center(
               heightFactor: 1.0,
@@ -38,7 +38,7 @@ class _SpinnerShowcaseState extends ShowcaseState<SpinnerShowcase> {
                 spacing: 16.0,
                 runSpacing: 16.0,
                 alignment: WrapAlignment.start,
-                children: WidgetStatus.values
+                children: EqWidgetStatus.values
                     .map((status) => EqSpinner(
                           status: status,
                         ))
@@ -51,7 +51,7 @@ class _SpinnerShowcaseState extends ShowcaseState<SpinnerShowcase> {
                 spacing: 16.0,
                 runSpacing: 16.0,
                 alignment: WrapAlignment.start,
-                children: WidgetSize.values.reversed
+                children: EqWidgetSize.values.reversed
                     .map((size) => EqSpinner(
                           size: size,
                         ))

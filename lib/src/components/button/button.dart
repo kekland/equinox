@@ -10,16 +10,16 @@ export 'package:equinox/src/components/button/button_theme.dart';
 /// with prevalence to the latter, and then combined with this butotn's settings.
 class EqButton extends StatefulWidget {
   /// Controls the size of the widget. Will overwrite the value set by [EqButtonThemeData].
-  final WidgetSize size;
+  final EqWidgetSize size;
 
   /// Controls the status - and color of the widget. Will overwrite the value set by [EqButtonThemeData].
-  final WidgetStatus status;
+  final EqWidgetStatus status;
 
   /// Controls the appearance of the button. It can be either filled, outlined, or ghost. Will overwrite the value set by [EqButtonThemeData].
-  final WidgetAppearance appearance;
+  final EqWidgetAppearance appearance;
 
   /// Controls the BorderRadius of the button. Will overwrite the value set by [EqButtonThemeData].
-  final WidgetShape shape;
+  final EqWidgetShape shape;
 
   /// Method that is called when user presses the button. Button will become disabled if `null` is passed;
   final VoidCallback onTap;
@@ -31,7 +31,7 @@ class EqButton extends StatefulWidget {
   final IconData icon;
 
   /// Sets the position of the icon. Will overwrite the value set by [EqButtonThemeData].
-  final Positioning iconPosition;
+  final EqPositioning iconPosition;
 
   const EqButton({
     Key key,
@@ -55,7 +55,7 @@ class EqButton extends StatefulWidget {
     this.shape,
     this.icon,
     this.iconPosition,
-  })  : this.appearance = WidgetAppearance.filled,
+  })  : this.appearance = EqWidgetAppearance.filled,
         super(key: key);
 
   /// Automatically sets the [appearance] to be `WidgetAppearance.outline`.
@@ -68,7 +68,7 @@ class EqButton extends StatefulWidget {
     this.shape,
     this.icon,
     this.iconPosition,
-  })  : this.appearance = WidgetAppearance.outline,
+  })  : this.appearance = EqWidgetAppearance.outline,
         super(key: key);
 
   /// Automatically sets the [appearance] to be `WidgetAppearance.ghost`.
@@ -81,7 +81,7 @@ class EqButton extends StatefulWidget {
     this.shape,
     this.icon,
     this.iconPosition,
-  })  : this.appearance = WidgetAppearance.ghost,
+  })  : this.appearance = EqWidgetAppearance.ghost,
         super(key: key);
 
   @override
@@ -112,7 +112,7 @@ class _EqButtonState extends State<EqButton> {
     final themeData = getThemeData(context);
     final disabled = widget.onTap == null;
     final hasIcon =
-        widget.icon != null && widget.iconPosition != Positioning.none;
+        widget.icon != null && widget.iconPosition != EqPositioning.none;
 
     final iconSize = themeData.getIconSize(theme: theme, disabled: disabled);
     final textColor = themeData.getTextColor(theme: theme, disabled: disabled);
@@ -130,7 +130,7 @@ class _EqButtonState extends State<EqButton> {
         size: iconSize,
         color: textColor,
       );
-      if (widget.iconPosition == Positioning.left) {
+      if (widget.iconPosition == EqPositioning.left) {
         list = [icon, SizedBox(width: 8.0), text];
       } else {
         list = [text, SizedBox(width: 8.0), icon];

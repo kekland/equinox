@@ -24,45 +24,7 @@ class EqThemeData {
   final BackgroundColors backgroundPrimaryColors;
   final BorderColors borderPrimaryColors;
 
-  final Color textBasicColor;
-  final Color textAlternateColor;
-  final Color textControlColor;
-  final Color textDisabledColor;
-  final Color textHintColor;
-
-  final ColorStates textPrimaryStates;
-  final ColorStates textSuccessStates;
-  final ColorStates textInfoStates;
-  final ColorStates textWarningStates;
-  final ColorStates textDangerStates;
-
-  final TextTheme heading1;
-  final TextTheme heading2;
-  final TextTheme heading3;
-  final TextTheme heading4;
-  final TextTheme heading5;
-  final TextTheme heading6;
-
-  final TextTheme subtitle1;
-  final TextTheme subtitle2;
-
-  final TextTheme paragraph1;
-  final TextTheme paragraph2;
-
-  final TextTheme label;
-
-  final TextTheme caption1;
-  final TextTheme caption2;
-
-  final TextTheme buttonTiny;
-  final TextTheme buttonSmall;
-  final TextTheme buttonMedium;
-  final TextTheme buttonLarge;
-  final TextTheme buttonGiant;
-
   final double borderRadius;
-  final double outlineWidth;
-  final Color outlineColor;
 
   final Color dividerColor;
   final double dividerWidth;
@@ -76,7 +38,7 @@ class EqThemeData {
   final Duration majorAnimationDuration;
   final Curve majorAnimationCurve;
 
-  final WidgetShape defaultWidgetShape;
+  final EqWidgetShape defaultWidgetShape;
   final EqButtonThemeData defaultButtonTheme;
   final EqCheckboxThemeData defaultCheckboxTheme;
   final EqToggleThemeData defaultToggleTheme;
@@ -116,7 +78,7 @@ class EqThemeData {
     Duration minorAnimationDuration = const Duration(milliseconds: 150),
     Curve majorAnimationCurve: Curves.easeInOut,
     Curve minorAnimationCurve = Curves.easeInOut,
-    WidgetShape defaultWidgetShape = WidgetShape.rectangle,
+    EqWidgetShape defaultWidgetShape = EqWidgetShape.rectangle,
     EqButtonThemeData defaultButtonTheme,
     EqCheckboxThemeData defaultCheckboxTheme,
     EqToggleThemeData defaultToggleTheme,
@@ -221,7 +183,7 @@ class EqThemeData {
     Duration minorAnimationDuration = const Duration(milliseconds: 150),
     Curve majorAnimationCurve: Curves.easeInOut,
     Curve minorAnimationCurve = Curves.easeInOut,
-    WidgetShape defaultWidgetShape = WidgetShape.rectangle,
+    EqWidgetShape defaultWidgetShape = EqWidgetShape.rectangle,
     EqButtonThemeData defaultButtonTheme,
     EqCheckboxThemeData defaultCheckboxTheme,
     EqToggleThemeData defaultToggleTheme,
@@ -472,57 +434,57 @@ class EqThemeData {
     this.defaultSpinnerTheme,
   });
 
-  ColorGroup getColorsForStatus({WidgetStatus status}) {
+  ColorGroup getColorsForStatus({EqWidgetStatus status}) {
     switch (status) {
-      case WidgetStatus.primary:
+      case EqWidgetStatus.primary:
         return primary;
-      case WidgetStatus.success:
+      case EqWidgetStatus.success:
         return success;
-      case WidgetStatus.info:
+      case EqWidgetStatus.info:
         return info;
-      case WidgetStatus.warning:
+      case EqWidgetStatus.warning:
         return warning;
-      case WidgetStatus.danger:
+      case EqWidgetStatus.danger:
         return danger;
-      case WidgetStatus.basic:
+      case EqWidgetStatus.basic:
         return basic;
       default:
         return null;
     }
   }
   
-  Color getColorForStatus({WidgetStatus status, double opacity = 1.0}) {
+  Color getColorForStatus({EqWidgetStatus status, double opacity = 1.0}) {
     switch (status) {
-      case WidgetStatus.primary:
+      case EqWidgetStatus.primary:
         return primary.shade500.withOpacity(opacity);
-      case WidgetStatus.success:
+      case EqWidgetStatus.success:
         return success.shade500.withOpacity(opacity);
-      case WidgetStatus.info:
+      case EqWidgetStatus.info:
         return info.shade500.withOpacity(opacity);
-      case WidgetStatus.warning:
+      case EqWidgetStatus.warning:
         return warning.shade500.withOpacity(opacity);
-      case WidgetStatus.danger:
+      case EqWidgetStatus.danger:
         return danger.shade500.withOpacity(opacity);
-      case WidgetStatus.basic:
+      case EqWidgetStatus.basic:
         return basic.shade500.withOpacity(opacity);
       default:
         return null;
     }
   }
 
-  ColorStates getStatesForStatus({WidgetStatus status}) {
+  ColorStates getStatesForStatus({EqWidgetStatus status}) {
     switch (status) {
-      case WidgetStatus.primary:
+      case EqWidgetStatus.primary:
         return textPrimaryStates;
-      case WidgetStatus.success:
+      case EqWidgetStatus.success:
         return textSuccessStates;
-      case WidgetStatus.info:
+      case EqWidgetStatus.info:
         return textInfoStates;
-      case WidgetStatus.warning:
+      case EqWidgetStatus.warning:
         return textWarningStates;
-      case WidgetStatus.danger:
+      case EqWidgetStatus.danger:
         return textDangerStates;
-      case WidgetStatus.basic:
+      case EqWidgetStatus.basic:
         return basicStates;
       default:
         return textPrimaryStates;
@@ -587,7 +549,7 @@ class EqThemeData {
     Curve minorAnimationCurve,
     Duration majorAnimationDuration,
     Curve majorAnimationCurve,
-    WidgetShape defaultWidgetShape,
+    EqWidgetShape defaultWidgetShape,
     EqButtonThemeData defaultButtonTheme,
     EqCheckboxThemeData defaultCheckboxTheme,
     EqToggleThemeData defaultToggleTheme,
@@ -702,20 +664,20 @@ class EqThemeData {
   }
 
   factory EqThemeData.loadFromJson({@required Map data, bool light = true}) {
-    Map<WidgetStatus, String> widgetStatusAsString = {
-      WidgetStatus.primary: 'primary',
-      WidgetStatus.info: 'info',
-      WidgetStatus.warning: 'warning',
-      WidgetStatus.danger: 'danger',
-      WidgetStatus.success: 'success',
+    Map<EqWidgetStatus, String> widgetStatusAsString = {
+      EqWidgetStatus.primary: 'primary',
+      EqWidgetStatus.info: 'info',
+      EqWidgetStatus.warning: 'warning',
+      EqWidgetStatus.danger: 'danger',
+      EqWidgetStatus.success: 'success',
     };
 
-    Map<WidgetStatus, List<String>> widgetStatusColors = {
-      WidgetStatus.primary: [],
-      WidgetStatus.info: [],
-      WidgetStatus.warning: [],
-      WidgetStatus.danger: [],
-      WidgetStatus.success: [],
+    Map<EqWidgetStatus, List<String>> widgetStatusColors = {
+      EqWidgetStatus.primary: [],
+      EqWidgetStatus.info: [],
+      EqWidgetStatus.warning: [],
+      EqWidgetStatus.danger: [],
+      EqWidgetStatus.success: [],
     };
 
     for (final widgetStatus in widgetStatusAsString.keys) {
@@ -727,19 +689,19 @@ class EqThemeData {
 
     if (light) {
       return EqThemes.defaultLightTheme.extend(
-        primary: ColorGroup.fromJson(widgetStatusColors[WidgetStatus.primary]),
-        success: ColorGroup.fromJson(widgetStatusColors[WidgetStatus.success]),
-        info: ColorGroup.fromJson(widgetStatusColors[WidgetStatus.info]),
-        warning: ColorGroup.fromJson(widgetStatusColors[WidgetStatus.warning]),
-        danger: ColorGroup.fromJson(widgetStatusColors[WidgetStatus.danger]),
+        primary: ColorGroup.fromJson(widgetStatusColors[EqWidgetStatus.primary]),
+        success: ColorGroup.fromJson(widgetStatusColors[EqWidgetStatus.success]),
+        info: ColorGroup.fromJson(widgetStatusColors[EqWidgetStatus.info]),
+        warning: ColorGroup.fromJson(widgetStatusColors[EqWidgetStatus.warning]),
+        danger: ColorGroup.fromJson(widgetStatusColors[EqWidgetStatus.danger]),
       );
     } else {
       return EqThemes.defaultDarkTheme.extend(
-        primary: ColorGroup.fromJson(widgetStatusColors[WidgetStatus.primary]),
-        success: ColorGroup.fromJson(widgetStatusColors[WidgetStatus.success]),
-        info: ColorGroup.fromJson(widgetStatusColors[WidgetStatus.info]),
-        warning: ColorGroup.fromJson(widgetStatusColors[WidgetStatus.warning]),
-        danger: ColorGroup.fromJson(widgetStatusColors[WidgetStatus.danger]),
+        primary: ColorGroup.fromJson(widgetStatusColors[EqWidgetStatus.primary]),
+        success: ColorGroup.fromJson(widgetStatusColors[EqWidgetStatus.success]),
+        info: ColorGroup.fromJson(widgetStatusColors[EqWidgetStatus.info]),
+        warning: ColorGroup.fromJson(widgetStatusColors[EqWidgetStatus.warning]),
+        danger: ColorGroup.fromJson(widgetStatusColors[EqWidgetStatus.danger]),
       );
     }
   }

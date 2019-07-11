@@ -60,10 +60,10 @@ class EqAppBar extends StatelessWidget {
         Navigator.of(context).canPop()) {
       leadingWidget = new EqIconButton(
         icon: EvaIcons.arrowBack,
-        size: WidgetSize.giant,
+        size: EqWidgetSize.giant,
         color: theme.textBasicColor,
-        status: WidgetStatus.basic,
-        appearance: WidgetAppearance.ghost,
+        status: EqWidgetStatus.basic,
+        appearance: EqWidgetAppearance.ghost,
         onTap: () => Navigator.pop(context),
       );
     }

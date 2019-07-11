@@ -2,18 +2,18 @@ import 'package:equinox/equinox.dart';
 import 'package:flutter/widgets.dart';
 
 class EqToggleableDesciptionUtils {
-  static List<Widget> buildListWithDescription({Widget main, double padding, Widget description, Positioning descriptionPosition}) {
-    if(description == null || descriptionPosition == Positioning.none) {
+  static List<Widget> buildListWithDescription({Widget main, double padding, Widget description, EqPositioning descriptionPosition}) {
+    if(description == null || descriptionPosition == EqPositioning.none) {
       return <Widget>[main];
     }
-    if(descriptionPosition == Positioning.left) {
+    if(descriptionPosition == EqPositioning.left) {
       return <Widget>[
         description,
         SizedBox(width: padding),
         main,
       ];
     }
-    else if(descriptionPosition == Positioning.right) {
+    else if(descriptionPosition == EqPositioning.right) {
       return <Widget>[
         main,
         SizedBox(width: padding),

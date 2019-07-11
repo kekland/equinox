@@ -6,14 +6,14 @@ import 'package:flutter/widgets.dart';
 class EqCheckboxThemeData {
   /// Status of the widget. Controls the background color (ignored if [backgroundColor] is non-null).
   /// Also controls the disabled background color (ignored if [backgroundDisabledColor] is non-null).
-  final WidgetStatus status;
+  final EqWidgetStatus status;
 
   /// Controls the border radius. Can be either `.rectangle`, `.semiRound`, `.round`. Will be overwritten
   /// if [borderRadius] is present.
-  final WidgetShape shape;
+  final EqWidgetShape shape;
 
   /// Controls the position of the description.
-  final Positioning descriptionPosition;
+  final EqPositioning descriptionPosition;
 
   const EqCheckboxThemeData({
     this.status,
@@ -23,9 +23,9 @@ class EqCheckboxThemeData {
 
   /// Merges two [EqCheckboxThemeData]'s.
   EqCheckboxThemeData copyWith({
-    WidgetStatus status,
-    WidgetShape shape,
-    Positioning descriptionPosition,
+    EqWidgetStatus status,
+    EqWidgetShape shape,
+    EqPositioning descriptionPosition,
   }) {
     return EqCheckboxThemeData(
       status: status ?? this.status,

@@ -7,20 +7,20 @@ import 'package:flutter/widgets.dart';
 /// Customize this using [EqIconButtonThemeData].
 class EqIconButton extends StatefulWidget {
   /// Controls the size of the button
-  final WidgetSize size;
+  final EqWidgetSize size;
 
   /// Controls the colors.
-  final WidgetStatus status;
+  final EqWidgetStatus status;
 
-  /// If provided, overwrites the color set by [status] in [WidgetAppearance.ghost] and
-  /// [WidgetAppearance.outline] appearances.
+  /// If provided, overwrites the color set by [status] in [EqWidgetAppearance.ghost] and
+  /// [EqWidgetAppearance.outline] appearances.
   final Color color;
 
   /// Controls the appearance of the widget.
-  final WidgetAppearance appearance;
+  final EqWidgetAppearance appearance;
 
   /// Controls the border radius.
-  final WidgetShape shape;
+  final EqWidgetShape shape;
 
   /// Method is called when user taps on the button. Can be null to disable this button.
   final VoidCallback onTap;
@@ -32,10 +32,10 @@ class EqIconButton extends StatefulWidget {
     Key key,
     @required this.icon,
     @required this.onTap,
-    this.size = WidgetSize.medium,
-    this.status = WidgetStatus.primary,
-    this.appearance = WidgetAppearance.filled,
-    this.shape = WidgetShape.round,
+    this.size = EqWidgetSize.medium,
+    this.status = EqWidgetStatus.primary,
+    this.appearance = EqWidgetAppearance.filled,
+    this.shape = EqWidgetShape.round,
     this.color,
   }) : super(key: key);
 
@@ -76,7 +76,7 @@ class _EqIconButtonState extends State<EqIconButton> {
     return OutlinedWidget(
       outlined: outlined,
       borderRadius: borderRadius,
-      clipInner: widget.appearance != WidgetAppearance.ghost,
+      clipInner: widget.appearance != EqWidgetAppearance.ghost,
       predefinedSize: Size.square(padding.horizontal + size),
       child: AnimatedContainer(
         duration: theme.minorAnimationDuration,

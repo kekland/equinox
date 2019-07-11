@@ -13,9 +13,9 @@ class _ProgressBarShowcaseState extends ShowcaseState<ProgressBarShowcase> {
   @override
   Widget playgroundBuilder() => InteractivePlayground(
           data: {
-            'shape': EnumTyped(WidgetShape.rectangle, WidgetShape.values),
-            'status': EnumTyped(WidgetStatus.primary, WidgetStatus.values),
-            'size': EnumTyped(WidgetSize.large, WidgetSize.values),
+            'shape': EnumTyped(EqWidgetShape.rectangle, EqWidgetShape.values),
+            'status': EnumTyped(EqWidgetStatus.primary, EqWidgetStatus.values),
+            'size': EnumTyped(EqWidgetSize.large, EqWidgetSize.values),
           },
           builder: (_, data) {
             return StatefulBuilder(builder: (context, setState) {
@@ -26,7 +26,7 @@ class _ProgressBarShowcaseState extends ShowcaseState<ProgressBarShowcase> {
                     onTap: () => setState(
                         () => percentage2 = (percentage2 - 0.25).clamp(0.0, 1.0)),
                     status: data['status'],
-                    appearance: WidgetAppearance.ghost,
+                    appearance: EqWidgetAppearance.ghost,
                   ),
                   SizedBox(width: 16.0),
                   Expanded(
@@ -43,7 +43,7 @@ class _ProgressBarShowcaseState extends ShowcaseState<ProgressBarShowcase> {
                     onTap: () => setState(
                         () => percentage2 = (percentage2 + 0.25).clamp(0.0, 1.0)),
                     status: data['status'],
-                    appearance: WidgetAppearance.ghost,
+                    appearance: EqWidgetAppearance.ghost,
                   ),
                 ],
               );
@@ -76,7 +76,7 @@ class _ProgressBarShowcaseState extends ShowcaseState<ProgressBarShowcase> {
       ShowcaseWidgetData(
         title: 'Progress bar colors',
         builder: () => SeparatedColumn(
-              children: WidgetStatus.values
+              children: EqWidgetStatus.values
                   .map(
                     (value) => EqProgressBar(
                           value: 0.8,
@@ -91,12 +91,12 @@ class _ProgressBarShowcaseState extends ShowcaseState<ProgressBarShowcase> {
       ShowcaseWidgetData(
         title: 'Progress bar shapes',
         builder: () => SeparatedColumn(
-              children: WidgetShape.values
+              children: EqWidgetShape.values
                   .map(
                     (value) => EqProgressBar(
                           value: 0.8,
                           text: enumToString(value),
-                          status: WidgetStatus.success,
+                          status: EqWidgetStatus.success,
                           shape: value,
                         ),
                   )
@@ -107,7 +107,7 @@ class _ProgressBarShowcaseState extends ShowcaseState<ProgressBarShowcase> {
       ShowcaseWidgetData(
         title: 'Progress bar sizes',
         builder: () => SeparatedColumn(
-              children: WidgetSize.values
+              children: EqWidgetSize.values
                   .map(
                     (value) => EqProgressBar(
                           value: 0.8,
@@ -128,14 +128,14 @@ class _ProgressBarShowcaseState extends ShowcaseState<ProgressBarShowcase> {
                     icon: EvaIcons.minus,
                     onTap: () => setState(
                         () => percentage = (percentage - 0.25).clamp(0.0, 1.0)),
-                    status: WidgetStatus.success,
-                    appearance: WidgetAppearance.ghost,
+                    status: EqWidgetStatus.success,
+                    appearance: EqWidgetAppearance.ghost,
                   ),
                   SizedBox(width: 16.0),
                   Expanded(
                     child: EqProgressBar(
                         value: percentage,
-                        status: WidgetStatus.success,
+                        status: EqWidgetStatus.success,
                         text: '${(percentage * 100.0).round().toString()}%'),
                   ),
                   SizedBox(width: 16.0),
@@ -143,8 +143,8 @@ class _ProgressBarShowcaseState extends ShowcaseState<ProgressBarShowcase> {
                     icon: EvaIcons.plus,
                     onTap: () => setState(
                         () => percentage = (percentage + 0.25).clamp(0.0, 1.0)),
-                    status: WidgetStatus.success,
-                    appearance: WidgetAppearance.ghost,
+                    status: EqWidgetStatus.success,
+                    appearance: EqWidgetAppearance.ghost,
                   ),
                 ],
               );

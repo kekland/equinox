@@ -11,7 +11,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildBody() {
     return EqCard(
-      shape: WidgetShape.semiRound,
+      shape: EqWidgetShape.semiRound,
       header: Text('Login'),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -19,26 +19,26 @@ class _HomePageState extends State<HomePage> {
         children: [
           EqTextField(
             label: 'Username',
-            shape: WidgetShape.semiRound,
+            shape: EqWidgetShape.semiRound,
             hint: 'Username',
             icon: EvaIcons.emailOutline,
-            iconPosition: Positioning.right,
+            iconPosition: EqPositioning.right,
             enabled: false,
           ),
           SizedBox(height: 16.0),
           EqTextField(
             label: 'Password',
-            shape: WidgetShape.semiRound,
+            shape: EqWidgetShape.semiRound,
             hint: 'Password',
             icon: EvaIcons.lockOutline,
-            iconPosition: Positioning.right,
+            iconPosition: EqPositioning.right,
             obscureText: true,
           ),
           SizedBox(height: 16.0),
           EqSelect(
             label: 'Select',
             hint: 'Select',
-            shape: WidgetShape.semiRound,
+            shape: EqWidgetShape.semiRound,
             items: [
               EqSelectItem(
                   title: 'Option 1',
@@ -60,17 +60,17 @@ class _HomePageState extends State<HomePage> {
             value: checked,
             onChanged: (v) => setState(() => checked = v),
             description: 'Remember me',
-            shape: WidgetShape.rectangle,
+            shape: EqWidgetShape.rectangle,
           ),
         ],
       ),
       footerPadding: EdgeInsets.zero,
       footer: EqButton(
-        appearance: WidgetAppearance.ghost,
+        appearance: EqWidgetAppearance.ghost,
         onTap: () {},
         label: 'Log in',
-        size: WidgetSize.large,
-        status: WidgetStatus.primary,
+        size: EqWidgetSize.large,
+        status: EqWidgetStatus.primary,
       ),
     );
   }

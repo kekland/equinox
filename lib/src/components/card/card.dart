@@ -26,10 +26,10 @@ class EqCard extends StatelessWidget {
   /// - If [statusAppearance] is [CardStatusAppearance.strip], the status will be displayed as
   /// tiny line on top of the card.
   /// - Otherwise, no status will be displayed.
-  final WidgetStatus status;
+  final EqWidgetStatus status;
 
   /// Controls the card's border radius. If none is passed, uses [EqThemeData.defaultWidgetShape].
-  final WidgetShape shape;
+  final EqWidgetShape shape;
 
   /// Controls the card's status appearance. See [status] for more details.
   final CardStatusAppearance statusAppearance;
@@ -48,7 +48,7 @@ class EqCard extends StatelessWidget {
     @required this.child,
     this.header,
     this.footer,
-    this.status = WidgetStatus.primary,
+    this.status = EqWidgetStatus.primary,
     this.shape,
     this.statusAppearance = CardStatusAppearance.header,
     this.padding = const EdgeInsets.all(16.0),
@@ -139,8 +139,8 @@ class EqCard extends StatelessWidget {
 }
 
 class _CardHeader extends StatelessWidget {
-  final WidgetStatus status;
-  final WidgetShape shape;
+  final EqWidgetStatus status;
+  final EqWidgetShape shape;
   final CardStatusAppearance statusAppearance;
   final EdgeInsets padding;
   final Widget child;
@@ -195,8 +195,8 @@ class _CardHeader extends StatelessWidget {
 }
 
 class _CardFooter extends StatelessWidget {
-  final WidgetStatus status;
-  final WidgetShape shape;
+  final EqWidgetStatus status;
+  final EqWidgetShape shape;
   final CardStatusAppearance statusAppearance;
   final EdgeInsets padding;
   final Widget child;
@@ -237,8 +237,8 @@ class _CardFooter extends StatelessWidget {
 }
 
 class _CardStatusStripWidget extends StatelessWidget {
-  final WidgetStatus status;
-  final WidgetShape shape;
+  final EqWidgetStatus status;
+  final EqWidgetShape shape;
 
   const _CardStatusStripWidget(
       {MaterialDesign.Key key, this.status, this.shape})

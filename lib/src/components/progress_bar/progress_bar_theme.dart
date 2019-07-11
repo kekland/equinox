@@ -5,13 +5,13 @@ import 'package:flutter/widgets.dart';
 /// Can be used in [EqThemeData.defaultProgressBarTheme].
 class EqProgressBarThemeData {
   /// Controls the color of progress bar.
-  final WidgetStatus status;
+  final EqWidgetStatus status;
 
   /// Controls the size of progress bar.
-  final WidgetSize size;
+  final EqWidgetSize size;
 
   /// Controls the shape of progress bar.
-  final WidgetShape shape;
+  final EqWidgetShape shape;
 
   const EqProgressBarThemeData({
     this.status,
@@ -21,9 +21,9 @@ class EqProgressBarThemeData {
 
   /// Merges two [EqProgressBarThemeData]'s.
   EqProgressBarThemeData copyWith({
-    WidgetStatus status,
-    WidgetSize size,
-    WidgetShape shape,
+    EqWidgetStatus status,
+    EqWidgetSize size,
+    EqWidgetShape shape,
   }) {
     return EqProgressBarThemeData(
       status: status ?? this.status,
@@ -44,15 +44,15 @@ class EqProgressBarThemeData {
 
   double getHeight() {
     switch (size) {
-      case WidgetSize.giant:
+      case EqWidgetSize.giant:
         return 28.0;
-      case WidgetSize.large:
+      case EqWidgetSize.large:
         return 24.0;
-      case WidgetSize.medium:
+      case EqWidgetSize.medium:
         return 22.0;
-      case WidgetSize.small:
+      case EqWidgetSize.small:
         return 20.0;
-      case WidgetSize.tiny:
+      case EqWidgetSize.tiny:
         return 16.0;
       default:
         return 22.0;
@@ -61,15 +61,15 @@ class EqProgressBarThemeData {
 
   TextStyle getTextStyle({EqThemeData theme}) {
     switch (size) {
-      case WidgetSize.giant:
+      case EqWidgetSize.giant:
         return theme.subtitle1.textStyle.copyWith(height: 1.0);
-      case WidgetSize.large:
+      case EqWidgetSize.large:
         return theme.subtitle1.textStyle.copyWith(height: 1.0);
-      case WidgetSize.medium:
+      case EqWidgetSize.medium:
         return theme.subtitle1.textStyle.copyWith(height: 1.0);
-      case WidgetSize.small:
+      case EqWidgetSize.small:
         return theme.subtitle2.textStyle.copyWith(height: 1.0);
-      case WidgetSize.tiny:
+      case EqWidgetSize.tiny:
         return theme.subtitle2.textStyle.copyWith(height: 1.0);
       default:
         return theme.subtitle1.textStyle.copyWith(height: 1.0);

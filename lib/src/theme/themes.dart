@@ -73,37 +73,37 @@ class EqThemes {
     ),
     primaryFontFamily: 'Roboto',
     secondaryFontFamily: 'Roboto',
-    defaultWidgetShape: WidgetShape.rectangle,
+    defaultWidgetShape: EqWidgetShape.rectangle,
     defaultButtonTheme: EqButtonThemeData(
-      appearance: WidgetAppearance.filled,
-      status: WidgetStatus.primary,
-      size: WidgetSize.medium,
-      iconPosition: Positioning.left,
+      appearance: EqWidgetAppearance.filled,
+      status: EqWidgetStatus.primary,
+      size: EqWidgetSize.medium,
+      iconPosition: EqPositioning.left,
     ),
     defaultCheckboxTheme: EqCheckboxThemeData(
-      descriptionPosition: Positioning.right,
+      descriptionPosition: EqPositioning.right,
     ),
     defaultIconButtonTheme: EqIconButtonThemeData(
-      appearance: WidgetAppearance.filled,
-      status: WidgetStatus.primary,
-      size: WidgetSize.medium,
+      appearance: EqWidgetAppearance.filled,
+      status: EqWidgetStatus.primary,
+      size: EqWidgetSize.medium,
     ),
     defaultProgressBarTheme: EqProgressBarThemeData(
-      size: WidgetSize.medium,
-      status: WidgetStatus.primary,
+      size: EqWidgetSize.medium,
+      status: EqWidgetStatus.primary,
     ),
     defaultRadioTheme: EqRadioThemeData(
-      descriptionPosition: Positioning.right,
+      descriptionPosition: EqPositioning.right,
     ),
     defaultSelectTheme: EqSelectThemeData(),
     defaultSpinnerTheme: EqSpinnerThemeData(
-      status: WidgetStatus.primary,
+      status: EqWidgetStatus.primary,
     ),
     defaultTextFieldTheme: EqTextFieldThemeData(
-      iconPosition: Positioning.left,
+      iconPosition: EqPositioning.left,
     ),
     defaultToggleTheme: EqToggleThemeData(
-      descriptionPosition: Positioning.left,
+      descriptionPosition: EqPositioning.left,
     ),
   );
 

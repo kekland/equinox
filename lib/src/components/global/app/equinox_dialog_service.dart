@@ -35,7 +35,7 @@ class EqDialogServiceState extends State<EqDialogService> {
     @required String title,
     @required Widget body,
     List<Widget> actions = const [],
-    WidgetStatus status = WidgetStatus.primary,
+    EqWidgetStatus status = EqWidgetStatus.primary,
   }) {
     return Navigator.of(context).push(
       TransparentPageRoute(
@@ -74,7 +74,7 @@ class EqDialogServiceState extends State<EqDialogService> {
     @required BuildContext context,
     @required String title,
     @required Widget body,
-    WidgetStatus status = WidgetStatus.info,
+    EqWidgetStatus status = EqWidgetStatus.info,
   }) async {
     return Navigator.of(context).push(
       TransparentPageRoute(
@@ -85,7 +85,7 @@ class EqDialogServiceState extends State<EqDialogService> {
               status: status,
               footer: EqButton(
                 onTap: () => Navigator.of(context).pop(),
-                appearance: WidgetAppearance.ghost,
+                appearance: EqWidgetAppearance.ghost,
                 label: 'Close',
                 status: status,
               ),
@@ -97,12 +97,12 @@ class EqDialogServiceState extends State<EqDialogService> {
   /// Pushes a loading dialog. [context] must not be null.
   pushLoadingDialog({
     @required BuildContext context,
-    WidgetStatus status = WidgetStatus.primary,
+    EqWidgetStatus status = EqWidgetStatus.primary,
   }) {
     return Navigator.of(context).push(
       TransparentPageRoute(
         builder: (context) => EqCard(
-              shape: WidgetShape.round,
+              shape: EqWidgetShape.round,
               child: EqSpinner(
                 status: status,
               ),

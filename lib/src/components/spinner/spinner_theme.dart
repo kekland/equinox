@@ -5,10 +5,10 @@ import 'package:flutter/widgets.dart';
 /// Can be used in [EqThemeData.defaultSpinnerTheme].
 class EqSpinnerThemeData {
   /// Status of the widget. Controls the background color.
-  final WidgetStatus status;
+  final EqWidgetStatus status;
 
   /// Controls the size of the spinner.
-  final WidgetSize size;
+  final EqWidgetSize size;
 
   const EqSpinnerThemeData({
     this.status,
@@ -17,8 +17,8 @@ class EqSpinnerThemeData {
 
   /// Merges two [EqSpinnerThemeData]'s.
   EqSpinnerThemeData copyWith({
-    WidgetStatus status,
-    WidgetSize size,
+    EqWidgetStatus status,
+    EqWidgetSize size,
   }) {
     return EqSpinnerThemeData(
       status: status ?? this.status,
@@ -41,15 +41,15 @@ class EqSpinnerThemeData {
 
   double getSize() {
     switch (size) {
-      case WidgetSize.giant:
+      case EqWidgetSize.giant:
         return 40.0;
-      case WidgetSize.large:
+      case EqWidgetSize.large:
         return 36.0;
-      case WidgetSize.medium:
+      case EqWidgetSize.medium:
         return 32.0;
-      case WidgetSize.small:
+      case EqWidgetSize.small:
         return 28.0;
-      case WidgetSize.tiny:
+      case EqWidgetSize.tiny:
         return 24.0;
       default:
         return 24.0;
@@ -58,15 +58,15 @@ class EqSpinnerThemeData {
 
   double getStrokeWidth() {
     switch (size) {
-      case WidgetSize.giant:
+      case EqWidgetSize.giant:
         return 7.0;
-      case WidgetSize.large:
+      case EqWidgetSize.large:
         return 6.0;
-      case WidgetSize.medium:
+      case EqWidgetSize.medium:
         return 5.0;
-      case WidgetSize.small:
+      case EqWidgetSize.small:
         return 4.0;
-      case WidgetSize.tiny:
+      case EqWidgetSize.tiny:
         return 3.0;
       default:
         return 5.0;

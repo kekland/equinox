@@ -30,7 +30,7 @@ class _DialogShowcaseState extends ShowcaseState<DialogShowcase> {
                   width: double.infinity,
                   child: EqButton(
                     label: 'Open information dialog',
-                    status: WidgetStatus.info,
+                    status: EqWidgetStatus.info,
                     onTap: () {
                       EqDialogService.of(context).pushInformationDialog(
                         context: context,
@@ -44,24 +44,24 @@ class _DialogShowcaseState extends ShowcaseState<DialogShowcase> {
                   width: double.infinity,
                   child: EqButton(
                     label: 'Open dialog with actions',
-                    status: WidgetStatus.primary,
+                    status: EqWidgetStatus.primary,
                     onTap: () {
                       EqDialogService.of(context).pushDialog(
                         context: context,
                         title: 'A title',
                         body: Text(equinoxDescription),
-                        status: WidgetStatus.success,
+                        status: EqWidgetStatus.success,
                         actions: [
                           EqButton(
-                            appearance: WidgetAppearance.ghost,
+                            appearance: EqWidgetAppearance.ghost,
                             label: 'No',
-                            status: WidgetStatus.danger,
+                            status: EqWidgetStatus.danger,
                             onTap: () => Navigator.pop(context),
                           ),
                           EqButton(
-                            appearance: WidgetAppearance.ghost,
+                            appearance: EqWidgetAppearance.ghost,
                             label: 'Yes',
-                            status: WidgetStatus.primary,
+                            status: EqWidgetStatus.primary,
                             onTap: () => Navigator.pop(context),
                           ),
                         ],
@@ -73,11 +73,11 @@ class _DialogShowcaseState extends ShowcaseState<DialogShowcase> {
                   width: double.infinity,
                   child: EqButton(
                     label: 'Open loading dialog',
-                    status: WidgetStatus.success,
+                    status: EqWidgetStatus.success,
                     onTap: () {
                       EqDialogService.of(context).pushLoadingDialog(
                         context: context,
-                        status: WidgetStatus.success,
+                        status: EqWidgetStatus.success,
                       );
                     },
                   ),
@@ -91,7 +91,7 @@ class _DialogShowcaseState extends ShowcaseState<DialogShowcase> {
           title: 'Dialog colors',
           builder: () {
             return SeparatedColumn(
-              children: WidgetStatus.values
+              children: EqWidgetStatus.values
                   .map(
                     (value) => SizedBox(
                           width: double.infinity,
@@ -118,7 +118,7 @@ class _DialogShowcaseState extends ShowcaseState<DialogShowcase> {
           title: 'Loading dialog colors',
           builder: () {
             return SeparatedColumn(
-              children: WidgetStatus.values
+              children: EqWidgetStatus.values
                   .map(
                     (value) => SizedBox(
                           width: double.infinity,

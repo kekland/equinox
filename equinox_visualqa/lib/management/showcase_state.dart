@@ -51,9 +51,9 @@ abstract class ShowcaseState<T extends StatefulWidget> extends State<T> {
           EqIconButton(
             icon: EvaIcons.sunOutline,
             onTap: AppState.toggleTheme,
-            status: WidgetStatus.basic,
-            appearance: WidgetAppearance.ghost,
-            size: WidgetSize.large,
+            status: EqWidgetStatus.basic,
+            appearance: EqWidgetAppearance.ghost,
+            size: EqWidgetSize.large,
           ),
         ],
       ),

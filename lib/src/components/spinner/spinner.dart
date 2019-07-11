@@ -9,10 +9,10 @@ export 'package:equinox/src/components/spinner/spinner_painter.dart';
 /// [EqSpinnerThemeData].
 class EqSpinner extends StatefulWidget {
   /// Status of a spinner. Controls its color.
-  final WidgetStatus status;
+  final EqWidgetStatus status;
 
   /// Size of a spinner.
-  final WidgetSize size;
+  final EqWidgetSize size;
 
   const EqSpinner({
     Key key,

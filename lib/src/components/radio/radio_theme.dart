@@ -7,8 +7,8 @@ import 'package:flutter/widgets.dart';
 class EqRadioThemeData {
   /// Controls the position of the description.
   /// 
-  /// If null, defaults to [Positioning.right]
-  final Positioning descriptionPosition;
+  /// If null, defaults to [EqPositioning.right]
+  final EqPositioning descriptionPosition;
 
   /// Controls the amount of padding of the container.
   /// 
@@ -68,7 +68,7 @@ class EqRadioThemeData {
 
   /// Merges two [EqRadioThemeData]'s.
   EqRadioThemeData copyWith({
-    Positioning descriptionPosition,
+    EqPositioning descriptionPosition,
     EdgeInsets padding,
     BorderRadius borderRadius,
     double borderWidth,

@@ -14,8 +14,8 @@ class _ToggleShowcaseState extends ShowcaseState<ToggleShowcase> {
   Widget playgroundBuilder() => InteractivePlayground(
     data: {
       'enabled': BoolTyped(true),
-      'status': EnumTyped(WidgetStatus.primary, WidgetStatus.values),
-      'descriptionLocation': EnumTyped(Positioning.right, Positioning.values),
+      'status': EnumTyped(EqWidgetStatus.primary, EqWidgetStatus.values),
+      'descriptionLocation': EnumTyped(EqPositioning.right, EqPositioning.values),
     },
     builder: (_, data) => EqToggle(
       onChanged: data['enabled']? (v) => setStatus('interactive', v) : null,
@@ -72,7 +72,7 @@ class _ToggleShowcaseState extends ShowcaseState<ToggleShowcase> {
           title: 'Toggle colors',
           builder: () => SeparatedColumn(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: WidgetStatus.values
+                children: EqWidgetStatus.values
                     .map(
                       (value) => EqToggle(
                             value: getStatus(value.toString(), false),
@@ -89,7 +89,7 @@ class _ToggleShowcaseState extends ShowcaseState<ToggleShowcase> {
           title: 'Description location',
           builder: () => SeparatedColumn(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: Positioning.values
+                children: EqPositioning.values
                     .map(
                       (value) => EqToggle(
                             value: getStatus(value.toString(), false),

@@ -4,19 +4,19 @@ import 'package:flutter/widgets.dart';
 /// This is used to style TextFields globally. Set this in [EqThemeData.defaultTextFieldTheme].
 class EqTextFieldThemeData {
   /// Controls text field's border radius
-  final WidgetShape shape;
+  final EqWidgetShape shape;
 
   /// Controls text field's color
-  final WidgetStatus status;
+  final EqWidgetStatus status;
 
   /// Controls the position of the icon inside the text field
-  final Positioning iconPosition;
+  final EqPositioning iconPosition;
 
   /// Merges two [EqTextFieldThemeData]'s.
   EqTextFieldThemeData copyWith({
-    WidgetShape shape,
-    WidgetStatus status,
-    Positioning iconPosition,
+    EqWidgetShape shape,
+    EqWidgetStatus status,
+    EqPositioning iconPosition,
   }) {
     return EqTextFieldThemeData(
       shape: shape ?? this.shape,

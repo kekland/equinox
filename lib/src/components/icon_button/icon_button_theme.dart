@@ -5,20 +5,20 @@ import 'package:flutter/widgets.dart';
 /// Can be used in [EqThemeData.defaultIconButtonTheme].
 class EqIconButtonThemeData {
   /// The size of the widget. Sets the paddings and the font size.
-  final WidgetSize size;
+  final EqWidgetSize size;
 
   /// Status of the widget. Controls the background color.
   /// Also controls the disabled background color.
-  final WidgetStatus status;
+  final EqWidgetStatus status;
 
   /// Appearance of the widget. Has three states (`.filled`, `.outline`, `.ghost`).
   /// Filled has no borders, and displays color set by [status] as its background.
   /// Outline has transparent background, and displays border that has color set by [status].
   /// Ghost has no border and background.
-  final WidgetAppearance appearance;
+  final EqWidgetAppearance appearance;
 
   /// Controls the border radius. Can be either `.rectangle`, `.semiRound`, `.round`.
-  final WidgetShape shape;
+  final EqWidgetShape shape;
 
   /// Overwrites the color set by [status].
   final Color color;
@@ -33,10 +33,10 @@ class EqIconButtonThemeData {
 
   /// Merges two [EqIconButtonThemeData]'s.
   EqIconButtonThemeData copyWith({
-    WidgetSize size,
-    WidgetStatus status,
-    WidgetAppearance appearance,
-    WidgetShape shape,
+    EqWidgetSize size,
+    EqWidgetStatus status,
+    EqWidgetAppearance appearance,
+    EqWidgetShape shape,
     Color color,
   }) {
     return EqIconButtonThemeData(
@@ -62,15 +62,15 @@ class EqIconButtonThemeData {
 
   TextStyle _getTextStyleBasedOnSize({EqThemeData theme}) {
     switch (this.size) {
-      case WidgetSize.giant:
+      case EqWidgetSize.giant:
         return theme.buttonGiant.textStyle;
-      case WidgetSize.large:
+      case EqWidgetSize.large:
         return theme.buttonLarge.textStyle;
-      case WidgetSize.medium:
+      case EqWidgetSize.medium:
         return theme.buttonMedium.textStyle;
-      case WidgetSize.small:
+      case EqWidgetSize.small:
         return theme.buttonSmall.textStyle;
-      case WidgetSize.tiny:
+      case EqWidgetSize.tiny:
         return theme.buttonTiny.textStyle;
       default:
         return theme.buttonMedium.textStyle;
@@ -84,7 +84,7 @@ class EqIconButtonThemeData {
 
   Color getIconColor({EqThemeData theme, bool disabled}) {
     if (disabled) return theme.textDisabledColor;
-    if (this.appearance == WidgetAppearance.filled)
+    if (this.appearance == EqWidgetAppearance.filled)
       return theme.textControlColor;
     else
       return color ?? theme.getColorsForStatus(status: this.status).shade500;
@@ -103,7 +103,7 @@ class EqIconButtonThemeData {
 
   Color getFillColor({EqThemeData theme, bool disabled}) {
     if (disabled) return theme.backgroundBasicColors.color3;
-    return (appearance == WidgetAppearance.filled)
+    return (appearance == EqWidgetAppearance.filled)
         ? theme.getColorsForStatus(status: status).shade500
         : Colors.transparent;
   }
@@ -114,7 +114,7 @@ class EqIconButtonThemeData {
   }
 
   Border getBorder({EqThemeData theme, bool disabled}) {
-    return (appearance == WidgetAppearance.outline)
+    return (appearance == EqWidgetAppearance.outline)
         ? Border.all(
             color: getBorderColor(theme: theme, disabled: disabled),
             width: 2.0,

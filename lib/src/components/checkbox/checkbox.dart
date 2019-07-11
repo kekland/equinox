@@ -17,14 +17,14 @@ class EqCheckbox extends StatefulWidget {
   final String description;
 
   /// Status of the widget. Controls the color of the checkbox.
-  final WidgetStatus status;
+  final EqWidgetStatus status;
 
   /// Status of the widget. Controls the color of the checkbox. Gets overwritten
   /// if [EqCheckboxThemeData.borderRadius] is present.
-  final WidgetShape shape;
+  final EqWidgetShape shape;
 
   /// Controls the location of description.
-  final Positioning descriptionPosition;
+  final EqPositioning descriptionPosition;
 
   /// A method that is called when checkbox's value is changed. Checkbox is disabled if [onChanged] is null.
   /// If [value] is null, returns `true`.
@@ -113,7 +113,7 @@ class _EqCheckboxState extends State<EqCheckbox> {
     );
 
     if (widget.description != null &&
-        themeData.descriptionPosition == Positioning.left) {
+        themeData.descriptionPosition == EqPositioning.left) {
       list = [
         Text(
           widget.description,
@@ -123,7 +123,7 @@ class _EqCheckboxState extends State<EqCheckbox> {
         checkbox,
       ];
     } else if (widget.description != null &&
-        themeData.descriptionPosition == Positioning.right) {
+        themeData.descriptionPosition == EqPositioning.right) {
       list = [
         checkbox,
         SizedBox(width: 8.0),

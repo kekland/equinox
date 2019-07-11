@@ -13,10 +13,10 @@ class EqToast {
   final IconData icon;
 
   /// Status of this toast
-  final WidgetStatus status;
+  final EqWidgetStatus status;
 
   /// The shape of this toast. Uses [EqThemeData.defaultWidgetShape] as default.
-  final WidgetShape shape;
+  final EqWidgetShape shape;
 
   /// Duration of this toast. After [duration] elapses, tab will hide automatically.
   final Duration duration;
@@ -29,7 +29,7 @@ class EqToast {
     this.subtitle,
     this.icon,
     this.onTap,
-    this.status = WidgetStatus.primary,
+    this.status = EqWidgetStatus.primary,
     this.shape,
     this.duration = const Duration(seconds: 3),
   });

@@ -17,10 +17,10 @@ class EqRadio extends StatefulWidget {
   final String description;
 
   /// Status of the widget. Controls the color of the toggle.
-  final WidgetStatus status;
+  final EqWidgetStatus status;
 
   /// Controls the location of description.
-  final Positioning descriptionPosition;
+  final EqPositioning descriptionPosition;
 
   const EqRadio({
     Key key,
@@ -28,7 +28,7 @@ class EqRadio extends StatefulWidget {
     @required this.value,
     this.description,
     this.status,
-    this.descriptionPosition = Positioning.right,
+    this.descriptionPosition = EqPositioning.right,
   }) : super(key: key);
   @override
   _EqRadioState createState() => _EqRadioState();

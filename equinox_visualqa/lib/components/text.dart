@@ -50,7 +50,7 @@ class _TextShowcaseState extends ShowcaseState<TextShowcase> {
         (text) => ShowcaseWidgetData(
               override: true,
               builder: () => EqCard(
-                    status: WidgetStatus.primary,
+                    status: EqWidgetStatus.primary,
                     statusAppearance: CardStatusAppearance.body,
                     child: SeparatedColumn(
                       crossAxisAlignment: CrossAxisAlignment.start,

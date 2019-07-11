@@ -15,8 +15,8 @@ class _RadioShowcaseState extends ShowcaseState<RadioShowcase> {
     data: {
       'enabled': BoolTyped(true),
       'toggled': BoolTyped(false),
-      'status': EnumTyped(WidgetStatus.primary, WidgetStatus.values),
-      'descriptionLocation': EnumTyped(Positioning.right, Positioning.values),
+      'status': EnumTyped(EqWidgetStatus.primary, EqWidgetStatus.values),
+      'descriptionLocation': EnumTyped(EqPositioning.right, EqPositioning.values),
     },
     builder: (_, data) => EqRadio(
       onSelected: data['enabled']? () {} : null,
@@ -79,7 +79,7 @@ class _RadioShowcaseState extends ShowcaseState<RadioShowcase> {
           title: 'Radio colors',
           builder: () => SeparatedColumn(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: WidgetStatus.values
+                children: EqWidgetStatus.values
                     .map(
                       (value) => EqRadio(
                             value: getStatus(value.toString()),
@@ -96,7 +96,7 @@ class _RadioShowcaseState extends ShowcaseState<RadioShowcase> {
           title: 'Description location',
           builder: () => SeparatedColumn(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: Positioning.values
+                children: EqPositioning.values
                     .map(
                       (value) => EqRadio(
                             value: getStatus(value.toString()),

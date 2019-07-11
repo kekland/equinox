@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 
 class EqSelectOverlay extends StatelessWidget {
   final EqThemeData theme;
-  final WidgetStatus status;
+  final EqWidgetStatus status;
   final Animation<double> animation;
   final double borderRadius;
   final List<EqSelectItem> items;

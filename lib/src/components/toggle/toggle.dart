@@ -10,13 +10,13 @@ class EqToggle extends StatefulWidget {
   final bool value;
 
   /// Status of the widget. Controls the color of the toggle.
-  final WidgetStatus status;
+  final EqWidgetStatus status;
 
   /// A description to put either on left or on the right of checkbox, controlled by [descriptionPosition].
   final String description;
 
   /// Controls the location of description.
-  final Positioning descriptionPosition;
+  final EqPositioning descriptionPosition;
 
   /// A method to call when user presses the toggle. Passes the inverse of [value].
   /// If it is null, then toggle is disabled.
@@ -28,7 +28,7 @@ class EqToggle extends StatefulWidget {
     @required this.onChanged,
     this.status,
     this.description,
-    this.descriptionPosition = Positioning.left,
+    this.descriptionPosition = EqPositioning.left,
   }) : super(key: key);
 
   @override
@@ -149,7 +149,7 @@ class _EqToggleState extends State<EqToggle>
     );
 
     if (widget.description != null &&
-        themeData.descriptionPosition == Positioning.left) {
+        themeData.descriptionPosition == EqPositioning.left) {
       list = [
         Text(
           widget.description,
@@ -162,7 +162,7 @@ class _EqToggleState extends State<EqToggle>
     }
 
     if (widget.description != null &&
-        themeData.descriptionPosition == Positioning.right) {
+        themeData.descriptionPosition == EqPositioning.right) {
       list = [
         toggle,
         SizedBox(width: 8.0),

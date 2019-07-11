@@ -9,13 +9,13 @@ class EqProgressBar extends StatefulWidget {
   final double value;
 
   /// Status changes the color.
-  final WidgetStatus status;
+  final EqWidgetStatus status;
 
   /// Size controls the size of the progress.
-  final WidgetSize size;
+  final EqWidgetSize size;
 
   /// Size controls the borderRadius of the progress.
-  final WidgetShape shape;
+  final EqWidgetShape shape;
 
   /// Text is displayed inside of the progress. Not visible at all times. Optional.
   final String text;

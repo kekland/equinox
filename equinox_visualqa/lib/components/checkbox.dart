@@ -15,9 +15,9 @@ class _CheckboxShowcaseState extends ShowcaseState<CheckboxShowcase> {
     data: {
       'enabled': BoolTyped(true),
       'null': BoolTyped(false),
-      'status': EnumTyped(WidgetStatus.primary, WidgetStatus.values),
-      'shape': EnumTyped(WidgetShape.rectangle, WidgetShape.values),
-      'descriptionLocation': EnumTyped(Positioning.right, Positioning.values),
+      'status': EnumTyped(EqWidgetStatus.primary, EqWidgetStatus.values),
+      'shape': EnumTyped(EqWidgetShape.rectangle, EqWidgetShape.values),
+      'descriptionLocation': EnumTyped(EqPositioning.right, EqPositioning.values),
     },
     builder: (_, data) => EqCheckbox(
       onChanged: data['enabled']? (v) => setStatus('interactive', v) : null,
@@ -80,7 +80,7 @@ class _CheckboxShowcaseState extends ShowcaseState<CheckboxShowcase> {
           title: 'Checkbox colors',
           builder: () => SeparatedColumn(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: WidgetStatus.values
+                children: EqWidgetStatus.values
                     .map(
                       (value) => EqCheckbox(
                             value: getStatus(value.toString(), false),
@@ -97,7 +97,7 @@ class _CheckboxShowcaseState extends ShowcaseState<CheckboxShowcase> {
           title: 'Checkbox shapes',
           builder: () => SeparatedColumn(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: WidgetShape.values
+                children: EqWidgetShape.values
                     .map(
                       (value) => EqCheckbox(
                             value: getStatus(value.toString(), false),
@@ -114,7 +114,7 @@ class _CheckboxShowcaseState extends ShowcaseState<CheckboxShowcase> {
           title: 'Description location',
           builder: () => SeparatedColumn(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: Positioning.values
+                children: EqPositioning.values
                     .map(
                       (value) => EqCheckbox(
                             value: getStatus(value.toString(), false),

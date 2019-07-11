@@ -6,10 +6,10 @@ import 'package:flutter/widgets.dart';
 class EqToggleThemeData {
   /// Status of the widget. Controls the background color.
   /// Also controls the disabled background color.
-  final WidgetStatus status;
+  final EqWidgetStatus status;
 
   /// Controls the position of the description.
-  final Positioning descriptionPosition;
+  final EqPositioning descriptionPosition;
 
   const EqToggleThemeData({
     this.status,
@@ -18,8 +18,8 @@ class EqToggleThemeData {
 
   /// Merges two [EqToggleThemeData]'s.
   EqToggleThemeData copyWith({
-    WidgetStatus status,
-    Positioning descriptionPosition,
+    EqWidgetStatus status,
+    EqPositioning descriptionPosition,
   }) {
     return EqToggleThemeData(
       status: status ?? this.status,

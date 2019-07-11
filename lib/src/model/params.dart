@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-enum WidgetSize {
+enum EqWidgetSize {
   giant,
   large,
   medium,
@@ -8,7 +8,7 @@ enum WidgetSize {
   tiny,
 }
 
-enum WidgetState {
+enum EqWidgetState {
   normal,
   hover,
   active,
@@ -16,7 +16,7 @@ enum WidgetState {
   disabled,
 }
 
-enum WidgetStatus {
+enum EqWidgetStatus {
   primary,
   success,
   info,
@@ -25,29 +25,30 @@ enum WidgetStatus {
   basic,
 }
 
-enum WidgetShape {
+enum EqWidgetShape {
   rectangle,
   round,
   semiRound,
 }
 
-enum WidgetAppearance {
+enum EqWidgetAppearance {
   filled,
   outline,
   ghost,
 }
 
-enum Positioning {
+enum EqPositioning {
   left,
   right,
   none,
 }
 
-enum VerticalPositioning {
+enum EqVerticalPositioning {
   top,
   bottom,
 }
 
+/*
 class WidgetSizeUtils {
   static double getSizeValue({WidgetSize size}) {
     switch (size) {
@@ -98,3 +99,4 @@ class WidgetShapeUtils {
     }
   }
 }
+*/

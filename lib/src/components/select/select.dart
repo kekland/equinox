@@ -32,10 +32,10 @@ class EqSelect<T> extends StatefulWidget {
   final IconData icon;
 
   /// WidgetShape controls the borderRadius.
-  final WidgetShape shape;
+  final EqWidgetShape shape;
 
   /// WidgetStatus controls the color.
-  final WidgetStatus status;
+  final EqWidgetStatus status;
 
   /// Index of an item that is selected by default.
   final int selectedIndex;
@@ -48,7 +48,7 @@ class EqSelect<T> extends StatefulWidget {
     this.label,
     this.description,
     this.icon,
-    this.shape = WidgetShape.rectangle,
+    this.shape = EqWidgetShape.rectangle,
     this.status,
     this.selectedIndex,
   }) : super(key: key);
