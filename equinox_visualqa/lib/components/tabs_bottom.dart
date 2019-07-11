@@ -1,20 +1,20 @@
 import 'package:equinox/equinox.dart';
-import 'package:flutter/material.dart';
 import 'package:equinox_visualqa/management/showcase_state.dart';
+import 'package:flutter/material.dart';
 
-class TabsShowcase extends StatefulWidget {
+class TabsBottomShowcase extends StatefulWidget {
   @override
-  _TabsShowcaseState createState() => _TabsShowcaseState();
+  _TabsBottomShowcaseState createState() => _TabsBottomShowcaseState();
 }
 
-class _TabsShowcaseState extends ShowcaseState<TabsShowcase> {
+class _TabsBottomShowcaseState extends ShowcaseState<TabsBottomShowcase> {
   @override
   Widget playgroundBuilder() => InteractivePlayground(
         data: {
           'enabled': BoolTyped(true),
           'hasIcons': BoolTyped(true),
         },
-        builder: (_, data) => EqTabBar.top(
+        builder: (_, data) => EqTabBar.bottom(
               tabs: [
                 EqTabData(icon: data['hasIcons']? EvaIcons.star: null, title: 'Tab'),
                 EqTabData(icon: data['hasIcons']? EvaIcons.star: null, title: 'Tab'),
@@ -25,15 +25,15 @@ class _TabsShowcaseState extends ShowcaseState<TabsShowcase> {
       );
 
   @override
-  String get showcaseName => 'TabBar';
+  String get showcaseName => 'Bottom TabBar';
 
   @override
   List<ShowcaseWidgetData> get showcases => [
         ShowcaseWidgetData(
-          title: 'Tabs',
+          title: 'Bottom TabBar',
           builder: () => EqCard(
             padding: const EdgeInsets.all(4.0),
-            child: EqTabBar.top(
+            child: EqTabBar.bottom(
               tabs: [
                 EqTabData(icon: EvaIcons.star, title: 'Tab'),
                 EqTabData(icon: EvaIcons.star, title: 'Tab'),
@@ -47,7 +47,7 @@ class _TabsShowcaseState extends ShowcaseState<TabsShowcase> {
           title: 'Tabs without icons',
           builder: () => EqCard(
             padding: const EdgeInsets.all(4.0),
-            child: EqTabBar.top(
+            child: EqTabBar.bottom(
               tabs: [
                 EqTabData(title: 'Tab'),
                 EqTabData(title: 'Tab'),
@@ -61,7 +61,7 @@ class _TabsShowcaseState extends ShowcaseState<TabsShowcase> {
           title: 'Disabled tabs',
           builder: () => EqCard(
             padding: const EdgeInsets.all(4.0),
-            child: EqTabBar.top(
+            child: EqTabBar.bottom(
               tabs: [
                 EqTabData(icon: EvaIcons.star, title: 'Tab'),
                 EqTabData(icon: EvaIcons.star, title: 'Tab'),
@@ -75,7 +75,7 @@ class _TabsShowcaseState extends ShowcaseState<TabsShowcase> {
           title: 'Partially disabled tabs',
           builder: () => EqCard(
             padding: const EdgeInsets.all(4.0),
-            child: EqTabBar.top(
+            child: EqTabBar.bottom(
               tabs: [
                 EqTabData(icon: EvaIcons.star, title: 'Tab'),
                 EqTabData(icon: EvaIcons.star, title: 'Tab', disabled: true),

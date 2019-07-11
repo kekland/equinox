@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:equinox/equinox.dart';
+import 'package:equinox/src/components/icon/icon_theme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
@@ -86,7 +87,7 @@ class EqThemeData {
   final EqButtonThemeData defaultButtonTheme;
   final EqCheckboxThemeData defaultCheckboxTheme;
   final EqToggleThemeData defaultToggleTheme;
-  final EqRadioThemeData defaultRadioTheme;
+  final EqIconThemeData defaultIconTheme;
   final EqTextFieldThemeData defaultTextFieldTheme;
   final EqSpinnerThemeData defaultSpinnerTheme;
   final EqSelectThemeData defaultSelectTheme;

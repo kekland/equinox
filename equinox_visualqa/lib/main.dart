@@ -10,6 +10,7 @@ import 'package:equinox_visualqa/components/radio.dart';
 import 'package:equinox_visualqa/components/select.dart';
 import 'package:equinox_visualqa/components/spinner.dart';
 import 'package:equinox_visualqa/components/tabs.dart';
+import 'package:equinox_visualqa/components/tabs_bottom.dart';
 import 'package:equinox_visualqa/components/text.dart';
 import 'package:equinox_visualqa/components/textField.dart';
 import 'package:equinox_visualqa/components/toast.dart';
@@ -93,7 +94,11 @@ class MainPage extends StatelessWidget {
     ),
     ShowcaseData(
       builder: (_) => TabsShowcase(),
-      title: 'Tabs',
+      title: 'TabBar',
+    ),
+    ShowcaseData(
+      builder: (_) => TabsBottomShowcase(),
+      title: 'TabBar (bottom)',
     ),
     ShowcaseData(
       builder: (_) => TextShowcase(),
