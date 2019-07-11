@@ -61,6 +61,15 @@ class _EqCalendarDayState extends State<EqCalendarDay> {
   @override
   Widget build(BuildContext context) {
     var theme = EqTheme.of(context);
+
+    if (widget.disabled) {
+      return Container(
+        constraints: BoxConstraints(minWidth: 32.0, maxWidth: 42.0),
+        height: 42.0,
+        alignment: Alignment.center,
+        child: Container(width: double.infinity, height: double.infinity),
+      );
+    }
     return OutlinedWidget(
       outlined: outlined,
       borderRadius: BorderRadius.circular(theme.borderRadius),

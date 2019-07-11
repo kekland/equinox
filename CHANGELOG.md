@@ -1,3 +1,7 @@
+# 0.1.4
+
+- Calendar updates, now production-ready.
+
 # 0.1.3
 
 - Added new widget - `EqTabBar`, a wrapper for `EqTabs`. Has two constructors,

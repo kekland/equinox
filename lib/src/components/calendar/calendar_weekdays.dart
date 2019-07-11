@@ -27,24 +27,22 @@ class EqCalendarWeekdays extends StatelessWidget {
       weekdays.add(sunday);
     }
 
-    return Container(
-      child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: weekdays.map((weekdayName) {
-            int index = weekdays.indexOf(weekdayName);
-            bool colored = isColored(index);
-            return Flexible(
-              child: Container(
-                constraints: BoxConstraints(minWidth: 32.0, maxWidth: 42.0),
-                height: 32.0,
-                alignment: Alignment.center,
-                child: EqText.paragraph1(
-                  weekdayName,
-                  state: colored ? TextState.danger : TextState.hint,
-                ),
+    return Row(
+        mainAxisSize: MainAxisSize.min,
+        children: weekdays.map((weekdayName) {
+          int index = weekdays.indexOf(weekdayName);
+          bool colored = isColored(index);
+          return Flexible(
+            child: Container(
+              constraints: BoxConstraints(minWidth: 32.0, maxWidth: 42.0),
+              height: 32.0,
+              alignment: Alignment.center,
+              child: EqText.paragraph1(
+                weekdayName,
+                state: colored ? TextState.danger : TextState.hint,
               ),
-            );
-          }).toList()),
-    );
+            ),
+          );
+        }).toList());
   }
 }

@@ -9,7 +9,7 @@ class EqCalendarMonth extends StatelessWidget {
 
   const EqCalendarMonth({
     Key key,
-    this.date,
+    @required this.date,
     this.selectedDate,
     this.onSelected,
     this.displayHeader = true,
@@ -28,6 +28,7 @@ class EqCalendarMonth extends StatelessWidget {
     );
 
     return Column(
+      mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (displayHeader) EqText.heading4(monthYear),

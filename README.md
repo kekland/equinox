@@ -1,19 +1,9 @@
 # equinox 
 [<img src="https://i.imgur.com/oMcxwZ0.png" alt="Eva Design System" height="20px" />](https://eva.design)
-![Pub](https://img.shields.io/pub/vpre/equinox.svg)
+[![Pub](https://img.shields.io/pub/vpre/equinox.svg)](https://pub.dev/packages/equinox)
 
 
 A [**Eva Design**](https://eva.design) implementation in Flutter.
-
-## Warning
-
-This project is still in development stages. There will be a proper documentation soon.
-
-### Done
-`EqTheme`, `EqAppBar`, `EqCard`, `EqTabs`, `EqTextField`, `EqButton`, `EqIconButton`, `EqCheckbox`, `EqToggle`, `EqRadio`, `EqSelect`, `EqSpinner`, `EqToastService`, `EqDialogService`, `EqProgressBar`, `EqText`, `EqTabBar`
-
-### Work in progress
-`Stepper`, `Accordion`, `Sidebar`, `Avatar`, `Badge`
 
 ## Screenshots
 
@@ -22,13 +12,11 @@ This project is still in development stages. There will be a proper documentatio
   <img src="https://i.imgur.com/OSEEYIj.jpg" width="49%" />
   <img src="https://i.imgur.com/alMhkL8.jpg" width="49%" />
   <img src="https://i.imgur.com/z7UEPAM.jpg" width="49%" />
-  <img src="https://i.imgur.com/DJiMafv.jpg" width="24%" />
-  <img src="https://i.imgur.com/U7HY0Z3.jpg" width="24%" />
 </p>
 
 ## Tutorials and documentation
 
-You can check out the documentation in [**here**](https://github.com/kekland/equinox/wiki).
+You can check out the documentation in [**here**](https://pub.dev/documentation/equinox/latest/), and wiki in [**here**](https://github.com/kekland/equinox/wiki).
 
 ## Getting started
 
@@ -38,7 +26,7 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  equinox: ^0.1.3
+  equinox: ^0.1.4
 ```
 
 ### Install it

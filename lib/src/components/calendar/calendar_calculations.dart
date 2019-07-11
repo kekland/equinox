@@ -7,8 +7,9 @@ class EqCalendarCalculations {
 
   static List<List<DateTime>> getWeeks(
       {DateTime date, bool sundayIsFirstWeekday = true}) {
-    var daysInThisMonth = DateTime(date.year, date.month + 1, 0).day;
-    var firstDayWeekday = DateTime(date.year, date.month, 1).weekday;
+    final firstDayOfThisMonth = DateTime(date.year, date.month, 1);
+    final daysInThisMonth = DateTime(date.year, date.month + 1, 0).day;
+    final firstDayWeekday = DateTime(date.year, date.month, 1).weekday;
 
     List<DateTime> days = [];
     List<List<DateTime>> weeks = [[]];
@@ -18,12 +19,12 @@ class EqCalendarCalculations {
         (sundayIsFirstWeekday) ? firstDayWeekday % 7 : firstDayWeekday - 1;
 
     for (int i = 1; i <= daysToAddBeforeThisMonth; i++) {
-      days.insert(0, date.add(Duration(days: -i)));
+      days.insert(0, firstDayOfThisMonth.add(Duration(days: -i)));
     }
 
     // Add days that are in this month
     for (int i = 0; i < daysInThisMonth; i++) {
-      days.add(date.add(Duration(days: i)));
+      days.add(firstDayOfThisMonth.add(Duration(days: i)));
     }
 
     // Add days that are after this math
