@@ -1,74 +1,132 @@
 import 'package:equinox/equinox.dart';
 import 'package:flutter/widgets.dart';
 
-/// A class that contains the customizations for [EqRadio], and provides methods to access color, etc.
+/// A class that contains the customizations for [EqRadio].
+/// 
 /// Can be used in [EqThemeData.defaultRadioTheme].
 class EqRadioThemeData {
-  /// Status of the widget. Controls the background color.
-  /// Also controls the disabled background color.
-  final WidgetStatus status;
-
   /// Controls the position of the description.
+  /// 
+  /// If null, defaults to [Positioning.right]
   final Positioning descriptionPosition;
 
+  /// Controls the amount of padding of the container.
+  /// 
+  /// If null, defaults to [const EdgeInsets.all(8.0)]
+  final EdgeInsets padding;
+
+  /// Controls the radius of the radio.
+  /// 
+  /// If null, defaults to [EqRadioThemeData.size / 2.0]
+  final BorderRadius borderRadius;
+
+  /// Controls the size of the widget.
+  /// 
+  /// If null, defaults to [EqThemeData.defaultIconTheme]
+  final double size;
+  
+  /// Controls the size of the knob.
+  /// 
+  /// If null, defaults to [size * (2/3)]
+  final double knobSize;
+
+  final double descriptionPadding;
+  final TextStyle descriptionStyle;
+
+  /// Controls the border colors.
+  /// 
+  /// If null, defaults to [EqThemeData.defaultBorderTheme]
+  final EqBorderThemeData borderTheme;
+
+  /// Controls the border colors.
+  /// 
+  /// If null, defaults to [EqThemeData.defaultBackgroundTheme]
+  final EqBackgroundThemeData backgroundTheme;
+
+  /// Controls the border colors.
+  /// 
+  /// If null, defaults to [EqThemeData.defaultBorderTheme]
+  final EqBackgroundThemeData knobTheme;
+
   const EqRadioThemeData({
-    this.status,
     this.descriptionPosition,
+    this.padding,
+    this.borderRadius,
+    this.borderWidth,
+    this.size,
+    this.knobSize,
+    this.descriptionPadding,
+    this.descriptionStyle,
+    this.backgroundColor,
+    this.backgroundDisabledColor,
+    this.knobColor,
+    this.knobDisabledColor,
+    this.borderColor,
+    this.borderSelectedColor,
+    this.borderDisabledColor,
   });
 
   /// Merges two [EqRadioThemeData]'s.
   EqRadioThemeData copyWith({
-    WidgetStatus status,
     Positioning descriptionPosition,
+    EdgeInsets padding,
+    BorderRadius borderRadius,
+    double borderWidth,
+    double size,
+    double knobSize,
+    double descriptionPadding,
+    TextStyle descriptionStyle,
+    Color backgroundColor,
+    Color backgroundDisabledColor,
+    Color knobColor,
+    Color knobDisabledColor,
+    Color borderColor,
+    Color borderSelectedColor,
+    Color borderDisabledColor,
   }) {
     return EqRadioThemeData(
-      status: status ?? this.status,
+      borderRadius: borderRadius ?? this.borderRadius,
+      borderWidth: borderWidth ?? this.borderWidth,
+      descriptionPadding: descriptionPadding ?? this.descriptionPadding,
       descriptionPosition: descriptionPosition ?? this.descriptionPosition,
+      descriptionStyle: descriptionStyle ?? this.descriptionStyle,
+      knobSize: knobSize ?? this.knobSize,
+      padding: padding ?? this.padding,
+      size: size ?? this.size,
+      backgroundColor: backgroundColor ?? this.backgroundColor,
+      backgroundDisabledColor:
+          backgroundDisabledColor ?? this.backgroundDisabledColor,
+      borderColor: borderColor ?? this.borderColor,
+      borderDisabledColor: borderDisabledColor ?? this.borderDisabledColor,
+      borderSelectedColor: borderSelectedColor ?? this.borderSelectedColor,
+      knobColor: knobColor ?? this.knobColor,
+      knobDisabledColor: knobDisabledColor ?? this.knobDisabledColor,
     );
   }
 
   /// Merges two [EqRadioThemeData]'s, giving the prevalence to the second one.
   EqRadioThemeData merge(EqRadioThemeData other) {
     if (other == null) return this;
-    return EqRadioThemeData(
-      status: other.status ?? status,
-      descriptionPosition: other.descriptionPosition ?? descriptionPosition,
+    return copyWith(
+      borderRadius: other.borderRadius,
+      borderWidth: other.borderWidth,
+      descriptionPadding: other.descriptionPadding,
+      descriptionPosition: other.descriptionPosition,
+      descriptionStyle: other.descriptionStyle,
+      knobSize: other.knobSize,
+      padding: other.padding,
+      size: other.size,
+      backgroundColor: other.backgroundColor,
+      backgroundDisabledColor: other.backgroundDisabledColor,
+      borderColor: other.borderColor,
+      borderDisabledColor: other.borderDisabledColor,
+      borderSelectedColor: other.borderSelectedColor,
+      knobColor: other.knobColor,
+      knobDisabledColor: other.knobDisabledColor,
     );
   }
 
-  TextStyle getDescriptionTextStyle({EqThemeData theme}) {
-    return theme.subtitle2.textStyle
-        .copyWith(color: theme.textBasicColor, height: 1.0);
-  }
-
-  Color getFillColor(
-      {EqThemeData theme, bool selected = false, bool disabled = false}) {
-    if (disabled) return theme.backgroundBasicColors.color2;
-
-    return (status != null)
-        ? theme.getColorsForStatus(status: status).shade500.withOpacity(0.125)
-        : theme.backgroundBasicColors.color3;
-  }
-
-  Color getKnobColor(
-      {EqThemeData theme, bool selected = false, bool disabled = false}) {
-    var statusColor = !disabled
-        ? theme.getColorsForStatus(status: status).shade500
-        : theme.textDisabledColor;
-
-    return selected ? statusColor : Colors.transparent;
-  }
-
-  Color getBorderColor(
-      {EqThemeData theme, bool selected = false, bool disabled = false}) {
-    if (disabled) return theme.borderBasicColors.color3;
-
-    if (selected) {
-      return theme.getColorsForStatus(status: status).shade500 ??
-          theme.primary.shade500;
-    } else {
-      return theme.getColorsForStatus(status: status).shade500 ??
-          theme.borderBasicColors.color4;
-    }
+  static EqRadioThemeData of(BuildContext context) {
+    return EqTheme.of(context).defaultRadioTheme;
   }
 }

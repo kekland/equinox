@@ -9,3 +9,5 @@ export 'package:equinox/src/components/internal/internal_card.dart';
 export 'package:equinox/src/components/internal/transparent_page_route.dart';
 export 'package:equinox/src/components/internal/no_splash_factory.dart';
 export 'package:equinox/src/components/internal/scroll_behavior.dart';
+
+export 'package:equinox/src/utils.dart';

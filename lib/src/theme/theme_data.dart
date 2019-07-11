@@ -15,13 +15,6 @@ class EqThemeData {
   final ColorGroup danger;
   final ColorGroup basic;
 
-  final ColorStates primaryStates;
-  final ColorStates successStates;
-  final ColorStates infoStates;
-  final ColorStates warningStates;
-  final ColorStates dangerStates;
-  final ColorStates basicStates;
-
   final BackgroundColors backgroundBasicColors;
   final BorderColors borderBasicColors;
 
@@ -92,6 +85,7 @@ class EqThemeData {
   final EqSpinnerThemeData defaultSpinnerTheme;
   final EqSelectThemeData defaultSelectTheme;
   final EqProgressBarThemeData defaultProgressBarTheme;
+  final EqRadioTheme defaultRadioTheme;
   final EqIconButtonThemeData defaultIconButtonTheme;
 
   factory EqThemeData({
@@ -493,7 +487,26 @@ class EqThemeData {
       case WidgetStatus.basic:
         return basic;
       default:
-        return primary;
+        return null;
+    }
+  }
+  
+  Color getColorForStatus({WidgetStatus status, double opacity = 1.0}) {
+    switch (status) {
+      case WidgetStatus.primary:
+        return primary.shade500.withOpacity(opacity);
+      case WidgetStatus.success:
+        return success.shade500.withOpacity(opacity);
+      case WidgetStatus.info:
+        return info.shade500.withOpacity(opacity);
+      case WidgetStatus.warning:
+        return warning.shade500.withOpacity(opacity);
+      case WidgetStatus.danger:
+        return danger.shade500.withOpacity(opacity);
+      case WidgetStatus.basic:
+        return basic.shade500.withOpacity(opacity);
+      default:
+        return null;
     }
   }
 
