@@ -26,25 +26,30 @@ class EqTextThemeData {
   final Color textDisabledColor;
   final Color textHintColor;
 
+  final String primaryFontFamily;
+  final String secondaryFontFamily;
+
   EqTextThemeData({
-    @required this.caption1,
-    @required this.caption2,
-    @required this.heading1,
-    @required this.heading2,
-    @required this.heading3,
-    @required this.heading4,
-    @required this.heading5,
-    @required this.heading6,
-    @required this.label,
-    @required this.paragraph1,
-    @required this.paragraph2,
-    @required this.subtitle1,
-    @required this.subtitle2,
-    @required this.textBasicColor,
-    @required this.textAlternateColor,
-    @required this.textControlColor,
-    @required this.textDisabledColor,
-    @required this.textHintColor,
+    this.caption1,
+    this.caption2,
+    this.heading1,
+    this.heading2,
+    this.heading3,
+    this.heading4,
+    this.heading5,
+    this.heading6,
+    this.label,
+    this.paragraph1,
+    this.paragraph2,
+    this.subtitle1,
+    this.subtitle2,
+    this.textBasicColor,
+    this.textAlternateColor,
+    this.textControlColor,
+    this.textDisabledColor,
+    this.textHintColor,
+    this.primaryFontFamily,
+    this.secondaryFontFamily,
   });
 
   EqTextThemeData copyWith({
@@ -66,6 +71,8 @@ class EqTextThemeData {
     Color textControlColor,
     Color textDisabledColor,
     Color textHintColor,
+    String primaryFontFamily,
+    String secondaryFontFamily,
   }) {
     return EqTextThemeData(
       caption1: caption1 ?? this.caption1,
@@ -86,6 +93,8 @@ class EqTextThemeData {
       textControlColor: textControlColor ?? this.textControlColor,
       textDisabledColor: textDisabledColor ?? this.textDisabledColor,
       textHintColor: textHintColor ?? this.textHintColor,
+      primaryFontFamily: primaryFontFamily ?? this.primaryFontFamily,
+      secondaryFontFamily: secondaryFontFamily ?? this.secondaryFontFamily,
     );
   }
 
@@ -110,6 +119,8 @@ class EqTextThemeData {
       textControlColor: other.textControlColor,
       textDisabledColor: other.textDisabledColor,
       textHintColor: other.textHintColor,
+      primaryFontFamily: other.primaryFontFamily,
+      secondaryFontFamily: other.secondaryFontFamily,
     );
   }
 

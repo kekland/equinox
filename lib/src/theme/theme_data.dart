@@ -1,11 +1,12 @@
 import 'dart:convert';
 
 import 'package:equinox/equinox.dart';
-import 'package:equinox/src/components/icon/icon_theme.dart';
-import 'package:equinox/src/theme/themings/animation_theme.dart';
-import 'package:equinox/src/theme/themings/border_radius_theme.dart';
-import 'package:equinox/src/theme/themings/divider_theme.dart';
-import 'package:equinox/src/theme/themings/text_theme.dart';
+export 'package:equinox/src/components/icon/icon_theme.dart';
+export 'package:equinox/src/theme/themings/animation_theme.dart';
+export 'package:equinox/src/theme/themings/border_radius_theme.dart';
+export 'package:equinox/src/theme/themings/divider_theme.dart';
+export 'package:equinox/src/theme/themings/outline_theme.dart';
+export 'package:equinox/src/theme/themings/text_theme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
@@ -24,6 +25,7 @@ class EqThemeData {
 
   final EqTextThemeData textTheme;
   final EqBackgroundThemeData backgroundTheme;
+  final EqOutlineThemeData outlineTheme;
   final EqBorderThemeData borderTheme;
   final EqBorderRadiusThemeData borderRadiusTheme;
   final EqAnimationThemeData majorAnimationTheme;
@@ -71,8 +73,10 @@ class EqThemeData {
     EqWidgetShape widgetShape = EqWidgetShape.rectangle,
     EqAnimationThemeData majorAnimationTheme,
     EqAnimationThemeData minorAnimationTheme,
+    EqBackgroundThemeData backgroundTheme,
     EqBorderThemeData borderTheme,
     EqBorderRadiusThemeData borderRadiusTheme,
+    EqOutlineThemeData outlineTheme,
     BoxShadow shadow = const BoxShadow(
       offset: Offset(0.0, 8.0),
       blurRadius: 16.0,
@@ -81,6 +85,8 @@ class EqThemeData {
     ),
   }) {
     final defaultTextTheme = EqTextThemeData(
+      primaryFontFamily: primaryFontFamily,
+      secondaryFontFamily: secondaryFontFamily,
       textBasicColor: basic.shade900,
       textAlternateColor: basic.shade100,
       textControlColor: basic.shade100,
@@ -169,7 +175,14 @@ class EqThemeData {
       rectangleRadius: 4.0,
       semiRoundRadius: 12.0,
     );
-
+    final defaultOutlineTheme = EqOutlineThemeData(
+      color: basic.shade300.withOpacity(0.125),
+      width: 6.0,
+    );
+    final defaultBackgroundTheme = EqBackgroundThemeData(
+      color: basic.shade300,
+      colorDisabled: basic.shade200,
+    );
     return EqThemeData.raw(
       primary: primary,
       success: success,
@@ -179,10 +192,7 @@ class EqThemeData {
       basic: basic,
       shadow: shadow,
       widgetShape: widgetShape,
-      backgroundTheme: EqBackgroundThemeData(
-        color: basic.shade300,
-        colorDisabled: basic.shade200,
-      ),
+      backgroundTheme: defaultBackgroundTheme.merge(backgroundTheme),
       textTheme: defaultTextTheme.merge(textTheme),
       borderRadiusTheme: defaultBorderRadiusTheme.merge(borderRadiusTheme),
       borderTheme: defaultBorderTheme.merge(borderTheme),
@@ -190,24 +200,26 @@ class EqThemeData {
           defaultMajorAnimationTheme.merge(majorAnimationTheme),
       minorAnimationTheme:
           defaultMinorAnimationTheme.merge(minorAnimationTheme),
+      outlineTheme: defaultOutlineTheme.merge(outlineTheme),
     );
   }
 
   EqThemeData.raw({
-    this.primary,
-    this.success,
-    this.info,
-    this.warning,
-    this.danger,
-    this.basic,
-    this.shadow,
-    this.widgetShape,
-    this.textTheme,
-    this.backgroundTheme,
-    this.borderTheme,
-    this.borderRadiusTheme,
-    this.majorAnimationTheme,
-    this.minorAnimationTheme,
+    @required this.primary,
+    @required this.success,
+    @required this.info,
+    @required this.warning,
+    @required this.danger,
+    @required this.basic,
+    @required this.shadow,
+    @required this.widgetShape,
+    @required this.textTheme,
+    @required this.backgroundTheme,
+    @required this.borderTheme,
+    @required this.borderRadiusTheme,
+    @required this.majorAnimationTheme,
+    @required this.minorAnimationTheme,
+    @required this.outlineTheme,
   });
 
   ColorGroup getColorsForStatus({EqWidgetStatus status}) {
@@ -249,166 +261,42 @@ class EqThemeData {
   }
 
   EqThemeData extend({
+    String primaryFontFamily,
+    String secondaryFontFamily,
     ColorGroup primary,
     ColorGroup success,
     ColorGroup info,
     ColorGroup warning,
     ColorGroup danger,
     ColorGroup basic,
-    ColorStates primaryStates,
-    ColorStates successStates,
-    ColorStates infoStates,
-    ColorStates warningStates,
-    ColorStates dangerStates,
-    ColorStates basicStates,
-    BackgroundColors backgroundBasicColors,
-    BorderColors borderBasicColors,
-    BackgroundColors backgroundAlternativeColors,
-    BorderColors borderAlternativeColors,
-    BackgroundColors backgroundPrimaryColors,
-    BorderColors borderPrimaryColors,
-    Color textBasicColor,
-    Color textAlternateColor,
-    Color textControlColor,
-    Color textDisabledColor,
-    Color textHintColor,
-    ColorStates textPrimaryStates,
-    ColorStates textSuccessStates,
-    ColorStates textInfoStates,
-    ColorStates textWarningStates,
-    ColorStates textDangerStates,
-    TextTheme heading1,
-    TextTheme heading2,
-    TextTheme heading3,
-    TextTheme heading4,
-    TextTheme heading5,
-    TextTheme heading6,
-    TextTheme subtitle1,
-    TextTheme subtitle2,
-    TextTheme paragraph1,
-    TextTheme paragraph2,
-    TextTheme label,
-    TextTheme caption1,
-    TextTheme caption2,
-    TextTheme buttonTiny,
-    TextTheme buttonSmall,
-    TextTheme buttonMedium,
-    TextTheme buttonLarge,
-    TextTheme buttonGiant,
-    double borderRadius,
-    double outlineWidth,
-    Color outlineColor,
-    Color dividerColor,
-    double dividerWidth,
     BoxShadow shadow,
-    BoxShadow heavyShadow,
-    Duration minorAnimationDuration,
-    Curve minorAnimationCurve,
-    Duration majorAnimationDuration,
-    Curve majorAnimationCurve,
-    EqWidgetShape defaultWidgetShape,
-    EqButtonThemeData defaultButtonTheme,
-    EqCheckboxThemeData defaultCheckboxTheme,
-    EqToggleThemeData defaultToggleTheme,
-    EqRadioThemeData defaultRadioTheme,
-    EqTextFieldThemeData defaultTextFieldTheme,
-    EqSpinnerThemeData defaultSpinnerTheme,
-    EqSelectThemeData defaultSelectTheme,
-    EqProgressBarThemeData defaultProgressBarTheme,
-    EqIconButtonThemeData defaultIconButtonTheme,
+    EqWidgetShape widgetShape,
+    EqTextThemeData textTheme,
+    EqBackgroundThemeData backgroundTheme,
+    EqBorderThemeData borderTheme,
+    EqBorderRadiusThemeData borderRadiusTheme,
+    EqAnimationThemeData majorAnimationTheme,
+    EqAnimationThemeData minorAnimationTheme,
+    EqOutlineThemeData outlineTheme,
   }) {
-    return new EqThemeData.raw(
+    return new EqThemeData.configure(
       primary: primary ?? this.primary,
       success: success ?? this.success,
       info: info ?? this.info,
       warning: warning ?? this.warning,
       danger: danger ?? this.danger,
       basic: basic ?? this.basic,
-      primaryStates: primaryStates ?? this.primaryStates,
-      successStates: successStates ?? this.successStates,
-      infoStates: infoStates ?? this.infoStates,
-      warningStates: warningStates ?? this.warningStates,
-      dangerStates: dangerStates ?? this.dangerStates,
-      basicStates: basicStates ?? this.basicStates,
-      backgroundBasicColors:
-          backgroundBasicColors ?? this.backgroundBasicColors,
-      borderBasicColors: borderBasicColors ?? this.borderBasicColors,
-      backgroundAlternativeColors:
-          backgroundAlternativeColors ?? this.backgroundAlternativeColors,
-      borderAlternativeColors:
-          borderAlternativeColors ?? this.borderAlternativeColors,
-      backgroundPrimaryColors:
-          backgroundPrimaryColors ?? this.backgroundPrimaryColors,
-      borderPrimaryColors: borderPrimaryColors ?? this.borderPrimaryColors,
-      textBasicColor: textBasicColor ?? this.textBasicColor,
-      textAlternateColor: textAlternateColor ?? this.textAlternateColor,
-      textControlColor: textControlColor ?? this.textControlColor,
-      textDisabledColor: textDisabledColor ?? this.textDisabledColor,
-      textHintColor: textHintColor ?? this.textHintColor,
-      textPrimaryStates: textPrimaryStates ?? this.textPrimaryStates,
-      textSuccessStates: textSuccessStates ?? this.textSuccessStates,
-      textInfoStates: textInfoStates ?? this.textInfoStates,
-      textWarningStates: textWarningStates ?? this.textWarningStates,
-      textDangerStates: textDangerStates ?? this.textDangerStates,
-      heading1: heading1 ?? this.heading1,
-      heading2: heading2 ?? this.heading2,
-      heading3: heading3 ?? this.heading3,
-      heading4: heading4 ?? this.heading4,
-      heading5: heading5 ?? this.heading5,
-      heading6: heading6 ?? this.heading6,
-      subtitle1: subtitle1 ?? this.subtitle1,
-      subtitle2: subtitle2 ?? this.subtitle2,
-      paragraph1: paragraph1 ?? this.paragraph1,
-      paragraph2: paragraph2 ?? this.paragraph2,
-      label: label ?? this.label,
-      caption1: caption1 ?? this.caption1,
-      caption2: caption2 ?? this.caption2,
-      buttonTiny: buttonTiny ?? this.buttonTiny,
-      buttonSmall: buttonSmall ?? this.buttonSmall,
-      buttonMedium: buttonMedium ?? this.buttonMedium,
-      buttonLarge: buttonLarge ?? this.buttonLarge,
-      buttonGiant: buttonGiant ?? this.buttonGiant,
-      borderRadius: borderRadius ?? this.borderRadius,
-      outlineWidth: outlineWidth ?? this.outlineWidth,
-      outlineColor: outlineColor ?? this.outlineColor,
-      dividerColor: dividerColor ?? this.dividerColor,
-      dividerWidth: dividerWidth ?? this.dividerWidth,
       shadow: shadow ?? this.shadow,
-      majorAnimationCurve: majorAnimationCurve ?? this.majorAnimationCurve,
-      minorAnimationCurve: majorAnimationCurve ?? this.majorAnimationCurve,
-      majorAnimationDuration:
-          majorAnimationDuration ?? this.majorAnimationDuration,
-      minorAnimationDuration:
-          minorAnimationDuration ?? this.minorAnimationDuration,
-      heavyShadow: heavyShadow ?? this.heavyShadow,
-      defaultWidgetShape: defaultWidgetShape ?? this.defaultWidgetShape,
-      defaultButtonTheme: (this.defaultButtonTheme == null)
-          ? defaultButtonTheme
-          : this.defaultButtonTheme.merge(defaultButtonTheme),
-      defaultCheckboxTheme: (this.defaultCheckboxTheme == null)
-          ? defaultCheckboxTheme
-          : this.defaultCheckboxTheme.merge(defaultCheckboxTheme),
-      defaultToggleTheme: (this.defaultToggleTheme == null)
-          ? defaultToggleTheme
-          : this.defaultToggleTheme.merge(defaultToggleTheme),
-      defaultRadioTheme: (this.defaultRadioTheme == null)
-          ? defaultRadioTheme
-          : this.defaultRadioTheme.merge(defaultRadioTheme),
-      defaultTextFieldTheme: (this.defaultTextFieldTheme == null)
-          ? defaultTextFieldTheme
-          : this.defaultTextFieldTheme.merge(defaultTextFieldTheme),
-      defaultIconButtonTheme: (this.defaultIconButtonTheme == null)
-          ? defaultIconButtonTheme
-          : this.defaultIconButtonTheme.merge(defaultIconButtonTheme),
-      defaultProgressBarTheme: (this.defaultProgressBarTheme == null)
-          ? defaultProgressBarTheme
-          : this.defaultProgressBarTheme.merge(defaultProgressBarTheme),
-      defaultSelectTheme: (this.defaultSelectTheme == null)
-          ? defaultSelectTheme
-          : this.defaultSelectTheme.merge(defaultSelectTheme),
-      defaultSpinnerTheme: (this.defaultSpinnerTheme == null)
-          ? defaultSpinnerTheme
-          : this.defaultSpinnerTheme.merge(defaultSpinnerTheme),
+      primaryFontFamily: primaryFontFamily ?? this.textTheme.primaryFontFamily,
+      secondaryFontFamily: secondaryFontFamily ?? this.textTheme.secondaryFontFamily,
+      widgetShape: widgetShape ?? this.widgetShape,
+      textTheme: this.textTheme.merge(textTheme),
+      backgroundTheme: this.backgroundTheme.merge(backgroundTheme),
+      borderRadiusTheme: this.borderRadiusTheme.merge(borderRadiusTheme),
+      borderTheme: this.borderTheme.merge(borderTheme),
+      majorAnimationTheme: this.majorAnimationTheme.merge(majorAnimationTheme),
+      minorAnimationTheme: this.minorAnimationTheme.merge(minorAnimationTheme),
+      outlineTheme: this.outlineTheme.merge(outlineTheme),
     );
   }
 

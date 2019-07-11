@@ -5,8 +5,8 @@ class EqAnimationThemeData {
   final Duration duration;
 
   const EqAnimationThemeData({
-    @required this.curve,
-    @required this.duration,
+    this.curve,
+    this.duration,
   });
 
   EqAnimationThemeData copyWith({Curve curve, Duration duration}) {

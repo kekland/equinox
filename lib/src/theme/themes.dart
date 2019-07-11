@@ -73,78 +73,29 @@ class EqThemes {
     ),
     primaryFontFamily: 'Roboto',
     secondaryFontFamily: 'Roboto',
-    defaultWidgetShape: EqWidgetShape.rectangle,
-    defaultButtonTheme: EqButtonThemeData(
-      appearance: EqWidgetAppearance.filled,
-      status: EqWidgetStatus.primary,
-      size: EqWidgetSize.medium,
-      iconPosition: EqPositioning.left,
-    ),
-    defaultCheckboxTheme: EqCheckboxThemeData(
-      descriptionPosition: EqPositioning.right,
-    ),
-    defaultIconButtonTheme: EqIconButtonThemeData(
-      appearance: EqWidgetAppearance.filled,
-      status: EqWidgetStatus.primary,
-      size: EqWidgetSize.medium,
-    ),
-    defaultProgressBarTheme: EqProgressBarThemeData(
-      size: EqWidgetSize.medium,
-      status: EqWidgetStatus.primary,
-    ),
-    defaultRadioTheme: EqRadioThemeData(
-      descriptionPosition: EqPositioning.right,
-    ),
-    defaultSelectTheme: EqSelectThemeData(),
-    defaultSpinnerTheme: EqSpinnerThemeData(
-      status: EqWidgetStatus.primary,
-    ),
-    defaultTextFieldTheme: EqTextFieldThemeData(
-      iconPosition: EqPositioning.left,
-    ),
-    defaultToggleTheme: EqToggleThemeData(
-      descriptionPosition: EqPositioning.left,
-    ),
   );
 
   static final defaultDarkTheme = defaultLightTheme.extend(
-    backgroundBasicColors: BackgroundColors(
-      color1: defaultLightTheme.basic.shade800,
-      color2: defaultLightTheme.basic.shade900,
-      color3: defaultLightTheme.basic.shade1000,
-      color4: defaultLightTheme.basic.shade1100,
+    backgroundTheme: EqBackgroundThemeData(
+      color: defaultLightTheme.basic.shade900,
+      colorDisabled: defaultLightTheme.basic.shade1000,
     ),
-    borderBasicColors: BorderColors(
-      color1: defaultLightTheme.basic.shade800,
-      color2: defaultLightTheme.basic.shade900,
-      color3: defaultLightTheme.basic.shade1000,
-      color4: defaultLightTheme.basic.shade1100,
-      color5: defaultLightTheme.basic.shade1100,
+    borderTheme: EqBorderThemeData(
+      color: defaultLightTheme.basic.shade1000,
+      colorDisabled: defaultLightTheme.basic.shade1100,
     ),
-    backgroundAlternativeColors: BackgroundColors(
-      color1: defaultLightTheme.basic.shade100,
-      color2: defaultLightTheme.basic.shade200,
-      color3: defaultLightTheme.basic.shade300,
-      color4: defaultLightTheme.basic.shade400,
+    textTheme: EqTextThemeData(
+      textBasicColor: defaultLightTheme.basic.shade100,
+      textAlternateColor: defaultLightTheme.basic.shade900,
+      textControlColor: defaultLightTheme.basic.shade100,
+      textDisabledColor: defaultLightTheme.basic.shade700,
+      textHintColor: defaultLightTheme.basic.shade600,
     ),
-    borderAlternativeColors: BorderColors(
-      color1: defaultLightTheme.basic.shade100,
-      color2: defaultLightTheme.basic.shade200,
-      color3: defaultLightTheme.basic.shade300,
-      color4: defaultLightTheme.basic.shade400,
-      color5: defaultLightTheme.basic.shade500,
-    ),
-    textBasicColor: defaultLightTheme.basic.shade100,
-    textAlternateColor: defaultLightTheme.basic.shade900,
-    textControlColor: defaultLightTheme.basic.shade100,
-    textDisabledColor: defaultLightTheme.basic.shade700,
-    textHintColor: defaultLightTheme.basic.shade600,
     shadow: BoxShadow(
       offset: Offset(0.0, 8.0),
       blurRadius: 16.0,
       spreadRadius: 0.0,
       color: Color.fromRGBO(44, 51, 73, 0.1),
     ),
-    dividerColor: defaultLightTheme.basic.shade1000,
   );
 }

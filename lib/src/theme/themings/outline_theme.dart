@@ -5,8 +5,8 @@ class EqOutlineThemeData {
   final double width;
 
   EqOutlineThemeData({
-    @required this.color,
-    @required this.width,
+    this.color,
+    this.width,
   });
 
   EqOutlineThemeData copyWith({Color color, double width}) {

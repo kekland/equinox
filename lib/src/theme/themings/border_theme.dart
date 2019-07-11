@@ -26,8 +26,8 @@ class EqBorderThemeData {
   final Color colorDisabled;
 
   EqBorderThemeData({
-    @required this.width,
-    @required this.color,
+    this.width,
+    this.color,
     this.colorSelected,
     this.colorDisabled,
   });

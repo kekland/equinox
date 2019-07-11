@@ -20,7 +20,7 @@ class EqBackgroundThemeData {
   final Color colorDisabled;
 
   EqBackgroundThemeData({
-    @required this.color,
+    this.color,
     this.colorSelected,
     this.colorDisabled,
   });
