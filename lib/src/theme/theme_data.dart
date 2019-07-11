@@ -7,6 +7,7 @@ export 'package:equinox/src/theme/themings/animation_theme.dart';
 export 'package:equinox/src/theme/themings/border_radius_theme.dart';
 export 'package:equinox/src/theme/themings/divider_theme.dart';
 export 'package:equinox/src/theme/themings/outline_theme.dart';
+export 'package:equinox/src/theme/themings/status_styled_widget_theme.dart';
 export 'package:equinox/src/components/text/text_theme.dart';
 export 'package:equinox/src/components/icon/icon_theme.dart';
 import 'package:flutter/foundation.dart';

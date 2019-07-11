@@ -1,5 +1,4 @@
 import 'package:equinox/equinox.dart';
-import 'package:equinox/src/theme/themings/status_styled_widget_theme.dart';
 import 'package:flutter/widgets.dart';
 
 /// A class that contains the customizations for [EqRadio].
