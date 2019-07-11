@@ -15,7 +15,7 @@ class OutlinedGestureDetector extends StatelessWidget {
   }
 
   void clearOutline(EqThemeData theme) {
-    Future.delayed(theme.minorAnimationDuration, () => onOutlineChange(false));
+    Future.delayed(theme.minorAnimationTheme.duration, () => onOutlineChange(false));
   }
 
   @override

@@ -110,8 +110,8 @@ class EqRadioThemeData extends StatusAppliedWidgetThemeData<EqRadioThemeData> {
     );
   }
 
-  static EqRadioThemeData of(BuildContext context) {
-    // TODO: return EqTheme.of(context).defaultRadioTheme;
+  static StatusStyledWidgetThemeData<EqRadioThemeData> of(BuildContext context) {
+    return EqTheme.of(context).radioTheme;
   }
 
   @override

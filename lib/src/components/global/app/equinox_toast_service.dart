@@ -21,6 +21,7 @@ class EqToastService extends StatefulWidget {
   }
 }
 
+class EqToast {}
 class EqToastServiceState extends State<EqToastService> {
   List<EqToast> _toastQueue;
   ScrollController _toastScrollController;
@@ -56,12 +57,13 @@ class EqToastServiceState extends State<EqToastService> {
     var children = <Widget>[];
     for (var toast in _toastQueue) {
       children.add(
-        EqToastWidget(
+        /*EqToastWidget(
           key: ValueKey(toast),
           data: toast,
           padding: const EdgeInsets.only(top: 16.0),
           serviceRemoveToastCallback: () => removeToast(toast),
-        ),
+        ),*/
+        null
       );
     }
 

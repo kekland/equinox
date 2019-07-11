@@ -9,7 +9,7 @@ class EqIconThemeData {
 
   static EqIconThemeData of(BuildContext context) {
     final theme = EqTheme.of(context);
-    return theme.defaultIconTheme;
+    return theme.iconTheme;
   }
 
   EqIconThemeData copyWith({double size, Color color}) {

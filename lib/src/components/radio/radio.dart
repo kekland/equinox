@@ -40,7 +40,7 @@ class _EqRadioState extends State<EqRadio> {
   @override
   Widget build(BuildContext context) {
     final theme = EqTheme.of(context);
-    final themeData = EqRadioThemeData.of(context);
+    final themeData = EqRadioThemeData.of(context).getWithStatus(widget.status);
 
     final enabled = widget.onSelected != null;
     final selected = widget.value;

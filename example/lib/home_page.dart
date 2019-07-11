@@ -10,7 +10,7 @@ class _HomePageState extends State<HomePage> {
   bool checked = false;
 
   Widget _buildBody() {
-    return EqCard(
+    /*return EqCard(
       shape: EqWidgetShape.semiRound,
       header: Text('Login'),
       child: Column(
@@ -72,12 +72,12 @@ class _HomePageState extends State<HomePage> {
         size: EqWidgetSize.large,
         status: EqWidgetStatus.primary,
       ),
-    );
+    );*/
   }
 
   @override
   Widget build(BuildContext context) {
-    return EqLayout(
+    /*return EqLayout(
       appBar: EqAppBar(
         centerTitle: true,
         title: 'Auth test',
@@ -111,6 +111,6 @@ class _HomePageState extends State<HomePage> {
           child: _buildBody(),
         ),
       ),
-    );
+    );*/
   }
 }

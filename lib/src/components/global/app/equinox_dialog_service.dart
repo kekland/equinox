@@ -30,7 +30,7 @@ class EqDialogServiceState extends State<EqDialogService> {
   }
 
   /// Pushes a general dialog with title, body, and actions. [title], [body], [context], [actions] must not be null.
-  Future<T> pushDialog<T>({
+  /*Future<T> pushDialog<T>({
     @required BuildContext context,
     @required String title,
     @required Widget body,
@@ -92,10 +92,10 @@ class EqDialogServiceState extends State<EqDialogService> {
             ),
       ),
     );
-  }
+  }*/
 
   /// Pushes a loading dialog. [context] must not be null.
-  pushLoadingDialog({
+  /*pushLoadingDialog({
     @required BuildContext context,
     EqWidgetStatus status = EqWidgetStatus.primary,
   }) {
@@ -109,7 +109,7 @@ class EqDialogServiceState extends State<EqDialogService> {
             ),
       ),
     );
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {

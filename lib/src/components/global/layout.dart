@@ -35,9 +35,9 @@ class _EqLayoutState extends State<EqLayout> {
     return EqTheme(
       theme: theme,
       child: AnimatedContainer(
-        duration: theme.majorAnimationDuration,
-        curve: theme.majorAnimationCurve,
-        color: theme.backgroundBasicColors.color3,
+        duration: theme.majorAnimationTheme.duration,
+        curve: theme.majorAnimationTheme.curve,
+        color: theme.backgroundTheme.color,
         child: MaterialDesign.Material(
           type: MaterialDesign.MaterialType.transparency,
           child: Column(

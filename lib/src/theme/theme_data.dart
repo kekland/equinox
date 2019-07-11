@@ -23,6 +23,9 @@ class EqThemeData {
   final ColorGroup danger;
   final ColorGroup basic;
 
+  final BackgroundColors basicBackgroundColors;
+  final BorderColors basicBorderColors;
+
   final BoxShadow shadow;
   final EqWidgetShape widgetShape;
 
@@ -36,6 +39,8 @@ class EqThemeData {
   final EqAnimationThemeData minorAnimationTheme;
   final EqControlElementsThemeData controlElementsTheme;
 
+  final StatusStyledWidgetThemeData<EqRadioThemeData> radioTheme;
+
   EqThemeData.raw({
     @required this.primary,
     @required this.success,
@@ -43,6 +48,8 @@ class EqThemeData {
     @required this.warning,
     @required this.danger,
     @required this.basic,
+    @required this.basicBackgroundColors,
+    @required this.basicBorderColors,
     @required this.shadow,
     @required this.widgetShape,
     @required this.textTheme,
@@ -54,7 +61,30 @@ class EqThemeData {
     @required this.outlineTheme,
     @required this.iconTheme,
     @required this.controlElementsTheme,
+    @required this.radioTheme,
   });
+
+  EqThemeData.withoutWidgetConfigs({
+    @required this.primary,
+    @required this.success,
+    @required this.info,
+    @required this.warning,
+    @required this.danger,
+    @required this.basic,
+    @required this.basicBackgroundColors,
+    @required this.basicBorderColors,
+    @required this.shadow,
+    @required this.widgetShape,
+    @required this.textTheme,
+    @required this.backgroundTheme,
+    @required this.borderTheme,
+    @required this.borderRadiusTheme,
+    @required this.majorAnimationTheme,
+    @required this.minorAnimationTheme,
+    @required this.outlineTheme,
+    @required this.iconTheme,
+    @required this.controlElementsTheme,
+  }): radioTheme = null;
 
   factory EqThemeData({
     @required String primaryFontFamily,
@@ -104,6 +134,7 @@ class EqThemeData {
     EqOutlineThemeData outlineTheme,
     EqIconThemeData iconTheme,
     EqControlElementsThemeData controlElementsTheme,
+    StatusStyledWidgetThemeData<EqRadioThemeData> radioTheme,
     BoxShadow shadow = const BoxShadow(
       offset: Offset(0.0, 8.0),
       blurRadius: 16.0,
@@ -111,11 +142,24 @@ class EqThemeData {
       color: Color.fromRGBO(44, 51, 73, 0.1),
     ),
   }) {
-    final defaultControlElementsTheme = EqControlElementsThemeData(
+    final finalBasicBackgroundColors = BackgroundColors(
+      color1: basic.shade100,
+      color2: basic.shade200,
+      color3: basic.shade300,
+      color4: basic.shade400,
+    );
+    final finalBasicBorderColors = BorderColors(
+      color1: basic.shade100,
+      color2: basic.shade200,
+      color3: basic.shade300,
+      color4: basic.shade400,
+      color5: basic.shade500,
+    );
+    final finalControlElementsTheme = EqControlElementsThemeData(
       descriptionPadding: 8.0,
       padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-    );
-    final defaultTextTheme = EqTextThemeData(
+    ).merge(controlElementsTheme);
+    final finalTextTheme = EqTextThemeData(
       primaryFontFamily: primaryFontFamily,
       secondaryFontFamily: secondaryFontFamily,
       textBasicColor: basic.shade900,
@@ -188,37 +232,52 @@ class EqThemeData {
         fontWeight: FontWeight.w600,
         fontFamily: primaryFontFamily,
       ),
-    );
-    final defaultMajorAnimationTheme = EqAnimationThemeData(
+    ).merge(textTheme);
+    final finalMajorAnimationTheme = EqAnimationThemeData(
       curve: Curves.easeInOut,
       duration: Duration(milliseconds: 250),
-    );
-    final defaultMinorAnimationTheme = const EqAnimationThemeData(
+    ).merge(majorAnimationTheme);
+    final finalMinorAnimationTheme = const EqAnimationThemeData(
       curve: Curves.easeInOut,
       duration: Duration(milliseconds: 150),
-    );
-    final defaultBorderTheme = EqBorderThemeData(
+    ).merge(minorAnimationTheme);
+    final finalBorderTheme = EqBorderThemeData(
       width: 1.0,
       color: basic.shade300,
       colorDisabled: basic.shade400,
-    );
-    final defaultBorderRadiusTheme = EqBorderRadiusThemeData(
+      colorSelected: primary.shade500,
+    ).merge(borderTheme);
+    final finalBorderRadiusTheme = EqBorderRadiusThemeData(
       rectangleRadius: 4.0,
       semiRoundRadius: 12.0,
-    );
-    final defaultOutlineTheme = EqOutlineThemeData(
+    ).merge(borderRadiusTheme);
+    final finalOutlineTheme = EqOutlineThemeData(
       color: basic.shade300.withOpacity(0.125),
       width: 6.0,
-    );
-    final defaultBackgroundTheme = EqBackgroundThemeData(
+    ).merge(outlineTheme);
+    final finalBackgroundTheme = EqBackgroundThemeData(
       color: basic.shade300,
       colorDisabled: basic.shade200,
-    );
-    final defaultIconTheme = EqIconThemeData(
+      colorSelected: primary.shade500,
+    ).merge(backgroundTheme);
+    final finalIconTheme = EqIconThemeData(
       color: basic.shade900,
       size: 24.0,
-    );
-    return EqThemeData.raw(
+    ).merge(iconTheme);
+    final baseRadioTheme = EqRadioThemeData(
+      backgroundTheme: finalBackgroundTheme.copyWith(
+          colorSelected: finalBackgroundTheme.color),
+      size: finalIconTheme.size,
+      descriptionStyle: finalTextTheme.subtitle2,
+      borderTheme: finalBorderTheme,
+      knobTheme: EqBackgroundThemeData(
+        color: primary.shade500,
+        colorDisabled: finalBasicBackgroundColors.color4,
+        colorSelected: Colors.transparent,
+      ),
+    ).merge(radioTheme.base);
+
+    final theme = EqThemeData.withoutWidgetConfigs(
       primary: primary,
       success: success,
       info: info,
@@ -227,18 +286,23 @@ class EqThemeData {
       basic: basic,
       shadow: shadow,
       widgetShape: widgetShape,
-      backgroundTheme: defaultBackgroundTheme.merge(backgroundTheme),
-      textTheme: defaultTextTheme.merge(textTheme),
-      borderRadiusTheme: defaultBorderRadiusTheme.merge(borderRadiusTheme),
-      borderTheme: defaultBorderTheme.merge(borderTheme),
-      majorAnimationTheme:
-          defaultMajorAnimationTheme.merge(majorAnimationTheme),
-      minorAnimationTheme:
-          defaultMinorAnimationTheme.merge(minorAnimationTheme),
-      outlineTheme: defaultOutlineTheme.merge(outlineTheme),
-      iconTheme: defaultIconTheme.merge(iconTheme),
-      controlElementsTheme: defaultControlElementsTheme
+      backgroundTheme: finalBackgroundTheme,
+      basicBackgroundColors: finalBasicBackgroundColors,
+      basicBorderColors: finalBasicBorderColors,
+      borderRadiusTheme: finalBorderRadiusTheme,
+      borderTheme: finalBorderTheme,
+      controlElementsTheme: finalControlElementsTheme,
+      iconTheme: finalIconTheme,
+      majorAnimationTheme: finalMajorAnimationTheme,
+      minorAnimationTheme: finalMinorAnimationTheme,
+      outlineTheme: finalOutlineTheme,
+      textTheme: textTheme,
     );
+
+    final finalRadioTheme = StatusStyledWidgetThemeData.autoFillRest(
+        theme: theme, base: baseRadioTheme);
+
+    return theme.extend(radioTheme: finalRadioTheme);
   }
 
   EqThemeData extend({
@@ -261,6 +325,7 @@ class EqThemeData {
     EqOutlineThemeData outlineTheme,
     EqIconThemeData iconTheme,
     EqControlElementsThemeData controlElementsTheme,
+    StatusStyledWidgetThemeData<EqRadioThemeData> radioTheme,
   }) {
     return new EqThemeData.configure(
       primary: primary ?? this.primary,
@@ -282,7 +347,11 @@ class EqThemeData {
       minorAnimationTheme: this.minorAnimationTheme.merge(minorAnimationTheme),
       outlineTheme: this.outlineTheme.merge(outlineTheme),
       iconTheme: this.iconTheme.merge(iconTheme),
-      controlElementsTheme: this.controlElementsTheme.merge(controlElementsTheme),
+      controlElementsTheme:
+          this.controlElementsTheme.merge(controlElementsTheme),
+      radioTheme: (this.radioTheme) != null
+          ? this.radioTheme.merge(radioTheme)
+          : radioTheme,
     );
   }
 

@@ -27,9 +27,9 @@ class EqTheme extends StatelessWidget {
           child: InheritedEqTheme(
             theme: theme,
             child: AnimatedDefaultTextStyle(
-              duration: theme.majorAnimationDuration,
-              curve: theme.majorAnimationCurve,
-              style: TextStyle(color: theme.textBasicColor),
+              duration: theme.majorAnimationTheme.duration,
+              curve: theme.majorAnimationTheme.curve,
+              style: TextStyle(color: theme.textTheme.textBasicColor),
               child: child,
             ),
           ),

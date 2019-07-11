@@ -61,7 +61,7 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    var animationDuration = EqTheme.of(context).minorAnimationDuration;
+    var animationDuration = EqTheme.of(context).minorAnimationTheme.duration;
 
     if (animationController != null) {
       animationController.duration = animationDuration;
@@ -82,8 +82,8 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
 
   VectorMath.Vector3 calculateScaleVector(EqThemeData theme) {
     var value = VectorMath.Vector3(
-      2 * theme.outlineWidth / itemSize.width,
-      2 * theme.outlineWidth / itemSize.height,
+      2 * theme.outlineTheme.width / itemSize.width,
+      2 * theme.outlineTheme.width / itemSize.height,
       0.0,
     );
     if (widget.clipInner) {
@@ -95,9 +95,11 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
 
   Border calculateBorder(EqThemeData theme, VectorMath.Vector3 scaleFactor) {
     var verticalBorderSide = BorderSide(
-        color: theme.outlineColor, width: theme.outlineWidth / (scaleFactor.y));
+        color: theme.outlineTheme.color,
+        width: theme.outlineTheme.width / (scaleFactor.y));
     var horizontalBorderSide = BorderSide(
-        color: theme.outlineColor, width: theme.outlineWidth / (scaleFactor.x));
+        color: theme.outlineTheme.color,
+        width: theme.outlineTheme.width / (scaleFactor.x));
     return Border(
       top: verticalBorderSide,
       bottom: verticalBorderSide,
@@ -134,17 +136,17 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
                                 clipper: DoubleClipRRect(
                                   borderRadius: borderRadius,
                                   outilneVerticalWidth:
-                                      (theme.outlineWidth * animation.value) /
+                                      (theme.outlineTheme.width * animation.value) /
                                           scaleFactor.y,
                                   outlineHorizontalWidth:
-                                      (theme.outlineWidth * animation.value) /
+                                      (theme.outlineTheme.width * animation.value) /
                                           (scaleFactor.x),
                                 ),
                                 child: Container(
                                   width: itemSize.width,
                                   height: itemSize.height,
                                   decoration: BoxDecoration(
-                                    color: theme.outlineColor,
+                                    color: theme.outlineTheme.color,
                                     borderRadius: borderRadius,
                                   ),
                                 ),
@@ -153,7 +155,7 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
                                 width: itemSize.width,
                                 height: itemSize.height,
                                 decoration: BoxDecoration(
-                                  color: theme.outlineColor,
+                                  color: theme.outlineTheme.color,
                                   borderRadius: borderRadius,
                                 ),
                               ),
