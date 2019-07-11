@@ -50,12 +50,12 @@ class Theme {
   };
 
   static EqThemeData get lightTheme {
-    // return EqThemeData.loadFromJson(data: json, light: true);
-    return EqThemes.defaultLightTheme;
+    return EqThemeData.loadFromJson(data: json, light: true);
+    //return EqThemes.defaultLightTheme;
   }
 
   static EqThemeData get darkTheme {
-    // return EqThemeData.loadFromJson(data: json, light: false);
-    return EqThemes.defaultDarkTheme;
+    return EqThemeData.loadFromJson(data: json, light: false); 
+    //return EqThemes.defaultDarkTheme;
   }
 }

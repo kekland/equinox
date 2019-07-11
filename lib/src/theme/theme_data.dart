@@ -275,9 +275,9 @@ class EqThemeData {
       knobTheme: EqBackgroundThemeData(
         color: primary.shade500,
         colorDisabled: finalBasicBackgroundColors.color4,
-        colorSelected: Colors.transparent,
+        colorSelected: primary.shade500,
       ),
-    ).merge(radioTheme.base);
+    ).merge(radioTheme?.base);
 
     final theme = EqThemeData.withoutWidgetConfigs(
       primary: primary,
@@ -298,13 +298,16 @@ class EqThemeData {
       majorAnimationTheme: finalMajorAnimationTheme,
       minorAnimationTheme: finalMinorAnimationTheme,
       outlineTheme: finalOutlineTheme,
-      textTheme: textTheme,
+      textTheme: finalTextTheme,
     );
 
     final finalRadioTheme = StatusStyledWidgetThemeData.autoFillRest(
         theme: theme, base: baseRadioTheme);
-
-    return theme.extend(radioTheme: finalRadioTheme);
+    //return theme;
+    return theme.extend(
+      radioTheme: finalRadioTheme,
+      useConfigure: false,
+    );
   }
 
   EqThemeData extend({
@@ -330,35 +333,72 @@ class EqThemeData {
     EqIconThemeData iconTheme,
     EqControlElementsThemeData controlElementsTheme,
     StatusStyledWidgetThemeData<EqRadioThemeData> radioTheme,
+    bool useConfigure = true,
   }) {
-    return new EqThemeData.configure(
-      primary: primary ?? this.primary,
-      success: success ?? this.success,
-      info: info ?? this.info,
-      warning: warning ?? this.warning,
-      danger: danger ?? this.danger,
-      basic: basic ?? this.basic,
-      shadow: shadow ?? this.shadow,
-      primaryFontFamily: primaryFontFamily ?? this.textTheme.primaryFontFamily,
-      secondaryFontFamily:
-          secondaryFontFamily ?? this.textTheme.secondaryFontFamily,
-      widgetShape: widgetShape ?? this.widgetShape,
-      basicBackgroundColors: this.basicBackgroundColors.merge(basicBackgroundColors),
-      basicBorderColors: this.basicBorderColors.merge(basicBorderColors),
-      textTheme: this.textTheme.merge(textTheme),
-      backgroundTheme: this.backgroundTheme.merge(backgroundTheme),
-      borderRadiusTheme: this.borderRadiusTheme.merge(borderRadiusTheme),
-      borderTheme: this.borderTheme.merge(borderTheme),
-      majorAnimationTheme: this.majorAnimationTheme.merge(majorAnimationTheme),
-      minorAnimationTheme: this.minorAnimationTheme.merge(minorAnimationTheme),
-      outlineTheme: this.outlineTheme.merge(outlineTheme),
-      iconTheme: this.iconTheme.merge(iconTheme),
-      controlElementsTheme:
-          this.controlElementsTheme.merge(controlElementsTheme),
-      radioTheme: (this.radioTheme) != null
-          ? this.radioTheme.merge(radioTheme)
-          : radioTheme,
-    );
+    var a = 1;
+    if (useConfigure) {
+      return EqThemeData.configure(
+        primary: primary ?? this.primary,
+        success: success ?? this.success,
+        info: info ?? this.info,
+        warning: warning ?? this.warning,
+        danger: danger ?? this.danger,
+        basic: basic ?? this.basic,
+        shadow: shadow ?? this.shadow,
+        primaryFontFamily:
+            primaryFontFamily ?? this.textTheme.primaryFontFamily,
+        secondaryFontFamily:
+            secondaryFontFamily ?? this.textTheme.secondaryFontFamily,
+        widgetShape: widgetShape ?? this.widgetShape,
+        basicBackgroundColors:
+            this.basicBackgroundColors.merge(basicBackgroundColors),
+        basicBorderColors: this.basicBorderColors.merge(basicBorderColors),
+        textTheme: this.textTheme.merge(textTheme),
+        backgroundTheme: this.backgroundTheme.merge(backgroundTheme),
+        borderRadiusTheme: this.borderRadiusTheme.merge(borderRadiusTheme),
+        borderTheme: this.borderTheme.merge(borderTheme),
+        majorAnimationTheme:
+            this.majorAnimationTheme.merge(majorAnimationTheme),
+        minorAnimationTheme:
+            this.minorAnimationTheme.merge(minorAnimationTheme),
+        outlineTheme: this.outlineTheme.merge(outlineTheme),
+        iconTheme: this.iconTheme.merge(iconTheme),
+        controlElementsTheme:
+            this.controlElementsTheme.merge(controlElementsTheme),
+        radioTheme: (this.radioTheme) != null
+            ? this.radioTheme.merge(radioTheme)
+            : radioTheme,
+      );
+    } else {
+      return EqThemeData.raw(
+        primary: primary ?? this.primary,
+        success: success ?? this.success,
+        info: info ?? this.info,
+        warning: warning ?? this.warning,
+        danger: danger ?? this.danger,
+        basic: basic ?? this.basic,
+        shadow: shadow ?? this.shadow,
+        widgetShape: widgetShape ?? this.widgetShape,
+        basicBackgroundColors:
+            this.basicBackgroundColors.merge(basicBackgroundColors),
+        basicBorderColors: this.basicBorderColors.merge(basicBorderColors),
+        textTheme: this.textTheme.merge(textTheme),
+        backgroundTheme: this.backgroundTheme.merge(backgroundTheme),
+        borderRadiusTheme: this.borderRadiusTheme.merge(borderRadiusTheme),
+        borderTheme: this.borderTheme.merge(borderTheme),
+        majorAnimationTheme:
+            this.majorAnimationTheme.merge(majorAnimationTheme),
+        minorAnimationTheme:
+            this.minorAnimationTheme.merge(minorAnimationTheme),
+        outlineTheme: this.outlineTheme.merge(outlineTheme),
+        iconTheme: this.iconTheme.merge(iconTheme),
+        controlElementsTheme:
+            this.controlElementsTheme.merge(controlElementsTheme),
+        radioTheme: (this.radioTheme) != null
+            ? this.radioTheme.merge(radioTheme)
+            : radioTheme,
+      );
+    }
   }
 
   ColorGroup getColorsForStatus({EqWidgetStatus status}) {

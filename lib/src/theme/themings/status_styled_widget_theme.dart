@@ -114,6 +114,7 @@ class StatusStyledWidgetThemeData<T extends StatusAppliedWidgetThemeData<T>> {
 
   StatusStyledWidgetThemeData merge<T extends StatusAppliedWidgetThemeData<T>>(
       StatusStyledWidgetThemeData<T> other) {
+    if (other == null) return this;
     return copyWith(
       base: other.base,
       basic: other.basic,
