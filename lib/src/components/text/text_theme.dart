@@ -240,4 +240,8 @@ class EqTextThemeData {
 
     return baseTextStyle.copyWith(color: color).merge(mergeWith);
   }
+
+  static EqTextThemeData of(BuildContext context) {
+    return EqTheme.of(context).textTheme;
+  }
 }

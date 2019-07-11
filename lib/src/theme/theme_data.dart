@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:equinox/equinox.dart';
+export 'package:equinox/src/theme/themings/control_elements_theme.dart';
 export 'package:equinox/src/components/icon/icon_theme.dart';
 export 'package:equinox/src/theme/themings/animation_theme.dart';
 export 'package:equinox/src/theme/themings/border_radius_theme.dart';
@@ -32,7 +33,7 @@ class EqThemeData {
   final EqBorderRadiusThemeData borderRadiusTheme;
   final EqAnimationThemeData majorAnimationTheme;
   final EqAnimationThemeData minorAnimationTheme;
-
+  final EqControlElementsThemeData controlElementsTheme;
 
   EqThemeData.raw({
     @required this.primary,
@@ -51,6 +52,7 @@ class EqThemeData {
     @required this.minorAnimationTheme,
     @required this.outlineTheme,
     @required this.iconTheme,
+    @required this.controlElementsTheme,
   });
 
   factory EqThemeData({
@@ -100,6 +102,7 @@ class EqThemeData {
     EqBorderRadiusThemeData borderRadiusTheme,
     EqOutlineThemeData outlineTheme,
     EqIconThemeData iconTheme,
+    EqControlElementsThemeData controlElementsTheme,
     BoxShadow shadow = const BoxShadow(
       offset: Offset(0.0, 8.0),
       blurRadius: 16.0,
@@ -107,6 +110,10 @@ class EqThemeData {
       color: Color.fromRGBO(44, 51, 73, 0.1),
     ),
   }) {
+    final defaultControlElementsTheme = EqControlElementsThemeData(
+      descriptionPadding: 8.0,
+      padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+    );
     final defaultTextTheme = EqTextThemeData(
       primaryFontFamily: primaryFontFamily,
       secondaryFontFamily: secondaryFontFamily,
@@ -229,6 +236,7 @@ class EqThemeData {
           defaultMinorAnimationTheme.merge(minorAnimationTheme),
       outlineTheme: defaultOutlineTheme.merge(outlineTheme),
       iconTheme: defaultIconTheme.merge(iconTheme),
+      controlElementsTheme: defaultControlElementsTheme
     );
   }
 
@@ -251,6 +259,7 @@ class EqThemeData {
     EqAnimationThemeData minorAnimationTheme,
     EqOutlineThemeData outlineTheme,
     EqIconThemeData iconTheme,
+    EqControlElementsThemeData controlElementsTheme,
   }) {
     return new EqThemeData.configure(
       primary: primary ?? this.primary,
@@ -261,7 +270,8 @@ class EqThemeData {
       basic: basic ?? this.basic,
       shadow: shadow ?? this.shadow,
       primaryFontFamily: primaryFontFamily ?? this.textTheme.primaryFontFamily,
-      secondaryFontFamily: secondaryFontFamily ?? this.textTheme.secondaryFontFamily,
+      secondaryFontFamily:
+          secondaryFontFamily ?? this.textTheme.secondaryFontFamily,
       widgetShape: widgetShape ?? this.widgetShape,
       textTheme: this.textTheme.merge(textTheme),
       backgroundTheme: this.backgroundTheme.merge(backgroundTheme),
@@ -271,6 +281,7 @@ class EqThemeData {
       minorAnimationTheme: this.minorAnimationTheme.merge(minorAnimationTheme),
       outlineTheme: this.outlineTheme.merge(outlineTheme),
       iconTheme: this.iconTheme.merge(iconTheme),
+      controlElementsTheme: this.controlElementsTheme.merge(controlElementsTheme),
     );
   }
 

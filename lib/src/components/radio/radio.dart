@@ -44,25 +44,20 @@ class _EqRadioState extends State<EqRadio> {
 
     final enabled = widget.onSelected != null;
     final selected = widget.value;
-    final statusColor = theme.getColorForStatus(status: widget.status);
 
-    final backgroundColor = enabled
-        ? theme.getColorForStatus(status: widget.status, opacity: 0.125) ??
-            themeData.backgroundColor
-        : themeData.backgroundDisabledColor;
+    final backgroundColor = themeData.backgroundTheme
+        .getBackgroundColor(selected: selected, enabled: enabled);
 
-    final knobColor = enabled
-        ? statusColor ?? themeData.knobColor
-        : themeData.knobDisabledColor;
+    final knobColor = selected
+        ? themeData.knobTheme
+            .getBackgroundColor(selected: true, enabled: enabled)
+        : Colors.transparent;
 
-    final borderColor = enabled
-        ? (selected
-            ? statusColor ?? themeData.borderSelectedColor
-            : themeData.borderColor)
-        : statusColor ?? themeData.borderDisabledColor;
+    final border =
+        themeData.borderTheme.getBorder(selected: selected, enabled: enabled);
 
     final double size = themeData.size ?? 24.0;
-    final double knobSize = themeData.knobSize ?? 16.0;
+    final double knobSize = themeData.knobSize ?? size * (2.0 / 3.0);
 
     final BorderRadius borderRadius =
         themeData.borderRadius ?? BorderRadius.circular(size / 2.0);
@@ -72,21 +67,21 @@ class _EqRadioState extends State<EqRadio> {
       predefinedSize: Size.square(size),
       borderRadius: borderRadius,
       child: AnimatedContainer(
-        duration: theme.minorAnimationDuration,
-        curve: theme.minorAnimationCurve,
+        duration: theme.minorAnimationTheme.duration,
+        curve: theme.minorAnimationTheme.curve,
         width: size,
         height: size,
         decoration: BoxDecoration(
           borderRadius: borderRadius,
           color: backgroundColor,
-          border: Border.all(color: borderColor, width: themeData.borderWidth),
+          border: border,
         ),
         child: MaterialDesign.Material(
           type: MaterialDesign.MaterialType.transparency,
           child: Center(
             child: AnimatedContainer(
-              duration: theme.minorAnimationDuration,
-              curve: theme.minorAnimationCurve,
+              duration: theme.minorAnimationTheme.duration,
+              curve: theme.minorAnimationTheme.curve,
               width: knobSize,
               height: knobSize,
               decoration: BoxDecoration(
@@ -110,7 +105,7 @@ class _EqRadioState extends State<EqRadio> {
       onTap: widget.onSelected,
       onOutlineChange: (v) => setState(() => outlined = v),
       child: Padding(
-        padding: themeData.padding,
+        padding: themeData.padding ?? theme.controlElementsTheme.padding,
         child: Row(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -119,7 +114,7 @@ class _EqRadioState extends State<EqRadio> {
             description: description,
             descriptionPosition:
                 widget.descriptionPosition ?? themeData.descriptionPosition,
-            padding: themeData.descriptionPadding,
+            padding: themeData.descriptionPadding ?? theme.controlElementsTheme.descriptionPadding,
           ),
         ),
       ),

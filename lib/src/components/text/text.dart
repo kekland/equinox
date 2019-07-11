@@ -4,9 +4,9 @@ export 'package:equinox/src/components/text/text_params.dart';
 
 /// This widget provides quick and easy access to Equinox's text styles. See the constructors for more info.
 class EqText extends StatelessWidget {
-  final TextTheme Function(EqThemeData) eqStyle;
-  final TextState state;
-
+  final EqTextStyle eqStyle;
+  final EqTextState state;
+  final EqWidgetStatus status;
   /// The text to display.
   ///
   /// This will be null if a [textSpan] is provided instead.
@@ -109,11 +109,12 @@ class EqText extends StatelessWidget {
     this.maxLines,
     this.semanticsLabel,
     this.overflow,
+    this.status,
   }) : super(key: key);
 
   factory EqText.heading1(
     String data, {
-    TextState state,
+    EqTextState state,
     Key key,
     TextStyle style,
     StrutStyle strutStyle,
@@ -124,7 +125,7 @@ class EqText extends StatelessWidget {
     double textScaleFactor,
     int maxLines,
     String semanticsLabel,
-    TextOverflow overflow,
+    TextOverflow overflow, EqWidgetStatus status,
   }) {
     return EqText(
       data,
@@ -138,15 +139,15 @@ class EqText extends StatelessWidget {
       textScaleFactor: textScaleFactor,
       maxLines: maxLines,
       semanticsLabel: semanticsLabel,
-      overflow: overflow,
+      overflow: overflow, status: status,
       key: key,
-      eqStyle: (theme) => theme.heading1,
+      eqStyle: EqTextStyle.heading1,
     );
   }
 
   factory EqText.heading2(
     String data, {
-    TextState state,
+    EqTextState state,
     Key key,
     TextStyle style,
     StrutStyle strutStyle,
@@ -157,7 +158,7 @@ class EqText extends StatelessWidget {
     double textScaleFactor,
     int maxLines,
     String semanticsLabel,
-    TextOverflow overflow,
+    TextOverflow overflow, EqWidgetStatus status,
   }) {
     return EqText(
       data,
@@ -171,14 +172,14 @@ class EqText extends StatelessWidget {
       textScaleFactor: textScaleFactor,
       maxLines: maxLines,
       semanticsLabel: semanticsLabel,
-      overflow: overflow,
+      overflow: overflow, status: status,
       key: key,
-      eqStyle: (theme) => theme.heading2,
+      eqStyle: EqTextStyle.heading2,
     );
   }
   factory EqText.heading3(
     String data, {
-    TextState state,
+    EqTextState state,
     Key key,
     TextStyle style,
     StrutStyle strutStyle,
@@ -189,7 +190,7 @@ class EqText extends StatelessWidget {
     double textScaleFactor,
     int maxLines,
     String semanticsLabel,
-    TextOverflow overflow,
+    TextOverflow overflow, EqWidgetStatus status,
   }) {
     return EqText(
       data,
@@ -203,14 +204,14 @@ class EqText extends StatelessWidget {
       textScaleFactor: textScaleFactor,
       maxLines: maxLines,
       semanticsLabel: semanticsLabel,
-      overflow: overflow,
+      overflow: overflow, status: status,
       key: key,
-      eqStyle: (theme) => theme.heading3,
+      eqStyle: EqTextStyle.heading3,
     );
   }
   factory EqText.heading4(
     String data, {
-    TextState state,
+    EqTextState state,
     Key key,
     TextStyle style,
     StrutStyle strutStyle,
@@ -221,7 +222,7 @@ class EqText extends StatelessWidget {
     double textScaleFactor,
     int maxLines,
     String semanticsLabel,
-    TextOverflow overflow,
+    TextOverflow overflow, EqWidgetStatus status,
   }) {
     return EqText(
       data,
@@ -235,14 +236,14 @@ class EqText extends StatelessWidget {
       textScaleFactor: textScaleFactor,
       maxLines: maxLines,
       semanticsLabel: semanticsLabel,
-      overflow: overflow,
+      overflow: overflow, status: status,
       key: key,
-      eqStyle: (theme) => theme.heading4,
+      eqStyle: EqTextStyle.heading4,
     );
   }
   factory EqText.heading5(
     String data, {
-    TextState state,
+    EqTextState state,
     Key key,
     TextStyle style,
     StrutStyle strutStyle,
@@ -253,7 +254,7 @@ class EqText extends StatelessWidget {
     double textScaleFactor,
     int maxLines,
     String semanticsLabel,
-    TextOverflow overflow,
+    TextOverflow overflow, EqWidgetStatus status,
   }) {
     return EqText(
       data,
@@ -267,14 +268,14 @@ class EqText extends StatelessWidget {
       textScaleFactor: textScaleFactor,
       maxLines: maxLines,
       semanticsLabel: semanticsLabel,
-      overflow: overflow,
+      overflow: overflow, status: status,
       key: key,
-      eqStyle: (theme) => theme.heading5,
+      eqStyle: EqTextStyle.heading5,
     );
   }
   factory EqText.heading6(
     String data, {
-    TextState state,
+    EqTextState state,
     Key key,
     TextStyle style,
     StrutStyle strutStyle,
@@ -285,7 +286,7 @@ class EqText extends StatelessWidget {
     double textScaleFactor,
     int maxLines,
     String semanticsLabel,
-    TextOverflow overflow,
+    TextOverflow overflow, EqWidgetStatus status,
   }) {
     return EqText(
       data,
@@ -299,14 +300,14 @@ class EqText extends StatelessWidget {
       textScaleFactor: textScaleFactor,
       maxLines: maxLines,
       semanticsLabel: semanticsLabel,
-      overflow: overflow,
+      overflow: overflow, status: status,
       key: key,
-      eqStyle: (theme) => theme.heading6,
+      eqStyle: EqTextStyle.heading6,
     );
   }
   factory EqText.paragraph1(
     String data, {
-    TextState state,
+    EqTextState state,
     Key key,
     TextStyle style,
     StrutStyle strutStyle,
@@ -317,7 +318,7 @@ class EqText extends StatelessWidget {
     double textScaleFactor,
     int maxLines,
     String semanticsLabel,
-    TextOverflow overflow,
+    TextOverflow overflow, EqWidgetStatus status,
   }) {
     return EqText(
       data,
@@ -331,14 +332,14 @@ class EqText extends StatelessWidget {
       textScaleFactor: textScaleFactor,
       maxLines: maxLines,
       semanticsLabel: semanticsLabel,
-      overflow: overflow,
+      overflow: overflow, status: status,
       key: key,
-      eqStyle: (theme) => theme.paragraph1,
+      eqStyle: EqTextStyle.paragraph1,
     );
   }
   factory EqText.paragraph2(
     String data, {
-    TextState state,
+    EqTextState state,
     Key key,
     TextStyle style,
     StrutStyle strutStyle,
@@ -349,7 +350,7 @@ class EqText extends StatelessWidget {
     double textScaleFactor,
     int maxLines,
     String semanticsLabel,
-    TextOverflow overflow,
+    TextOverflow overflow, EqWidgetStatus status,
   }) {
     return EqText(
       data,
@@ -363,14 +364,14 @@ class EqText extends StatelessWidget {
       textScaleFactor: textScaleFactor,
       maxLines: maxLines,
       semanticsLabel: semanticsLabel,
-      overflow: overflow,
+      overflow: overflow, status: status,
       key: key,
-      eqStyle: (theme) => theme.paragraph2,
+      eqStyle: EqTextStyle.paragraph2,
     );
   }
   factory EqText.subtitle1(
     String data, {
-    TextState state,
+    EqTextState state,
     Key key,
     TextStyle style,
     StrutStyle strutStyle,
@@ -381,7 +382,7 @@ class EqText extends StatelessWidget {
     double textScaleFactor,
     int maxLines,
     String semanticsLabel,
-    TextOverflow overflow,
+    TextOverflow overflow, EqWidgetStatus status,
   }) {
     return EqText(
       data,
@@ -395,14 +396,14 @@ class EqText extends StatelessWidget {
       textScaleFactor: textScaleFactor,
       maxLines: maxLines,
       semanticsLabel: semanticsLabel,
-      overflow: overflow,
+      overflow: overflow, status: status,
       key: key,
-      eqStyle: (theme) => theme.subtitle1,
+      eqStyle: EqTextStyle.subtitle1,
     );
   }
   factory EqText.subtitle2(
     String data, {
-    TextState state,
+    EqTextState state,
     Key key,
     TextStyle style,
     StrutStyle strutStyle,
@@ -413,7 +414,7 @@ class EqText extends StatelessWidget {
     double textScaleFactor,
     int maxLines,
     String semanticsLabel,
-    TextOverflow overflow,
+    TextOverflow overflow, EqWidgetStatus status,
   }) {
     return EqText(
       data,
@@ -427,14 +428,14 @@ class EqText extends StatelessWidget {
       textScaleFactor: textScaleFactor,
       maxLines: maxLines,
       semanticsLabel: semanticsLabel,
-      overflow: overflow,
+      overflow: overflow, status: status,
       key: key,
-      eqStyle: (theme) => theme.subtitle2,
+      eqStyle: EqTextStyle.subtitle2,
     );
   }
   factory EqText.label(
     String data, {
-    TextState state,
+    EqTextState state,
     Key key,
     TextStyle style,
     StrutStyle strutStyle,
@@ -445,7 +446,7 @@ class EqText extends StatelessWidget {
     double textScaleFactor,
     int maxLines,
     String semanticsLabel,
-    TextOverflow overflow,
+    TextOverflow overflow, EqWidgetStatus status,
   }) {
     return EqText(
       data,
@@ -459,14 +460,14 @@ class EqText extends StatelessWidget {
       textScaleFactor: textScaleFactor,
       maxLines: maxLines,
       semanticsLabel: semanticsLabel,
-      overflow: overflow,
+      overflow: overflow, status: status,
       key: key,
-      eqStyle: (theme) => theme.label,
+      eqStyle: EqTextStyle.label,
     );
   }
   factory EqText.caption1(
     String data, {
-    TextState state,
+    EqTextState state,
     Key key,
     TextStyle style,
     StrutStyle strutStyle,
@@ -477,7 +478,7 @@ class EqText extends StatelessWidget {
     double textScaleFactor,
     int maxLines,
     String semanticsLabel,
-    TextOverflow overflow,
+    TextOverflow overflow, EqWidgetStatus status,
   }) {
     return EqText(
       data,
@@ -491,14 +492,14 @@ class EqText extends StatelessWidget {
       textScaleFactor: textScaleFactor,
       maxLines: maxLines,
       semanticsLabel: semanticsLabel,
-      overflow: overflow,
+      overflow: overflow, status: status,
       key: key,
-      eqStyle: (theme) => theme.caption1,
+      eqStyle: EqTextStyle.caption1,
     );
   }
   factory EqText.caption2(
     String data, {
-    TextState state,
+    EqTextState state,
     Key key,
     TextStyle style,
     StrutStyle strutStyle,
@@ -509,7 +510,7 @@ class EqText extends StatelessWidget {
     double textScaleFactor,
     int maxLines,
     String semanticsLabel,
-    TextOverflow overflow,
+    TextOverflow overflow, EqWidgetStatus status,
   }) {
     return EqText(
       data,
@@ -523,73 +524,23 @@ class EqText extends StatelessWidget {
       textScaleFactor: textScaleFactor,
       maxLines: maxLines,
       semanticsLabel: semanticsLabel,
-      overflow: overflow,
+      overflow: overflow, status: status,
       key: key,
-      eqStyle: (theme) => theme.caption2,
+      eqStyle: EqTextStyle.caption2,
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    var theme = EqTheme.of(context);
-    TextStyle style = this.eqStyle(theme).textStyle;
+    final textTheme = EqTextThemeData.of(context);
 
-    if (this.state != null) {
-      switch (this.state) {
-        case TextState.basic:
-          style = style.copyWith(color: theme.textBasicColor);
-          break;
-        case TextState.alternate:
-          style = style.copyWith(color: theme.textAlternateColor);
-          break;
-        case TextState.disabled:
-          style = style.copyWith(color: theme.textDisabledColor);
-          break;
-        case TextState.hint:
-          style = style.copyWith(color: theme.textHintColor);
-          break;
-        case TextState.primary:
-          style = style.copyWith(color: theme.textPrimaryStates.normal);
-          break;
-        case TextState.success:
-          style = style.copyWith(color: theme.textSuccessStates.normal);
-          break;
-        case TextState.info:
-          style = style.copyWith(color: theme.textInfoStates.normal);
-          break;
-        case TextState.warning:
-          style = style.copyWith(color: theme.textWarningStates.normal);
-          break;
-        case TextState.danger:
-          style = style.copyWith(color: theme.textDangerStates.normal);
-          break;
-        case TextState.primaryDisabled:
-          style = style.copyWith(color: theme.textPrimaryStates.disabled);
-          break;
-        case TextState.successDisabled:
-          style = style.copyWith(color: theme.textSuccessStates.disabled);
-          break;
-        case TextState.infoDisabled:
-          style = style.copyWith(color: theme.textInfoStates.disabled);
-          break;
-        case TextState.warningDisabled:
-          style = style.copyWith(color: theme.textWarningStates.disabled);
-          break;
-        case TextState.dangerDisabled:
-          style = style.copyWith(color: theme.textDangerStates.disabled);
-          break;
-      }
-    }
-
-    if (this.style != null) {
-      style = this.style.copyWith(
-            fontSize: this.style.fontSize ?? style.fontSize,
-            fontWeight: this.style.fontWeight ?? style.fontWeight,
-            fontFamily: this.style.fontFamily ?? style.fontFamily,
-            height: style.height ?? style.height,
-            color: this.style.color ?? style.color,
-          );
-    }
+    final finalStyle = textTheme.getTextStyle(
+      context: context,
+      mergeWith: style,
+      state: state,
+      status: status,
+      style: eqStyle,
+    );
 
     return Text(
       data,
@@ -600,7 +551,7 @@ class EqText extends StatelessWidget {
       semanticsLabel: semanticsLabel,
       softWrap: softWrap,
       strutStyle: strutStyle,
-      style: style,
+      style: finalStyle,
       textAlign: textAlign,
       textDirection: textDirection,
       textScaleFactor: textScaleFactor,
