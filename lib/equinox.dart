@@ -19,7 +19,7 @@ export 'package:equinox/src/theme/themes.dart';
 export 'package:stylist/stylist.dart';
 
 // Components
-//export 'package:equinox/src/components/appbar/appbar.dart';
+export 'package:equinox/src/components/app_bar/app_bar.dart';
 //export 'package:equinox/src/components/button/button.dart';
 //export 'package:equinox/src/components/calendar/calendar.dart';
 export 'package:equinox/src/components/card/card.dart';
