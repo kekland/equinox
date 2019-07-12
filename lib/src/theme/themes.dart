@@ -124,7 +124,8 @@ class EqThemes {
     ..inject(supportStyle)
     ..inject(animationStyle)
     ..inject(iconStyle)
-    ..inject(radioStyle);
+    ..inject(radioStyle)
+    ..inject(cardStyle);
 
   static final defaultDarkTheme = defaultLightTheme
     ..inject(StyleData(

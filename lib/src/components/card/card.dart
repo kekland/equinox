@@ -6,6 +6,7 @@ import 'package:flutter/widgets.dart';
 
 import 'package:flutter/material.dart' as MaterialDesign;
 
+export 'package:equinox/src/components/card/card_style.dart';
 export 'package:equinox/src/components/card/card_status_apperance.dart';
 
 /// A widget that is used to display a block of content or information.
