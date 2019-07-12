@@ -17,9 +17,7 @@ export 'package:equinox/src/model/status.dart';
 // Theme
 export 'package:equinox/src/theme/themes.dart';
 export 'package:equinox/src/theme/text_theme.dart';
-export 'package:equinox/src/theme/theme_data.dart';
-export 'package:equinox/src/theme/themings/border_theme.dart';
-export 'package:equinox/src/theme/themings/background_theme.dart';
+export 'package:stylist/stylist.dart';
 
 // Components
 //export 'package:equinox/src/components/appbar/appbar.dart';
