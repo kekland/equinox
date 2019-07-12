@@ -1,3 +1,4 @@
+import 'package:equinox_visualqa/components/button.dart';
 import 'package:equinox_visualqa/state.dart';
 import 'package:flutter/material.dart';
 import 'package:equinox/equinox.dart';
@@ -41,17 +42,9 @@ class _MainPageState extends State<MainPage> {
     final style = StaticStyle.of(context);
     return EqLayout(
       child: Center(
-        child: Container(
-          color: style.get('background-basic-color-2'),
-          child: Column(
-            children: EqWidgetStatus.values
-                .map((value) => EqRadio(
-                      description: value.toString(),
-                      onSelected: () => setState(() => val = !val),
-                      value: val,
-                    ))
-                .toList(),
-          ),
+        child: EqButton(
+          onTap: () => navigateTo(context, (_) => ButtonShowcase()),
+          label: 'Buttons',
         ),
       ),
     );
