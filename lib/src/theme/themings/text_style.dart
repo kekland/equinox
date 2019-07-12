@@ -92,13 +92,4 @@ final StyleData textStyle = StyleData({
   'text-caption-2-font-family': 'font-family-primary',
   'text-caption-2-font-size': 0.75 * 16.0,
   'text-caption-2-font-weight': FontWeight.w600,
-  
-  'text-button-font-family': 'font-family-primary',
-  'text-button-font-weight': FontWeight.w700,
-
-  'text-button-tiny-font-size': 0.625 * 16.0,
-  'text-button-small-font-size': 0.75 * 16.0,
-  'text-button-medium-font-size': 0.875 * 16.0,
-  'text-button-large-font-size': 1 * 16.0,
-  'text-button-giant-font-size': 1.125 * 16.0,
 });

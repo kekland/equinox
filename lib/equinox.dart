@@ -30,6 +30,7 @@ export 'package:equinox/src/components/divider/divider.dart';
 //export 'package:equinox/src/components/list_item/list_item.dart';
 //export 'package:equinox/src/components/progress_bar/progress_bar.dart';
 export 'package:equinox/src/components/radio/radio.dart';
+export 'package:equinox/src/components/icon/icon.dart';
 //export 'package:equinox/src/components/select/select.dart';
 //export 'package:equinox/src/components/spinner/spinner.dart';
 //export 'package:equinox/src/components/tabbar/tabbar.dart';

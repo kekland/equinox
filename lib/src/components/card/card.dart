@@ -128,6 +128,10 @@ class EqCard extends StatelessWidget {
         ),
         boxShadow: [style.get('card-shadow')],
         color: style.get('card-background-color'),
+        border: Border.all(
+          width: style.get('card-border-width'),
+          color: style.get('card-border-color'),
+        ),
       ),
       child: MaterialDesign.Material(
         type: MaterialDesign.MaterialType.transparency,
