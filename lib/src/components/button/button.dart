@@ -116,7 +116,7 @@ class _EqButtonState extends State<EqButton> {
       style: TextStyle(
         fontSize: style
             .get(generateSelector(['button-text', widget.size, 'font-size'])),
-        fontWeight: style.get('button-text-font-size'),
+        fontWeight: style.get('button-text-font-weight'),
         fontFamily: style.get('button-text-font-family'),
         color:
             style.get(generateSelector([...selectorStateBase, 'text-color'])),

@@ -62,6 +62,7 @@ class EqCard extends StatelessWidget {
 
   Widget _buildBody(StyleData style) {
     var widgets = <Widget>[];
+    final padding = this.padding  ?? style.get('card-padding');
 
     if (header != null) {
       if (status != null &&

@@ -39,7 +39,7 @@ final StyleData _filledStyle = StyleData({
 StyleData _getOutlineForStatus(String status) {
   return StyleData({
     'button-outline-$status-border-color': 'color-$status-default',
-    'button-outline-$status-text-color': 'text-primary-color',
+    'button-outline-$status-text-color': 'text-$status-color',
     'button-outline-$status-background-color':
         'button-outline-background-color',
     'button-outline-$status-active-border-color': 'color-$status-active',
@@ -55,7 +55,7 @@ StyleData _getOutlineForStatus(String status) {
 
 final StyleData _outlineStyle = StyleData({
   'button-outline-border-width': 2.0,
-  'button-outline-background-color': Colors.transparent,
+  'button-outline-background-color': 'background-basic-color-2',
   'button-outline-tiny-padding':
       const EdgeInsets.symmetric(vertical: 4.0, horizontal: 10.0),
   'button-outline-small-padding':
