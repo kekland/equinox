@@ -1,137 +1,63 @@
+
 import 'package:equinox/equinox.dart';
-import 'package:flutter/widgets.dart';
 
-/// A class that contains the customizations for [EqRadio].
-///
-/// Can be used in [EqThemeData.defaultRadioTheme].
-class EqRadioThemeData extends StatusAppliedWidgetThemeData<EqRadioThemeData> {
-  /// Controls the position of the description.
-  ///
-  /// If null, defaults to [EqPositioning.right]
-  final EqPositioning descriptionPosition;
+final StyleData radioStyle = StyleData({
+  'radio-size': 'icon-size',
 
-  /// Controls the amount of padding of the container.
-  ///
-  /// Defaults to [EqThemeData.controlElementsTheme.padding].
-  final EdgeInsets padding;
+  'radio-background-color': 'background-basic-color-3',
 
-  /// Controls the radius of the radio.
-  ///
-  /// If null, defaults to [EqRadioThemeData.size / 2.0]
-  final BorderRadius borderRadius;
+  'radio-border-color': 'border-basic-color-4',
+  'radio-border-width': 'border-width',
 
-  /// Controls the size of the widget.
-  ///
-  /// If null, defaults to [EqThemeData.defaultIconTheme]
-  final double size;
+  'radio-text-color': 'text-basic-color',
+  'radio-text-font-family': 'text-subtitle-2-font-family',
+  'radio-text-font-size': 'text-subtitle-2-font-size',
+  'radio-text-font-weight': 'text-subtitle-2-font-weight',
 
-  /// Controls the size of the knob.
-  ///
-  /// If null, defaults to [size * (2/3)]
-  final double knobSize;
+  'radio-padding': 'control-padding',
+  'radio-description-padding': 'control-description-padding',
+  'radio-description-position': EqPositioning.right,
 
-  /// The distance between the description and the widget.
-  ///
-  /// Defaults to [EqThemeData.controlElementsTheme.descriptionPadding].
-  final double descriptionPadding;
+  'radio-outline-color': 'outline-color',
+  'radio-outline-width': 'outline-width',
 
-  /// The style of the description.
-  /// 
-  /// Defaults to [EqThemeData.textTheme.subtitle2]
-  final TextStyle descriptionStyle;
+  'radio-disabled-border-color': 'border-basic-color-3',
+  'radio-disabled-text-color': 'text-disabled-color',
+  'radio-disabled-background-color': 'background-basic-color-2',
+  'radio-disabled-knob-color': 'background-basic-color-4',
 
-  /// Controls the border colors.
-  ///
-  /// If null, defaults to [EqThemeData.borderTheme]
-  final EqBorderThemeData borderTheme;
+  'radio-primary-border-color': 'color-primary-default',
+  'radio-primary-background-color': 'color-primary-default',
+  'radio-primary-knob-color': 'color-primary-default',
+  'radio-primary-focus-border-color': 'color-primary-focus',
+  'radio-primary-focus-background-color': 'color-primary-focus',
+  'radio-primary-focus-knob-color': 'color-primary-focus',
+  
+  'radio-success-border-color': 'color-success-default',
+  'radio-success-background-color': 'color-success-default',
+  'radio-success-knob-color': 'color-success-default',
+  'radio-success-focus-border-color': 'color-success-focus',
+  'radio-success-focus-background-color': 'color-success-focus',
+  'radio-success-focus-knob-color': 'color-success-focus',
+  
+  'radio-warning-border-color': 'color-warning-default',
+  'radio-warning-background-color': 'color-warning-default',
+  'radio-warning-knob-color': 'color-warning-default',
+  'radio-warning-focus-border-color': 'color-warning-focus',
+  'radio-warning-focus-background-color': 'color-warning-focus',
+  'radio-warning-focus-knob-color': 'color-warning-focus',
+  
+  'radio-danger-border-color': 'color-danger-default',
+  'radio-danger-background-color': 'color-danger-default',
+  'radio-danger-knob-color': 'color-danger-default',
+  'radio-danger-focus-border-color': 'color-danger-focus',
+  'radio-danger-focus-background-color': 'color-danger-focus',
+  'radio-danger-focus-knob-color': 'color-danger-focus',
 
-  /// Controls the border colors.
-  ///
-  /// If null, defaults to [EqThemeData.backgroundTheme]
-  final EqBackgroundThemeData backgroundTheme;
-
-  /// Controls the border colors.
-  final EqBackgroundThemeData knobTheme;
-
-  EqRadioThemeData({
-    this.descriptionPosition,
-    this.padding,
-    this.borderRadius,
-    this.size,
-    this.knobSize,
-    this.descriptionPadding,
-    this.descriptionStyle,
-    this.borderTheme,
-    this.backgroundTheme,
-    this.knobTheme,
-  });
-
-  /// Merges two [EqRadioThemeData]'s.
-  EqRadioThemeData copyWith({
-    EqPositioning descriptionPosition,
-    EdgeInsets padding,
-    BorderRadius borderRadius,
-    double size,
-    double knobSize,
-    double descriptionPadding,
-    TextStyle descriptionStyle,
-    EqBackgroundThemeData backgroundTheme,
-    EqBorderThemeData borderTheme,
-    EqBackgroundThemeData knobTheme,
-  }) {
-    return EqRadioThemeData(
-      borderRadius: borderRadius ?? this.borderRadius,
-      descriptionPadding: descriptionPadding ?? this.descriptionPadding,
-      descriptionPosition: descriptionPosition ?? this.descriptionPosition,
-      descriptionStyle: descriptionStyle ?? this.descriptionStyle,
-      knobSize: knobSize ?? this.knobSize,
-      padding: padding ?? this.padding,
-      size: size ?? this.size,
-      backgroundTheme: this.backgroundTheme.merge(backgroundTheme),
-      borderTheme: this.borderTheme.merge(borderTheme),
-      knobTheme: this.knobTheme.merge(knobTheme),
-    );
-  }
-
-  /// Merges two [EqRadioThemeData]'s, giving the prevalence to the second one.
-  EqRadioThemeData merge(EqRadioThemeData other) {
-    if (other == null) return this;
-    return copyWith(
-      borderRadius: other.borderRadius,
-      descriptionPadding: other.descriptionPadding,
-      descriptionPosition: other.descriptionPosition,
-      descriptionStyle: other.descriptionStyle,
-      padding: other.padding,
-      size: other.size,
-      backgroundTheme: other.backgroundTheme,
-      borderTheme: other.borderTheme,
-      knobSize: other.knobSize,
-      knobTheme: other.knobTheme,
-    );
-  }
-
-  static StatusStyledWidgetThemeData<EqRadioThemeData> of(BuildContext context) {
-    return EqTheme.of(context).radioTheme;
-  }
-
-  @override
-  EqRadioThemeData generateFromStatus(
-      {EqThemeData theme, EqRadioThemeData base, EqWidgetStatus status,}) {
-    return base.merge(
-      EqRadioThemeData(
-        backgroundTheme: EqBackgroundThemeData(
-          color: theme.getColorForStatus(status: status, opacity: 0.125),
-          colorSelected: theme.getColorForStatus(status: status),
-        ),
-        borderTheme: EqBorderThemeData(
-          color: theme.getColorForStatus(status: status),
-          colorSelected: theme.getColorForStatus(status: status),
-        ),
-        knobTheme: EqBackgroundThemeData(
-          colorDisabled: theme.basic.shade400,
-          colorSelected: theme.getColorForStatus(status: status),
-        ),
-      ),
-    );
-  }
-}
+  'radio-info-border-color': 'color-info-default',
+  'radio-info-background-color': 'color-info-default',
+  'radio-info-knob-color': 'color-info-default',
+  'radio-info-focus-border-color': 'color-info-focus',
+  'radio-info-focus-background-color': 'color-info-focus',
+  'radio-info-focus-knob-color': 'color-info-focus',
+});

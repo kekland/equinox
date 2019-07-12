@@ -26,8 +26,7 @@ class TransparentPageRoute<T> extends PageRoute<T> {
   bool get maintainState => true;
 
   @override
-  Duration get transitionDuration =>
-      EqThemes.defaultLightTheme.majorAnimationTheme.duration;
+  Duration get transitionDuration => Duration(milliseconds: 250);
 
   @override
   Widget buildPage(BuildContext context, Animation<double> animation,
@@ -37,10 +36,12 @@ class TransparentPageRoute<T> extends PageRoute<T> {
       scopesRoute: true,
       explicitChildNodes: true,
       child: AnimatedBuilder(
-        animation: animation,
-        builder: (BuildContext context, Widget child) => Opacity(
-              opacity: EqThemes.defaultLightTheme.minorAnimationTheme.curve
-                  .transform(animation.value),
+          animation: animation,
+          builder: (BuildContext context, Widget child) {
+            final style = StaticStyle.of(context);
+            return Opacity(
+              opacity:
+                  style.get('minor-animation-curve').transform(animation.value),
               child: GestureDetector(
                 onTap: () => Navigator.pop(context),
                 child: Container(
@@ -55,8 +56,8 @@ class TransparentPageRoute<T> extends PageRoute<T> {
                   ),
                 ),
               ),
-            ),
-      ),
+            );
+          }),
     );
   }
 }

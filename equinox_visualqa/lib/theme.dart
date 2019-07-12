@@ -49,13 +49,13 @@ class Theme {
     "color-danger-900": "#7A0B32"
   };
 
-  static EqThemeData get lightTheme {
-    return EqThemeData.loadFromJson(data: json, light: true);
+  static StyleData get lightTheme {
+    return EqThemes.defaultLightTheme.inject(StyleData(json));
     //return EqThemes.defaultLightTheme;
   }
 
-  static EqThemeData get darkTheme {
-    return EqThemeData.loadFromJson(data: json, light: false); 
+  static StyleData get darkTheme {
+    return EqThemes.defaultDarkTheme.inject(StyleData(json));
     //return EqThemes.defaultDarkTheme;
   }
 }

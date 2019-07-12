@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:stylist/stylist.dart';
 
-StyleData textTheme = StyleData({
+final StyleData textTheme = StyleData({
   'text-basic-color': 'color-basic-900',
   'text-alternate-color': 'color-basic-100',
   'text-control-color': 'color-basic-100',
@@ -95,7 +95,7 @@ StyleData textTheme = StyleData({
   
   'text-button-font-family': 'font-family-primary',
   'text-button-font-weight': FontWeight.w700,
-  
+
   'text-button-tiny-font-size': 0.625 * 16.0,
   'text-button-small-font-size': 0.75 * 16.0,
   'text-button-medium-font-size': 0.875 * 16.0,

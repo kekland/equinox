@@ -14,19 +14,19 @@ class OutlinedGestureDetector extends StatelessWidget {
     onOutlineChange(true);
   }
 
-  void clearOutline(EqThemeData theme) {
-    Future.delayed(theme.minorAnimationTheme.duration, () => onOutlineChange(false));
+  void clearOutline(Duration delay) {
+    Future.delayed(delay, () => onOutlineChange(false));
   }
 
   @override
   Widget build(BuildContext context) {
-    var theme = EqTheme.of(context);
+    var style = StaticStyle.of(context);
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: onTap,
       onTapDown: (onTap != null) ? onTapDown : null,
-      onTapUp: (onTap != null) ? (_) => clearOutline(theme) : null,
-      onTapCancel: (onTap != null) ? () => clearOutline(theme) : null,
+      onTapUp: (onTap != null) ? (_) => clearOutline(style.get('minor-animation-duration')) : null,
+      onTapCancel: (onTap != null) ? () => clearOutline(style.get('minor-animation-duration')) : null,
       child: child,
     );
   }

@@ -1,5 +1,5 @@
 import 'package:equinox/equinox.dart';
-import 'package:equinox/src/components/icon/icon_theme.dart';
+import 'package:equinox/src/equinox_internal.dart';
 import 'package:flutter/widgets.dart';
 
 class EqIcon extends StatelessWidget {
@@ -17,14 +17,13 @@ class EqIcon extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final theme = EqTheme.of(context);
-    final iconTheme = EqIconThemeData.of(context);
+    final style = StaticStyle.of(context);
 
-    final statusColor = theme.getColorsForStatus(status: status);
+    final statusColor = style.get(generateSelector(['color', status, '500']));
     return Icon(
       icon,
-      size: size ?? iconTheme.size,
-      color: statusColor ?? color ?? iconTheme.color,
+      size: size ?? style.get('icon-size'),
+      color: statusColor ?? color ?? style.get('icon-color'),
     );
   }
 }

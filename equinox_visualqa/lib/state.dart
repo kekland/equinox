@@ -4,7 +4,7 @@ import 'package:equinox_visualqa/theme.dart';
 import 'package:flutter/widgets.dart';
 
 class AppState {
-  static EqThemeData theme = Theme.lightTheme;
+  static StyleData theme = Theme.lightTheme;
   static bool isDark = false;
   static VoidCallback _subscriber;
 

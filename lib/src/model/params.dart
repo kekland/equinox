@@ -22,7 +22,6 @@ enum EqWidgetStatus {
   info,
   warning,
   danger,
-  basic,
 }
 
 enum EqWidgetShape {

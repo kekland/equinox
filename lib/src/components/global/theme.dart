@@ -5,14 +5,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart' as MaterialDesign;
 
 class EqTheme extends StatelessWidget {
-  final EqThemeData theme;
+  final StyleData theme;
   final Widget child;
-
-  static EqThemeData of(BuildContext context) {
-    final InheritedEqTheme inheritedTheme =
-        context.inheritFromWidgetOfExactType(InheritedEqTheme);
-    return inheritedTheme.theme;
-  }
 
   const EqTheme({Key key, this.theme, this.child}) : super(key: key);
 
@@ -24,28 +18,15 @@ class EqTheme extends StatelessWidget {
         ),
         child: ScrollConfiguration(
           behavior: EquinoxScrollBehavior(),
-          child: InheritedEqTheme(
-            theme: theme,
+          child: StaticStyle(
+            data: theme,
             child: AnimatedDefaultTextStyle(
-              duration: theme.majorAnimationTheme.duration,
-              curve: theme.majorAnimationTheme.curve,
-              style: TextStyle(color: theme.textTheme.textBasicColor),
+              duration: theme.get('major-animation-duration'),
+              curve: theme.get('major-animation-curve'),
+              style: TextStyle(color: theme.get('text-basic-color')),
               child: child,
             ),
           ),
         ));
   }
-}
-
-class InheritedEqTheme extends InheritedWidget {
-  final EqThemeData theme;
-  final Widget child;
-
-  InheritedEqTheme({Key key, this.theme, this.child})
-      : assert(theme != null),
-        super(key: key, child: child);
-
-  @override
-  bool updateShouldNotify(InheritedEqTheme oldWidget) =>
-      this.theme != oldWidget.theme;
 }

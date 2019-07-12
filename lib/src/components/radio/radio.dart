@@ -39,54 +39,49 @@ class _EqRadioState extends State<EqRadio> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = EqTheme.of(context);
-    final themeData = EqRadioThemeData.of(context).getWithStatus(widget.status);
+    final style = StaticStyle.of(context);
 
     final enabled = widget.onSelected != null;
     final selected = widget.value;
+    final focused = outlined;
 
-    final backgroundColor = themeData.backgroundTheme
-        .getBackgroundColor(selected: selected, enabled: enabled);
-
-    final knobColor = selected
-        ? themeData.knobTheme
-            .getBackgroundColor(selected: true, enabled: enabled)
-        : Colors.transparent;
-
-    final border =
-        themeData.borderTheme.getBorder(selected: selected, enabled: enabled);
-
-    final double size = themeData.size ?? 24.0;
-    final double knobSize = themeData.knobSize ?? size * (2.0 / 3.0);
-
-    final BorderRadius borderRadius =
-        themeData.borderRadius ?? BorderRadius.circular(size / 2.0);
+    final List selectorBasis = [
+      'radio',
+      (enabled) ? widget.status : 'disabled',
+      (enabled && focused) ? 'focus' : null,
+    ];
 
     final radio = OutlinedWidget(
       outlined: outlined,
-      predefinedSize: Size.square(size),
-      borderRadius: borderRadius,
+      predefinedSize: Size.square(style.get('radio-size')),
+      borderRadius: BorderRadius.circular(style.get('radio-size')),
       child: AnimatedContainer(
-        duration: theme.minorAnimationTheme.duration,
-        curve: theme.minorAnimationTheme.curve,
-        width: size,
-        height: size,
+        duration: style.get('minor-animation-duration'),
+        curve: style.get('minor-animation-curve'),
+        width: style.get('radio-size'),
+        height: style.get('radio-size'),
         decoration: BoxDecoration(
-          borderRadius: borderRadius,
-          color: backgroundColor,
-          border: border,
+          borderRadius: BorderRadius.circular(style.get('radio-size')),
+          color: style
+              .get(generateSelector([...selectorBasis, 'background', 'color'])),
+          border: Border.all(
+            color: style
+                .get(generateSelector([...selectorBasis, 'border', 'color'])),
+            width: style.get('radio-border-width'),
+          ),
         ),
         child: MaterialDesign.Material(
           type: MaterialDesign.MaterialType.transparency,
           child: Center(
             child: AnimatedContainer(
-              duration: theme.minorAnimationTheme.duration,
-              curve: theme.minorAnimationTheme.curve,
-              width: knobSize,
-              height: knobSize,
+              duration: style.get('minor-animation-duration'),
+              curve: style.get('minor-animation-curve'),
+              width: style.get('radio-size') * (2 / 3),
+              height: style.get('radio-size') * (2 / 3),
               decoration: BoxDecoration(
-                borderRadius: borderRadius,
-                color: knobColor,
+                borderRadius: BorderRadius.circular(style.get('radio-size')),
+                color: style
+                    .get(generateSelector([...selectorBasis, 'knob', 'color'])),
               ),
             ),
           ),
@@ -97,7 +92,12 @@ class _EqRadioState extends State<EqRadio> {
     final description = widget.description != null
         ? EqText.subtitle2(
             widget.description,
-            style: themeData.descriptionStyle,
+            style: TextStyle(
+              fontFamily: style.get('radio-text-font-family'),
+              fontSize: style.get('radio-text-font-size'),
+              fontWeight: style.get('radio-text-font-weight'),
+              color: style.get('radio-text-color'),
+            ),
           )
         : null;
 
@@ -105,16 +105,16 @@ class _EqRadioState extends State<EqRadio> {
       onTap: widget.onSelected,
       onOutlineChange: (v) => setState(() => outlined = v),
       child: Padding(
-        padding: themeData.padding ?? theme.controlElementsTheme.padding,
+        padding: style.get('radio-padding'),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: EqToggleableDesciptionUtils.buildListWithDescription(
             main: radio,
             description: description,
-            descriptionPosition:
-                widget.descriptionPosition ?? themeData.descriptionPosition,
-            padding: themeData.descriptionPadding ?? theme.controlElementsTheme.descriptionPadding,
+            descriptionPosition: widget.descriptionPosition ??
+                style.get('radio-description-position'),
+            padding: style.get('radio-description-padding'),
           ),
         ),
       ),

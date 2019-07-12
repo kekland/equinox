@@ -9,7 +9,7 @@ import 'package:flutter/material.dart' as MaterialDesign;
 class EquinoxApp extends StatelessWidget {
   /// A theme that application uses. It can be your own theme, see [EqThemeData.configure()] or [EqThemeData.loadFromJson()],
   /// or one of default themes from [EqThemes], such as [EqThemes.defaultLightTheme] or [EqThemes.defaultDarkTheme]
-  final EqThemeData theme;
+  final StyleData theme;
 
   /// {@macro flutter.widgets.widgetsApp.navigatorKey}
   final GlobalKey<NavigatorState> navigatorKey;
@@ -250,7 +250,7 @@ class EquinoxApp extends StatelessWidget {
       checkerboardRasterCacheImages: checkerboardRasterCacheImages,
       debugShowCheckedModeBanner: debugShowCheckedModeBanner,
       debugShowMaterialGrid: debugShowMaterialGrid,
-      color: theme.primary.shade500,
+      color: theme.get('color-primary-shade500'),
       home: home,
       initialRoute: initialRoute,
       locale: locale,

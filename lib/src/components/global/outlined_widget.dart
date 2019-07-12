@@ -61,7 +61,8 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    var animationDuration = EqTheme.of(context).minorAnimationTheme.duration;
+    var animationDuration =
+        StaticStyle.of(context).get('minor-animation-duration');
 
     if (animationController != null) {
       animationController.duration = animationDuration;
@@ -80,10 +81,10 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
     borderRadius = widget.borderRadius ?? BorderRadius.zero;
   }
 
-  VectorMath.Vector3 calculateScaleVector(EqThemeData theme) {
+  VectorMath.Vector3 calculateScaleVector(double outlineWidth) {
     var value = VectorMath.Vector3(
-      2 * theme.outlineTheme.width / itemSize.width,
-      2 * theme.outlineTheme.width / itemSize.height,
+      2 * outlineWidth / itemSize.width,
+      2 * outlineWidth / itemSize.height,
       0.0,
     );
     if (widget.clipInner) {
@@ -93,13 +94,12 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
     }
   }
 
-  Border calculateBorder(EqThemeData theme, VectorMath.Vector3 scaleFactor) {
-    var verticalBorderSide = BorderSide(
-        color: theme.outlineTheme.color,
-        width: theme.outlineTheme.width / (scaleFactor.y));
-    var horizontalBorderSide = BorderSide(
-        color: theme.outlineTheme.color,
-        width: theme.outlineTheme.width / (scaleFactor.x));
+  Border calculateBorder(
+      double outlineWidth, Color outlineColor, VectorMath.Vector3 scaleFactor) {
+    var verticalBorderSide =
+        BorderSide(color: outlineColor, width: outlineWidth / (scaleFactor.y));
+    var horizontalBorderSide =
+        BorderSide(color: outlineColor, width: outlineWidth / (scaleFactor.x));
     return Border(
       top: verticalBorderSide,
       bottom: verticalBorderSide,
@@ -109,7 +109,10 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
   }
 
   Widget _build(BuildContext context) {
-    var theme = EqTheme.of(context);
+    final theme = StaticStyle.of(context);
+    final outlineWidth = theme.get('outline-width');
+    final outlineColor = theme.get('outline-color');
+
     return Stack(
       fit: StackFit.passthrough,
       children: [
@@ -117,7 +120,7 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
           AnimatedBuilder(
               animation: animation,
               builder: (context, _) {
-                var scaleFactor = calculateScaleVector(theme);
+                final scaleFactor = calculateScaleVector(outlineWidth);
                 return Stack(
                   alignment: Alignment.center,
                   children: <Widget>[
@@ -136,17 +139,17 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
                                 clipper: DoubleClipRRect(
                                   borderRadius: borderRadius,
                                   outilneVerticalWidth:
-                                      (theme.outlineTheme.width * animation.value) /
+                                      (outlineWidth * animation.value) /
                                           scaleFactor.y,
                                   outlineHorizontalWidth:
-                                      (theme.outlineTheme.width * animation.value) /
+                                      (outlineWidth * animation.value) /
                                           (scaleFactor.x),
                                 ),
                                 child: Container(
                                   width: itemSize.width,
                                   height: itemSize.height,
                                   decoration: BoxDecoration(
-                                    color: theme.outlineTheme.color,
+                                    color: outlineColor,
                                     borderRadius: borderRadius,
                                   ),
                                 ),
@@ -155,7 +158,7 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
                                 width: itemSize.width,
                                 height: itemSize.height,
                                 decoration: BoxDecoration(
-                                  color: theme.outlineTheme.color,
+                                  color: outlineColor,
                                   borderRadius: borderRadius,
                                 ),
                               ),

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart' as MaterialDesign;
 /// A widget that represents a page. Similar to [Scaffold].
 class EqLayout extends StatefulWidget {
   /// A theme to use in this page. Overwrites the [EquinoxApp.theme].
-  final EqThemeData theme;
+  final StyleData theme;
 
   /// Page's body. Will be placed below [appBar].
   final Widget child;
@@ -31,13 +31,13 @@ class EqLayout extends StatefulWidget {
 class _EqLayoutState extends State<EqLayout> {
   @override
   Widget build(BuildContext context) {
-    var theme = widget.theme ?? EqTheme.of(context);
+    final theme = widget.theme ?? StaticStyle.of(context).style;
     return EqTheme(
       theme: theme,
       child: AnimatedContainer(
-        duration: theme.majorAnimationTheme.duration,
-        curve: theme.majorAnimationTheme.curve,
-        color: theme.backgroundTheme.color,
+        duration: theme.get('major-animation-duration'),
+        curve: theme.get('major-animation-curve'),
+        color: theme.get('background-'),
         child: MaterialDesign.Material(
           type: MaterialDesign.MaterialType.transparency,
           child: Column(
