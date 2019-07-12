@@ -48,6 +48,11 @@ enum EqVerticalPositioning {
   bottom,
 }
 
+String enumValueToString(dynamic e) {
+  String str = e.toString();
+  return str.split('.').last;
+}
+
 /*
 class WidgetSizeUtils {
   static double getSizeValue({WidgetSize size}) {

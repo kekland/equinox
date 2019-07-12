@@ -9,4 +9,6 @@ StyleData supportingTheme = StyleData({
   'shadow': BoxShadow(offset: Offset(0.0, 8.0), blurRadius: 16.0, color: Color.fromRGBO(44, 51, 73, 0.1)),
   'divider-color': 'border-basic-color-3',
   'divider-width': 1.0,
+  'default-control-padding': EdgeInsets.all(8.0),
+  'default-control-description-padding': 8.0,
 });
