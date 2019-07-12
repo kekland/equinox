@@ -1,8 +1,8 @@
 import 'package:equinox/equinox.dart';
-import 'package:equinox/src/theme/themings/animation_theme.dart';
-import 'package:equinox/src/theme/themings/icon_theme.dart';
-import 'package:equinox/src/theme/themings/supporting_theme.dart';
-import 'package:equinox/src/theme/themings/text_theme.dart';
+import 'package:equinox/src/theme/themings/animation_style.dart';
+import 'package:equinox/src/theme/themings/icon_style.dart';
+import 'package:equinox/src/theme/themings/support_style.dart';
+import 'package:equinox/src/theme/themings/text_style.dart';
 
 class EqThemes {
   static final defaultLightTheme = StyleData({
@@ -120,8 +120,8 @@ class EqThemes {
     'border-primary-color-4': 'color-basic-800',
     'border-primary-color-5': 'color-basic-900',
   })
-    ..inject(textTheme)
-    ..inject(supportingTheme)
+    ..inject(textStyle)
+    ..inject(supportStyle)
     ..inject(animationStyle)
     ..inject(iconStyle)
     ..inject(radioStyle);

@@ -3,7 +3,7 @@ import 'package:equinox/src/equinox_internal.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart' as MaterialDesign;
 
-export 'package:equinox/src/components/radio/radio_theme.dart';
+export 'package:equinox/src/components/radio/radio_style.dart';
 
 /// Toggle represents a selection in a list of items.
 class EqRadio extends StatefulWidget {

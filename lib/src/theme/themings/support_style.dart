@@ -1,7 +1,7 @@
 import 'package:equinox/equinox.dart';
 import 'package:flutter/widgets.dart';
 
-final StyleData supportingTheme = StyleData({
+final StyleData supportStyle = StyleData({
   'border-radius-rectangle': 4.0,
   'border-radius-semi-round': 12.0,
   'outline-width': 0.375 * 16.0,
