@@ -117,10 +117,10 @@ packages:
   stylist:
     dependency: "direct main"
     description:
-      path: "..\\stylist"
-      relative: true
-    source: path
-    version: "0.0.3"
+      name: stylist
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.4"
   term_glyph:
     dependency: transitive
     description:
