@@ -21,7 +21,13 @@ class _EquinoxShowcaseAppState extends State<EquinoxShowcaseApp> {
   }
 }
 
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
+  @override
+  _MainPageState createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  bool val = false;
   navigateTo(BuildContext context, WidgetBuilder builder) {
     Navigator.of(context).push(
       new MaterialPageRoute(
@@ -32,13 +38,22 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final style = StaticStyle.of(context);
     return EqLayout(
       child: Center(
-        child: EqRadio(
-          onSelected: () {},
-          value: true,
+        child: Container(
+          color: style.get('background-basic-color-2'),
+          child: Column(
+            children: EqWidgetStatus.values
+                .map((value) => EqRadio(
+                      description: value.toString(),
+                      onSelected: () => setState(() => val = !val),
+                      value: val,
+                    ))
+                .toList(),
+          ),
         ),
-      ), 
+      ),
     );
   }
 }

@@ -31,13 +31,14 @@ class EqLayout extends StatefulWidget {
 class _EqLayoutState extends State<EqLayout> {
   @override
   Widget build(BuildContext context) {
-    final theme = widget.theme ?? StaticStyle.of(context).style;
+    final style = StaticStyle.of(context);
+    final theme = widget.theme ?? StaticStyle.of(context)?.style;
     return EqTheme(
       theme: theme,
       child: AnimatedContainer(
         duration: theme.get('major-animation-duration'),
         curve: theme.get('major-animation-curve'),
-        color: theme.get('background-'),
+        color: theme.get('background-basic-color-3'),
         child: MaterialDesign.Material(
           type: MaterialDesign.MaterialType.transparency,
           child: Column(

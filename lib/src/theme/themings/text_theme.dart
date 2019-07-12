@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:stylist/stylist.dart';
+import 'package:equinox/equinox.dart';
 
 final StyleData textTheme = StyleData({
   'text-basic-color': 'color-basic-900',

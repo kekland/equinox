@@ -1,6 +1,8 @@
+import 'package:equinox/equinox.dart';
+import 'package:equinox/src/theme/themings/animation_theme.dart';
+import 'package:equinox/src/theme/themings/icon_theme.dart';
 import 'package:equinox/src/theme/themings/supporting_theme.dart';
 import 'package:equinox/src/theme/themings/text_theme.dart';
-import 'package:stylist/stylist.dart';
 
 class EqThemes {
   static final defaultLightTheme = StyleData({
@@ -119,7 +121,10 @@ class EqThemes {
     'border-primary-color-5': 'color-basic-900',
   })
     ..inject(textTheme)
-    ..inject(supportingTheme);
+    ..inject(supportingTheme)
+    ..inject(animationStyle)
+    ..inject(iconStyle)
+    ..inject(radioStyle);
 
   static final defaultDarkTheme = defaultLightTheme
     ..inject(StyleData(
@@ -147,6 +152,7 @@ class EqThemes {
         'text-control-color': 'color-basic-100',
         'text-disabled-color': 'color-basic-700',
         'text-hint-color': 'color-basic-600',
+        'outline-color': Colors.white.withOpacity(0.125),
       },
     ));
 }

@@ -1,7 +1,7 @@
 import 'package:equinox/equinox.dart';
 
 class Theme {
-  static Map json = {
+  static Map<String, dynamic> json = {
     "color-primary-100": "#DDFDF1",
     "color-primary-200": "#BCFCEA",
     "color-primary-300": "#98F6E4",
@@ -50,12 +50,12 @@ class Theme {
   };
 
   static StyleData get lightTheme {
-    return EqThemes.defaultLightTheme.inject(StyleData(json));
+    return EqThemes.defaultLightTheme;
     //return EqThemes.defaultLightTheme;
   }
 
   static StyleData get darkTheme {
-    return EqThemes.defaultDarkTheme.inject(StyleData(json));
+    return EqThemes.defaultDarkTheme;
     //return EqThemes.defaultDarkTheme;
   }
 }

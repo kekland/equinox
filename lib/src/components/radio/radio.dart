@@ -49,6 +49,7 @@ class _EqRadioState extends State<EqRadio> {
       'radio',
       (enabled) ? widget.status : 'disabled',
       (enabled && focused) ? 'focus' : null,
+      (selected && !focused) ? 'selected' : null,
     ];
 
     final radio = OutlinedWidget(
@@ -96,7 +97,9 @@ class _EqRadioState extends State<EqRadio> {
               fontFamily: style.get('radio-text-font-family'),
               fontSize: style.get('radio-text-font-size'),
               fontWeight: style.get('radio-text-font-weight'),
-              color: style.get('radio-text-color'),
+              color: (enabled)
+                  ? style.get('radio-text-color')
+                  : style.get('radio-disabled-text-color'),
             ),
           )
         : null;
