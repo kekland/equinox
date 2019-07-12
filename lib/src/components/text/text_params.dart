@@ -28,7 +28,7 @@ enum EqTextStyle {
 class EqTextUtils {
   static String getStyleName({EqTextStyle style}) {
     switch(style) {
-      case EqTextStyle.caption1: return 'caption-1';
+      case EqTextStyle.caption1: return 'caption';
       case EqTextStyle.caption2: return 'caption-2';
       case EqTextStyle.heading1: return 'heading-1';
       case EqTextStyle.heading2: return 'heading-2';
@@ -37,9 +37,9 @@ class EqTextUtils {
       case EqTextStyle.heading5: return 'heading-5';
       case EqTextStyle.heading6: return 'heading-6';
       case EqTextStyle.label: return 'label';
-      case EqTextStyle.paragraph1: return 'paragraph-1';
+      case EqTextStyle.paragraph1: return 'paragraph';
       case EqTextStyle.paragraph2: return 'paragraph-2';
-      case EqTextStyle.subtitle1: return 'subtitle-1';
+      case EqTextStyle.subtitle1: return 'subtitle';
       case EqTextStyle.subtitle2: return 'subtitle-2';
       default: return 'subtitle-2';
     }

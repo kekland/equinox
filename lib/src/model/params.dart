@@ -1,3 +1,4 @@
+import 'package:equinox/equinox.dart';
 import 'package:flutter/widgets.dart';
 
 enum EqWidgetSize {
@@ -52,6 +53,22 @@ String enumValueToString(dynamic e) {
   return str.split('.').last;
 }
 
+class EqWidgetShapeUtils {
+  static Radius getRadius({StyleData style, EqWidgetShape shape}) {
+    final widgetShape = shape ?? style.get('widget-shape');
+
+    switch (widgetShape) {
+      case EqWidgetShape.rectangle:
+        return Radius.circular(style.get('border-radius-rectangle'));
+      case EqWidgetShape.round:
+        return Radius.circular(1000.0); // Fix this...
+      case EqWidgetShape.semiRound:
+        return Radius.circular(style.get('border-radius-semi-round'));
+      default:
+        return Radius.circular(style.get('border-radius-rectangle'));
+    }
+  }
+}
 /*
 class WidgetSizeUtils {
   static double getSizeValue({WidgetSize size}) {
@@ -87,20 +104,5 @@ class WidgetSizeUtils {
         return EdgeInsets.symmetric(vertical: 10.0, horizontal: 18.0);
     }
   }
-}
-
-class WidgetShapeUtils {
-  static double getMultiplier({WidgetShape shape}) {
-    switch (shape) {
-      case WidgetShape.rectangle:
-        return 1.0;
-      case WidgetShape.round:
-        return 360.0; // Fix this
-      case WidgetShape.semiRound:
-        return 3.0;
-      default:
-        return 1.0;
-    }
-  }
-}
+}}
 */

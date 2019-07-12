@@ -12,4 +12,5 @@ final StyleData supportStyle = StyleData({
   'control-padding': EdgeInsets.all(8.0),
   'control-description-padding': 8.0,
   'border-width': 1.0,
+  'widget-shape': EqWidgetShape.rectangle,
 });
