@@ -38,7 +38,7 @@ export 'package:equinox/src/components/icon/icon.dart';
 export 'package:equinox/src/components/text/text.dart';
 //export 'package:equinox/src/components/textfield/textfield.dart';
 //export 'package:equinox/src/components/toast/toast.dart';
-//export 'package:equinox/src/components/toggle/toggle.dart';
+export 'package:equinox/src/components/toggle/toggle.dart';
 
 // Icons
 export 'package:eva_icons_flutter/eva_icons_flutter.dart';

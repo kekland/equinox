@@ -138,15 +138,18 @@ class _EqCheckboxState extends State<EqCheckbox> {
     return OutlinedGestureDetector(
       onTap: (widget.onChanged != null) ? _onTap : null,
       onOutlineChange: (v) => setState(() => outlined = v),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: EqToggleableDesciptionUtils.buildListWithDescription(
-          main: checkbox,
-          description: description,
-          descriptionPosition: widget.descriptionPosition ??
-              style.get('radio-description-position'),
-          padding: style.get('radio-description-padding'),
+      child: Padding(
+        padding: widget.padding ?? style.get('checkbox-padding'),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: EqToggleableDesciptionUtils.buildListWithDescription(
+            main: checkbox,
+            description: description,
+            descriptionPosition: widget.descriptionPosition ??
+                style.get('checkbox-description-position'),
+            padding: style.get('checkbox-description-padding'),
+          ),
         ),
       ),
     );
