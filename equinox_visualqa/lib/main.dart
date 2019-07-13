@@ -1,4 +1,5 @@
 import 'package:equinox_visualqa/components/button.dart';
+import 'package:equinox_visualqa/components/checkbox.dart';
 import 'package:equinox_visualqa/components/radio.dart';
 import 'package:equinox_visualqa/state.dart';
 import 'package:flutter/material.dart';
@@ -52,6 +53,10 @@ class _MainPageState extends State<MainPage> {
             EqButton(
               onTap: () => navigateTo(context, (_) => RadioShowcase()),
               label: 'Radio',
+            ),
+            EqButton(
+              onTap: () => navigateTo(context, (_) => CheckboxShowcase()),
+              label: 'Checkbox',
             ),
           ],
         ),

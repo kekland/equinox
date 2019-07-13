@@ -6,10 +6,10 @@ StyleData _getStyle(String status) {
     'radio-$status-background-color': (StyleData style) =>
         style.get('color-$status-default').withOpacity(0.125),
     'radio-$status-knob-color': Colors.transparent,
-    'radio-$status-focus-border-color': 'color-$status-focus',
+    'radio-$status-focus-border-color': 'color-$status-hover',
     'radio-$status-focus-background-color': (StyleData style) =>
         style.get('color-$status-focus').withOpacity(0.125),
-    'radio-$status-focus-knob-color': 'color-$status-focus',
+    'radio-$status-focus-knob-color': 'color-$status-hover',
     'radio-$status-selected-border-color': 'color-$status-default',
     'radio-$status-selected-background-color': (StyleData style) =>
         style.get('color-$status-default').withOpacity(0.125),

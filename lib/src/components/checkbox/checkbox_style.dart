@@ -2,7 +2,8 @@ import 'package:equinox/equinox.dart';
 
 StyleData _getForStatus(String status) {
   return StyleData({
-    'checkbox-$status-background-color': 'background-basic-color-2',
+    'checkbox-$status-background-color': (style) =>
+        style.get('color-$status-default').withOpacity(0.125),
     'checkbox-$status-border-color': 'color-$status-default',
     'checkbox-$status-checked-background-color': 'color-$status-default',
     'checkbox-$status-checked-border-color': 'color-$status-default',
@@ -10,9 +11,9 @@ StyleData _getForStatus(String status) {
     'checkbox-$status-indeterminate-background-color': 'color-$status-default',
     'checkbox-$status-indeterminate-border-color': 'color-$status-default',
     'checkbox-$status-indeterminate-checkmark-color': 'text-control-color',
-    'checkbox-$status-active-background-color': 'color-$status-default',
-    'checkbox-$status-active-border-color': 'color-$status-default',
-    'checkbox-$status-active-checkmark-color': 'text-control-color',
+    'checkbox-$status-focus-background-color': 'color-$status-hover',
+    'checkbox-$status-focus-border-color': 'color-$status-hover',
+    'checkbox-$status-focus-checkmark-color': 'text-control-color',
   });
 }
 
@@ -29,8 +30,17 @@ final StyleData checkboxStyle = StyleData({
   'checkbox-text-font-weight': 'text-subtitle-2-font-weight',
   'checkbox-disabled-background-color': 'background-basic-color-2',
   'checkbox-disabled-border-color': 'border-basic-color-3',
-  'checkbox-disabled-checkmark-color': 'background-basic-color-1',
+  'checkbox-disabled-checkmark-color': 'text-disabled-color',
   'checkbox-disabled-text-color': 'text-disabled-color',
+  'checkbox-checked-background-color': 'color-primary-default',
+  'checkbox-checked-border-color': 'color-primary-default',
+  'checkbox-checked-checkmark-color': 'text-control-color',
+  'checkbox-indeterminate-background-color': 'color-primary-default',
+  'checkbox-indeterminate-border-color': 'color-primary-default',
+  'checkbox-indeterminate-checkmark-color': 'text-control-color',
+  'checkbox-focus-background-color': 'color-primary-hover',
+  'checkbox-focus-border-color': 'color-primary-hover',
+  'checkbox-focus-checkmark-color': 'text-control-color',
 })
   ..inject(_getForStatus('primary'))
   ..inject(_getForStatus('success'))

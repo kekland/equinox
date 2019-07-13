@@ -127,7 +127,8 @@ class EqThemes {
     ..inject(radioStyle)
     ..inject(appBarStyle)
     ..inject(cardStyle)
-    ..inject(buttonStyle);
+    ..inject(buttonStyle)
+    ..inject(checkboxStyle);
 
   static final defaultDarkTheme = defaultLightTheme
     ..inject(StyleData(

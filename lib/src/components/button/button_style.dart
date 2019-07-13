@@ -6,8 +6,8 @@ StyleData _getFilledForStatus(String status) {
     'button-filled-$status-background-color': 'color-$status-default',
     'button-filled-$status-border-color': 'color-$status-default',
     'button-filled-$status-text-color': 'text-control-color',
-    'button-filled-$status-active-background-color': 'color-$status-active',
-    'button-filled-$status-active-border-color': 'color-$status-active',
+    'button-filled-$status-active-background-color': 'color-$status-hover',
+    'button-filled-$status-active-border-color': 'color-$status-hover',
     'button-filled-$status-active-text-color':
         'button-filled-$status-text-color',
     'button-filled-$status-disabled-background-color':
@@ -42,8 +42,8 @@ StyleData _getOutlineForStatus(String status) {
     'button-outline-$status-text-color': 'text-$status-color',
     'button-outline-$status-background-color':
         'button-outline-background-color',
-    'button-outline-$status-active-border-color': 'color-$status-active',
-    'button-outline-$status-active-text-color': 'text-$status-active-color',
+    'button-outline-$status-active-border-color': 'color-$status-hover',
+    'button-outline-$status-active-text-color': 'text-$status-hover-color',
     'button-outline-$status-active-background-color':
         'button-outline-background-color',
     'button-outline-$status-disabled-border-color': 'border-basic-color-3',
@@ -79,7 +79,7 @@ StyleData _getGhostForStatus(String status) {
     'button-ghost-$status-text-color': 'text-$status-color',
     'button-ghost-$status-background-color': 'button-ghost-background-color',
     'button-ghost-$status-active-border-color': 'button-ghost-border-color',
-    'button-ghost-$status-active-text-color': 'text-$status-active-color',
+    'button-ghost-$status-active-text-color': 'text-$status-hover-color',
     'button-ghost-$status-active-background-color':
         'button-ghost-background-color',
     'button-ghost-$status-disabled-border-color': 'button-ghost-border-color',
