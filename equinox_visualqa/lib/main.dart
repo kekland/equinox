@@ -1,4 +1,5 @@
 import 'package:equinox_visualqa/components/button.dart';
+import 'package:equinox_visualqa/components/radio.dart';
 import 'package:equinox_visualqa/state.dart';
 import 'package:flutter/material.dart';
 import 'package:equinox/equinox.dart';
@@ -42,9 +43,17 @@ class _MainPageState extends State<MainPage> {
     final style = StaticStyle.of(context);
     return EqLayout(
       child: Center(
-        child: EqButton(
-          onTap: () => navigateTo(context, (_) => ButtonShowcase()),
-          label: 'Buttons',
+        child: Column(
+          children: <Widget>[
+            EqButton(
+              onTap: () => navigateTo(context, (_) => ButtonShowcase()),
+              label: 'Buttons',
+            ),
+            EqButton(
+              onTap: () => navigateTo(context, (_) => RadioShowcase()),
+              label: 'Radio',
+            ),
+          ],
         ),
       ),
     );

@@ -22,6 +22,9 @@ class EqRadio extends StatefulWidget {
   /// Controls the location of description.
   final EqPositioning descriptionPosition;
 
+  /// Padding for the radio. Defaults to `control-padding`.
+  final EdgeInsets padding;
+
   const EqRadio({
     Key key,
     @required this.onSelected,
@@ -29,6 +32,7 @@ class EqRadio extends StatefulWidget {
     this.description,
     this.status,
     this.descriptionPosition = EqPositioning.right,
+    this.padding,
   }) : super(key: key);
   @override
   _EqRadioState createState() => _EqRadioState();
@@ -108,7 +112,7 @@ class _EqRadioState extends State<EqRadio> {
       onTap: widget.onSelected,
       onOutlineChange: (v) => setState(() => outlined = v),
       child: Padding(
-        padding: style.get('radio-padding'),
+        padding: widget.padding ?? style.get('radio-padding'),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,

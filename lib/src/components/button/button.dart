@@ -108,7 +108,8 @@ class _EqButtonState extends State<EqButton> {
       (disabled) ? 'disabled' : (active) ? 'active' : null,
     ];
 
-    final hasIcon = widget.icon != null && widget.iconPosition != EqPositioning.none;
+    final hasIcon =
+        widget.icon != null && widget.iconPosition != EqPositioning.none;
 
     Text text = Text(
       widget.label.toUpperCase(),
@@ -126,6 +127,8 @@ class _EqButtonState extends State<EqButton> {
     if (hasIcon) {
       Widget icon = EqIcon(
         icon: widget.icon,
+        size: style
+            .get(generateSelector(['button-text', widget.size, 'font-size'])),
         color:
             style.get(generateSelector([...selectorStateBase, 'text-color'])),
       );
