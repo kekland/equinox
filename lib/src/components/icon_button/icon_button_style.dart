@@ -27,7 +27,7 @@ final StyleData _filledStyle = StyleData({
       const EdgeInsets.all(10.0),
   'icon-button-filled-large-padding':
       const EdgeInsets.all(12.0),
-  'icon-button-filled-outline-padding':
+  'icon-button-filled-giant-padding':
       const EdgeInsets.all(14.0),
 })
   ..inject(_getFilledForStatus('primary'))

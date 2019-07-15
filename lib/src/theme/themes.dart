@@ -128,6 +128,7 @@ class EqThemes {
     ..inject(appBarStyle)
     ..inject(cardStyle)
     ..inject(buttonStyle)
+    ..inject(iconButtonStyle)
     ..inject(checkboxStyle)
     ..inject(toggleStyle)
     ..inject(listItemStyle)
