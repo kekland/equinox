@@ -2,6 +2,7 @@ import 'package:equinox_visualqa/components/button.dart';
 import 'package:equinox_visualqa/components/card.dart';
 import 'package:equinox_visualqa/components/checkbox.dart';
 import 'package:equinox_visualqa/components/radio.dart';
+import 'package:equinox_visualqa/components/spinner.dart';
 import 'package:equinox_visualqa/components/toggle.dart';
 import 'package:equinox_visualqa/state.dart';
 import 'package:flutter/material.dart';
@@ -55,6 +56,10 @@ class MainPage extends StatelessWidget {
     ShowcaseData(
       builder: (_) => ToggleShowcase(),
       title: 'Toggle',
+    ),
+    ShowcaseData(
+      builder: (_) => SpinnerShowcase(),
+      title: 'Spinner',
     ),
   ];
 

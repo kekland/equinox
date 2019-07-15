@@ -17,8 +17,8 @@ class EqSpinner extends StatefulWidget {
 
   const EqSpinner({
     Key key,
-    this.status,
-    this.size,
+    this.status = EqWidgetStatus.primary,
+    this.size = EqWidgetSize.medium,
   }) : super(key: key);
   @override
   _EqSpinnerState createState() => _EqSpinnerState();
@@ -61,7 +61,7 @@ class _EqSpinnerState extends State<EqSpinner>
             child: CustomPaint(
               painter: SpinnerPainter(
                 color: style.get(generateSelector(
-                    ['spinner', widget.status, 'background-color'])),
+                    ['spinner', widget.status, 'color'])),
                 strokeWidth: style.get(
                     generateSelector(['spinner', widget.size, 'stroke-width'])),
               ),

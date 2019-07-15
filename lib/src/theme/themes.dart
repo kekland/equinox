@@ -130,7 +130,8 @@ class EqThemes {
     ..inject(buttonStyle)
     ..inject(checkboxStyle)
     ..inject(toggleStyle)
-    ..inject(listItemStyle);
+    ..inject(listItemStyle)
+    ..inject(spinnerStyle);
 
   static final defaultDarkTheme = defaultLightTheme.fork()
     ..inject(StyleData(
