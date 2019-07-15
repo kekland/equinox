@@ -13,10 +13,6 @@ class AppState {
     } else {
       AppState.theme = EqThemes.defaultLightTheme;
     }
-    print('ayy');
-    print(EqThemes.defaultLightTheme.get('background-basic-color-1'));
-    print(EqThemes.defaultDarkTheme.get('background-basic-color-1'));
-    print(AppState.theme.get('background-basic-color-1'));
     AppState.isDark = !AppState.isDark;
     _subscriber();
   }

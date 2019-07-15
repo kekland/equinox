@@ -138,6 +138,8 @@ class EqAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final style = StaticStyle.of(context);
+    print('appbar');
+    print(style.get('app-bar-background-color'));
     return Container(
       decoration: BoxDecoration(
         color: backgroundColor ?? style.get('app-bar-background-color'),
@@ -146,23 +148,29 @@ class EqAppBar extends StatelessWidget {
       child: SafeArea(
         top: true,
         bottom: false,
-        child: Container(
-          height: _calculateHeight(),
-          child: Column(
-            children: [
-              if (hasTitle)
-                Container(
-                  height: 64.0,
-                  padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                  child: _buildBody(context, style),
-                ),
-              if (bottom != null)
-                Container(
-                  height: 56.0,
-                  padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                  child: bottom,
-                ),
-            ],
+        child: StaticStyle(
+          inheritFromParent: true,
+          data: StyleData({
+            'icon-color': 'app-bar-foreground-color',
+          }),
+          child: Container(
+            height: _calculateHeight(),
+            child: Column(
+              children: [
+                if (hasTitle)
+                  Container(
+                    height: 64.0,
+                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                    child: _buildBody(context, style),
+                  ),
+                if (bottom != null)
+                  Container(
+                    height: 56.0,
+                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                    child: bottom,
+                  ),
+              ],
+            ),
           ),
         ),
       ),

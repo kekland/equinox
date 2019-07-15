@@ -21,7 +21,6 @@ class _EquinoxShowcaseAppState extends State<EquinoxShowcaseApp> {
   @override
   Widget build(BuildContext context) {
     AppState.subscribe(() => setState(() => {}));
-    print(AppState.theme.get('background-basic-color-1'));
     return EquinoxApp(
       title: 'Flutter Demo',
       theme: AppState.theme,

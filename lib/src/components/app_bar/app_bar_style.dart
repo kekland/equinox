@@ -1,7 +1,7 @@
 import 'package:equinox/equinox.dart';
 
 final StyleData appBarStyle = StyleData({
-  "app-bar-background-color": 'background-basic-colors-1',
+  "app-bar-background-color": 'background-basic-color-1',
   "app-bar-foreground-color": "text-basic-color",
   'app-bar-shadow': 'shadow',
   "app-bar-title-center": true,
