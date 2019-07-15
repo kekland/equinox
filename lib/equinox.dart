@@ -32,7 +32,7 @@ export 'package:equinox/src/components/list_item/list_item.dart';
 export 'package:equinox/src/components/radio/radio.dart';
 export 'package:equinox/src/components/icon/icon.dart';
 //export 'package:equinox/src/components/select/select.dart';
-//export 'package:equinox/src/components/spinner/spinner.dart';
+export 'package:equinox/src/components/spinner/spinner.dart';
 //export 'package:equinox/src/components/tabbar/tabbar.dart';
 //export 'package:equinox/src/components/tabs/tabs.dart';
 export 'package:equinox/src/components/text/text.dart';
