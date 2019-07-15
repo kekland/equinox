@@ -26,7 +26,7 @@ export 'package:equinox/src/components/card/card.dart';
 export 'package:equinox/src/components/checkbox/checkbox.dart';
 //export 'package:equinox/src/components/dialog/dialog.dart';
 export 'package:equinox/src/components/divider/divider.dart';
-//export 'package:equinox/src/components/icon_button/icon_button.dart';
+export 'package:equinox/src/components/icon_button/icon_button.dart';
 export 'package:equinox/src/components/list_item/list_item.dart';
 //export 'package:equinox/src/components/progress_bar/progress_bar.dart';
 export 'package:equinox/src/components/radio/radio.dart';
