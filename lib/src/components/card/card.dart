@@ -62,7 +62,7 @@ class EqCard extends StatelessWidget {
 
   Widget _buildBody(StyleData style) {
     var widgets = <Widget>[];
-    final padding = this.padding  ?? style.get('card-padding');
+    final padding = this.padding ?? style.get('card-padding');
 
     if (header != null) {
       if (status != null &&
@@ -105,15 +105,15 @@ class EqCard extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: widgets,
     );
-      return MaterialDesign.DefaultTextStyle(
-        child: column,
-        style: TextStyle(
-          color: style.get('card-text-color'),
-          fontFamily: style.get('card-text-font-family'),
-          fontSize: style.get('card-text-font-size'),
-          fontWeight: style.get('card-text-font-weight'),
-        ),
-      );
+    return MaterialDesign.DefaultTextStyle(
+      child: column,
+      style: TextStyle(
+        color: style.get('card-text-color'),
+        fontFamily: style.get('card-text-font-family'),
+        fontSize: style.get('card-text-font-size'),
+        fontWeight: style.get('card-text-font-weight'),
+      ),
+    );
   }
 
   @override
@@ -162,6 +162,7 @@ class _CardHeader extends StatelessWidget {
     final style = StaticStyle.of(context);
 
     final selectorBase = ['card-header', status];
+    print(selectorBase);
 
     return Container(
       width: double.infinity,
@@ -169,8 +170,9 @@ class _CardHeader extends StatelessWidget {
         borderRadius: BorderRadius.all(
           EqWidgetShapeUtils.getRadius(style: style.style, shape: shape),
         ),
-        color:
-            style.get(generateSelector([...selectorBase, 'background-color'])),
+        color: (statusAppearance == EqCardStatusAppearance.header)
+            ? style.get(generateSelector([...selectorBase, 'background-color']))
+            : Colors.transparent,
       ),
       child: MaterialDesign.Material(
         type: MaterialDesign.MaterialType.transparency,
@@ -181,8 +183,9 @@ class _CardHeader extends StatelessWidget {
               fontFamily: style.get('card-header-text-font-family'),
               fontSize: style.get('card-header-text-font-size'),
               fontWeight: style.get('card-header-text-font-weight'),
-              color:
-                  style.get(generateSelector([...selectorBase, 'text-color'])),
+              color: (statusAppearance == EqCardStatusAppearance.header)
+                  ? style.get(generateSelector([...selectorBase, 'text-color']))
+                  : style.get('card-header-text-color'),
             ),
             child: child,
           ),

@@ -30,7 +30,7 @@ class EqListItem extends StatefulWidget {
     @required this.title,
     @required this.onTap,
     this.subtitle,
-    this.status,
+    this.status = EqWidgetStatus.primary,
     this.active = false,
   }) : super(key: key);
 
@@ -91,7 +91,7 @@ class _EqListItemState extends State<EqListItem> {
                       fontSize: style.get('list-item-subtitle-font-size'),
                       fontFamily: style.get('list-item-subtitle-font-family'),
                       color: style.get(generateSelector([
-                        'list-subtitle-title',
+                        'list-item-subtitle',
                         (disabled) ? 'disabled' : widget.status,
                         (focused)
                             ? 'focused'

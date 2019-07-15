@@ -133,7 +133,7 @@ class _EqToggleState extends State<EqToggle>
           child: AnimatedBuilder(
             animation: animation,
             builder: (context, _) => Transform.translate(
-                  offset: Offset(18.0 * animation.value, 0.0),
+                  offset: Offset((size.width - size.height - 2.0) * animation.value, 0.0),
                   child: Container(
                     width: size.height - 4.0,
                     height: size.height - 4.0,

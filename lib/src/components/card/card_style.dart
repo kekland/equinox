@@ -3,8 +3,8 @@ import 'package:flutter/widgets.dart';
 
 StyleData _getHeaderStyle(String status) {
   return StyleData({
-    'card-header-info-background-color': 'color-$status-default',
-    'card-header-info-text-color': 'text-control-color',
+    'card-header-$status-background-color': 'color-$status-default',
+    'card-header-$status-text-color': 'text-control-color',
   });
 }
 

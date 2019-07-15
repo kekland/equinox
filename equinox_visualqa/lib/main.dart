@@ -1,6 +1,8 @@
 import 'package:equinox_visualqa/components/button.dart';
+import 'package:equinox_visualqa/components/card.dart';
 import 'package:equinox_visualqa/components/checkbox.dart';
 import 'package:equinox_visualqa/components/radio.dart';
+import 'package:equinox_visualqa/components/toggle.dart';
 import 'package:equinox_visualqa/state.dart';
 import 'package:flutter/material.dart';
 import 'package:equinox/equinox.dart';
@@ -24,13 +26,7 @@ class _EquinoxShowcaseAppState extends State<EquinoxShowcaseApp> {
   }
 }
 
-class MainPage extends StatefulWidget {
-  @override
-  _MainPageState createState() => _MainPageState();
-}
-
-class _MainPageState extends State<MainPage> {
-  bool val = false;
+class MainPage extends StatelessWidget {
   navigateTo(BuildContext context, WidgetBuilder builder) {
     Navigator.of(context).push(
       new MaterialPageRoute(
@@ -39,32 +35,53 @@ class _MainPageState extends State<MainPage> {
     );
   }
 
+  final List<ShowcaseData> showcases = [
+    ShowcaseData(
+      builder: (_) => ButtonShowcase(),
+      title: 'Buttons',
+    ),
+    ShowcaseData(
+      builder: (_) => CardShowcase(),
+      title: 'Cards',
+    ),
+    ShowcaseData(
+      builder: (_) => CheckboxShowcase(),
+      title: 'Checkbox',
+    ),
+    ShowcaseData(
+      builder: (_) => RadioShowcase(),
+      title: 'Radio',
+    ),
+    ShowcaseData(
+      builder: (_) => ToggleShowcase(),
+      title: 'Toggle',
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    final style = StaticStyle.of(context);
     return EqLayout(
-      child: Center(
-        child: Column(
-          children: <Widget>[
-            EqButton(
-              onTap: () => navigateTo(context, (_) => ButtonShowcase()),
-              label: 'Buttons',
-            ),
-            EqButton(
-              onTap: () => navigateTo(context, (_) => RadioShowcase()),
-              label: 'Radio',
-            ),
-            EqButton(
-              onTap: () => navigateTo(context, (_) => CheckboxShowcase()),
-              label: 'Checkbox',
-            ),
-            EqButton(
-              onTap: AppState.toggleTheme,
-              label: 'Toggle theme',
-            ),
-          ],
-        ),
+      appBar: EqAppBar(
+        title: 'Showcase app',
+        centerTitle: true,
+        actions: [
+          IconButton(
+            icon: Icon(EvaIcons.sunOutline),
+            onPressed: AppState.toggleTheme,
+          ),
+        ],
       ),
+      child: ListView.builder(
+          itemCount: showcases.length,
+          itemBuilder: (_, index) {
+            final item = showcases[index];
+            return EqListItem(
+              onTap: () => navigateTo(context, item.builder),
+              title: item.title,
+              icon: EvaIcons.star,
+              subtitle: '${item.title} showcase',
+            );
+          }),
     );
   }
 }

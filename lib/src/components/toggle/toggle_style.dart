@@ -16,10 +16,10 @@ StyleData _getForStatus(String status) {
 }
 
 final StyleData toggleStyle = StyleData({
-  'toggle-width': (style) => style.get('icon-size') * 2.0,
-  'toggle-height': 'icon-size',
+  'toggle-width': 52.0,
+  'toggle-height': 32.0,
   'toggle-padding': 'control-padding',
-  'toggle-description-padding': 'toggle-description-padding',
+  'toggle-description-padding': 'control-description-padding',
   'toggle-border-width': 'border-width',
   'toggle-outline-width': 'outline-width',
   'toggle-outline-color': 'outline-color',
@@ -29,6 +29,7 @@ final StyleData toggleStyle = StyleData({
   'toggle-text-font-weight': 'text-subtitle-2-font-weight',
   'toggle-background-color': 'background-basic-color-3',
   'toggle-border-color': 'border-basic-color-4',
+  'toggle-knob-color': 'text-control-color',
   'toggle-disabled-background-color': 'background-basic-color-2',
   'toggle-disabled-border-color': 'border-basic-color-3',
   'toggle-disabled-knob-color': 'text-disabled-color',

@@ -4,13 +4,13 @@ StyleData _getForStatus(String status) {
   return StyleData({
     'list-item-title-$status-color': 'text-basic-color',
     'list-item-title-$status-active-color': 'text-primary-color',
-    'list-item-title-$status-focused-color': 'text-primary-focus-color',
+    'list-item-title-$status-focused-color': 'color-primary-500',
     'list-item-subtitle-$status-color': 'text-hint-color',
     'list-item-subtitle-$status-active-color': 'color-primary-hover',
-    'list-item-subtitle-$status-focused-color': 'color-primary-disabled',
+    'list-item-subtitle-$status-focused-color': 'color-primary-400',
     'list-item-icon-$status-color': 'text-hint-color',
     'list-item-icon-$status-active-color': 'color-primary-hover',
-    'list-item-icon-$status-focused-color': 'color-primary-disabled',
+    'list-item-icon-$status-focused-color': 'color-primary-400',
   });
 }
 
