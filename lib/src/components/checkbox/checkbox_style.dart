@@ -20,6 +20,7 @@ StyleData _getForStatus(String status) {
 final StyleData checkboxStyle = StyleData({
   'checkbox-size': 'icon-size',
   'checkbox-padding': 'control-padding',
+  'checkbox-description-padding': 'control-description-padding',
   'checkbox-background-color': 'background-basic-color-3',
   'checkbox-border-color': 'border-basic-color-4',
   'checkbox-border-width': 'border-width',

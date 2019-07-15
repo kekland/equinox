@@ -131,7 +131,7 @@ class EqThemes {
     ..inject(checkboxStyle)
     ..inject(toggleStyle);
 
-  static final defaultDarkTheme = defaultLightTheme
+  static final defaultDarkTheme = defaultLightTheme.fork()
     ..inject(StyleData(
       {
         'background-basic-color-1': 'color-basic-800',

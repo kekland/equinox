@@ -19,6 +19,7 @@ final StyleData toggleStyle = StyleData({
   'toggle-width': (style) => style.get('icon-size') * 2.0,
   'toggle-height': 'icon-size',
   'toggle-padding': 'control-padding',
+  'toggle-description-padding': 'toggle-description-padding',
   'toggle-border-width': 'border-width',
   'toggle-outline-width': 'outline-width',
   'toggle-outline-color': 'outline-color',

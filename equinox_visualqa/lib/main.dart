@@ -58,6 +58,10 @@ class _MainPageState extends State<MainPage> {
               onTap: () => navigateTo(context, (_) => CheckboxShowcase()),
               label: 'Checkbox',
             ),
+            EqButton(
+              onTap: AppState.toggleTheme,
+              label: 'Toggle theme',
+            ),
           ],
         ),
       ),
