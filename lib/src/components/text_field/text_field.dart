@@ -176,7 +176,7 @@ class _EqTextFieldState extends State<EqTextField> {
                 enabled: widget.enabled,
                 style: TextStyle(
                   color: style
-                      .get(generateSelector([...sizedSelector, 'text-color'])),
+                      .get(generateSelector([...statusSelector, 'text-color'])),
                   fontFamily: style.get(
                       generateSelector([...sizedSelector, 'text-font-family'])),
                   fontWeight: style.get(
