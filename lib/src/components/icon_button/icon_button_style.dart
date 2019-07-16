@@ -5,15 +5,15 @@ StyleData _getFilledForStatus(String status) {
   return StyleData({
     'icon-button-filled-$status-background-color': 'color-$status-default',
     'icon-button-filled-$status-border-color': 'color-$status-default',
-    'icon-button-filled-$status-text-color': 'text-control-color',
+    'icon-button-filled-$status-icon-color': 'text-control-color',
     'icon-button-filled-$status-active-background-color': 'color-$status-hover',
     'icon-button-filled-$status-active-border-color': 'color-$status-hover',
-    'icon-button-filled-$status-active-text-color':
-        'icon-button-filled-$status-text-color',
+    'icon-button-filled-$status-active-icon-color':
+        'icon-button-filled-$status-icon-color',
     'icon-button-filled-$status-disabled-background-color':
         'background-basic-color-3',
     'icon-button-filled-$status-disabled-border-color': 'border-basic-color-3',
-    'icon-button-filled-$status-disabled-text-color': 'text-disabled-color',
+    'icon-button-filled-$status-disabled-icon-color': 'text-disabled-color',
   });
 }
 
@@ -113,11 +113,11 @@ final StyleData _ghostStyle = StyleData({
 final StyleData iconButtonStyle = StyleData({
   'icon-button-outline-width': 'outline-width',
   'icon-button-outline-color': 'outline-color',
-  'icon-button-tiny-icon-size': 0.625 * 16.0,
-  'icon-button-small-icon-size': 0.75 * 16.0,
-  'icon-button-medium-icon-size': 0.875 * 16.0,
-  'icon-button-large-icon-size': 1 * 16.0,
-  'icon-button-giant-icon-size': 1.125 * 16.0,
+  'icon-button-tiny-icon-size': 0.75 * 20.0,
+  'icon-button-small-icon-size': 0.875 * 20.0,
+  'icon-button-medium-icon-size': 1 * 20.0,
+  'icon-button-large-icon-size': 1.125 * 20.0,
+  'icon-button-giant-icon-size': 1.25 * 20.0,
 })
   ..inject(_filledStyle)
   ..inject(_ghostStyle)
