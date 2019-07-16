@@ -77,14 +77,12 @@ class EqAppBar extends StatelessWidget {
     } else if (leading == null &&
         inferLeading &&
         Navigator.of(context).canPop()) {
-      /* TODO leadingWidget = new EqIconButton(
+      leadingWidget = new EqIconButton(
         icon: EvaIcons.arrowBack,
-        size: WidgetSize.giant,
-        color: theme.textBasicColor,
-        status: WidgetStatus.basic,
-        appearance: WidgetAppearance.ghost,
+        size: EqWidgetSize.medium,
+        appearance: EqWidgetAppearance.ghost,
         onTap: () => Navigator.pop(context),
-      );*/
+      );
     }
 
     var actionsWidgets = actions ?? [];

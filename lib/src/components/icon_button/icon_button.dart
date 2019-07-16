@@ -33,7 +33,7 @@ class EqIconButton extends StatefulWidget {
     @required this.icon,
     @required this.onTap,
     this.size = EqWidgetSize.medium,
-    this.status = EqWidgetStatus.primary,
+    this.status,
     this.appearance = EqWidgetAppearance.filled,
     this.shape = EqWidgetShape.round,
     this.color,

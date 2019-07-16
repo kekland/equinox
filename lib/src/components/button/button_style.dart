@@ -29,6 +29,15 @@ final StyleData _filledStyle = StyleData({
       const EdgeInsets.symmetric(vertical: 12.0, horizontal: 18.0),
   'button-filled-giant-padding':
       const EdgeInsets.symmetric(vertical: 14.0, horizontal: 22.0),
+  'button-filled-background-color': 'background-basic-color-2',
+  'button-filled-border-color': 'border-basic-color-2',
+  'button-filled-text-color': 'text-basic-color',
+  'button-filled-active-background-color': 'background-basic-color-1',
+  'button-filled-active-border-color': 'border-basic-color-1',
+  'button-filled-active-text-color': 'text-basic-color',
+  'button-filled-disabled-background-color': 'background-basic-color-3',
+  'button-filled-disabled-border-color': 'border-basic-color-3',
+  'button-filled-disabled-text-color': 'text-disabled-color',
 })
   ..inject(_getFilledForStatus('primary'))
   ..inject(_getFilledForStatus('success'))
@@ -66,6 +75,15 @@ final StyleData _outlineStyle = StyleData({
       const EdgeInsets.symmetric(vertical: 12.0, horizontal: 18.0),
   'button-outline-giant-padding':
       const EdgeInsets.symmetric(vertical: 14.0, horizontal: 22.0),
+  'button-outline-border-color': 'text-basic-color',
+  'button-outline-text-color': 'text-basic-color',
+  'button-outline-background-color': 'button-outline-background-color',
+  'button-outline-active-border-color': 'text-hint-color',
+  'button-outline-active-text-color': 'text-hint-color',
+  'button-outline-active-background-color': 'button-outline-background-color',
+  'button-outline-disabled-border-color': 'border-basic-color-3',
+  'button-outline-disabled-text-color': 'text-disabled-color',
+  'button-outline-disabled-background-color': 'button-outline-background-color',
 })
   ..inject(_getOutlineForStatus('primary'))
   ..inject(_getOutlineForStatus('success'))
@@ -103,6 +121,13 @@ final StyleData _ghostStyle = StyleData({
       const EdgeInsets.symmetric(vertical: 14.0, horizontal: 20.0),
   'button-ghost-giant-padding':
       const EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),
+  'button-ghost-text-color': 'text-basic-color',
+  'button-ghost-active-border-color': 'button-ghost-border-color',
+  'button-ghost-active-text-color': 'text-hint-color',
+  'button-ghost-active-background-color': 'button-ghost-background-color',
+  'button-ghost-disabled-border-color': 'button-ghost-border-color',
+  'button-ghost-disabled-text-color': 'text-disabled-color',
+  'button-ghost-disabled-background-color': 'button-ghost-background-color',
 })
   ..inject(_getGhostForStatus('primary'))
   ..inject(_getGhostForStatus('success'))
