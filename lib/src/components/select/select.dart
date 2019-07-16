@@ -152,7 +152,7 @@ class _EqSelectState<T> extends State<EqSelect>
     if (widget.label != null)
       containerHeight -= style.get('select-label-font-size') + 6.0;
 
-    double verticalOffset = containerHeight;
+    double verticalOffset = containerHeight - 2.0;
     final borderRadius = EqWidgetShapeUtils.getRadius(
       style: style.style,
       shape: widget.shape,
@@ -163,6 +163,7 @@ class _EqSelectState<T> extends State<EqSelect>
     var height = 0.0;
     for (final item in widget.items) {
       height += item.caluclateHeight(style);
+      print(height);
     }
 
     final position = renderBox.localToGlobal(Offset.zero);
@@ -193,6 +194,7 @@ class _EqSelectState<T> extends State<EqSelect>
                     ? Alignment.topCenter
                     : Alignment.bottomCenter,
                 child: EqSelectOverlay(
+                  height: height,
                   openingFromBottom: openingFromBottom,
                   animation: animation,
                   borderRadius: borderRadius,
@@ -220,7 +222,7 @@ class _EqSelectState<T> extends State<EqSelect>
       shape: widget.shape,
     ));
 
-    final active = outlined;
+    final active = outlined || _overlayEntry != null;
     final disabled = widget.onSelect == null;
 
     final selectorBase = [
@@ -233,6 +235,24 @@ class _EqSelectState<T> extends State<EqSelect>
       'select',
       widget.size,
     ];
+
+    var finalBorderRadius = borderRadius;
+    var finalOutlineBorderRadius = borderRadius;
+
+    if (openingFromBottom != null && !openingFromBottom) {
+      finalBorderRadius = BorderRadius.vertical(
+          top: Radius.zero, bottom: borderRadius.bottomLeft);
+      finalOutlineBorderRadius = BorderRadius.vertical(
+          top: Radius.circular(style.get('border-radius-rectangle')),
+          bottom: borderRadius.bottomLeft);
+    } else if (openingFromBottom != null && openingFromBottom) {
+      finalBorderRadius =
+          BorderRadius.vertical(top: borderRadius.topLeft, bottom: Radius.zero);
+
+      finalOutlineBorderRadius = BorderRadius.vertical(
+          top: borderRadius.topLeft,
+          bottom: Radius.circular(style.get('border-radius-rectangle')));
+    }
 
     final fillColor =
         style.get(generateSelector([...selectorBase, 'background-color']));
@@ -260,14 +280,14 @@ class _EqSelectState<T> extends State<EqSelect>
           onTap: (widget.onSelect != null) ? toggleOverlay : null,
           child: OutlinedWidget(
             outlined: outlined || (_overlayEntry != null),
-            borderRadius: borderRadius,
+            borderRadius: finalOutlineBorderRadius,
             child: CompositedTransformTarget(
               link: _layerLink,
               child: AnimatedContainer(
                 duration: style.get('minor-animation-duration'),
                 curve: style.get('minor-animation-curve'),
                 decoration: BoxDecoration(
-                  borderRadius: borderRadius,
+                  borderRadius: finalBorderRadius,
                   color: fillColor,
                   border: Border.all(
                     width: 1.0,

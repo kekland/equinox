@@ -47,6 +47,9 @@ class EqCard extends StatelessWidget {
   /// Controls the padding for the footer. Gets set by [padding] if it's `null`. See [footer].
   final EdgeInsets footerPadding;
 
+  /// Use this to overwrite the borderRadius set by the theme.
+  final BorderRadius borderRadius;
+
   const EqCard({
     Key key,
     @required this.child,
@@ -58,6 +61,7 @@ class EqCard extends StatelessWidget {
     this.padding,
     this.headerPadding,
     this.footerPadding,
+    this.borderRadius,
   }) : super(key: key);
 
   Widget _buildBody(StyleData style) {
@@ -124,7 +128,7 @@ class EqCard extends StatelessWidget {
       duration: style.get('minor-animation-duration'),
       curve: style.get('minor-animation-curve'),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(
+        borderRadius: borderRadius ?? BorderRadius.all(
           EqWidgetShapeUtils.getRadius(style: style.style, shape: shape),
         ),
         boxShadow: [style.get('card-shadow')],

@@ -24,6 +24,9 @@ class EqListItem extends StatefulWidget {
   /// This method is called when user presses the item.
   final VoidCallback onTap;
 
+  /// Padding to use in this list item.
+  final EdgeInsets padding;
+
   const EqListItem({
     Key key,
     this.icon,
@@ -32,6 +35,7 @@ class EqListItem extends StatefulWidget {
     this.subtitle,
     this.status = EqWidgetStatus.primary,
     this.active = false,
+    this.padding,
   }) : super(key: key);
 
   @override
@@ -51,7 +55,7 @@ class _EqListItemState extends State<EqListItem> {
       onTap: widget.onTap,
       onOutlineChange: (v) => setState(() => isPressing = v),
       child: Container(
-        padding: const EdgeInsets.all(16.0),
+        padding: widget.padding ?? const EdgeInsets.all(16.0),
         child: Row(
           children: <Widget>[
             if (widget.icon != null) ...[

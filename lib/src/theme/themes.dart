@@ -3,6 +3,7 @@ import 'package:equinox/src/theme/themings/animation_style.dart';
 import 'package:equinox/src/theme/themings/icon_style.dart';
 import 'package:equinox/src/theme/themings/support_style.dart';
 import 'package:equinox/src/theme/themings/text_style.dart';
+import 'package:flutter/widgets.dart';
 
 class EqThemes {
   static final defaultLightTheme = StyleData({
@@ -163,6 +164,10 @@ class EqThemes {
         'text-disabled-color': 'color-basic-700',
         'text-hint-color': 'color-basic-600',
         'outline-color': Colors.white.withOpacity(0.125),
+        'shadow': BoxShadow(
+            offset: Offset(0.0, 8.0),
+            blurRadius: 16.0,
+            color: Color.fromRGBO(12, 13, 16, 0.25)),
       },
     ));
 }

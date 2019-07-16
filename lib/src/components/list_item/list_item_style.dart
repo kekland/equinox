@@ -3,14 +3,14 @@ import 'package:equinox/equinox.dart';
 StyleData _getForStatus(String status) {
   return StyleData({
     'list-item-title-$status-color': 'text-basic-color',
-    'list-item-title-$status-active-color': 'text-primary-color',
-    'list-item-title-$status-focused-color': 'color-primary-500',
+    'list-item-title-$status-active-color': 'text-$status-color',
+    'list-item-title-$status-focused-color': 'color-$status-500',
     'list-item-subtitle-$status-color': 'text-hint-color',
-    'list-item-subtitle-$status-active-color': 'color-primary-hover',
-    'list-item-subtitle-$status-focused-color': 'color-primary-400',
+    'list-item-subtitle-$status-active-color': 'color-$status-300',
+    'list-item-subtitle-$status-focused-color': 'color-$status-400',
     'list-item-icon-$status-color': 'text-hint-color',
-    'list-item-icon-$status-active-color': 'color-primary-hover',
-    'list-item-icon-$status-focused-color': 'color-primary-400',
+    'list-item-icon-$status-active-color': 'color-$status-300',
+    'list-item-icon-$status-focused-color': 'color-$status-400',
   });
 }
 
@@ -24,6 +24,15 @@ final StyleData listItemStyle = StyleData({
   'list-item-title-disabled-color': 'text-disabled-color',
   'list-item-subtitle-disabled-color': 'text-disabled-color',
   'list-item-icon-disabled-color': 'text-disabled-color',
+  'list-item-title-color': 'text-basic-color',
+  'list-item-title-active-color': 'text-primary-color',
+  'list-item-title-focused-color': 'color-primary-500',
+  'list-item-subtitle-color': 'text-hint-color',
+  'list-item-subtitle-active-color': 'color-primary-hover',
+  'list-item-subtitle-focused-color': 'color-primary-400',
+  'list-item-icon-color': 'text-hint-color',
+  'list-item-icon-active-color': 'color-primary-hover',
+  'list-item-icon-focused-color': 'color-primary-400',
 })
   ..inject(_getForStatus('primary'))
   ..inject(_getForStatus('success'))
