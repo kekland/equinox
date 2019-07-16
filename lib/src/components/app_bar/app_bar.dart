@@ -11,7 +11,7 @@ import 'package:equinox/equinox.dart';
 import 'package:flutter/widgets.dart';
 
 /// AppBar is used in [EqLayout]. It is displayed on top of a page.
-class EqAppBar extends StatelessWidget {
+class EqAppBar extends StatelessWidget implements PreferredSizeWidget {
   /// Title of the page. Use [EqAppBar.withoutTitle()] if you want no title.
   final String title;
 
@@ -70,7 +70,8 @@ class EqAppBar extends StatelessWidget {
         this.inferLeading = false,
         this.hasTitle = false;
 
-  Widget _buildBody(BuildContext context, StaticStyleState theme) {
+  Widget _buildBody(BuildContext context) {
+    final style = StaticStyle.of(context);
     var leadingWidget;
     if (leading != null) {
       leadingWidget = leading;
@@ -88,7 +89,7 @@ class EqAppBar extends StatelessWidget {
     var actionsWidgets = actions ?? [];
 
     if ((centerTitle != null && centerTitle) ||
-        (theme.get('app-bar-title-center'))) {
+        (style.get('app-bar-title-center'))) {
       return Stack(
         alignment: Alignment.center,
         children: [
@@ -136,8 +137,6 @@ class EqAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final style = StaticStyle.of(context);
-    print('appbar');
-    print(style.get('app-bar-background-color'));
     return Container(
       decoration: BoxDecoration(
         color: backgroundColor ?? style.get('app-bar-background-color'),
@@ -147,10 +146,14 @@ class EqAppBar extends StatelessWidget {
         top: true,
         bottom: false,
         child: StaticStyle(
-          inheritFromParent: true,
-          data: StyleData({
-            'icon-color': 'app-bar-foreground-color',
-          }),
+          inheritFromParent: false,
+          data: style.style.fork()
+            ..inject(StyleData({
+              'app-bar-foreground-color':
+                  foregroundColor ?? style.get('app-bar-foreground-color'),
+              'icon-color':
+                  foregroundColor ?? style.get('app-bar-foreground-color'),
+            })),
           child: Container(
             height: _calculateHeight(),
             child: Column(
@@ -159,7 +162,7 @@ class EqAppBar extends StatelessWidget {
                   Container(
                     height: 64.0,
                     padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                    child: _buildBody(context, style),
+                    child: _buildBody(context),
                   ),
                 if (bottom != null)
                   Container(
@@ -174,6 +177,9 @@ class EqAppBar extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  Size get preferredSize => Size(double.infinity, _calculateHeight());
 }
 
 class _AppBarTitle extends StatelessWidget {

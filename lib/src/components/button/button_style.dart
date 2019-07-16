@@ -77,7 +77,6 @@ final StyleData _outlineStyle = StyleData({
       const EdgeInsets.symmetric(vertical: 14.0, horizontal: 22.0),
   'button-outline-border-color': 'text-basic-color',
   'button-outline-text-color': 'text-basic-color',
-  'button-outline-background-color': 'button-outline-background-color',
   'button-outline-active-border-color': 'text-hint-color',
   'button-outline-active-text-color': 'text-hint-color',
   'button-outline-active-background-color': 'button-outline-background-color',

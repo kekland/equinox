@@ -12,10 +12,10 @@ class EqLayout extends StatefulWidget {
   final Widget child;
 
   /// A slot for [EqAppBar] or other application bars. Can be `null`.
-  final Widget appBar;
+  final PreferredSizeWidget appBar;
 
   /// A slot for [EqTabBar.bottom()] or other widget to place on the bottom. Can be `null`.
-  final Widget bottomTabBar;
+  final PreferredSizeWidget bottomTabBar;
 
   const EqLayout({
     Key key,
@@ -41,17 +41,25 @@ class _EqLayoutState extends State<EqLayout> {
         color: theme.get('background-basic-color-3'),
         child: MaterialDesign.Material(
           type: MaterialDesign.MaterialType.transparency,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: Stack(
             children: <Widget>[
-              if (widget.appBar != null) widget.appBar,
-              Expanded(
-                child: SafeArea(
-                  child: widget.child,
-                ),
+              Positioned(
+                top: (widget.appBar != null)
+                    ? widget.appBar.preferredSize.height
+                    : 0.0,
+                bottom: (widget.bottomTabBar != null)
+                    ? widget.bottomTabBar.preferredSize.height
+                    : 0.0,
+                left: 0.0,
+                right: 0.0,
+                child: widget.child,
               ),
-              if (widget.bottomTabBar != null) widget.bottomTabBar,
+              if (widget.appBar != null) widget.appBar,
+              if (widget.bottomTabBar != null)
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: widget.bottomTabBar,
+                ),
             ],
           ),
         ),

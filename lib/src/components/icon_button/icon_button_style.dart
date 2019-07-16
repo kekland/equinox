@@ -110,7 +110,6 @@ final StyleData _ghostStyle = StyleData({
   'icon-button-ghost-medium-padding': const EdgeInsets.all(12.0),
   'icon-button-ghost-large-padding': const EdgeInsets.all(14.0),
   'icon-button-ghost-giant-padding': const EdgeInsets.all(16.0),
-  'icon-button-ghost-border-color': 'icon-button-ghost-border-color',
   'icon-button-ghost-icon-color': 'icon-color',
   'icon-button-ghost-active-border-color': 'icon-button-ghost-border-color',
   'icon-button-ghost-active-icon-color': 'icon-active-color',
