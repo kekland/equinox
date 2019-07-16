@@ -69,19 +69,22 @@ final StyleData selectStyle = StyleData({
   'select-medium-text-font-family': 'text-subtitle-font-family',
   'select-medium-text-font-size': 'text-subtitle-font-size',
   'select-medium-text-font-weight': 'text-subtitle-font-weight',
-  'select-large-text-font-family': 'text-heading-6-font-family',
-  'select-large-text-font-size': 'text-heading-6-font-size',
-  'select-large-text-font-weight': 'text-heading-6-font-weight',
+  'select-large-text-font-family': 'text-subtitle-font-family',
+  'select-large-text-font-size': 'text-subtitle-font-size',
+  'select-large-text-font-weight': 'text-subtitle-font-weight',
+  'select-giant-text-font-family': 'text-heading-6-font-family',
+  'select-giant-text-font-size': 'text-heading-6-font-size',
+  'select-giant-text-font-weight': 'text-heading-6-font-weight',
   'select-tiny-padding':
-      EdgeInsets.symmetric(horizontal: 0.1875 * 16.0, vertical: 1.125 * 16.0),
+      EdgeInsets.symmetric(vertical: 0.1875 * 16.0, horizontal: 1.125 * 16.0),
   'select-small-padding':
-      EdgeInsets.symmetric(horizontal: 0.1875 * 16.0, vertical: 1.125 * 16.0),
+      EdgeInsets.symmetric(vertical: 0.1875 * 16.0, horizontal: 1.125 * 16.0),
   'select-medium-padding':
-      EdgeInsets.symmetric(horizontal: 0.4375 * 16.0, vertical: 1.125 * 16.0),
+      EdgeInsets.symmetric(vertical: 0.4375 * 16.0, horizontal: 1.125 * 16.0),
   'select-large-padding':
-      EdgeInsets.symmetric(horizontal: 0.6875 * 16.0, vertical: 1.125 * 16.0),
+      EdgeInsets.symmetric(vertical: 0.6875 * 16.0, horizontal: 1.125 * 16.0),
   'select-giant-padding':
-      EdgeInsets.symmetric(horizontal: 0.9375 * 16.0, vertical: 1.125 * 16.0),
+      EdgeInsets.symmetric(vertical: 0.9375 * 16.0, horizontal: 1.125 * 16.0),
   'select-outline-border-color': 'border-basic-color-3',
   'select-outline-background-color': 'background-basic-color-2',
   'select-outline-text-color': 'text-basic-color',

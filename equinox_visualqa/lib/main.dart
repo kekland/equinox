@@ -3,6 +3,7 @@ import 'package:equinox_visualqa/components/card.dart';
 import 'package:equinox_visualqa/components/checkbox.dart';
 import 'package:equinox_visualqa/components/icon_button.dart';
 import 'package:equinox_visualqa/components/radio.dart';
+import 'package:equinox_visualqa/components/select.dart';
 import 'package:equinox_visualqa/components/spinner.dart';
 import 'package:equinox_visualqa/components/toggle.dart';
 import 'package:equinox_visualqa/state.dart';
@@ -65,6 +66,10 @@ class MainPage extends StatelessWidget {
     ShowcaseData(
       builder: (_) => SpinnerShowcase(),
       title: 'Spinner',
+    ),
+    ShowcaseData(
+      builder: (_) => SelectShowcase(),
+      title: 'Select',
     ),
   ];
 

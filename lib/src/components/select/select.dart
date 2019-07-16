@@ -57,7 +57,7 @@ class EqSelect<T> extends StatefulWidget {
     this.shape,
     this.status,
     this.selectedIndex,
-    this.appearance = EqWidgetAppearance.filled,
+    this.appearance = EqWidgetAppearance.outline,
     this.size = EqWidgetSize.medium,
   }) : super(key: key);
 
@@ -236,13 +236,9 @@ class _EqSelectState<T> extends State<EqSelect>
 
     final fillColor =
         style.get(generateSelector([...selectorBase, 'background-color']));
+    print(selectorBase);
     final borderColor =
         style.get(generateSelector([...selectorBase, 'border-color']));
-
-    final textColor =
-        style.get(generateSelector([...selectorBase, 'text-color']));
-    final hintColor =
-        style.get(generateSelector([...selectorBase, 'hintColor-color']));
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -288,7 +284,8 @@ class _EqSelectState<T> extends State<EqSelect>
                     if (widget.icon != null) ...[
                       Icon(
                         widget.icon,
-                        color: textColor,
+                        color: style.get(
+                            generateSelector([...selectorBase, 'hint-color'])),
                       ),
                       SizedBox(width: 16.0),
                     ],
@@ -326,7 +323,8 @@ class _EqSelectState<T> extends State<EqSelect>
                           angle: (animation.value) * pi,
                           child: Icon(
                             EvaIcons.chevronDown,
-                            color: textColor,
+                            color: style.get(generateSelector(
+                                [...selectorBase, 'hint-color'])),
                           ),
                         );
                       },

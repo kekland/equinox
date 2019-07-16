@@ -50,9 +50,12 @@ final StyleData textFieldStyle = StyleData({
   'text-field-medium-text-font-family': 'text-subtitle-font-family',
   'text-field-medium-text-font-size': 'text-subtitle-font-size',
   'text-field-medium-text-font-weight': 'text-subtitle-font-weight',
-  'text-field-large-text-font-family': 'text-heading-6-font-family',
-  'text-field-large-text-font-size': 'text-heading-6-font-size',
-  'text-field-large-text-font-weight': 'text-heading-6-font-weight',
+  'text-field-large-text-font-family': 'text-subtitle-font-family',
+  'text-field-large-text-font-size': 'text-subtitle-font-size',
+  'text-field-large-text-font-weight': 'text-subtitle-font-weight',
+  'text-field-giant-text-font-family': 'text-heading-6-font-family',
+  'text-field-giant-text-font-size': 'text-heading-6-font-size',
+  'text-field-giant-text-font-weight': 'text-heading-6-font-weight',
   'text-field-tiny-padding':
       EdgeInsets.symmetric(horizontal: 0.1875 * 16.0, vertical: 1.125 * 16.0),
   'text-field-small-padding':
