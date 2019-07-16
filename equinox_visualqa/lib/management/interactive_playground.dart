@@ -36,6 +36,57 @@ class _InteractivePlaygroundState extends State<InteractivePlayground> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox();
+    final style = StaticStyle.of(context);
+    var items = <Widget>[];
+
+    for (final String key in dataCopy.keys) {
+      final dynamic data = dataCopy[key];
+      final String description = normalize(key);
+
+      if (data is BoolTyped) {
+        items.add(
+          EqCheckbox(
+            value: data.value,
+            onChanged: (v) => setState(() => dataCopy[key].value = v),
+            description: description,
+            descriptionPosition: EqPositioning.right,
+          ),
+        );
+      } else if (data is EnumTyped) {
+        items.add(EqSelect(
+          hint: description,
+          items: data.values
+              .map(
+                (value) => EqSelectItem(
+                      title: enumToString(value),
+                      value: value,
+                    ),
+              )
+              .toList(),
+          onSelect: (v) => setState(() => dataCopy[key].value = v),
+          label: description,
+          selectedIndex: data.values.indexOf(data.value),
+        ));
+      }
+      items.add(SizedBox(height: 16.0));
+    }
+
+    items.add(
+      widget.builder(
+        style.style,
+        dataCopy.map(
+          (k, v) => MapEntry(k, v.value),
+        ),
+      ),
+    );
+
+    return EqCard(
+      statusAppearance: EqCardStatusAppearance.none,
+      header: Text('Interactive playground'),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: items,
+      ),
+    );
   }
 }

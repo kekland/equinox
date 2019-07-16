@@ -20,6 +20,8 @@ class _SelectShowcaseState extends ShowcaseState<SelectShowcase> {
           'icon': BoolTyped(false),
           'status': EnumTyped(EqWidgetStatus.primary, EqWidgetStatus.values),
           'shape': EnumTyped(EqWidgetShape.rectangle, EqWidgetShape.values),
+          'size': EnumTyped(EqWidgetSize.medium, EqWidgetSize.values),
+          'appearance': EnumTyped(EqWidgetAppearance.outline, EqWidgetAppearance.values),
         },
         builder: (_, data) => EqSelect(
               hint: 'Hint',
@@ -30,6 +32,8 @@ class _SelectShowcaseState extends ShowcaseState<SelectShowcase> {
               shape: data['shape'],
               items: selectItems,
               onSelect: data['enabled'] ? (v) {} : null,
+              size: data['size'],
+              appearance: data['appearance'],
             ),
       );
 
