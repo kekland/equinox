@@ -1,3 +1,7 @@
+# 0.2.1
+
+- A huge theming update - everything is written from scratch, now uses `stylist` to theme the app.
+
 # 0.1.4
 
 - Calendar updates, now production-ready.

@@ -26,7 +26,7 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  equinox: ^0.1.4
+  equinox: ^0.2.1
 ```
 
 ### Install it
@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return EquinoxApp(
-      theme: EqThemes.defaultTheme,
+      theme: EqThemes.defaultLightTheme,
       title: 'Flutter Demo',
       home: HomePage(),
     );
@@ -91,6 +91,10 @@ EqButton(
   status: WidgetStatus.primary,
 ),
 ```
+
+## Customization
+
+Customization is done using [stylist](https://github.com/kekland/stylist). I will write a guide on styling your app soon.
 
 ## Other Eva Design implementations
 
