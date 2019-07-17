@@ -1,3 +1,7 @@
+# 0.2.3
+
+- Fixed a bug in `EqButton`.
+
 # 0.2.2
 
 - Added `foregroundColor` and `backgroundColor` to `EqButton`. 

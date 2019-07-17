@@ -195,7 +195,7 @@ class _EqButtonState extends State<EqButton> {
             width: style.get(
               generateSelector([...selectorBase, 'border-width']),
             ),
-            color: style.get(
+            color: widget.backgroundColor ?? style.get(
               generateSelector([...selectorStateBase, 'border-color']),
             ),
           ),
