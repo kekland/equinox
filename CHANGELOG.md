@@ -1,3 +1,7 @@
+# 0.2.4
+
+- Another `EqButton` hotfix.
+
 # 0.2.3
 
 - Fixed a bug in `EqButton`.

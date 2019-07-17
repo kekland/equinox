@@ -174,6 +174,9 @@ class _EqButtonState extends State<EqButton> {
       (disabled) ? 'disabled' : (active) ? 'active' : null,
     ];
 
+    final selectorBackgroundColor =
+        style.get(generateSelector([...selectorStateBase, 'background-color']));
+
     return OutlinedWidget(
       outlined: outlined,
       borderRadius: BorderRadius.all(EqWidgetShapeUtils.getRadius(
@@ -184,9 +187,9 @@ class _EqButtonState extends State<EqButton> {
         duration: style.get('minor-animation-duration'),
         curve: style.get('minor-animation-curve'),
         decoration: BoxDecoration(
-          color: widget.backgroundColor ??
-              style.get(
-                  generateSelector([...selectorStateBase, 'background-color'])),
+          color: (widget.appearance == EqWidgetAppearance.outline)
+              ? selectorBackgroundColor
+              : widget.backgroundColor ?? selectorBackgroundColor,
           borderRadius: BorderRadius.all(EqWidgetShapeUtils.getRadius(
             style: style.style,
             shape: widget.shape,
@@ -195,9 +198,10 @@ class _EqButtonState extends State<EqButton> {
             width: style.get(
               generateSelector([...selectorBase, 'border-width']),
             ),
-            color: widget.backgroundColor ?? style.get(
-              generateSelector([...selectorStateBase, 'border-color']),
-            ),
+            color: widget.backgroundColor ??
+                style.get(
+                  generateSelector([...selectorStateBase, 'border-color']),
+                ),
           ),
         ),
         child: OutlinedGestureDetector(
