@@ -57,15 +57,15 @@ final StyleData textFieldStyle = StyleData({
   'text-field-giant-text-font-size': 'text-heading-6-font-size',
   'text-field-giant-text-font-weight': 'text-heading-6-font-weight',
   'text-field-tiny-padding':
-      EdgeInsets.symmetric(horizontal: 0.1875 * 16.0, vertical: 1.125 * 16.0),
+      EdgeInsets.symmetric(vertical: 0.1875 * 16.0, horizontal: 1.125 * 16.0),
   'text-field-small-padding':
-      EdgeInsets.symmetric(horizontal: 0.1875 * 16.0, vertical: 1.125 * 16.0),
+      EdgeInsets.symmetric(vertical: 0.1875 * 16.0, horizontal: 1.125 * 16.0),
   'text-field-medium-padding':
-      EdgeInsets.symmetric(horizontal: 0.4375 * 16.0, vertical: 1.125 * 16.0),
+      EdgeInsets.symmetric(vertical: 0.4375 * 16.0, horizontal: 1.125 * 16.0),
   'text-field-large-padding':
-      EdgeInsets.symmetric(horizontal: 0.6875 * 16.0, vertical: 1.125 * 16.0),
+      EdgeInsets.symmetric(vertical: 0.6875 * 16.0, horizontal: 1.125 * 16.0),
   'text-field-giant-padding':
-      EdgeInsets.symmetric(horizontal: 0.9375 * 16.0, vertical: 1.125 * 16.0),
+      EdgeInsets.symmetric(vertical: 0.9375 * 16.0, horizontal: 1.125 * 16.0),
   'text-field-border-color': 'border-basic-color-3',
   'text-field-background-color': 'background-basic-color-2',
   'text-field-text-color': 'text-basic-color',
@@ -78,4 +78,8 @@ final StyleData textFieldStyle = StyleData({
   'text-field-disabled-background-color': 'background-basic-color-3',
   'text-field-disabled-text-color': 'text-disabled-color',
   'text-field-disabled-hint-color': 'text-disabled-color',
+  'text-field-error-border-color': 'color-danger-default',
+  'text-field-error-background-color': 'background-basic-color-2',
+  'text-field-error-text-color': 'text-basic-color',
+  'text-field-error-hint-color': 'text-hint-color',
 });

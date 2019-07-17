@@ -53,7 +53,7 @@ class _EqTabState extends State<EqTab> {
     final foregroundColor = style.get(generateSelector([
       'tab-foreground',
       (disabled) ? 'disabled' : (active) ? 'active' : null,
-      'foreground-color'
+      'color'
     ]));
     var containerColor = style.get(generateSelector([
       'tab-indicator',
