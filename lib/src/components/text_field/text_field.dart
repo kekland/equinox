@@ -198,7 +198,7 @@ class _EqTextFieldState extends State<EqTextField> {
                       [...statusSelector, 'background-color'])),
                   prefixIcon: (widget.icon != null &&
                           widget.iconPosition == EqPositioning.left)
-                      ? EqIcon(icon: widget.icon, color: style.get(textColor))
+                      ? EqIcon(icon: widget.icon, color: textColor)
                       : null,
                   suffixIcon: (widget.icon != null &&
                           widget.iconPosition == EqPositioning.right)
@@ -208,16 +208,26 @@ class _EqTextFieldState extends State<EqTextField> {
                       .get(generateSelector([...sizedSelector, 'padding'])),
                   border: MaterialDesign.OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: style.get(generateSelector(
-                          ['text-field', widget.status, 'border-color'])),
+                      color: style.get(
+                        generateSelector(
+                          [
+                            'text-field',
+                            widget.status,
+                            (errored) ? 'error' : null,
+                            'border-color'
+                          ],
+                        ),
+                      ),
                       width: style.get('text-field-border-width'),
                     ),
                     borderRadius: borderRadius,
                   ),
                   enabledBorder: MaterialDesign.OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: style.get(generateSelector(
-                          ['text-field', widget.status, 'border-color'])),
+                      color: style.get(generateSelector([
+                        ...statusSelector,
+                        'border-color'
+                      ])),
                       width: style.get('text-field-border-width'),
                     ),
                     borderRadius: borderRadius,
@@ -225,9 +235,8 @@ class _EqTextFieldState extends State<EqTextField> {
                   focusedBorder: MaterialDesign.OutlineInputBorder(
                     borderSide: BorderSide(
                       color: style.get(generateSelector([
-                        'text-field',
-                        widget.status,
-                        'active-border-color'
+                        ...statusSelector,
+                        'border-color'
                       ])),
                       width: style.get('text-field-active-border-width'),
                     ),
@@ -235,25 +244,12 @@ class _EqTextFieldState extends State<EqTextField> {
                   ),
                   disabledBorder: MaterialDesign.OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: style.get(generateSelector(
-                          ['text-field', widget.status, 'disabled-border-color'])),
+                      color: style.get(generateSelector([
+                        'text-field',
+                        widget.status,
+                        'disabled-border-color'
+                      ])),
                       width: style.get('text-field-border-width'),
-                    ),
-                    borderRadius: borderRadius,
-                  ),
-                  errorBorder: MaterialDesign.OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: style.get(generateSelector(
-                          ['text-field', widget.status, 'error-border-color'])),
-                      width: style.get('text-field-border-width'),
-                    ),
-                    borderRadius: borderRadius,
-                  ),
-                  focusedErrorBorder: MaterialDesign.OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: style.get(generateSelector(
-                          ['text-field', widget.status, 'error-border-color'])),
-                      width: style.get('text-field-active-border-width'),
                     ),
                     borderRadius: borderRadius,
                   ),

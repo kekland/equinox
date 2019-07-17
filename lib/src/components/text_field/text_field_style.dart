@@ -57,9 +57,9 @@ final StyleData textFieldStyle = StyleData({
   'text-field-giant-text-font-size': 'text-heading-6-font-size',
   'text-field-giant-text-font-weight': 'text-heading-6-font-weight',
   'text-field-tiny-padding':
-      EdgeInsets.symmetric(vertical: 0.1875 * 16.0, horizontal: 1.125 * 16.0),
+      EdgeInsets.symmetric(vertical: 0.2275 * 16.0, horizontal: 1.125 * 16.0),
   'text-field-small-padding':
-      EdgeInsets.symmetric(vertical: 0.1875 * 16.0, horizontal: 1.125 * 16.0),
+      EdgeInsets.symmetric(vertical: 0.2275 * 16.0, horizontal: 1.125 * 16.0),
   'text-field-medium-padding':
       EdgeInsets.symmetric(vertical: 0.4375 * 16.0, horizontal: 1.125 * 16.0),
   'text-field-large-padding':
@@ -82,4 +82,9 @@ final StyleData textFieldStyle = StyleData({
   'text-field-error-background-color': 'background-basic-color-2',
   'text-field-error-text-color': 'text-basic-color',
   'text-field-error-hint-color': 'text-hint-color',
-});
+})
+  ..inject(_generateForStatus('primary'))
+  ..inject(_generateForStatus('success'))
+  ..inject(_generateForStatus('warning'))
+  ..inject(_generateForStatus('danger'))
+  ..inject(_generateForStatus('info'));

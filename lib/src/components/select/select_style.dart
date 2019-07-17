@@ -76,9 +76,9 @@ final StyleData selectStyle = StyleData({
   'select-giant-text-font-size': 'text-heading-6-font-size',
   'select-giant-text-font-weight': 'text-heading-6-font-weight',
   'select-tiny-padding':
-      EdgeInsets.symmetric(vertical: 0.1875 * 16.0, horizontal: 1.125 * 16.0),
+      EdgeInsets.symmetric(vertical: 0.2275 * 16.0, horizontal: 1.125 * 16.0),
   'select-small-padding':
-      EdgeInsets.symmetric(vertical: 0.1875 * 16.0, horizontal: 1.125 * 16.0),
+      EdgeInsets.symmetric(vertical: 0.2275 * 16.0, horizontal: 1.125 * 16.0),
   'select-medium-padding':
       EdgeInsets.symmetric(vertical: 0.4375 * 16.0, horizontal: 1.125 * 16.0),
   'select-large-padding':
