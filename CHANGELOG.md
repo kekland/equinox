@@ -1,3 +1,8 @@
+# 0.2.2
+
+- Added `foregroundColor` and `backgroundColor` to `EqButton`. 
+- Added `iconSize` to `EqTab`.
+
 # 0.2.1
 
 - A huge theming update - everything is written from scratch, now uses `stylist` to theme the app.
