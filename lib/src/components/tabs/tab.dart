@@ -15,7 +15,15 @@ class EqTabData {
   /// Whether the tab is disabled or not. By default it is false.
   final bool disabled;
 
-  EqTabData({this.icon, this.title, this.disabled = false});
+  /// Controls the size of the icon. Defaults to `18.0`.
+  final double iconSize;
+
+  EqTabData({
+    this.icon,
+    this.title,
+    this.disabled = false,
+    this.iconSize = 18.0,
+  });
 }
 
 /// A singular tab. [data] must not be null.
@@ -75,9 +83,9 @@ class _EqTabState extends State<EqTab> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   if (widget.data.icon != null)
-                    Icon(
-                      widget.data.icon,
-                      size: 18.0,
+                    EqIcon(
+                      icon: widget.data.icon,
+                      size: widget.data.iconSize,
                       color: foregroundColor,
                     ),
                   if (widget.data.icon != null && widget.data.title != null)
