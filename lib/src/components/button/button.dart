@@ -33,6 +33,12 @@ class EqButton extends StatefulWidget {
   /// Sets the position of the icon. Will overwrite the value set by the theme.
   final EqPositioning iconPosition;
 
+  /// Color to use for the background.
+  final Color backgroundColor;
+
+  /// Color to use for the foreground.
+  final Color foregroundColor;
+
   const EqButton({
     Key key,
     @required this.label,
@@ -43,6 +49,8 @@ class EqButton extends StatefulWidget {
     this.shape = EqWidgetShape.rectangle,
     this.icon,
     this.iconPosition = EqPositioning.left,
+    this.backgroundColor,
+    this.foregroundColor,
   }) : super(key: key);
 
   /// Automatically sets the [appearance] to be `WidgetAppearance.filled`.
@@ -55,6 +63,8 @@ class EqButton extends StatefulWidget {
     this.shape = EqWidgetShape.rectangle,
     this.icon,
     this.iconPosition = EqPositioning.left,
+    this.backgroundColor,
+    this.foregroundColor,
   })  : this.appearance = EqWidgetAppearance.filled,
         super(key: key);
 
@@ -68,6 +78,8 @@ class EqButton extends StatefulWidget {
     this.shape = EqWidgetShape.rectangle,
     this.icon,
     this.iconPosition = EqPositioning.left,
+    this.backgroundColor,
+    this.foregroundColor,
   })  : this.appearance = EqWidgetAppearance.outline,
         super(key: key);
 
@@ -81,6 +93,8 @@ class EqButton extends StatefulWidget {
     this.shape = EqWidgetShape.rectangle,
     this.icon,
     this.iconPosition = EqPositioning.left,
+    this.backgroundColor,
+    this.foregroundColor,
   })  : this.appearance = EqWidgetAppearance.ghost,
         super(key: key);
 
@@ -116,7 +130,7 @@ class _EqButtonState extends State<EqButton> {
             .get(generateSelector(['button-text', widget.size, 'font-size'])),
         fontWeight: style.get('button-text-font-weight'),
         fontFamily: style.get('button-text-font-family'),
-        color:
+        color: widget.foregroundColor ??
             style.get(generateSelector([...selectorStateBase, 'text-color'])),
       ),
     );
@@ -126,7 +140,7 @@ class _EqButtonState extends State<EqButton> {
         icon: widget.icon,
         size: style
             .get(generateSelector(['button-text', widget.size, 'font-size'])),
-        color:
+        color: widget.foregroundColor ??
             style.get(generateSelector([...selectorStateBase, 'text-color'])),
       );
       if (widget.iconPosition == EqPositioning.left) {
@@ -170,8 +184,9 @@ class _EqButtonState extends State<EqButton> {
         duration: style.get('minor-animation-duration'),
         curve: style.get('minor-animation-curve'),
         decoration: BoxDecoration(
-          color: style.get(
-              generateSelector([...selectorStateBase, 'background-color'])),
+          color: widget.backgroundColor ??
+              style.get(
+                  generateSelector([...selectorStateBase, 'background-color'])),
           borderRadius: BorderRadius.all(EqWidgetShapeUtils.getRadius(
             style: style.style,
             shape: widget.shape,
