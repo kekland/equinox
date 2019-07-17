@@ -134,6 +134,7 @@ class EqThemes {
     ..inject(toggleStyle)
     ..inject(listItemStyle)
     ..inject(spinnerStyle)
+    ..inject(toastStyle)
     ..inject(textFieldStyle)
     ..inject(progressBarStyle)
     ..inject(selectStyle);
