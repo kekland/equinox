@@ -34,7 +34,7 @@ export 'package:equinox/src/components/icon/icon.dart';
 export 'package:equinox/src/components/select/select.dart';
 export 'package:equinox/src/components/spinner/spinner.dart';
 //export 'package:equinox/src/components/tabbar/tabbar.dart';
-//export 'package:equinox/src/components/tabs/tabs.dart';
+export 'package:equinox/src/components/tabs/tabs.dart';
 export 'package:equinox/src/components/text/text.dart';
 export 'package:equinox/src/components/text_field/text_field.dart';
 export 'package:equinox/src/components/toast/toast.dart';
