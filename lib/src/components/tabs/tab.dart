@@ -2,6 +2,8 @@ import 'package:equinox/equinox.dart';
 import 'package:equinox/src/equinox_internal.dart';
 import 'package:flutter/widgets.dart';
 
+export 'package:equinox/src/components/tabs/tab_style.dart';
+
 /// A data for tab. Either [icon] or [title] must be present.
 class EqTabData {
   /// Icon to display alongside [title], if it exists. Can be null.

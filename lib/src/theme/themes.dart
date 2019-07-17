@@ -137,6 +137,7 @@ class EqThemes {
     ..inject(toastStyle)
     ..inject(textFieldStyle)
     ..inject(progressBarStyle)
+    ..inject(tabStyle)
     ..inject(selectStyle);
 
   static final defaultDarkTheme = defaultLightTheme.fork()
