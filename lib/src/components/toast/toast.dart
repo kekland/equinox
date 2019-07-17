@@ -93,6 +93,7 @@ class _EqToastWidgetState extends State<EqToastWidget>
       widget.data.status,
     ];
     final borderRadius = BorderRadius.all(EqWidgetShapeUtils.getRadius(
+      shape: widget.data.shape,
       style: style.style,
     ));
 
@@ -187,7 +188,8 @@ class __EqToastBodyState extends State<_EqToastBody> {
                   padding: style.get('toast-icon-padding'),
                   child: EqIcon(
                     icon: widget.data.icon,
-                    color: foregroundColor,
+                    color: style.get(generateSelector(
+                        ['toast', widget.data.status, 'icon-color'])),
                     size: style.get('toast-icon-size'),
                   ),
                 ),
