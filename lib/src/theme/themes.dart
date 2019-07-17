@@ -135,6 +135,7 @@ class EqThemes {
     ..inject(listItemStyle)
     ..inject(spinnerStyle)
     ..inject(textFieldStyle)
+    ..inject(progressBarStyle)
     ..inject(selectStyle);
 
   static final defaultDarkTheme = defaultLightTheme.fork()
