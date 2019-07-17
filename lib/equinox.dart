@@ -24,7 +24,7 @@ export 'package:equinox/src/components/button/button.dart';
 //export 'package:equinox/src/components/calendar/calendar.dart';
 export 'package:equinox/src/components/card/card.dart';
 export 'package:equinox/src/components/checkbox/checkbox.dart';
-//export 'package:equinox/src/components/dialog/dialog.dart';
+export 'package:equinox/src/components/dialog/dialog.dart';
 export 'package:equinox/src/components/divider/divider.dart';
 export 'package:equinox/src/components/icon_button/icon_button.dart';
 export 'package:equinox/src/components/list_item/list_item.dart';
