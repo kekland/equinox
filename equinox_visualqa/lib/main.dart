@@ -1,10 +1,16 @@
 import 'package:equinox_visualqa/components/button.dart';
 import 'package:equinox_visualqa/components/card.dart';
 import 'package:equinox_visualqa/components/checkbox.dart';
+import 'package:equinox_visualqa/components/dialog.dart';
 import 'package:equinox_visualqa/components/icon_button.dart';
+import 'package:equinox_visualqa/components/progress_bar.dart';
 import 'package:equinox_visualqa/components/radio.dart';
 import 'package:equinox_visualqa/components/select.dart';
 import 'package:equinox_visualqa/components/spinner.dart';
+import 'package:equinox_visualqa/components/tabs.dart';
+import 'package:equinox_visualqa/components/tabs_bottom.dart';
+import 'package:equinox_visualqa/components/text_field.dart';
+import 'package:equinox_visualqa/components/toast.dart';
 import 'package:equinox_visualqa/components/toggle.dart';
 import 'package:equinox_visualqa/state.dart';
 import 'package:flutter/material.dart';
@@ -52,24 +58,48 @@ class MainPage extends StatelessWidget {
       title: 'Checkbox',
     ),
     ShowcaseData(
+      builder: (_) => DialogShowcase(),
+      title: 'Dialog',
+    ),
+    ShowcaseData(
       builder: (_) => IconButtonShowcase(),
-      title: 'Icon button',
+      title: 'Icon Buttons',
+    ),
+    ShowcaseData(
+      builder: (_) => ProgressBarShowcase(),
+      title: 'Progress Bar',
     ),
     ShowcaseData(
       builder: (_) => RadioShowcase(),
       title: 'Radio',
     ),
     ShowcaseData(
-      builder: (_) => ToggleShowcase(),
-      title: 'Toggle',
+      builder: (_) => SelectShowcase(),
+      title: 'Select',
     ),
     ShowcaseData(
       builder: (_) => SpinnerShowcase(),
-      title: 'Spinner',
+      title: 'Spinners',
     ),
     ShowcaseData(
-      builder: (_) => SelectShowcase(),
-      title: 'Select',
+      builder: (_) => TabsShowcase(),
+      title: 'TabBar',
+    ),
+    ShowcaseData(
+      builder: (_) => TabsBottomShowcase(),
+      title: 'TabBar (bottom)',
+    ),
+    ShowcaseData(
+      builder: (_) => TextFieldShowcase(),
+      title: 'TextField',
+    ),
+    ShowcaseData(
+      builder: (_) => ToastShowcase(),
+      title: 'Toast',
+    ),
+    ShowcaseData(
+      builder: (_) => ToggleShowcase(),
+      title: 'Toggle',
     ),
   ];
 
@@ -80,9 +110,11 @@ class MainPage extends StatelessWidget {
         title: 'Showcase app',
         centerTitle: true,
         actions: [
-          IconButton(
-            icon: Icon(EvaIcons.sunOutline),
-            onPressed: AppState.toggleTheme,
+          EqIconButton(
+            icon: EvaIcons.sunOutline,
+            onTap: AppState.toggleTheme,
+            appearance: EqWidgetAppearance.ghost,
+            size: EqWidgetSize.large,
           ),
         ],
       ),
