@@ -60,8 +60,8 @@ class _EqSpinnerState extends State<EqSpinner>
             angle: animation.value * pi * 2.0,
             child: CustomPaint(
               painter: SpinnerPainter(
-                color: style.get(generateSelector(
-                    ['spinner', widget.status, 'color'])),
+                color: style
+                    .get(generateSelector(['spinner', widget.status, 'color'])),
                 strokeWidth: style.get(
                     generateSelector(['spinner', widget.size, 'stroke-width'])),
               ),

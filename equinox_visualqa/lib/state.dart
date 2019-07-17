@@ -1,5 +1,4 @@
 import 'package:equinox/equinox.dart';
-import 'package:equinox_visualqa/theme.dart';
 import 'package:flutter/widgets.dart';
 
 class AppState {

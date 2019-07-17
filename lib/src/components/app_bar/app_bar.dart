@@ -1,14 +1,8 @@
-import 'package:equinox/src/equinox_internal.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:equinox/equinox.dart';
-import 'package:flutter/widgets.dart';
-
-import 'package:flutter/material.dart' as MaterialDesign;
 
 export 'package:equinox/src/components/app_bar/app_bar_style.dart';
-import 'package:equinox/equinox.dart';
-import 'package:flutter/widgets.dart';
 
 /// AppBar is used in [EqLayout]. It is displayed on top of a page.
 class EqAppBar extends StatelessWidget implements PreferredSizeWidget {

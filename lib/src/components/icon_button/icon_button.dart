@@ -55,7 +55,6 @@ class _EqIconButtonState extends State<EqIconButton> {
 
     final selectorBase = ['icon-button', widget.appearance];
     final selectorSizeBase = ['icon-button', widget.appearance, widget.size];
-    final selectorStatusBase = ['icon-button', widget.appearance, widget.status];
     final selectorStateBase = [
       'icon-button',
       widget.appearance,

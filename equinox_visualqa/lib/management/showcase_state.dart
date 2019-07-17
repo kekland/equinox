@@ -1,7 +1,6 @@
 import 'package:equinox/equinox.dart';
 import 'package:equinox_visualqa/state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart' as prefix0;
 import 'package:flutter/widgets.dart';
 export 'package:equinox_visualqa/management/interactive_playground.dart';
 

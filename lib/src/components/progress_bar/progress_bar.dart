@@ -112,17 +112,22 @@ class _EqProgressBarState extends State<EqProgressBar>
               height: height,
               decoration: BoxDecoration(
                 borderRadius: borderRadius,
-                color: style.get(generateSelector([...selectorBase, 'progress-color'])),
+                color: style
+                    .get(generateSelector([...selectorBase, 'progress-color'])),
               ),
               child: widget.text != null
                   ? Center(
                       child: Text(
                         widget.text,
                         style: TextStyle(
-                          fontFamily: style.get(generateSelector([...selectorSizeBase, 'text-font-family'])),
-                          fontSize: style.get(generateSelector([...selectorSizeBase, 'text-font-size'])),
-                          fontWeight: style.get(generateSelector([...selectorSizeBase, 'text-font-weight'])),
-                          color: style.get(generateSelector([...selectorBase, 'text-color'])),
+                          fontFamily: style.get(generateSelector(
+                              [...selectorSizeBase, 'text-font-family'])),
+                          fontSize: style.get(generateSelector(
+                              [...selectorSizeBase, 'text-font-size'])),
+                          fontWeight: style.get(generateSelector(
+                              [...selectorSizeBase, 'text-font-weight'])),
+                          color: style.get(generateSelector(
+                              [...selectorBase, 'text-color'])),
                         ),
                       ),
                     )

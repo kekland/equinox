@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:equinox/equinox.dart';
-import 'package:equinox/src/equinox_internal.dart';
 import 'package:flutter/widgets.dart';
 
 class EqSelectOverlay extends StatelessWidget {
@@ -25,20 +24,6 @@ class EqSelectOverlay extends StatelessWidget {
     this.openingFromBottom,
     this.height,
   }) : super(key: key);
-
-  Widget _buildBody(BuildContext context, Widget child) {
-    final style = StaticStyle.of(context);
-    if (openingFromBottom)
-      return child;
-    else
-      return ClipRect(
-        child: child,
-        clipper: VerticalRectangleClipper(
-          shadowSize: style.get('shadow').blurRadius,
-          verticalMultiplier: 1.0,
-        ),
-      );
-  }
 
   @override
   Widget build(BuildContext context) {

@@ -31,7 +31,6 @@ class EqLayout extends StatefulWidget {
 class _EqLayoutState extends State<EqLayout> {
   @override
   Widget build(BuildContext context) {
-    final style = StaticStyle.of(context);
     final theme = widget.theme ?? StaticStyle.of(context)?.style;
     return EqTheme(
       theme: theme,

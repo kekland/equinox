@@ -1,6 +1,3 @@
-import 'package:equinox_visualqa/components/button.dart';
-import 'package:equinox_visualqa/components/checkbox.dart';
-import 'package:equinox_visualqa/components/radio.dart';
 import 'package:equinox_visualqa/main.dart';
 import 'package:equinox_visualqa/state.dart';
 import 'package:flutter/foundation.dart';

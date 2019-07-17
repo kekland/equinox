@@ -98,9 +98,6 @@ class _EqButtonState extends State<EqButton> {
     final disabled = widget.onTap == null;
     final active = outlined;
 
-    final selectorBase = ['button', widget.appearance];
-    final selectorSizeBase = ['button', widget.appearance, widget.size];
-    final selectorStatusBase = ['button', widget.appearance, widget.status];
     final selectorStateBase = [
       'button',
       widget.appearance,
@@ -156,7 +153,6 @@ class _EqButtonState extends State<EqButton> {
 
     final selectorBase = ['button', widget.appearance];
     final selectorSizeBase = ['button', widget.appearance, widget.size];
-    final selectorStatusBase = ['button', widget.appearance, widget.status];
     final selectorStateBase = [
       'button',
       widget.appearance,

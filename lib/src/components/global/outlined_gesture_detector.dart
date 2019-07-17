@@ -25,8 +25,12 @@ class OutlinedGestureDetector extends StatelessWidget {
       behavior: HitTestBehavior.opaque,
       onTap: onTap,
       onTapDown: (onTap != null) ? onTapDown : null,
-      onTapUp: (onTap != null) ? (_) => clearOutline(style.get('minor-animation-duration')) : null,
-      onTapCancel: (onTap != null) ? () => clearOutline(style.get('minor-animation-duration')) : null,
+      onTapUp: (onTap != null)
+          ? (_) => clearOutline(style.get('minor-animation-duration'))
+          : null,
+      onTapCancel: (onTap != null)
+          ? () => clearOutline(style.get('minor-animation-duration'))
+          : null,
       child: child,
     );
   }

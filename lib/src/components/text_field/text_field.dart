@@ -224,20 +224,16 @@ class _EqTextFieldState extends State<EqTextField> {
                   ),
                   enabledBorder: MaterialDesign.OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: style.get(generateSelector([
-                        ...statusSelector,
-                        'border-color'
-                      ])),
+                      color: style.get(generateSelector(
+                          [...statusSelector, 'border-color'])),
                       width: style.get('text-field-border-width'),
                     ),
                     borderRadius: borderRadius,
                   ),
                   focusedBorder: MaterialDesign.OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: style.get(generateSelector([
-                        ...statusSelector,
-                        'border-color'
-                      ])),
+                      color: style.get(generateSelector(
+                          [...statusSelector, 'border-color'])),
                       width: style.get('text-field-active-border-width'),
                     ),
                     borderRadius: borderRadius,

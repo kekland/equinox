@@ -23,8 +23,10 @@ class EqSelectItem<T> {
   });
 
   double caluclateHeight(StaticStyleState style) {
-    double titleHeight = (title != null)? style.get('list-item-title-font-size') : 0.0;
-    double subtitleHeight = (subtitle != null)? style.get('list-item-subtitle-font-size') : 0.0;
+    double titleHeight =
+        (title != null) ? style.get('list-item-title-font-size') : 0.0;
+    double subtitleHeight =
+        (subtitle != null) ? style.get('list-item-subtitle-font-size') : 0.0;
 
     return 36.0 + titleHeight + subtitleHeight;
   }

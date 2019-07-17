@@ -2,7 +2,6 @@ import 'package:equinox/src/equinox_internal.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:equinox/equinox.dart';
-import 'package:flutter/widgets.dart';
 
 import 'package:flutter/material.dart' as MaterialDesign;
 
@@ -128,9 +127,10 @@ class EqCard extends StatelessWidget {
       duration: style.get('minor-animation-duration'),
       curve: style.get('minor-animation-curve'),
       decoration: BoxDecoration(
-        borderRadius: borderRadius ?? BorderRadius.all(
-          EqWidgetShapeUtils.getRadius(style: style.style, shape: shape),
-        ),
+        borderRadius: borderRadius ??
+            BorderRadius.all(
+              EqWidgetShapeUtils.getRadius(style: style.style, shape: shape),
+            ),
         boxShadow: [style.get('card-shadow')],
         color: style.get('card-background-color'),
         border: Border.all(

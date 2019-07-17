@@ -29,7 +29,7 @@ class EqBackgroundColors {
   }
 
   EqBackgroundColors merge(EqBackgroundColors other) {
-    if(other == null) return this;
+    if (other == null) return this;
     return copyWith(
       color1: other.color1,
       color2: other.color2,
@@ -53,7 +53,7 @@ class EqBorderColors {
     @required this.color4,
     @required this.color5,
   });
-  
+
   EqBorderColors copyWith({
     Color color1,
     Color color2,
@@ -71,7 +71,7 @@ class EqBorderColors {
   }
 
   EqBorderColors merge(EqBorderColors other) {
-    if(other == null) return this;
+    if (other == null) return this;
     return copyWith(
       color1: other.color1,
       color2: other.color2,

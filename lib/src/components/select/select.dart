@@ -138,8 +138,6 @@ class _EqSelectState<T> extends State<EqSelect>
       hideOverlay();
   }
 
-  bool get _isOverlayOpen => _overlayEntry != null;
-
   OverlayEntry createOverlay() {
     RenderBox renderBox = context.findRenderObject();
     final size = renderBox.size;
