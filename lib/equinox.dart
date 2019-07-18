@@ -37,6 +37,7 @@ export 'package:equinox/src/components/tab_bar/tab_bar.dart';
 export 'package:equinox/src/components/tabs/tabs.dart';
 export 'package:equinox/src/components/text/text.dart';
 export 'package:equinox/src/components/text_field/text_field.dart';
+export 'package:equinox/src/components/text_field_form/text_field_form.dart';
 export 'package:equinox/src/components/toast/toast.dart';
 export 'package:equinox/src/components/toggle/toggle.dart';
 
