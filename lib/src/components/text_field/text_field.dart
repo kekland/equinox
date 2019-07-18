@@ -55,6 +55,9 @@ class EqTextField extends StatefulWidget {
   /// Size of this widget.
   final EqWidgetSize size;
 
+  /// Padding to use inside TextField.
+  final EdgeInsets padding;
+
   /// Type of the keyboard.
   final TextInputType keyboardType;
 
@@ -81,6 +84,7 @@ class EqTextField extends StatefulWidget {
     this.keyboardType = TextInputType.text,
     this.focusNode,
     this.size = EqWidgetSize.medium,
+    this.padding,
   }) : super(key: key);
   @override
   _EqTextFieldState createState() => _EqTextFieldState();
@@ -204,8 +208,9 @@ class _EqTextFieldState extends State<EqTextField> {
                           widget.iconPosition == EqPositioning.right)
                       ? Icon(widget.icon, color: textColor)
                       : null,
-                  contentPadding: style
-                      .get(generateSelector([...sizedSelector, 'padding'])),
+                  contentPadding: widget.padding ??
+                      style
+                          .get(generateSelector([...sizedSelector, 'padding'])),
                   border: MaterialDesign.OutlineInputBorder(
                     borderSide: BorderSide(
                       color: style.get(
