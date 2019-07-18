@@ -16,7 +16,7 @@ class EqAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool centerTitle;
 
   /// Recognizes if this page can be popped (using [Navigator.canPop()]) and adds back button
-  /// if it can be. Overwritten by [leading].
+  /// if it can be popped. Overwritten by [leading].
   final bool inferLeading;
 
   /// A widget (usually a [EqIconButton]) in the left.

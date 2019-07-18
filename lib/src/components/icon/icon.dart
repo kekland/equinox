@@ -8,9 +8,9 @@ class EqIcon extends StatelessWidget {
   final Color color;
   final EqWidgetStatus status;
 
-  const EqIcon({
+  const EqIcon(
+    this.icon,{
     Key key,
-    this.icon,
     this.size,
     this.color,
     this.status,

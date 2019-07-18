@@ -86,7 +86,7 @@ class EqDialogServiceState extends State<EqDialogService> {
               footer: EqButton(
                 onTap: () => Navigator.of(context).pop(),
                 appearance: EqWidgetAppearance.ghost,
-                label: 'Close',
+                label: Text('Close'),
                 status: status,
               ),
             ),

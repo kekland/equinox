@@ -25,19 +25,34 @@ class EqButton extends StatefulWidget {
   final VoidCallback onTap;
 
   /// Text to display inside of the button. Can be styled using [EqButtonThemeData].
-  final String label;
+  final Widget label;
 
-  /// Icon to display inside of the button. Position is controlled by [iconPosition]. Has the same color as [label].
-  final IconData icon;
+  /// A leading widget. Will be placed on the left.
+  final Widget leading;
 
-  /// Sets the position of the icon. Will overwrite the value set by the theme.
-  final EqPositioning iconPosition;
+  /// A trailing widget. Will be placed on the right.
+  final Widget trailing;
+
+  /// Width of the separator between [label] and [leading], [trailing].
+  final double separatorWidth;
+
+  /// Padding to use inside the button.
+  final EdgeInsets padding;
+
+  /// Alignment of items in the button.
+  final MainAxisAlignment itemAlignment;
 
   /// Color to use for the background.
   final Color backgroundColor;
 
+  /// Color to use for the border.
+  final Color borderColor;
+
   /// Color to use for the foreground.
   final Color foregroundColor;
+
+  /// Whether this button should fill the entire allowed width.
+  final bool fluid;
 
   const EqButton({
     Key key,
@@ -47,10 +62,15 @@ class EqButton extends StatefulWidget {
     this.status,
     this.appearance = EqWidgetAppearance.filled,
     this.shape = EqWidgetShape.rectangle,
-    this.icon,
-    this.iconPosition = EqPositioning.left,
     this.backgroundColor,
     this.foregroundColor,
+    this.borderColor,
+    this.leading,
+    this.trailing,
+    this.separatorWidth = 16.0,
+    this.itemAlignment = MainAxisAlignment.spaceAround,
+    this.padding,
+    this.fluid = false,
   }) : super(key: key);
 
   /// Automatically sets the [appearance] to be `WidgetAppearance.filled`.
@@ -61,10 +81,15 @@ class EqButton extends StatefulWidget {
     this.size = EqWidgetSize.medium,
     this.status,
     this.shape = EqWidgetShape.rectangle,
-    this.icon,
-    this.iconPosition = EqPositioning.left,
     this.backgroundColor,
     this.foregroundColor,
+    this.borderColor,
+    this.leading,
+    this.trailing,
+    this.separatorWidth = 16.0,
+    this.itemAlignment = MainAxisAlignment.spaceAround,
+    this.padding,
+    this.fluid = false,
   })  : this.appearance = EqWidgetAppearance.filled,
         super(key: key);
 
@@ -76,10 +101,15 @@ class EqButton extends StatefulWidget {
     this.size = EqWidgetSize.medium,
     this.status,
     this.shape = EqWidgetShape.rectangle,
-    this.icon,
-    this.iconPosition = EqPositioning.left,
     this.backgroundColor,
     this.foregroundColor,
+    this.borderColor,
+    this.leading,
+    this.trailing,
+    this.separatorWidth = 16.0,
+    this.itemAlignment = MainAxisAlignment.spaceAround,
+    this.padding,
+    this.fluid = false,
   })  : this.appearance = EqWidgetAppearance.outline,
         super(key: key);
 
@@ -91,10 +121,15 @@ class EqButton extends StatefulWidget {
     this.size = EqWidgetSize.medium,
     this.status,
     this.shape = EqWidgetShape.rectangle,
-    this.icon,
-    this.iconPosition = EqPositioning.left,
     this.backgroundColor,
     this.foregroundColor,
+    this.borderColor,
+    this.leading,
+    this.trailing,
+    this.separatorWidth = 16.0,
+    this.itemAlignment = MainAxisAlignment.spaceAround,
+    this.padding,
+    this.fluid = false,
   })  : this.appearance = EqWidgetAppearance.ghost,
         super(key: key);
 
@@ -119,43 +154,52 @@ class _EqButtonState extends State<EqButton> {
       (disabled) ? 'disabled' : (active) ? 'active' : null,
     ];
 
-    final hasIcon =
-        widget.icon != null && widget.iconPosition != EqPositioning.none;
+    list = [
+      if (widget.leading != null) ...[
+        widget.leading,
+        SizedBox(width: widget.separatorWidth),
+      ],
+      Flexible(child: widget.label),
+      if (widget.trailing != null) ...[
+        SizedBox(width: widget.separatorWidth),
+        widget.trailing,
+      ],
+    ];
 
-    Text text = Text(
-      widget.label.toUpperCase(),
-      textAlign: TextAlign.center,
-      style: TextStyle(
-        fontSize: style
-            .get(generateSelector(['button-text', widget.size, 'font-size'])),
-        fontWeight: style.get('button-text-font-weight'),
-        fontFamily: style.get('button-text-font-family'),
-        color: widget.foregroundColor ??
-            style.get(generateSelector([...selectorStateBase, 'text-color'])),
+    return StaticStyle(
+      inheritFromParent: false,
+      data: style.style.fork()
+        ..inject(
+          StyleData(
+            {
+              'icon-color': widget.foregroundColor ??
+                  style.get(
+                    generateSelector([...selectorStateBase, 'text-color']),
+                  ),
+              'icon-size': style.get(
+                generateSelector(['button-text', widget.size, 'font-size']),
+              ),
+            },
+          ),
+        ),
+      child: AnimatedDefaultTextStyle(
+        duration: style.get('minor-animation-duration'),
+        curve: style.get('minor-animation-curve'),
+        style: TextStyle(
+          fontSize: style
+              .get(generateSelector(['button-text', widget.size, 'font-size'])),
+          fontWeight: style.get('button-text-font-weight'),
+          fontFamily: style.get('button-text-font-family'),
+          color: widget.foregroundColor ??
+              style.get(generateSelector([...selectorStateBase, 'text-color'])),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: widget.itemAlignment,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: list,
+        ),
       ),
-    );
-
-    if (hasIcon) {
-      Widget icon = EqIcon(
-        icon: widget.icon,
-        size: style
-            .get(generateSelector(['button-text', widget.size, 'font-size'])),
-        color: widget.foregroundColor ??
-            style.get(generateSelector([...selectorStateBase, 'text-color'])),
-      );
-      if (widget.iconPosition == EqPositioning.left) {
-        list = [icon, SizedBox(width: 8.0), text];
-      } else {
-        list = [text, SizedBox(width: 8.0), icon];
-      }
-    } else {
-      list = [text];
-    }
-
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: list,
     );
   }
 
@@ -177,44 +221,46 @@ class _EqButtonState extends State<EqButton> {
     final selectorBackgroundColor =
         style.get(generateSelector([...selectorStateBase, 'background-color']));
 
-    return OutlinedWidget(
-      outlined: outlined,
-      borderRadius: BorderRadius.all(EqWidgetShapeUtils.getRadius(
-        style: style.style,
-        shape: widget.shape,
-      )),
-      child: AnimatedContainer(
-        duration: style.get('minor-animation-duration'),
-        curve: style.get('minor-animation-curve'),
-        decoration: BoxDecoration(
-          color: (widget.appearance == EqWidgetAppearance.outline)
-              ? selectorBackgroundColor
-              : widget.backgroundColor ?? selectorBackgroundColor,
-          borderRadius: BorderRadius.all(EqWidgetShapeUtils.getRadius(
-            style: style.style,
-            shape: widget.shape,
-          )),
-          border: Border.all(
-            width: style.get(
-              generateSelector([...selectorBase, 'border-width']),
+    return SizedBox(
+      width: (widget.fluid)? double.infinity : null,
+      child: OutlinedWidget(
+        outlined: outlined,
+        borderRadius: BorderRadius.all(EqWidgetShapeUtils.getRadius(
+          style: style.style,
+          shape: widget.shape,
+        )),
+        child: AnimatedContainer(
+          duration: style.get('minor-animation-duration'),
+          curve: style.get('minor-animation-curve'),
+          decoration: BoxDecoration(
+            color: widget.backgroundColor ?? selectorBackgroundColor,
+            borderRadius: BorderRadius.all(EqWidgetShapeUtils.getRadius(
+              style: style.style,
+              shape: widget.shape,
+            )),
+            border: Border.all(
+              width: style.get(
+                generateSelector([...selectorBase, 'border-width']),
+              ),
+              color: widget.borderColor ??
+                  style.get(
+                    generateSelector([...selectorStateBase, 'border-color']),
+                  ),
             ),
-            color: widget.backgroundColor ??
-                style.get(
-                  generateSelector([...selectorStateBase, 'border-color']),
-                ),
           ),
-        ),
-        child: OutlinedGestureDetector(
-          onTap: widget.onTap,
-          onOutlineChange: (v) => setState(() => outlined = v),
-          child: Padding(
-            padding: style.get(
-              generateSelector([...selectorSizeBase, 'padding']),
-            ),
-            child: Center(
-              widthFactor: 1.0,
-              heightFactor: 1.0,
-              child: _buildBody(context),
+          child: OutlinedGestureDetector(
+            onTap: widget.onTap,
+            onOutlineChange: (v) => setState(() => outlined = v),
+            child: Padding(
+              padding: widget.padding ??
+                  style.get(
+                    generateSelector([...selectorSizeBase, 'padding']),
+                  ),
+              child: Center(
+                widthFactor: 1.0,
+                heightFactor: 1.0,
+                child: _buildBody(context),
+              ),
             ),
           ),
         ),
