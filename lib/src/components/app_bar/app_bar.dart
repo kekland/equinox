@@ -63,7 +63,7 @@ class EqAppBar extends StatelessWidget implements PreferredSizeWidget {
         this.actions = null,
         this.inferLeading = false,
         this.hasTitle = false;
-        
+
   const EqAppBar.bottom({
     Key key,
     @required this.bottom,

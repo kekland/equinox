@@ -140,9 +140,6 @@ class _EqTextFieldState extends State<EqTextField> {
       shape: widget.shape,
     ));
 
-    final textColor =
-        style.get(generateSelector([...statusSelector, 'text-color']));
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[

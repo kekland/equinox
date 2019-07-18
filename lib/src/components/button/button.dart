@@ -194,7 +194,7 @@ class _EqButtonState extends State<EqButton> {
               style.get(generateSelector([...selectorStateBase, 'text-color'])),
         ),
         child: Row(
-          mainAxisSize: (widget.fluid)? MainAxisSize.max : MainAxisSize.min,
+          mainAxisSize: (widget.fluid) ? MainAxisSize.max : MainAxisSize.min,
           mainAxisAlignment: widget.itemAlignment,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: list,

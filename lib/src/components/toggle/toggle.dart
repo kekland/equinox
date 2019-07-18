@@ -133,18 +133,18 @@ class _EqToggleState extends State<EqToggle>
           child: AnimatedBuilder(
             animation: animation,
             builder: (context, _) => Transform.translate(
-                  offset: Offset(
-                      (size.width - size.height - 2.0) * animation.value, 0.0),
-                  child: Container(
-                    width: size.height - 4.0,
-                    height: size.height - 4.0,
-                    decoration: BoxDecoration(
-                      color: style.get(
-                          generateSelector([...selectorBasis, 'knob-color'])),
-                      shape: BoxShape.circle,
-                    ),
-                  ),
+              offset: Offset(
+                  (size.width - size.height - 2.0) * animation.value, 0.0),
+              child: Container(
+                width: size.height - 4.0,
+                height: size.height - 4.0,
+                decoration: BoxDecoration(
+                  color: style
+                      .get(generateSelector([...selectorBasis, 'knob-color'])),
+                  shape: BoxShape.circle,
                 ),
+              ),
+            ),
           ),
         ),
       ),

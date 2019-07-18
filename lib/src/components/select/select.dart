@@ -181,33 +181,33 @@ class _EqSelectState<T> extends State<EqSelect>
 
     return OverlayEntry(
       builder: (context) => Positioned(
-            width: size.width,
-            child: CompositedTransformFollower(
-              showWhenUnlinked: false,
-              link: this._layerLink,
-              offset: Offset(0.0, verticalOffset),
-              child: Container(
-                height: height,
-                alignment: (openingFromBottom)
-                    ? Alignment.topCenter
-                    : Alignment.bottomCenter,
-                child: EqSelectOverlay(
-                  height: height,
-                  openingFromBottom: openingFromBottom,
-                  animation: animation,
-                  borderRadius: borderRadius,
-                  items: widget.items,
-                  onSelect: (index, item) {
-                    widget.onSelect(item.value);
-                    setState(() => selectedIndex = index);
-                    hideOverlay();
-                  },
-                  selectedIndex: selectedIndex,
-                  status: widget.status,
-                ),
-              ),
+        width: size.width,
+        child: CompositedTransformFollower(
+          showWhenUnlinked: false,
+          link: this._layerLink,
+          offset: Offset(0.0, verticalOffset),
+          child: Container(
+            height: height,
+            alignment: (openingFromBottom)
+                ? Alignment.topCenter
+                : Alignment.bottomCenter,
+            child: EqSelectOverlay(
+              height: height,
+              openingFromBottom: openingFromBottom,
+              animation: animation,
+              borderRadius: borderRadius,
+              items: widget.items,
+              onSelect: (index, item) {
+                widget.onSelect(item.value);
+                setState(() => selectedIndex = index);
+                hideOverlay();
+              },
+              selectedIndex: selectedIndex,
+              status: widget.status,
             ),
           ),
+        ),
+      ),
     );
   }
 

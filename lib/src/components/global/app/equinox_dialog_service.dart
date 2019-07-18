@@ -40,19 +40,19 @@ class EqDialogServiceState extends State<EqDialogService> {
     return Navigator.of(context).push(
       TransparentPageRoute(
         builder: (context) => EqDialog(
-              child: body,
-              header: Text(title),
-              status: status,
-              footerPadding: EdgeInsets.zero,
-              footer: actions != null
-                  ? Wrap(
-                      spacing: 8.0,
-                      runSpacing: 8.0,
-                      alignment: WrapAlignment.end,
-                      children: actions,
-                    )
-                  : null,
-            ),
+          child: body,
+          header: Text(title),
+          status: status,
+          footerPadding: EdgeInsets.zero,
+          footer: actions != null
+              ? Wrap(
+                  spacing: 8.0,
+                  runSpacing: 8.0,
+                  alignment: WrapAlignment.end,
+                  children: actions,
+                )
+              : null,
+        ),
       ),
     );
   }
@@ -79,17 +79,17 @@ class EqDialogServiceState extends State<EqDialogService> {
     return Navigator.of(context).push(
       TransparentPageRoute(
         builder: (context) => EqDialog(
-              child: body,
-              header: Text(title),
-              footerPadding: EdgeInsets.zero,
-              status: status,
-              footer: EqButton(
-                onTap: () => Navigator.of(context).pop(),
-                appearance: EqWidgetAppearance.ghost,
-                label: Text('Close'),
-                status: status,
-              ),
-            ),
+          child: body,
+          header: Text(title),
+          footerPadding: EdgeInsets.zero,
+          status: status,
+          footer: EqButton(
+            onTap: () => Navigator.of(context).pop(),
+            appearance: EqWidgetAppearance.ghost,
+            label: Text('Close'),
+            status: status,
+          ),
+        ),
       ),
     );
   }
@@ -102,11 +102,11 @@ class EqDialogServiceState extends State<EqDialogService> {
     return Navigator.of(context).push(
       TransparentPageRoute(
         builder: (context) => EqCard(
-              shape: EqWidgetShape.round,
-              child: EqSpinner(
-                status: status,
-              ),
-            ),
+          shape: EqWidgetShape.round,
+          child: EqSpinner(
+            status: status,
+          ),
+        ),
       ),
     );
   }

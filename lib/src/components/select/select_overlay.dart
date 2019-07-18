@@ -33,43 +33,43 @@ class EqSelectOverlay extends StatelessWidget {
     return AnimatedBuilder(
       animation: animation,
       builder: (ctx, child) => Container(
-            constraints: BoxConstraints(maxHeight: height),
-            child: EqCard(
-              borderRadius: (openingFromBottom)
-                  ? BorderRadius.vertical(
-                      top: Radius.zero,
-                      bottom: Radius.circular(borderRadiusValue),
-                    )
-                  : BorderRadius.vertical(
-                      top: Radius.circular(borderRadiusValue),
-                      bottom: Radius.zero,
-                    ),
-              padding: EdgeInsets.zero,
-              child: SizeTransition(
-                axis: Axis.vertical,
-                sizeFactor: animation,
-                child: SizedBox(
-                  height: height,
-                  child: ListView(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    children: items.map((item) {
-                      int index = items.indexOf(item);
-                      return EqListItem(
-                        title: item.title,
-                        subtitle: item.subtitle,
-                        padding: EdgeInsets.all(16.0),
-                        icon: item.icon,
-                        onTap: () => onSelect(index, item),
-                        status: status,
-                        active: index == selectedIndex,
-                      );
-                    }).toList(),
-                  ),
+        constraints: BoxConstraints(maxHeight: height),
+        child: EqCard(
+          borderRadius: (openingFromBottom)
+              ? BorderRadius.vertical(
+                  top: Radius.zero,
+                  bottom: Radius.circular(borderRadiusValue),
+                )
+              : BorderRadius.vertical(
+                  top: Radius.circular(borderRadiusValue),
+                  bottom: Radius.zero,
                 ),
+          padding: EdgeInsets.zero,
+          child: SizeTransition(
+            axis: Axis.vertical,
+            sizeFactor: animation,
+            child: SizedBox(
+              height: height,
+              child: ListView(
+                padding: EdgeInsets.zero,
+                shrinkWrap: true,
+                children: items.map((item) {
+                  int index = items.indexOf(item);
+                  return EqListItem(
+                    title: item.title,
+                    subtitle: item.subtitle,
+                    padding: EdgeInsets.all(16.0),
+                    icon: item.icon,
+                    onTap: () => onSelect(index, item),
+                    status: status,
+                    active: index == selectedIndex,
+                  );
+                }).toList(),
               ),
             ),
           ),
+        ),
+      ),
     );
   }
 }

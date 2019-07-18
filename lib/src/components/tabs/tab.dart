@@ -28,7 +28,7 @@ class EqTabData {
       double iconSize = 18.0}) {
     return EqTabData(
       icon: (icon != null) ? (_) => EqIcon(icon, size: iconSize) : null,
-      title: (title != null)? (_) => Text(title) : null,
+      title: (title != null) ? (_) => Text(title) : null,
       disabled: disabled,
     );
   }
@@ -78,8 +78,9 @@ class _EqTabState extends State<EqTab> {
     ]));
 
     bool showPagerIndicator = widget.showPagerIndicator;
-    if(showPagerIndicator == null) {
-      showPagerIndicator = widget.data.title == null && widget.data.icon != null;
+    if (showPagerIndicator == null) {
+      showPagerIndicator =
+          widget.data.title == null && widget.data.icon != null;
     }
 
     return OutlinedGestureDetector(
@@ -111,10 +112,8 @@ class _EqTabState extends State<EqTab> {
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      if (widget.data.icon != null)
-                        widget.data.icon(context),
-                      if (widget.data.icon != null &&
-                          widget.data.title != null)
+                      if (widget.data.icon != null) widget.data.icon(context),
+                      if (widget.data.icon != null && widget.data.title != null)
                         SizedBox(height: 2.0),
                       if (widget.data.title != null) widget.data.title(context),
                     ],
