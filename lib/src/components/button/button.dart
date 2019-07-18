@@ -68,7 +68,7 @@ class EqButton extends StatefulWidget {
     this.leading,
     this.trailing,
     this.separatorWidth = 16.0,
-    this.itemAlignment = MainAxisAlignment.spaceAround,
+    this.itemAlignment = MainAxisAlignment.center,
     this.padding,
     this.fluid = false,
   }) : super(key: key);
@@ -87,7 +87,7 @@ class EqButton extends StatefulWidget {
     this.leading,
     this.trailing,
     this.separatorWidth = 16.0,
-    this.itemAlignment = MainAxisAlignment.spaceAround,
+    this.itemAlignment = MainAxisAlignment.center,
     this.padding,
     this.fluid = false,
   })  : this.appearance = EqWidgetAppearance.filled,
@@ -107,7 +107,7 @@ class EqButton extends StatefulWidget {
     this.leading,
     this.trailing,
     this.separatorWidth = 16.0,
-    this.itemAlignment = MainAxisAlignment.spaceAround,
+    this.itemAlignment = MainAxisAlignment.center,
     this.padding,
     this.fluid = false,
   })  : this.appearance = EqWidgetAppearance.outline,
@@ -127,7 +127,7 @@ class EqButton extends StatefulWidget {
     this.leading,
     this.trailing,
     this.separatorWidth = 16.0,
-    this.itemAlignment = MainAxisAlignment.spaceAround,
+    this.itemAlignment = MainAxisAlignment.center,
     this.padding,
     this.fluid = false,
   })  : this.appearance = EqWidgetAppearance.ghost,
@@ -194,7 +194,7 @@ class _EqButtonState extends State<EqButton> {
               style.get(generateSelector([...selectorStateBase, 'text-color'])),
         ),
         child: Row(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisSize: (widget.fluid)? MainAxisSize.max : MainAxisSize.min,
           mainAxisAlignment: widget.itemAlignment,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: list,
@@ -221,47 +221,40 @@ class _EqButtonState extends State<EqButton> {
     final selectorBackgroundColor =
         style.get(generateSelector([...selectorStateBase, 'background-color']));
 
-    return SizedBox(
-      width: (widget.fluid)? double.infinity : null,
-      child: OutlinedWidget(
-        outlined: outlined,
-        borderRadius: BorderRadius.all(EqWidgetShapeUtils.getRadius(
-          style: style.style,
-          shape: widget.shape,
-        )),
-        child: AnimatedContainer(
-          duration: style.get('minor-animation-duration'),
-          curve: style.get('minor-animation-curve'),
-          decoration: BoxDecoration(
-            color: widget.backgroundColor ?? selectorBackgroundColor,
-            borderRadius: BorderRadius.all(EqWidgetShapeUtils.getRadius(
-              style: style.style,
-              shape: widget.shape,
-            )),
-            border: Border.all(
-              width: style.get(
-                generateSelector([...selectorBase, 'border-width']),
-              ),
-              color: widget.borderColor ??
-                  style.get(
-                    generateSelector([...selectorStateBase, 'border-color']),
-                  ),
+    return OutlinedWidget(
+      outlined: outlined,
+      borderRadius: BorderRadius.all(EqWidgetShapeUtils.getRadius(
+        style: style.style,
+        shape: widget.shape,
+      )),
+      child: AnimatedContainer(
+        duration: style.get('minor-animation-duration'),
+        curve: style.get('minor-animation-curve'),
+        decoration: BoxDecoration(
+          color: widget.backgroundColor ?? selectorBackgroundColor,
+          borderRadius: BorderRadius.all(EqWidgetShapeUtils.getRadius(
+            style: style.style,
+            shape: widget.shape,
+          )),
+          border: Border.all(
+            width: style.get(
+              generateSelector([...selectorBase, 'border-width']),
             ),
+            color: widget.borderColor ??
+                style.get(
+                  generateSelector([...selectorStateBase, 'border-color']),
+                ),
           ),
-          child: OutlinedGestureDetector(
-            onTap: widget.onTap,
-            onOutlineChange: (v) => setState(() => outlined = v),
-            child: Padding(
-              padding: widget.padding ??
-                  style.get(
-                    generateSelector([...selectorSizeBase, 'padding']),
-                  ),
-              child: Center(
-                widthFactor: 1.0,
-                heightFactor: 1.0,
-                child: _buildBody(context),
-              ),
-            ),
+        ),
+        child: OutlinedGestureDetector(
+          onTap: widget.onTap,
+          onOutlineChange: (v) => setState(() => outlined = v),
+          child: Padding(
+            padding: widget.padding ??
+                style.get(
+                  generateSelector([...selectorSizeBase, 'padding']),
+                ),
+            child: _buildBody(context),
           ),
         ),
       ),

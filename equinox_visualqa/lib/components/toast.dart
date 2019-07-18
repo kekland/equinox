@@ -24,7 +24,7 @@ class _ToastShowcaseState extends ShowcaseState<ToastShowcase> {
             child: EqButton(
               status: data['status'],
               shape: data['shape'],
-              label: 'Show toast',
+              label: Text('Show toast'),
               onTap: () => showToast(
                     EqToast(
                       message: 'A message',
@@ -53,7 +53,7 @@ class _ToastShowcaseState extends ShowcaseState<ToastShowcase> {
       ShowcaseWidgetData(
         title: 'Toasts',
         builder: () => EqButton(
-              label: 'Show toast',
+              label: Text('Show toast'),
               onTap: () => showToast(
                     EqToast(
                       message: 'Hi! I am a toast.',
@@ -72,7 +72,7 @@ class _ToastShowcaseState extends ShowcaseState<ToastShowcase> {
                       width: double.infinity,
                       child: EqButton(
                         status: value,
-                        label: 'Show ${enumToString(value)} toast',
+                        label: Text('Show ${enumToString(value)} toast'),
                         onTap: () => showToast(
                               EqToast(
                                 message:
@@ -94,7 +94,7 @@ class _ToastShowcaseState extends ShowcaseState<ToastShowcase> {
                   .map((value) => SizedBox(
                       width: double.infinity,
                       child: EqButton(
-                        label: 'Show ${enumToString(value)} toast',
+                        label: Text('Show ${enumToString(value)} toast'),
                         onTap: () => showToast(
                               EqToast(
                                 message:

@@ -12,16 +12,26 @@ class _TabsBottomShowcaseState extends ShowcaseState<TabsBottomShowcase> {
   Widget playgroundBuilder() => InteractivePlayground(
         data: {
           'enabled': BoolTyped(true),
+          'hasTitle': BoolTyped(true),
           'hasIcons': BoolTyped(true),
         },
         builder: (_, data) => EqTabBar.bottom(
-              tabs: [
-                EqTabData(icon: data['hasIcons']? EvaIcons.star: null, title: 'Tab'),
-                EqTabData(icon: data['hasIcons']? EvaIcons.star: null, title: 'Tab'),
-                EqTabData(icon: data['hasIcons']? EvaIcons.star: null, title: 'Tab'),
-              ],
-              onSelect: data['enabled'] ? (i) {} : null,
+          tabs: [
+            EqTabData.fromIcon(
+              icon: data['hasIcons'] ? EvaIcons.star : null,
+              title: data['hasTitle']? 'Tab' : null,
             ),
+            EqTabData.fromIcon(
+              icon: data['hasIcons'] ? EvaIcons.star : null,
+              title: data['hasTitle']? 'Tab' : null,
+            ),
+            EqTabData.fromIcon(
+              icon: data['hasIcons'] ? EvaIcons.star : null,
+              title: data['hasTitle']? 'Tab' : null,
+            ),
+          ],
+          onSelect: data['enabled'] ? (i) {} : null,
+        ),
       );
 
   @override
@@ -35,9 +45,9 @@ class _TabsBottomShowcaseState extends ShowcaseState<TabsBottomShowcase> {
             padding: const EdgeInsets.all(4.0),
             child: EqTabBar.bottom(
               tabs: [
-                EqTabData(icon: EvaIcons.star, title: 'Tab'),
-                EqTabData(icon: EvaIcons.star, title: 'Tab'),
-                EqTabData(icon: EvaIcons.star, title: 'Tab'),
+                EqTabData.fromIcon(icon: EvaIcons.star, title: 'Tab'),
+                EqTabData.fromIcon(icon: EvaIcons.star, title: 'Tab'),
+                EqTabData.fromIcon(icon: EvaIcons.star, title: 'Tab'),
               ],
               onSelect: (_) {},
             ),
@@ -49,9 +59,23 @@ class _TabsBottomShowcaseState extends ShowcaseState<TabsBottomShowcase> {
             padding: const EdgeInsets.all(4.0),
             child: EqTabBar.bottom(
               tabs: [
-                EqTabData(title: 'Tab'),
-                EqTabData(title: 'Tab'),
-                EqTabData(title: 'Tab'),
+                EqTabData.fromIcon(title: 'Tab'),
+                EqTabData.fromIcon(title: 'Tab'),
+                EqTabData.fromIcon(title: 'Tab'),
+              ],
+              onSelect: (_) {},
+            ),
+          ),
+        ),
+        ShowcaseWidgetData(
+          title: 'Tabs without title',
+          builder: () => EqCard(
+            padding: const EdgeInsets.all(4.0),
+            child: EqTabBar.bottom(
+              tabs: [
+                EqTabData.fromIcon(icon: EvaIcons.star),
+                EqTabData.fromIcon(icon: EvaIcons.star),
+                EqTabData.fromIcon(icon: EvaIcons.star),
               ],
               onSelect: (_) {},
             ),
@@ -63,9 +87,9 @@ class _TabsBottomShowcaseState extends ShowcaseState<TabsBottomShowcase> {
             padding: const EdgeInsets.all(4.0),
             child: EqTabBar.bottom(
               tabs: [
-                EqTabData(icon: EvaIcons.star, title: 'Tab'),
-                EqTabData(icon: EvaIcons.star, title: 'Tab'),
-                EqTabData(icon: EvaIcons.star, title: 'Tab'),
+                EqTabData.fromIcon(icon: EvaIcons.star, title: 'Tab'),
+                EqTabData.fromIcon(icon: EvaIcons.star, title: 'Tab'),
+                EqTabData.fromIcon(icon: EvaIcons.star, title: 'Tab'),
               ],
               onSelect: null,
             ),
@@ -77,9 +101,10 @@ class _TabsBottomShowcaseState extends ShowcaseState<TabsBottomShowcase> {
             padding: const EdgeInsets.all(4.0),
             child: EqTabBar.bottom(
               tabs: [
-                EqTabData(icon: EvaIcons.star, title: 'Tab'),
-                EqTabData(icon: EvaIcons.star, title: 'Tab', disabled: true),
-                EqTabData(icon: EvaIcons.star, title: 'Tab'),
+                EqTabData.fromIcon(icon: EvaIcons.star, title: 'Tab'),
+                EqTabData.fromIcon(
+                    icon: EvaIcons.star, title: 'Tab', disabled: true),
+                EqTabData.fromIcon(icon: EvaIcons.star, title: 'Tab'),
               ],
               onSelect: (i) {},
             ),

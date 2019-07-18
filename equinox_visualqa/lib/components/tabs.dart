@@ -16,9 +16,9 @@ class _TabsShowcaseState extends ShowcaseState<TabsShowcase> {
         },
         builder: (_, data) => EqTabBar.top(
               tabs: [
-                EqTabData(icon: data['hasIcons']? EvaIcons.star: null, title: 'Tab'),
-                EqTabData(icon: data['hasIcons']? EvaIcons.star: null, title: 'Tab'),
-                EqTabData(icon: data['hasIcons']? EvaIcons.star: null, title: 'Tab'),
+                EqTabData.fromIcon(icon: data['hasIcons']? EvaIcons.star: null, title: 'Tab'),
+                EqTabData.fromIcon(icon: data['hasIcons']? EvaIcons.star: null, title: 'Tab'),
+                EqTabData.fromIcon(icon: data['hasIcons']? EvaIcons.star: null, title: 'Tab'),
               ],
               onSelect: data['enabled'] ? (i) {} : null,
             ),
@@ -35,9 +35,9 @@ class _TabsShowcaseState extends ShowcaseState<TabsShowcase> {
             padding: const EdgeInsets.all(4.0),
             child: EqTabBar.top(
               tabs: [
-                EqTabData(icon: EvaIcons.star, title: 'Tab'),
-                EqTabData(icon: EvaIcons.star, title: 'Tab'),
-                EqTabData(icon: EvaIcons.star, title: 'Tab'),
+                EqTabData.fromIcon(icon: EvaIcons.star, title: 'Tab'),
+                EqTabData.fromIcon(icon: EvaIcons.star, title: 'Tab'),
+                EqTabData.fromIcon(icon: EvaIcons.star, title: 'Tab'),
               ],
               onSelect: (_) {},
             ),
@@ -49,9 +49,9 @@ class _TabsShowcaseState extends ShowcaseState<TabsShowcase> {
             padding: const EdgeInsets.all(4.0),
             child: EqTabBar.top(
               tabs: [
-                EqTabData(title: 'Tab'),
-                EqTabData(title: 'Tab'),
-                EqTabData(title: 'Tab'),
+                EqTabData.fromIcon(title: 'Tab'),
+                EqTabData.fromIcon(title: 'Tab'),
+                EqTabData.fromIcon(title: 'Tab'),
               ],
               onSelect: (_) {},
             ),
@@ -63,9 +63,9 @@ class _TabsShowcaseState extends ShowcaseState<TabsShowcase> {
             padding: const EdgeInsets.all(4.0),
             child: EqTabBar.top(
               tabs: [
-                EqTabData(icon: EvaIcons.star, title: 'Tab'),
-                EqTabData(icon: EvaIcons.star, title: 'Tab'),
-                EqTabData(icon: EvaIcons.star, title: 'Tab'),
+                EqTabData.fromIcon(icon: EvaIcons.star, title: 'Tab'),
+                EqTabData.fromIcon(icon: EvaIcons.star, title: 'Tab'),
+                EqTabData.fromIcon(icon: EvaIcons.star, title: 'Tab'),
               ],
               onSelect: null,
             ),
@@ -77,9 +77,9 @@ class _TabsShowcaseState extends ShowcaseState<TabsShowcase> {
             padding: const EdgeInsets.all(4.0),
             child: EqTabBar.top(
               tabs: [
-                EqTabData(icon: EvaIcons.star, title: 'Tab'),
-                EqTabData(icon: EvaIcons.star, title: 'Tab', disabled: true),
-                EqTabData(icon: EvaIcons.star, title: 'Tab'),
+                EqTabData.fromIcon(icon: EvaIcons.star, title: 'Tab'),
+                EqTabData.fromIcon(icon: EvaIcons.star, title: 'Tab', disabled: true),
+                EqTabData.fromIcon(icon: EvaIcons.star, title: 'Tab'),
               ],
               onSelect: (i) {},
             ),

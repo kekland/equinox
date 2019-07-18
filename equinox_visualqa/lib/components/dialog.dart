@@ -29,7 +29,7 @@ class _DialogShowcaseState extends ShowcaseState<DialogShowcase> {
                 SizedBox(
                   width: double.infinity,
                   child: EqButton(
-                    label: 'Open information dialog',
+                    label: Text('Open information dialog'),
                     status: EqWidgetStatus.info,
                     onTap: () {
                       EqDialogService.of(context).pushInformationDialog(
@@ -43,7 +43,7 @@ class _DialogShowcaseState extends ShowcaseState<DialogShowcase> {
                 SizedBox(
                   width: double.infinity,
                   child: EqButton(
-                    label: 'Open dialog with actions',
+                    label: Text('Open dialog with actions'),
                     status: EqWidgetStatus.primary,
                     onTap: () {
                       EqDialogService.of(context).pushDialog(
@@ -54,13 +54,13 @@ class _DialogShowcaseState extends ShowcaseState<DialogShowcase> {
                         actions: [
                           EqButton(
                             appearance: EqWidgetAppearance.ghost,
-                            label: 'No',
+                            label: Text('No'),
                             status: EqWidgetStatus.danger,
                             onTap: () => Navigator.pop(context),
                           ),
                           EqButton(
                             appearance: EqWidgetAppearance.ghost,
-                            label: 'Yes',
+                            label: Text('Yes'),
                             status: EqWidgetStatus.primary,
                             onTap: () => Navigator.pop(context),
                           ),
@@ -72,7 +72,7 @@ class _DialogShowcaseState extends ShowcaseState<DialogShowcase> {
                 SizedBox(
                   width: double.infinity,
                   child: EqButton(
-                    label: 'Open loading dialog',
+                    label: Text('Open loading dialog'),
                     status: EqWidgetStatus.success,
                     onTap: () {
                       EqDialogService.of(context).pushLoadingDialog(
@@ -96,7 +96,7 @@ class _DialogShowcaseState extends ShowcaseState<DialogShowcase> {
                     (value) => SizedBox(
                           width: double.infinity,
                           child: EqButton(
-                            label: 'Open ${enumToString(value)} dialog',
+                            label: Text('Open ${enumToString(value)} dialog'),
                             status: value,
                             onTap: () {
                               EqDialogService.of(context).pushInformationDialog(
@@ -123,7 +123,7 @@ class _DialogShowcaseState extends ShowcaseState<DialogShowcase> {
                     (value) => SizedBox(
                           width: double.infinity,
                           child: EqButton(
-                            label: 'Open ${enumToString(value)} loading dialog',
+                            label: Text('Open ${enumToString(value)} loading dialog'),
                             status: value,
                             onTap: () {
                               EqDialogService.of(context).pushLoadingDialog(

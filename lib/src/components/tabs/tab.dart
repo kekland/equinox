@@ -7,7 +7,7 @@ export 'package:equinox/src/components/tabs/tab_style.dart';
 /// A data for tab. Either [icon] or [title] must be present.
 class EqTabData {
   /// Leading widget to display alongside [title].
-  final WidgetBuilder leading;
+  final WidgetBuilder icon;
 
   /// Label to display. Can be null.
   final WidgetBuilder title;
@@ -16,16 +16,19 @@ class EqTabData {
   final bool disabled;
 
   EqTabData({
-    this.leading,
+    this.icon,
     this.title,
     this.disabled = false,
   });
 
   factory EqTabData.fromIcon(
-      {String title, IconData icon, bool disabled, double iconSize = 18.0}) {
+      {String title,
+      IconData icon,
+      bool disabled = false,
+      double iconSize = 18.0}) {
     return EqTabData(
-      leading: (_) => EqIcon(icon, size: iconSize),
-      title: (_) => Text(title),
+      icon: (icon != null) ? (_) => EqIcon(icon, size: iconSize) : null,
+      title: (title != null)? (_) => Text(title) : null,
       disabled: disabled,
     );
   }
@@ -74,6 +77,11 @@ class _EqTabState extends State<EqTab> {
       'color'
     ]));
 
+    bool showPagerIndicator = widget.showPagerIndicator;
+    if(showPagerIndicator == null) {
+      showPagerIndicator = widget.data.title == null && widget.data.icon != null;
+    }
+
     return OutlinedGestureDetector(
       onOutlineChange: (v) => setState(() => tapping = v),
       onTap: widget.onTap,
@@ -81,6 +89,7 @@ class _EqTabState extends State<EqTab> {
         width: double.infinity,
         height: double.infinity,
         child: StaticStyle(
+          inheritFromParent: false,
           data: style.style.fork()
             ..inject(StyleData({
               'icon-color': foregroundColor,
@@ -100,17 +109,18 @@ class _EqTabState extends State<EqTab> {
                   alignment: Alignment.center,
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      if (widget.data.leading != null)
-                        widget.data.leading(context),
-                      if (widget.data.leading != null &&
+                      if (widget.data.icon != null)
+                        widget.data.icon(context),
+                      if (widget.data.icon != null &&
                           widget.data.title != null)
                         SizedBox(height: 2.0),
                       if (widget.data.title != null) widget.data.title(context),
                     ],
                   ),
                 ),
-                if (widget.showPagerIndicator)
+                if (showPagerIndicator)
                   Align(
                     alignment: widget.pagerIndicatorAlignment,
                     child: AnimatedContainer(
