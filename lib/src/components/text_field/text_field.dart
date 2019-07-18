@@ -202,11 +202,23 @@ class _EqTextFieldState extends State<EqTextField> {
                       [...statusSelector, 'background-color'])),
                   prefixIcon: (widget.icon != null &&
                           widget.iconPosition == EqPositioning.left)
-                      ? EqIcon(widget.icon, color: textColor)
+                      ? EqIcon(
+                          widget.icon,
+                          color: style.get(generateSelector(
+                              [...statusSelector, 'hint-color'])),
+                          size: style.get(generateSelector(
+                              [...sizedSelector, 'text-font-size'])),
+                        )
                       : null,
                   suffixIcon: (widget.icon != null &&
                           widget.iconPosition == EqPositioning.right)
-                      ? Icon(widget.icon, color: textColor)
+                      ? EqIcon(
+                          widget.icon,
+                          color: style.get(generateSelector(
+                              [...statusSelector, 'hint-color'])),
+                          size: style.get(generateSelector(
+                              [...sizedSelector, 'text-font-size'])),
+                        )
                       : null,
                   contentPadding: widget.padding ??
                       style

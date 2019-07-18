@@ -57,15 +57,15 @@ final StyleData textFieldStyle = StyleData({
   'text-field-giant-text-font-size': 'text-heading-6-font-size',
   'text-field-giant-text-font-weight': 'text-heading-6-font-weight',
   'text-field-tiny-padding':
-      EdgeInsets.symmetric(vertical: 0.2275 * 16.0, horizontal: 1.125 * 16.0),
-  'text-field-small-padding':
-      EdgeInsets.symmetric(vertical: 0.2275 * 16.0, horizontal: 1.125 * 16.0),
-  'text-field-medium-padding':
       EdgeInsets.symmetric(vertical: 0.4375 * 16.0, horizontal: 1.125 * 16.0),
-  'text-field-large-padding':
+  'text-field-small-padding':
+      EdgeInsets.symmetric(vertical: 0.5375 * 16.0, horizontal: 1.125 * 16.0),
+  'text-field-medium-padding':
       EdgeInsets.symmetric(vertical: 0.6875 * 16.0, horizontal: 1.125 * 16.0),
-  'text-field-giant-padding':
+  'text-field-large-padding':
       EdgeInsets.symmetric(vertical: 0.9375 * 16.0, horizontal: 1.125 * 16.0),
+  'text-field-giant-padding':
+      EdgeInsets.symmetric(vertical: 1.0 * 16.0, horizontal: 1.125 * 16.0),
   'text-field-border-color': 'border-basic-color-3',
   'text-field-background-color': 'background-basic-color-2',
   'text-field-text-color': 'text-basic-color',

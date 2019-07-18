@@ -22,6 +22,7 @@ class _TextFieldShowcaseState extends ShowcaseState<TextFieldShowcase> {
           'iconPosition': EnumTyped(EqPositioning.left, EqPositioning.values),
           'status': EnumTyped(EqWidgetStatus.primary, EqWidgetStatus.values),
           'shape': EnumTyped(EqWidgetShape.rectangle, EqWidgetShape.values),
+          'size': EnumTyped(EqWidgetSize.medium, EqWidgetSize.values),
         },
         builder: (_, data) => EqTextField(
           hint: 'Hint',
@@ -34,6 +35,7 @@ class _TextFieldShowcaseState extends ShowcaseState<TextFieldShowcase> {
           iconPosition: data['iconPosition'],
           status: data['status'],
           shape: data['shape'],
+          size: data['size'],
         ),
       );
 
