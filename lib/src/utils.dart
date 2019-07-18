@@ -12,7 +12,7 @@ class EqToggleableDesciptionUtils {
     }
     if (descriptionPosition == EqPositioning.left) {
       return <Widget>[
-        description,
+        Flexible(child: description),
         SizedBox(width: padding),
         main,
       ];
@@ -20,7 +20,7 @@ class EqToggleableDesciptionUtils {
       return <Widget>[
         main,
         SizedBox(width: padding),
-        description,
+        Flexible(child: description),
       ];
     }
     return null;

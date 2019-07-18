@@ -159,7 +159,7 @@ class _EqButtonState extends State<EqButton> {
         widget.leading,
         SizedBox(width: widget.separatorWidth),
       ],
-      Flexible(child: widget.label),
+      widget.label,
       if (widget.trailing != null) ...[
         SizedBox(width: widget.separatorWidth),
         widget.trailing,

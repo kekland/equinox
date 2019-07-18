@@ -23,6 +23,9 @@ class EqProgressBar extends StatefulWidget {
   /// Color overwrites the color set by [status]. Use it if you, for example, want to animate the color.
   final Color color;
 
+  /// Height of the progress bar. Use it to override the default height.
+  final double height;
+
   const EqProgressBar({
     Key key,
     @required this.value,
@@ -31,6 +34,7 @@ class EqProgressBar extends StatefulWidget {
     this.text,
     this.shape,
     this.size = EqWidgetSize.medium,
+    this.height,
   }) : super(key: key);
   @override
   _EqProgressBarState createState() => _EqProgressBarState();
@@ -85,7 +89,7 @@ class _EqProgressBarState extends State<EqProgressBar>
       widget.size,
     ];
 
-    final height = style.get(generateSelector([...selectorSizeBase, 'height']));
+    final height = widget.height ?? style.get(generateSelector([...selectorSizeBase, 'height']));
     final borderRadius = BorderRadius.all(EqWidgetShapeUtils.getRadius(
       style: style.style,
       shape: widget.shape,
