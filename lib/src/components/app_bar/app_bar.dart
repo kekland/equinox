@@ -173,7 +173,6 @@ class EqAppBar extends StatelessWidget implements PreferredSizeWidget {
                   ),
                 if (bottom != null)
                   Container(
-                    height: 56.0,
                     padding: const EdgeInsets.symmetric(horizontal: 4.0),
                     child: bottom,
                   ),
