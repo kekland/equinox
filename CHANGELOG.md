@@ -1,3 +1,11 @@
+# 0.2.1
+
+- Breaking changes:
+- Added `leading`, `trailing`, `padding`, and other stuff into `EqButton`.
+- Added more customization for EqTabs.
+- Changed `EqTabData`.
+- Added `EqTabData.fromIcon()`.
+
 # 0.2.4
 
 - Another `EqButton` hotfix.

@@ -68,7 +68,7 @@ class _HomePageState extends State<HomePage> {
       footer: EqButton(
         appearance: EqWidgetAppearance.ghost,
         onTap: () {},
-        label: 'Log in',
+        label: Text('Log in'),
         size: EqWidgetSize.large,
         status: EqWidgetStatus.primary,
       ),
@@ -86,19 +86,19 @@ class _HomePageState extends State<HomePage> {
           defaultSelected: 0,
           onSelect: (v) {},
           tabs: [
-            EqTabData(
+            EqTabData.fromIcon(
               icon: EvaIcons.star,
               title: 'Tab 1',
             ),
-            EqTabData(
+            EqTabData.fromIcon(
               icon: EvaIcons.star,
               title: 'Tab 2',
             ),
-            EqTabData(
+            EqTabData.fromIcon(
               icon: EvaIcons.star,
               title: 'Tab 3',
             ),
-            EqTabData(
+            EqTabData.fromIcon(
               icon: EvaIcons.star,
               title: 'Tab 4',
             ),
