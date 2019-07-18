@@ -6,7 +6,7 @@ export 'package:equinox/src/components/tabs/tab.dart';
 /// paths or pages.
 ///
 /// [tabs] must not be null.
-class EqTabs extends StatefulWidget {
+class EqTabs extends StatefulWidget implements PreferredSizeWidget {
   /// Index of a tab that is selected by default.
   final int defaultSelected;
 
@@ -32,6 +32,9 @@ class EqTabs extends StatefulWidget {
   }) : super(key: key);
   @override
   _EqTabsState createState() => _EqTabsState();
+
+  @override
+  Size get preferredSize => Size.fromHeight(48.0);
 }
 
 class _EqTabsState extends State<EqTabs> {

@@ -4,7 +4,7 @@ import 'package:equinox/equinox.dart';
 
 export 'package:equinox/src/components/app_bar/app_bar_style.dart';
 
-/// AppBar is used in [EqLayout]. It is displayed on top of a page.
+/// AppBar is used in [EqLayout]. It is displayed on top of a page. You can also use it in [EqLayout.bottom].
 class EqAppBar extends StatelessWidget implements PreferredSizeWidget {
   /// Title of the page. Use [EqAppBar.withoutTitle()] if you want no title.
   final String title;
@@ -25,8 +25,8 @@ class EqAppBar extends StatelessWidget implements PreferredSizeWidget {
   /// Set of actions. Usually a list of [EqIconButton].
   final List<Widget> actions;
 
-  /// Widget to display on the bottom. Must be 56 pixels tall. Usually it is [EqTabs].
-  final Widget bottom;
+  /// Widget to display on the bottom. Usually it is [EqTabBar].
+  final PreferredSizeWidget bottom;
 
   /// Does this app bar have a title?
   final bool hasTitle;
@@ -52,6 +52,19 @@ class EqAppBar extends StatelessWidget implements PreferredSizeWidget {
   }) : super(key: key);
 
   const EqAppBar.withoutTitle({
+    Key key,
+    @required this.bottom,
+    this.backgroundColor,
+    this.foregroundColor,
+  })  : this.title = null,
+        this.subtitle = null,
+        this.centerTitle = false,
+        this.leading = null,
+        this.actions = null,
+        this.inferLeading = false,
+        this.hasTitle = false;
+        
+  const EqAppBar.bottom({
     Key key,
     @required this.bottom,
     this.backgroundColor,
@@ -124,7 +137,7 @@ class EqAppBar extends StatelessWidget implements PreferredSizeWidget {
   double _calculateHeight() {
     double height = 0.0;
     if (hasTitle) height += 64.0;
-    if (bottom != null) height += 56.0;
+    if (bottom != null) height += bottom.preferredSize.height;
     return height;
   }
 

@@ -6,24 +6,29 @@ export 'package:equinox/src/components/tabs/tab_style.dart';
 
 /// A data for tab. Either [icon] or [title] must be present.
 class EqTabData {
-  /// Icon to display alongside [title], if it exists. Can be null.
-  final IconData icon;
+  /// Leading widget to display alongside [title].
+  final WidgetBuilder leading;
 
   /// Label to display. Can be null.
-  final String title;
+  final WidgetBuilder title;
 
   /// Whether the tab is disabled or not. By default it is false.
   final bool disabled;
 
-  /// Controls the size of the icon. Defaults to `18.0`.
-  final double iconSize;
-
   EqTabData({
-    this.icon,
+    this.leading,
     this.title,
     this.disabled = false,
-    this.iconSize = 18.0,
   });
+
+  factory EqTabData.fromIcon(
+      {String title, IconData icon, bool disabled, double iconSize = 18.0}) {
+    return EqTabData(
+      leading: (_) => EqIcon(icon, size: iconSize),
+      title: (_) => Text(title),
+      disabled: disabled,
+    );
+  }
 }
 
 /// A singular tab. [data] must not be null.
@@ -75,51 +80,53 @@ class _EqTabState extends State<EqTab> {
       child: Container(
         width: double.infinity,
         height: double.infinity,
-        child: Stack(
-          children: <Widget>[
-            Align(
-              alignment: Alignment.center,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  if (widget.data.icon != null)
-                    EqIcon(
-                      icon: widget.data.icon,
-                      size: widget.data.iconSize,
-                      color: foregroundColor,
-                    ),
-                  if (widget.data.icon != null && widget.data.title != null)
-                    SizedBox(height: 2.0),
-                  if (widget.data.title != null)
-                    Text(
-                      widget.data.title.toUpperCase(),
-                      textAlign: TextAlign.center,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontFamily: style.get('tab-text-font-family'),
-                        fontSize: style.get('tab-text-font-size'),
-                        fontWeight: style.get('tab-text-font-weight'),
-                        color: foregroundColor,
-                      ),
-                    ),
-                ],
-              ),
+        child: StaticStyle(
+          data: style.style.fork()
+            ..inject(StyleData({
+              'icon-color': foregroundColor,
+            })),
+          child: AnimatedDefaultTextStyle(
+            duration: style.get('minor-animation-duration'),
+            curve: style.get('minor-animation-curve'),
+            style: TextStyle(
+              fontFamily: style.get('tab-text-font-family'),
+              fontSize: style.get('tab-text-font-size'),
+              fontWeight: style.get('tab-text-font-weight'),
+              color: foregroundColor,
             ),
-            if (widget.showPagerIndicator)
-              Align(
-                alignment: widget.pagerIndicatorAlignment,
-                child: AnimatedContainer(
-                  duration: style.get('minor-animation-duration'),
-                  curve: style.get('minor-animation-curve'),
-                  width: double.infinity,
-                  height: 4.0,
-                  decoration: BoxDecoration(
-                    color: containerColor,
-                    borderRadius: BorderRadius.circular(2.0),
+            child: Stack(
+              children: <Widget>[
+                Align(
+                  alignment: Alignment.center,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      if (widget.data.leading != null)
+                        widget.data.leading(context),
+                      if (widget.data.leading != null &&
+                          widget.data.title != null)
+                        SizedBox(height: 2.0),
+                      if (widget.data.title != null) widget.data.title(context),
+                    ],
                   ),
                 ),
-              ),
-          ],
+                if (widget.showPagerIndicator)
+                  Align(
+                    alignment: widget.pagerIndicatorAlignment,
+                    child: AnimatedContainer(
+                      duration: style.get('minor-animation-duration'),
+                      curve: style.get('minor-animation-curve'),
+                      width: double.infinity,
+                      height: 4.0,
+                      decoration: BoxDecoration(
+                        color: containerColor,
+                        borderRadius: BorderRadius.circular(2.0),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          ),
         ),
       ),
     );

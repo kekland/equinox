@@ -9,7 +9,7 @@ class EqIcon extends StatelessWidget {
   final EqWidgetStatus status;
 
   const EqIcon(
-    this.icon,{
+    this.icon, {
     Key key,
     this.size,
     this.color,

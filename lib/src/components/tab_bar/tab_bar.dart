@@ -5,7 +5,7 @@ import 'package:flutter/widgets.dart';
 /// paths or pages. Use [EqTabBar.bottom()] if you want to make it a BottomTabBar, and [EqTabBar.top()] otherwise.
 ///
 /// [tabs] must not be null.
-class EqTabBar extends StatelessWidget {
+class EqTabBar extends StatelessWidget implements PreferredSizeWidget {
   /// Index of a tab that is selected by default.
   final int defaultSelected;
 
@@ -54,4 +54,7 @@ class EqTabBar extends StatelessWidget {
           : EqVerticalPositioning.top,
     );
   }
+
+  @override
+  Size get preferredSize => Size.fromHeight(48.0);
 }

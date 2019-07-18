@@ -198,7 +198,7 @@ class _EqTextFieldState extends State<EqTextField> {
                       [...statusSelector, 'background-color'])),
                   prefixIcon: (widget.icon != null &&
                           widget.iconPosition == EqPositioning.left)
-                      ? EqIcon(icon: widget.icon, color: textColor)
+                      ? EqIcon(widget.icon, color: textColor)
                       : null,
                   suffixIcon: (widget.icon != null &&
                           widget.iconPosition == EqPositioning.right)
