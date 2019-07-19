@@ -89,7 +89,8 @@ class _EqProgressBarState extends State<EqProgressBar>
       widget.size,
     ];
 
-    final height = widget.height ?? style.get(generateSelector([...selectorSizeBase, 'height']));
+    final height = widget.height ??
+        style.get(generateSelector([...selectorSizeBase, 'height']));
     final borderRadius = BorderRadius.all(EqWidgetShapeUtils.getRadius(
       style: style.style,
       shape: widget.shape,
