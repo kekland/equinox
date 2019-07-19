@@ -44,7 +44,7 @@ class _EqLayoutState extends State<EqLayout> {
             children: <Widget>[
               Positioned(
                 top: (widget.appBar != null)
-                    ? widget.appBar.preferredSize.height
+                    ? widget.appBar.preferredSize.height + MediaQuery.of(context).padding.top
                     : 0.0,
                 bottom: (widget.bottomTabBar != null)
                     ? widget.bottomTabBar.preferredSize.height
