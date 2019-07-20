@@ -94,20 +94,20 @@ class _DialogShowcaseState extends ShowcaseState<DialogShowcase> {
               children: EqWidgetStatus.values
                   .map(
                     (value) => SizedBox(
-                          width: double.infinity,
-                          child: EqButton(
-                            label: Text('Open ${enumToString(value)} dialog'),
+                      width: double.infinity,
+                      child: EqButton(
+                        label: Text('Open ${enumToString(value)} dialog'),
+                        status: value,
+                        onTap: () {
+                          EqDialogService.of(context).pushInformationDialog(
                             status: value,
-                            onTap: () {
-                              EqDialogService.of(context).pushInformationDialog(
-                                status: value,
-                                context: context,
-                                title: enumToString(value),
-                                body: Text(equinoxDescription),
-                              );
-                            },
-                          ),
-                        ),
+                            context: context,
+                            title: enumToString(value),
+                            body: Text(equinoxDescription),
+                          );
+                        },
+                      ),
+                    ),
                   )
                   .toList(),
               separatorBuilder: (_, i) => SizedBox(height: 16.0),
@@ -121,18 +121,19 @@ class _DialogShowcaseState extends ShowcaseState<DialogShowcase> {
               children: EqWidgetStatus.values
                   .map(
                     (value) => SizedBox(
-                          width: double.infinity,
-                          child: EqButton(
-                            label: Text('Open ${enumToString(value)} loading dialog'),
+                      width: double.infinity,
+                      child: EqButton(
+                        label:
+                            Text('Open ${enumToString(value)} loading dialog'),
+                        status: value,
+                        onTap: () {
+                          EqDialogService.of(context).pushLoadingDialog(
                             status: value,
-                            onTap: () {
-                              EqDialogService.of(context).pushLoadingDialog(
-                                status: value,
-                                context: context,
-                              );
-                            },
-                          ),
-                        ),
+                            context: context,
+                          );
+                        },
+                      ),
+                    ),
                   )
                   .toList(),
               separatorBuilder: (_, i) => SizedBox(height: 16.0),

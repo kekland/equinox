@@ -5,18 +5,16 @@ String enumToString(dynamic value) {
 String normalize(String value) {
   String newString = "";
 
-  for(int i = 0; i < value.length; i++) {
+  for (int i = 0; i < value.length; i++) {
     var char = value[i];
-    if(char.toUpperCase() == char) {
+    if (char.toUpperCase() == char) {
       newString += ' $char';
-    }
-    else if(i == 0) {
+    } else if (i == 0) {
       newString += char.toUpperCase();
-    }
-    else {
+    } else {
       newString += char;
     }
   }
-  
+
   return newString;
 }

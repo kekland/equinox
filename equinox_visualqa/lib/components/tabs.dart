@@ -15,13 +15,16 @@ class _TabsShowcaseState extends ShowcaseState<TabsShowcase> {
           'hasIcons': BoolTyped(true),
         },
         builder: (_, data) => EqTabBar.top(
-              tabs: [
-                EqTabData.fromIcon(icon: data['hasIcons']? EvaIcons.star: null, title: 'Tab'),
-                EqTabData.fromIcon(icon: data['hasIcons']? EvaIcons.star: null, title: 'Tab'),
-                EqTabData.fromIcon(icon: data['hasIcons']? EvaIcons.star: null, title: 'Tab'),
-              ],
-              onSelect: data['enabled'] ? (i) {} : null,
-            ),
+          tabs: [
+            EqTabData.fromIcon(
+                icon: data['hasIcons'] ? EvaIcons.star : null, title: 'Tab'),
+            EqTabData.fromIcon(
+                icon: data['hasIcons'] ? EvaIcons.star : null, title: 'Tab'),
+            EqTabData.fromIcon(
+                icon: data['hasIcons'] ? EvaIcons.star : null, title: 'Tab'),
+          ],
+          onSelect: data['enabled'] ? (i) {} : null,
+        ),
       );
 
   @override
@@ -78,7 +81,8 @@ class _TabsShowcaseState extends ShowcaseState<TabsShowcase> {
             child: EqTabBar.top(
               tabs: [
                 EqTabData.fromIcon(icon: EvaIcons.star, title: 'Tab'),
-                EqTabData.fromIcon(icon: EvaIcons.star, title: 'Tab', disabled: true),
+                EqTabData.fromIcon(
+                    icon: EvaIcons.star, title: 'Tab', disabled: true),
                 EqTabData.fromIcon(icon: EvaIcons.star, title: 'Tab'),
               ],
               onSelect: (i) {},

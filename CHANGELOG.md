@@ -1,3 +1,7 @@
+# 0.3.3
+
+- Minor AppBar sizing fix
+
 # 0.3.2
 
 - Fixed issue #8

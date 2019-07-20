@@ -12,7 +12,7 @@ class RadioShowcase extends StatefulWidget {
 class _RadioShowcaseState extends ShowcaseState<RadioShowcase> {
   @override
   Widget playgroundBuilder() => SizedBox();
-  
+
   @override
   String get showcaseName => 'Radio';
 
@@ -27,8 +27,8 @@ class _RadioShowcaseState extends ShowcaseState<RadioShowcase> {
   setStatus(String key) {
     status[key] = true;
     var prefix = key.split('.').first;
-    for(final itemKey in status.keys) {
-      if(itemKey.split('.').first == prefix && itemKey != key) {
+    for (final itemKey in status.keys) {
+      if (itemKey.split('.').first == prefix && itemKey != key) {
         status[itemKey] = false;
       }
     }
@@ -40,60 +40,60 @@ class _RadioShowcaseState extends ShowcaseState<RadioShowcase> {
         ShowcaseWidgetData(
           title: 'Radio',
           builder: () => SeparatedColumn(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  EqRadio(
-                    value: getStatus('d.0'),
-                    onSelected: () => setStatus('d.0'),
-                    description: 'Description',
-                  ),
-                  EqRadio(
-                    value: getStatus('d.1'),
-                    onSelected: () => setStatus('d.1'),
-                    description: 'Description',
-                  ),
-                  EqRadio(
-                    value: false,
-                    onSelected: null,
-                    description: 'Disabled',
-                  ),
-                ],
-                separatorBuilder: (_, i) => SizedBox(height: 16.0),
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              EqRadio(
+                value: getStatus('d.0'),
+                onSelected: () => setStatus('d.0'),
+                description: 'Description',
               ),
+              EqRadio(
+                value: getStatus('d.1'),
+                onSelected: () => setStatus('d.1'),
+                description: 'Description',
+              ),
+              EqRadio(
+                value: false,
+                onSelected: null,
+                description: 'Disabled',
+              ),
+            ],
+            separatorBuilder: (_, i) => SizedBox(height: 16.0),
+          ),
         ),
         ShowcaseWidgetData(
           title: 'Radio colors',
           builder: () => SeparatedColumn(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: EqWidgetStatus.values
-                    .map(
-                      (value) => EqRadio(
-                            value: getStatus(value.toString()),
-                            onSelected: () => setStatus(value.toString()),
-                            description: enumToString(value),
-                            status: value,
-                          ),
-                    )
-                    .toList(),
-                separatorBuilder: (_, i) => SizedBox(height: 16.0),
-              ),
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: EqWidgetStatus.values
+                .map(
+                  (value) => EqRadio(
+                    value: getStatus(value.toString()),
+                    onSelected: () => setStatus(value.toString()),
+                    description: enumToString(value),
+                    status: value,
+                  ),
+                )
+                .toList(),
+            separatorBuilder: (_, i) => SizedBox(height: 16.0),
+          ),
         ),
         ShowcaseWidgetData(
           title: 'Description location',
           builder: () => SeparatedColumn(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: EqPositioning.values
-                    .map(
-                      (value) => EqRadio(
-                            value: getStatus(value.toString()),
-                            onSelected: () => setStatus(value.toString()),
-                            description: enumToString(value),
-                            descriptionPosition: value,
-                          ),
-                    )
-                    .toList(),
-                separatorBuilder: (_, i) => SizedBox(height: 16.0),
-              ),
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: EqPositioning.values
+                .map(
+                  (value) => EqRadio(
+                    value: getStatus(value.toString()),
+                    onSelected: () => setStatus(value.toString()),
+                    description: enumToString(value),
+                    descriptionPosition: value,
+                  ),
+                )
+                .toList(),
+            separatorBuilder: (_, i) => SizedBox(height: 16.0),
+          ),
         ),
       ];
 }

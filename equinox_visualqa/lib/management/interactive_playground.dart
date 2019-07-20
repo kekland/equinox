@@ -58,9 +58,9 @@ class _InteractivePlaygroundState extends State<InteractivePlayground> {
           items: data.values
               .map(
                 (value) => EqSelectItem(
-                      title: enumToString(value),
-                      value: value,
-                    ),
+                  title: enumToString(value),
+                  value: value,
+                ),
               )
               .toList(),
           onSelect: (v) => setState(() => dataCopy[key].value = v),

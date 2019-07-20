@@ -19,15 +19,15 @@ class _TabsBottomShowcaseState extends ShowcaseState<TabsBottomShowcase> {
           tabs: [
             EqTabData.fromIcon(
               icon: data['hasIcons'] ? EvaIcons.star : null,
-              title: data['hasTitle']? 'Tab' : null,
+              title: data['hasTitle'] ? 'Tab' : null,
             ),
             EqTabData.fromIcon(
               icon: data['hasIcons'] ? EvaIcons.star : null,
-              title: data['hasTitle']? 'Tab' : null,
+              title: data['hasTitle'] ? 'Tab' : null,
             ),
             EqTabData.fromIcon(
               icon: data['hasIcons'] ? EvaIcons.star : null,
-              title: data['hasTitle']? 'Tab' : null,
+              title: data['hasTitle'] ? 'Tab' : null,
             ),
           ],
           onSelect: data['enabled'] ? (i) {} : null,

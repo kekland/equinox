@@ -23,8 +23,8 @@ class _ProgressBarShowcaseState extends ShowcaseState<ProgressBarShowcase> {
                 children: [
                   EqIconButton(
                     icon: EvaIcons.minus,
-                    onTap: () => setState(
-                        () => percentage2 = (percentage2 - 0.25).clamp(0.0, 1.0)),
+                    onTap: () => setState(() =>
+                        percentage2 = (percentage2 - 0.25).clamp(0.0, 1.0)),
                     status: data['status'],
                     appearance: EqWidgetAppearance.ghost,
                   ),
@@ -40,8 +40,8 @@ class _ProgressBarShowcaseState extends ShowcaseState<ProgressBarShowcase> {
                   SizedBox(width: 16.0),
                   EqIconButton(
                     icon: EvaIcons.plus,
-                    onTap: () => setState(
-                        () => percentage2 = (percentage2 + 0.25).clamp(0.0, 1.0)),
+                    onTap: () => setState(() =>
+                        percentage2 = (percentage2 + 0.25).clamp(0.0, 1.0)),
                     status: data['status'],
                     appearance: EqWidgetAppearance.ghost,
                   ),
@@ -60,95 +60,95 @@ class _ProgressBarShowcaseState extends ShowcaseState<ProgressBarShowcase> {
       ShowcaseWidgetData(
         title: 'Progress bar',
         builder: () => SeparatedColumn(
-              children: [
-                EqProgressBar(
-                  value: 0.45,
-                  text: '45%',
-                ),
-                EqProgressBar(
-                  value: 0.85,
-                  text: '85%',
-                ),
-              ],
-              separatorBuilder: (_, i) => SizedBox(height: 16.0),
+          children: [
+            EqProgressBar(
+              value: 0.45,
+              text: '45%',
             ),
+            EqProgressBar(
+              value: 0.85,
+              text: '85%',
+            ),
+          ],
+          separatorBuilder: (_, i) => SizedBox(height: 16.0),
+        ),
       ),
       ShowcaseWidgetData(
         title: 'Progress bar colors',
         builder: () => SeparatedColumn(
-              children: EqWidgetStatus.values
-                  .map(
-                    (value) => EqProgressBar(
-                          value: 0.8,
-                          text: enumToString(value),
-                          status: value,
-                        ),
-                  )
-                  .toList(),
-              separatorBuilder: (_, i) => SizedBox(height: 16.0),
-            ),
+          children: EqWidgetStatus.values
+              .map(
+                (value) => EqProgressBar(
+                  value: 0.8,
+                  text: enumToString(value),
+                  status: value,
+                ),
+              )
+              .toList(),
+          separatorBuilder: (_, i) => SizedBox(height: 16.0),
+        ),
       ),
       ShowcaseWidgetData(
         title: 'Progress bar shapes',
         builder: () => SeparatedColumn(
-              children: EqWidgetShape.values
-                  .map(
-                    (value) => EqProgressBar(
-                          value: 0.8,
-                          text: enumToString(value),
-                          status: EqWidgetStatus.success,
-                          shape: value,
-                        ),
-                  )
-                  .toList(),
-              separatorBuilder: (_, i) => SizedBox(height: 16.0),
-            ),
+          children: EqWidgetShape.values
+              .map(
+                (value) => EqProgressBar(
+                  value: 0.8,
+                  text: enumToString(value),
+                  status: EqWidgetStatus.success,
+                  shape: value,
+                ),
+              )
+              .toList(),
+          separatorBuilder: (_, i) => SizedBox(height: 16.0),
+        ),
       ),
       ShowcaseWidgetData(
         title: 'Progress bar sizes',
         builder: () => SeparatedColumn(
-              children: EqWidgetSize.values
-                  .map(
-                    (value) => EqProgressBar(
-                          value: 0.8,
-                          text: enumToString(value),
-                          size: value,
-                        ),
-                  )
-                  .toList(),
-              separatorBuilder: (_, i) => SizedBox(height: 16.0),
-            ),
+          children: EqWidgetSize.values
+              .map(
+                (value) => EqProgressBar(
+                  value: 0.8,
+                  text: enumToString(value),
+                  size: value,
+                ),
+              )
+              .toList(),
+          separatorBuilder: (_, i) => SizedBox(height: 16.0),
+        ),
       ),
       ShowcaseWidgetData(
         title: 'Progress bar animation',
         builder: () => StatefulBuilder(builder: (context, setState) {
-              return Row(
-                children: [
-                  EqIconButton(
-                    icon: EvaIcons.minus,
-                    onTap: () => setState(
-                        () => percentage = (percentage - 0.25).clamp(0.0, 1.0)),
+          return Row(
+            children: [
+              EqIconButton(
+                icon: EvaIcons.minus,
+                onTap: () => setState(
+                    () => percentage = (percentage - 0.25).clamp(0.0, 1.0)),
+                status: EqWidgetStatus.success,
+                appearance: EqWidgetAppearance.ghost,
+              ),
+              SizedBox(width: 16.0),
+              Expanded(
+                child: EqProgressBar(
+                    value: percentage,
                     status: EqWidgetStatus.success,
-                    appearance: EqWidgetAppearance.ghost,
-                  ),
-                  SizedBox(width: 16.0),
-                  Expanded(
-                    child: EqProgressBar(
-                        value: percentage,
-                        status: EqWidgetStatus.success,
-                        text: '${(percentage * 100.0).round().toString()}%'),
-                  ),
-                  SizedBox(width: 16.0),
-                  EqIconButton(
-                    icon: EvaIcons.plus,
-                    onTap: () => setState(
-                        () => percentage = (percentage + 0.25).clamp(0.0, 1.0)),
-                    status: EqWidgetStatus.success,
-                    appearance: EqWidgetAppearance.ghost,
-                  ),
-                ],
-              );
-            }),
+                    text: '${(percentage * 100.0).round().toString()}%'),
+              ),
+              SizedBox(width: 16.0),
+              EqIconButton(
+                icon: EvaIcons.plus,
+                onTap: () => setState(
+                    () => percentage = (percentage + 0.25).clamp(0.0, 1.0)),
+                status: EqWidgetStatus.success,
+                appearance: EqWidgetAppearance.ghost,
+              ),
+            ],
+          );
+        }),
       ),
     ];
   }

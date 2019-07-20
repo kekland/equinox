@@ -34,60 +34,60 @@ class _ToggleShowcaseState extends ShowcaseState<ToggleShowcase> {
         ShowcaseWidgetData(
           title: 'Toggle',
           builder: () => SeparatedColumn(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  EqToggle(
-                    value: getStatus('d.0', true),
-                    onChanged: (v) => setStatus('d.0', v),
-                    description: 'Description',
-                  ),
-                  EqToggle(
-                    value: false,
-                    onChanged: null,
-                    description: 'Disabled',
-                  ),
-                  EqToggle(
-                    value: true,
-                    onChanged: null,
-                    description: 'Selected disabled',
-                  ),
-                ],
-                separatorBuilder: (_, i) => SizedBox(height: 16.0),
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              EqToggle(
+                value: getStatus('d.0', true),
+                onChanged: (v) => setStatus('d.0', v),
+                description: 'Description',
               ),
+              EqToggle(
+                value: false,
+                onChanged: null,
+                description: 'Disabled',
+              ),
+              EqToggle(
+                value: true,
+                onChanged: null,
+                description: 'Selected disabled',
+              ),
+            ],
+            separatorBuilder: (_, i) => SizedBox(height: 16.0),
+          ),
         ),
         ShowcaseWidgetData(
           title: 'Toggle colors',
           builder: () => SeparatedColumn(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: EqWidgetStatus.values
-                    .map(
-                      (value) => EqToggle(
-                            value: getStatus(value.toString(), false),
-                            onChanged: (v) => setStatus(value.toString(), v),
-                            description: enumToString(value),
-                            status: value,
-                          ),
-                    )
-                    .toList(),
-                separatorBuilder: (_, i) => SizedBox(height: 16.0),
-              ),
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: EqWidgetStatus.values
+                .map(
+                  (value) => EqToggle(
+                    value: getStatus(value.toString(), false),
+                    onChanged: (v) => setStatus(value.toString(), v),
+                    description: enumToString(value),
+                    status: value,
+                  ),
+                )
+                .toList(),
+            separatorBuilder: (_, i) => SizedBox(height: 16.0),
+          ),
         ),
         ShowcaseWidgetData(
           title: 'Description location',
           builder: () => SeparatedColumn(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: EqPositioning.values
-                    .map(
-                      (value) => EqToggle(
-                            value: getStatus(value.toString(), false),
-                            onChanged: (v) => setStatus(value.toString(), v),
-                            description: enumToString(value),
-                            descriptionPosition: value,
-                          ),
-                    )
-                    .toList(),
-                separatorBuilder: (_, i) => SizedBox(height: 16.0),
-              ),
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: EqPositioning.values
+                .map(
+                  (value) => EqToggle(
+                    value: getStatus(value.toString(), false),
+                    onChanged: (v) => setStatus(value.toString(), v),
+                    description: enumToString(value),
+                    descriptionPosition: value,
+                  ),
+                )
+                .toList(),
+            separatorBuilder: (_, i) => SizedBox(height: 16.0),
+          ),
         ),
       ];
 }

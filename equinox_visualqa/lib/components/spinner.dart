@@ -23,28 +23,28 @@ class _SpinnerShowcaseState extends ShowcaseState<SpinnerShowcase> {
         ShowcaseWidgetData(
           title: 'Spinner colors',
           builder: () => Wrap(
-                spacing: 16.0,
-                runSpacing: 16.0,
-                alignment: WrapAlignment.start,
-                children: EqWidgetStatus.values
-                    .map((status) => EqSpinner(
-                          status: status,
-                        ))
-                    .toList(),
-              ),
+            spacing: 16.0,
+            runSpacing: 16.0,
+            alignment: WrapAlignment.start,
+            children: EqWidgetStatus.values
+                .map((status) => EqSpinner(
+                      status: status,
+                    ))
+                .toList(),
+          ),
         ),
         ShowcaseWidgetData(
           title: 'Spinner sizes',
           builder: () => Wrap(
-                spacing: 16.0,
-                runSpacing: 16.0,
-                alignment: WrapAlignment.start,
-                children: EqWidgetSize.values.reversed
-                    .map((size) => EqSpinner(
-                          size: size,
-                        ))
-                    .toList(),
-              ),
+            spacing: 16.0,
+            runSpacing: 16.0,
+            alignment: WrapAlignment.start,
+            children: EqWidgetSize.values.reversed
+                .map((size) => EqSpinner(
+                      size: size,
+                    ))
+                .toList(),
+          ),
         ),
       ];
 }
