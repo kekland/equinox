@@ -42,7 +42,7 @@ class EqAppBar extends StatelessWidget implements PreferredSizeWidget {
     Key key,
     @required this.title,
     this.subtitle,
-    this.centerTitle,
+    this.centerTitle = true,
     this.leading,
     this.actions = const [],
     this.inferLeading = true,
@@ -145,14 +145,14 @@ class EqAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final style = StaticStyle.of(context);
+    final topPadding = MediaQuery.of(context).padding.top;
     return Container(
       decoration: BoxDecoration(
         color: backgroundColor ?? style.get('app-bar-background-color'),
         boxShadow: [style.get('shadow')],
       ),
-      child: SafeArea(
-        top: true,
-        bottom: false,
+      child: Padding(
+        padding: EdgeInsets.only(top: topPadding),
         child: StaticStyle(
           inheritFromParent: false,
           data: style.style.fork()

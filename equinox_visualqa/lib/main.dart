@@ -127,6 +127,7 @@ class MainPage extends StatelessWidget {
               title: item.title,
               icon: EvaIcons.star,
               subtitle: '${item.title} showcase',
+              padding: const EdgeInsets.all(0.0),
             );
           }),
     );

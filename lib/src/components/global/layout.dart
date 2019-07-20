@@ -32,6 +32,9 @@ class _EqLayoutState extends State<EqLayout> {
   @override
   Widget build(BuildContext context) {
     final theme = widget.theme ?? StaticStyle.of(context)?.style;
+    final topPadding = MediaQuery.of(context).padding.top;
+    print(topPadding);
+    print('ayy lmao');
     return EqTheme(
       theme: theme,
       child: AnimatedContainer(
