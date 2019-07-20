@@ -119,6 +119,7 @@ class MainPage extends StatelessWidget {
         ],
       ),
       child: ListView.builder(
+          padding: EdgeInsets.zero,
           itemCount: showcases.length,
           itemBuilder: (_, index) {
             final item = showcases[index];
@@ -127,7 +128,6 @@ class MainPage extends StatelessWidget {
               title: item.title,
               icon: EvaIcons.star,
               subtitle: '${item.title} showcase',
-              padding: const EdgeInsets.all(0.0),
             );
           }),
     );
