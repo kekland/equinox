@@ -9,6 +9,9 @@ class EqTabData {
   /// Leading widget to display alongside [title].
   final WidgetBuilder icon;
 
+  /// Leading widget to display alongside [title] while tab is active.
+  final WidgetBuilder activeIcon;
+
   /// Label to display. Can be null.
   final WidgetBuilder title;
 
@@ -17,6 +20,7 @@ class EqTabData {
 
   EqTabData({
     this.icon,
+    this.activeIcon,
     this.title,
     this.disabled = false,
   });
@@ -24,10 +28,14 @@ class EqTabData {
   factory EqTabData.fromIcon(
       {String title,
       IconData icon,
+      IconData activeIcon,
       bool disabled = false,
       double iconSize = 18.0}) {
     return EqTabData(
       icon: (icon != null) ? (_) => EqIcon(icon, size: iconSize) : null,
+      activeIcon: (icon != null && activeIcon != null)
+          ? (_) => EqIcon(activeIcon, size: iconSize)
+          : null,
       title: (title != null) ? (_) => Text(title) : null,
       disabled: disabled,
     );
@@ -112,7 +120,11 @@ class _EqTabState extends State<EqTab> {
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      if (widget.data.icon != null) widget.data.icon(context),
+                      if ((!widget.active && widget.data.icon != null) ||
+                          (widget.active && widget.data.activeIcon == null))
+                        widget.data.icon(context),
+                      if (widget.active && widget.data.activeIcon != null)
+                        widget.data.activeIcon(context),
                       if (widget.data.icon != null && widget.data.title != null)
                         SizedBox(height: 2.0),
                       if (widget.data.title != null) widget.data.title(context),
